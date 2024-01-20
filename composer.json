@@ -1,5 +1,5 @@
 {
-    "name": "codeigniter4/codeigniter4",
+    "name": "codeigniter4/framework",
     "description": "The CodeIgniter framework v4",
     "license": "MIT",
     "type": "project",
@@ -19,19 +19,13 @@
     },
     "require-dev": {
         "codeigniter/coding-standard": "^1.5",
-        "ergebnis/composer-normalize": "^2.28",
         "fakerphp/faker": "^1.9",
+        "friendsofphp/php-cs-fixer": "~3.41.0",
         "kint-php/kint": "^5.0.4",
         "mikey179/vfsstream": "^1.6",
         "nexusphp/cs-config": "^3.6",
-        "nexusphp/tachycardia": "^1.0",
-        "php-coveralls/php-coveralls": "^2.5",
-        "phpstan/phpstan": "^1.10.2",
-        "phpunit/phpcov": "^8.2",
         "phpunit/phpunit": "^9.1",
-        "predis/predis": "^1.1 || ^2.0",
-        "rector/rector": "0.18.1",
-        "vimeo/psalm": "^5.0"
+        "predis/predis": "^1.1 || ^2.0"
     },
     "suggest": {
         "ext-curl": "If you use CURLRequest class",
@@ -49,6 +43,7 @@
         "ext-readline": "Improves CLI::input() usability",
         "ext-redis": "If you use Cache class RedisHandler",
         "ext-simplexml": "If you format XML",
+        "ext-sodium": "If you use Encryption SodiumHandler",
         "ext-sqlite3": "If you use SQLite3",
         "ext-sqlsrv": "If you use SQL Server",
         "ext-xdebug": "If you use CIUnitTestCase::assertHeaderEmitted()"
@@ -61,55 +56,12 @@
             "**/Database/Migrations/**"
         ]
     },
-    "autoload-dev": {
-        "psr-4": {
-            "CodeIgniter\\": "tests/system/",
-            "Utils\\": "utils/"
-        }
-    },
     "config": {
-        "allow-plugins": {
-            "ergebnis/composer-normalize": true
-        },
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true
     },
-    "extra": {
-        "branch-alias": {
-            "dev-develop": "4.x-dev"
-        }
-    },
     "scripts": {
-        "post-update-cmd": [
-            "CodeIgniter\\ComposerScripts::postUpdate",
-            "bash -c \"if [ -f admin/setup.sh ]; then bash admin/setup.sh; fi\""
-        ],
-        "analyze": [
-            "Composer\\Config::disableProcessTimeout",
-            "bash -c \"XDEBUG_MODE=off phpstan analyse\"",
-            "rector process --dry-run"
-        ],
-        "cs": [
-            "Composer\\Config::disableProcessTimeout",
-            "php-cs-fixer fix --ansi --verbose --dry-run --diff --config=.php-cs-fixer.user-guide.php",
-            "php-cs-fixer fix --ansi --verbose --dry-run --diff --config=.php-cs-fixer.no-header.php",
-            "php-cs-fixer fix --ansi --verbose --dry-run --diff"
-        ],
-        "cs-fix": [
-            "Composer\\Config::disableProcessTimeout",
-            "php-cs-fixer fix --ansi --verbose --diff --config=.php-cs-fixer.user-guide.php",
-            "php-cs-fixer fix --ansi --verbose --diff --config=.php-cs-fixer.no-header.php",
-            "php-cs-fixer fix --ansi --verbose --diff"
-        ],
-        "sa": "@analyze",
-        "style": "@cs-fix",
         "test": "phpunit"
-    },
-    "scripts-descriptions": {
-        "analyze": "Run static analysis",
-        "cs": "Check the coding style",
-        "cs-fix": "Fix the coding style",
-        "test": "Run unit tests"
     }
 }

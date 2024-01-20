@@ -20,6 +20,8 @@ use ErrorException;
  * CodeIgniter Email Class
  *
  * Permits email to be sent using Mail, Sendmail, or SMTP.
+ *
+ * @see \CodeIgniter\Email\EmailTest
  */
 class Email
 {
@@ -69,7 +71,7 @@ class Email
     public $protocol = 'mail';
 
     /**
-     * STMP Server host
+     * STMP Server Hostname
      *
      * @var string
      */
@@ -350,7 +352,7 @@ class Email
      * Character sets valid for 7-bit encoding,
      * excluding language suffix.
      *
-     * @var array
+     * @var list<string>
      */
     protected $baseCharsets = [
         'us-ascii',
@@ -729,7 +731,7 @@ class Email
     }
 
     /**
-     * @param string $email
+     * @param array|string $email
      *
      * @return array
      */
@@ -1234,13 +1236,13 @@ class Email
                     . $this->prepQuotedPrintable($this->body) . $this->newline . $this->newline
                     . '--' . $altBoundary . '--' . $this->newline . $this->newline;
 
-                if (! empty($relBoundary)) {
+                if (isset($relBoundary)) {
                     $body .= $this->newline . $this->newline;
                     $this->appendAttachments($body, $relBoundary, 'related');
                 }
 
                 // multipart/mixed attachments
-                if (! empty($atcBoundary)) {
+                if (isset($atcBoundary)) {
                     $body .= $this->newline . $this->newline;
                     $this->appendAttachments($body, $atcBoundary, 'mixed');
                 }
