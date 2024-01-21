@@ -79,7 +79,7 @@
         <p>New Account</p>
         <p>Already Registered? Login</p>
 
-        <img src="assets\images\bastaaa-removebg-preview.png" alt="City Hall Image">
+        <img src="assets\images\loginimage.png" alt="City Hall Image">
     </div>
 
     <div class="form">
