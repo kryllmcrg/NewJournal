@@ -19,7 +19,15 @@
             justify-content: center;
             font-family: 'Nunito', sans-serif;
             font-weight: bold;
+            position: relative; /* Add this to position the button relative to the body */
         }
+
+        .back-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        
         .form {
             position: absolute;
             top: 50%;
@@ -71,9 +79,9 @@
     </style>
 </head>
 <body>
-<a href="home">
-    <button type="button">back</button>
-</a>
+    <a href="/" class="back-button">
+        <button type="button">Back</button>
+    </a>
     <div class="logindesign">
         <p>CITY HALL</p>
         <p>CALAPAN CITY</p>
