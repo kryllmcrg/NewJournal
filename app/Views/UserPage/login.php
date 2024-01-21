@@ -23,28 +23,31 @@
             transform: translateY(-50%);
             width: 300px;
             padding: 20px;
-            background-color: #f0f0f0;
+            background-color: #c8a2c8;
         }
 
         .form h2 {
-        margin-bottom: 20px; 
+            margin-bottom: 20px; 
         }
 
         .form label {
-        display:block; 
-        margin-bottom:5px; 
+            display:block; 
+            margin-bottom:5px; 
         }
 
         .form input[type=text], .form input[type=email], .form input[type=password] {
-        width:100%; 
-        padding:10px; 
-        margin-bottom:20px; 
+            width:100%; 
+            padding:10px; 
+            margin-bottom:20px; 
         }
 
         .form select {
-        width:100%; 
-        padding:10px; 
-        margin-bottom:20px;  
+            width:100%; 
+            padding:10px; 
+            margin-bottom:20px;  
+        }
+        label {
+            margin-bottom: 8px;
         }
     </style>
 </head>
@@ -62,12 +65,9 @@
             <input type="password" id="password" name="password" required>
 
             <label for="dob">DATE OF BIRTH</label>
-            <select id="dob">
-                <!-- Add your options here -->
-                <option value="" disabled selected>Select</option>
-                <!-- Example option -->
-                <option value="">January 1, 1990</option> 
-            </select>
+            <input type="date" id="dob" name="dob" required>
+            <br>
+            <br>
 
             <button type='submit'>Sign Up</button>
         </form>
