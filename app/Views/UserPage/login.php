@@ -58,9 +58,31 @@
             margin-bottom: 20px;
             border-radius: 20px;
         }
+
+        .logindesign {
+            position: absolute;
+            left: 10%;
+            transform: translateY(-50%);
+            width: 300px;
+            background-color: rgba(128, 0, 128, 0.8);
+            border-radius: 10px;
+            height: auto; 
+            padding: 20px; 
+            color: white; 
+        }
+
     </style>
 </head>
 <body>
+</head>
+    <div class="logindesign">
+        <p>CITY HALL</p>
+        <p>CALAPAN CITY</p>
+        <p>Create</p>
+        <p>New Account</p>
+        <p>Already Registered? Login</p>
+    </div>
+
     <div class="form">
         <h2>Login</h2>
         <form>
