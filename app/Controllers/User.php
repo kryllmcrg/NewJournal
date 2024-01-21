@@ -12,4 +12,8 @@ class User extends BaseController
     {
         return view('UserPage/home');
     }
+    public function login()
+    {
+        return view('UserPage/login');
+    }
 }
