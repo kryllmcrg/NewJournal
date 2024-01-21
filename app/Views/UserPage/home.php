@@ -10,8 +10,17 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Set minimum height to full viewport height */
+        }
+
         .navbar {
-            min-height: 80px; /* Adjust the minimum height as needed */
+            min-height: 80px;
             background-color: #dabfff;
         }
 
@@ -22,8 +31,8 @@
         }
 
         .navbar-brand img {
-            max-height: 40px; /* Adjust the logo height as needed */
-            margin-right: 10px; /* Add some spacing between the logo and text */
+            max-height: 40px;
+            margin-right: 10px;
             max-width: 160px;
         }
 
@@ -35,18 +44,18 @@
         .navbar-nav {
             font-weight: bold;
             justify-content: center;
-            text-align: center; /* Center the text */
+            text-align: center;
         }
 
         .nav-item {
-            margin: 0 20px; /* Adjust the margin as needed */
+            margin: 0 20px;
         }
 
         .nav-link {
             color: black !important;
             font-size: 18px;
-            display: block; /* Make the links full-width */
-            text-align: center; /* Center the text */
+            display: block;
+            text-align: center;
         }
 
         .navbar-icons {
@@ -57,7 +66,7 @@
 
         .navbar-icons i {
             font-size: 24px;
-            margin-left: 15px;
+            margin-left: 25px;
             color: #3c096c;
             cursor: pointer;
         }
@@ -67,6 +76,41 @@
             font-size: 16px;
             color: #3c096c;
             font-weight: bold;
+        }
+
+        .second-navbar {
+            background-color: #dabfff;
+            border-bottom: 1px solid #ccc;
+            margin-top: -1px; /* To overlap the border with the first navigation */
+            z-index: 1; /* To place it above the first navigation */
+        }
+
+        .second-navbar-nav {
+            justify-content: center;
+            text-align: center;
+        }
+
+        .second-nav-item {
+            margin: 0 20px;
+        }
+
+        .second-nav-link {
+            color: #000 !important;
+            font-size: 16px;
+            display: block;
+            text-align: center;
+        }
+
+        footer {
+            background-color: #dabfff;
+            padding: 20px 0;
+            text-align: center;
+            margin-top: auto; /* Push the footer to the bottom */
+        }
+
+        footer p {
+            margin: 0;
+            color: #3c096c;
         }
 
         @media (min-width: 768px) {
@@ -120,6 +164,39 @@
         </div>
     </div>
 </nav>
+
+<!-- Second Navigation Bar -->
+<nav class="navbar second-navbar">
+    <div class="container-fluid">
+        <div class="second-navbar-nav">
+           <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">News</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Announcements</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 Calapan City Official Website | All Rights Reserved</p>
+</footer>
 
 <!-- Bootstrap JS (optional, but needed for some features like the responsive navbar toggle) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
