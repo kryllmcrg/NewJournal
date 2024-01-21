@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Font+Name" rel="stylesheet">
-
     <title>Login</title>
     <style>
         body {
@@ -19,7 +18,15 @@
             justify-content: center;
             font-family: 'Nunito', sans-serif;
             font-weight: bold;
+            position: relative; /* Add this to position the button relative to the body */
         }
+
+        .back-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
         .form {
             position: absolute;
             top: 50%;
@@ -37,7 +44,7 @@
         }
 
         button {
-            width: 100%; /* Make the button fill the width of the container */
+            width: 100%; 
             padding: 10px;
             background-color: #a86add;
             color: white;
@@ -67,25 +74,24 @@
             padding: 20px; 
             color: white; 
         }
-
     </style>
 </head>
 <body>
-<a href="home">
-    <button type="button">back</button>
-</a>
+    <a href="/" class="back-button">
+        <button type="button">Back</button>
+    </a>
+
     <div class="logindesign">
         <p>CITY HALL</p>
         <p>CALAPAN CITY</p>
         <p>Create</p>
         <p>New Account</p>
         <p>Already Registered? Login</p>
-
-        <img src="assets\images\loginimage.png" alt="City Hall Image">
+        <img src="assets\images\regimage.png" alt="City Hall Image">
     </div>
 
     <div class="form">
-        <h2>Login</h2>
+        <h2>Register</h2>
         <form>
             <label for="name">NAME</label>
             <input type="text" id="name" name="name" placeholder="Enter Name" required>
@@ -101,10 +107,7 @@
             <br>
             <br>
             <button type='submit'>Sign In</button>
-
-            <p><a href="register">Register?</a></p>
         </form>
     </div>
-
 </body>
 </html>
