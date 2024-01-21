@@ -62,11 +62,8 @@
         .logindesign {
             position: absolute;
             left: 10%;
-            transform: translateY(-50%);
-            width: 300px;
-            background-color: rgba(128, 0, 128, 0.8);
-            border-radius: 10px;
-            height: auto; 
+            background-color: rgba(133, 73, 167, 0.8);
+            height: 100%; 
             padding: 20px; 
             color: white; 
         }
@@ -81,6 +78,8 @@
         <p>Create</p>
         <p>New Account</p>
         <p>Already Registered? Login</p>
+
+        <img src="assets\images\bastaaa-removebg-preview.png" alt="City Hall Image">
     </div>
 
     <div class="form">
