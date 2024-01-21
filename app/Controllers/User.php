@@ -8,8 +8,8 @@ class User extends BaseController
     {
         return view('welcome_message');
     }
-    // public function front()
-    // {
-    //     return view('front');
-    // }
+    public function home()
+    {
+        return view('UserPage/home');
+    }
 }
