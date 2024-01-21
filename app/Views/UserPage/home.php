@@ -22,6 +22,7 @@
         .navbar {
             min-height: 80px;
             background-color: #dabfff;
+            margin-bottom: 20px; /* Add margin to separate from the second navbar */
         }
 
         .navbar-brand {
@@ -53,7 +54,7 @@
 
         .nav-link {
             color: black !important;
-            font-size: 18px;
+            font-size: 16px; /* Adjusted font size to match the second navigation */
             display: block;
             text-align: center;
         }
@@ -79,10 +80,10 @@
         }
 
         .second-navbar {
-            background-color: #dabfff;
+            background-color: #907ad6; /* Change to your preferred color */
             border-bottom: 1px solid #ccc;
-            margin-top: -1px; /* To overlap the border with the first navigation */
-            z-index: 1; /* To place it above the first navigation */
+            margin-bottom: 20px;
+            min-height: 60px; /* Adjusted height */
         }
 
         .second-navbar-nav {
@@ -91,14 +92,25 @@
         }
 
         .second-nav-item {
-            margin: 0 20px;
+            margin: 0 10px; /* Adjusted margin */
+            padding: 10px 0; /* Adjusted padding */
         }
 
         .second-nav-link {
-            color: #000 !important;
-            font-size: 16px;
+            color: #fff !important;
+            font-size: 14px; /* Adjusted font size */
             display: block;
             text-align: center;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .second-nav-link:hover {
+            color: #ffd700; /* Change to your preferred hover color */
+        }
+
+        /* Add a subtle box-shadow for depth */
+        .second-navbar-nav {
+            box-shadow: 0 4px 6px -6px #222;
         }
 
         footer {
@@ -165,11 +177,16 @@
     </div>
 </nav>
 
-<!-- Second Navigation Bar -->
-<nav class="navbar second-navbar">
+<nav class="navbar second-navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-        <div class="second-navbar-nav">
-           <ul class="navbar-nav">
+        <a class="navbar-brand" href="#">
+            <img src="assets/images/logo.png" alt="Logo" class="img-fluid">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#secondNavbarNav" aria-controls="secondNavbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="secondNavbarNav">
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="#">Home</a>
                 </li>
