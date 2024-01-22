@@ -10,7 +10,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-image: url('assets/images/backgroundcc.jpg'); 
+            background-image: url('assets/images/bg.png'); 
             background-size: cover; 
             background-position: center; 
             height: 100vh; 
@@ -87,6 +87,18 @@
             cursor: pointer;
             text-decoration: underline;
         }
+
+        /* Media queries for responsiveness */
+        @media only screen and (max-width: 768px) {
+            .form {
+                width: 100%;
+                right: 0;
+            }
+
+            .logindesign p {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -98,7 +110,7 @@
         <p>CALAPAN CITY</p>
         <p>Create</p>
         <p style="font-size: 18px; font-style: italic;">New Account</p>
-        <p class="clickable" onclick="location.href='login'">Don't have an account?  Register</p>
+        <p class="clickable" onclick="location.href='register'">Don't have an account?  Register</p>
 
         <img src="assets\images\loginimage.png" alt="City Hall Image">
     </div>
@@ -120,9 +132,7 @@
             <br>
             <br>
             <button type='submit'>Sign In</button>
-
         </form>
     </div>
-
 </body>
 </html>

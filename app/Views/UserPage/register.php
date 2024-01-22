@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Font+Name" rel="stylesheet">
 
-    <title>Login</title>
+    <title>Register</title>
     <style>
         body {
             margin: 0;
             padding: 0;
-            background-image: url('assets/images/backgroundcc.jpg'); 
+            background-image: url('assets/images/bg.png'); 
             background-size: cover; 
             background-position: center; 
             height: 100vh; 
@@ -33,7 +33,7 @@
             top: 50%;
             right: 10%;
             transform: translateY(-50%);
-            width: 300px;
+            width: 500px;
             padding: 20px;
             background-color: #c8a2c8;
             border-radius: 10px;
@@ -97,30 +97,36 @@
         <p>CITY HALL</p>
         <p>CALAPAN CITY</p>
         <p>Create</p>
-        <p style="font-size: 18px; font-style: italic;">New Account</p>
+        <p style="font-size: 18px; font-style: italic;">Register</p>
         <p class="clickable" onclick="location.href='login'">Already Registered? Login</p>
 
         <img src="assets\images\regimage.png" alt="City Hall Image">
     </div>
 
     <div class="form">
-        <h2>Login</h2>
+        <h2>Register</h2>
         <form>
-            <label for="name">NAME</label>
-            <input type="text" id="name" name="name" placeholder="Enter Name" required>
+            <label for="first_name">First Name</label>
+            <input type="text" id="first_name" name="first_name" placeholder="Insert your first name" required>
 
-            <label for="email">EMAIL</label>
-            <input type="email" id="email" name="email" placeholder="Enter Email" required>
+            <label for="last_name">Last Name</label>
+            <input type="text" id="last_name" name="last_name" placeholder="Insert your last name" required>
 
-            <label for="password">PASSWORD</label>
-            <input type="password" id="password" name="password" placeholder="Enter Password" required>
+            <label for="email">E-mail Address</label>
+            <input type="email" id="email" name="email" placeholder="Insert your e-mail address" required>
 
-            <label for="dob">DATE OF BIRTH</label>
-            <input type="date" id="dob" name="dob" required>
-            <br>
-            <br>
-            <button type='submit'>Sign In</button>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Create your username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Create your password" required>
+
+            <label for="terms">I have read the Terms & Conditions</label>
+            <input type="checkbox" id="terms" name="terms" required>
+
+            <button type='submit'>Sign Up</button>
         </form>
+        <p>Already have an Account? <a href="login">Click here to Sign In</a></p>
     </div>
 
 </body>
