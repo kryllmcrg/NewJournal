@@ -87,13 +87,34 @@
             cursor: pointer;
             text-decoration: underline;
         }
+
+        .logo {
+            position: absolute;
+            top: 30px; 
+            right: 25px; 
+            width: 90px; 
+            height: 82px; 
+        }
+        .circular-button {
+            border-radius: 50%;
+            padding: 10px;
+            border: none;
+            background-color: #f0f0f0; /* You can change this color */
+        }
+
+        .circular-button img {
+            margin-right: 5px;
+        }
     </style>
 </head>
 <body>
     <a href="/" class="back-button">
-        <button type="button">Back</button>
+        <button type="button" class="circular-button">
+            <img src="path-to-your-left-arrow-icon" alt="Back">
+        </button>
     </a>
     <div class="logindesign">
+        <img src="assets\images\logggo.png" alt="Logo" class="logo">
         <p>CITY HALL</p>
         <p>CALAPAN CITY</p>
         <p>Create</p>
