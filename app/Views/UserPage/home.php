@@ -215,7 +215,7 @@
                         <a class="nav-link" href="#">Technology</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             More
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -258,6 +258,29 @@
 
     setInterval(updateTimeDate, 1000);
     updateTimeDate();
+
+    // Add this script for dropdown functionality
+    document.addEventListener('DOMContentLoaded', function () {
+        var dropdownTrigger = document.getElementById('navbarDropdown');
+        var dropdownMenu = document.getElementById('navbarDropdownMenu');
+
+        dropdownTrigger.addEventListener('click', function () {
+            dropdownMenu.classList.toggle('show');
+        });
+
+        // Close the dropdown when clicking outside of it
+        window.addEventListener('click', function (event) {
+            if (!event.target.matches('.dropdown-toggle')) {
+                var dropdowns = document.getElementsByClassName('dropdown-menu');
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        });
+    });
 </script>
 
 </body>
