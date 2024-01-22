@@ -76,6 +76,17 @@
             color: white; 
         }
 
+        /* Added styles for the specified text */
+        .logindesign p {
+            font-size: 20px;
+            font-style: italic;
+        }
+
+        /* Added styles to make the "Login" text clickable */
+        .logindesign p.clickable {
+            cursor: pointer;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -86,8 +97,8 @@
         <p>CITY HALL</p>
         <p>CALAPAN CITY</p>
         <p>Create</p>
-        <p>New Account</p>
-        <p>Already Registered? Login</p>
+        <p style="font-size: 18px; font-style: italic;">New Account</p>
+        <p class="clickable" onclick="location.href='login'">Don't have an account?  Register</p>
 
         <img src="assets\images\loginimage.png" alt="City Hall Image">
     </div>
@@ -110,7 +121,6 @@
             <br>
             <button type='submit'>Sign In</button>
 
-            <p><a href="register">Register?</a></p>
         </form>
     </div>
 
