@@ -9,3 +9,4 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'User::home');
 $routes->get('/login', 'User::login');
 $routes->get('/register', 'User::register');
+$routes->get('/dashboard', 'User::dashboard');

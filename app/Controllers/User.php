@@ -20,4 +20,8 @@ class User extends BaseController
     {
         return view('UserPage/register');
     }
+    public function dashboard()
+    {
+        return view('AdminPage/dashboard');
+    }
 }
