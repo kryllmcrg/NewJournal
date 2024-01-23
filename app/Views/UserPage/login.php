@@ -99,6 +99,14 @@
                 font-size: 16px;
             }
         }
+
+        .logo {
+            position: absolute;
+            top: 30px; 
+            right: 25px; 
+            width: 90px; 
+            height: 82px; 
+        }
     </style>
 </head>
 <body>
@@ -106,6 +114,7 @@
         <button type="button">Back</button>
     </a>
     <div class="logindesign">
+        <img src="assets\images\logggo.png" alt="Logo" class="logo">
         <p>CITY HALL</p>
         <p>CALAPAN CITY</p>
         <p>Create</p>
