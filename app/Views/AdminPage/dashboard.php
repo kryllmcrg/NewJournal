@@ -200,7 +200,6 @@
 </head>
 
 <body>
-
     <!-- Sidebar -->
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">×</a>
