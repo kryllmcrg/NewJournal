@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Font+Name" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <title>Login</title>
     <style>
@@ -26,12 +27,25 @@
             position: absolute;
             top: 10px;
             right: 10px;
+            text-decoration: none;
+        }
+
+        .back-button i{
+            color: white;
+            font-size: 1.7em;
+        }
+        
+        .back-button span {
+            display: block;
+            color: black;
+            font-size: 11px;
+            text-decoration: none;
         }
         
         .form {
             position: absolute;
             top: 50%;
-            right: 10%;
+            right: 15%;
             transform: translateY(-50%);
             width: 300px;
             padding: 20px;
@@ -69,7 +83,7 @@
 
         .logindesign {
             position: absolute;
-            left: 10%;
+            left: 15%;
             background-color: rgba(133, 73, 167, 0.8);
             height: 100%; 
             padding: 20px; 
@@ -111,7 +125,8 @@
 </head>
 <body>
     <a href="/" class="back-button">
-        <button type="button">Back</button>
+        <i class="bi bi-arrow-left-circle-fill"></i>
+        <span>back</span>
     </a>
     <div class="logindesign">
         <img src="assets\images\logggo.png" alt="Logo" class="logo">
