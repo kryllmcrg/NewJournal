@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Font+Name" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,300,700" rel="stylesheet" type="text/css">
     <title>Register</title>
     <style>
         body {
@@ -89,7 +90,7 @@
         }
 
         /* Added styles for the specified text */
-        .logindesign p {
+        .logindesign span {
             font-size: 20px;
             font-style: italic;
         }
@@ -98,6 +99,18 @@
         .logindesign p.clickable {
             cursor: pointer;
             text-decoration: underline;
+        }
+
+        /* Media queries for responsiveness */
+        @media only screen and (max-width: 768px) {
+            .form {
+                width: 100%;
+                right: 0;
+            }
+
+            .logindesign p {
+                font-size: 16px;
+            }
         }
 
         .logo {
@@ -115,14 +128,14 @@
         <span>back</span>
     </a>
     <div class="logindesign">
-        <img src="assets\images\logggo.png" alt="Logo" class="logo">
-        <p>CITY HALL</p>
-        <p>CALAPAN CITY</p>
-        <p>Create</p>
-        <p style="font-size: 18px; font-style: italic;">Register</p>
-        <p class="clickable" onclick="location.href='login'">Already Registered? Login</p>
+        <span><p style="font-size: 24px; line-height: 0.1;" >CITY HALL</p>
+        <p style="font-size: 24px; line-height: 0.1; " >CALAPAN CITY</p></span>
+        <p style="font-size: 28px; font-weight: bold; line-height: 0.1; font-family: 'Oswald', sans-serif;">Log In</p>
+        <p style="font-size: 28px; font-weight: bold;  line-height: 0.1; font-family: 'Oswald', sans-serif;" >your Account</p>
+        <p class="clickable" onclick="location.href='register'" 
+        style="font-size: 12px; text-decoration: none; line-height: 0.1;">Already Registered? Login</p>
 
-        <img src="assets\images\regimage.png" alt="City Hall Image">
+        <img src="assets\images\loginimage.png" alt="City Hall Image">
     </div>
 
     <div class="form">
