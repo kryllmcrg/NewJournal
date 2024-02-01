@@ -132,7 +132,7 @@
         <p style="font-size: 24px; line-height: 0.1; " >CALAPAN CITY</p></span>
         <p style="font-size: 28px; font-weight: bold; line-height: 0.1; font-family: 'Oswald', sans-serif;">Log In</p>
         <p style="font-size: 28px; font-weight: bold;  line-height: 0.1; font-family: 'Oswald', sans-serif;" >your Account</p>
-        <p class="clickable" onclick="location.href='register'" 
+        <p class="clickable" onclick="location.href='login'" 
         style="font-size: 12px; text-decoration: none; line-height: 0.1;">Already Registered? Login</p>
 
         <img src="assets\images\loginimage.png" alt="City Hall Image">
@@ -140,7 +140,7 @@
 
     <div class="form">
         <h2>Register</h2>
-        <form>
+        <form method="post" action="/register">
             <label for="first_name">First Name</label>
             <input type="text" id="first_name" name="first_name" placeholder="Insert your first name" required>
 
