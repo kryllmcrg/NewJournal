@@ -61,7 +61,6 @@ class User extends BaseController
             return redirect()->to('/login')->with('error', 'Invalid credentials');
         }
     }
-    
 
     public function register()
     {

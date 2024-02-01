@@ -130,6 +130,19 @@
         <i class="bi bi-arrow-left-circle-fill"></i>
         <span>back</span>
     </a>
+
+    <div>
+        <?php if (session()->has('success')) : ?>
+            <div style="color: green;">
+                <?= session('success') ?>
+            </div>
+        <?php elseif (session()->has('error')) : ?>
+            <div style="color: red;">
+                <?= session('error') ?>
+            </div>
+        <?php endif; ?>
+    </div>
+
     <div class="logindesign">
         <span><p style="font-size: 24px; line-height: 0.1;" >CITY HALL</p>
         <p style="font-size: 24px; line-height: 0.1; " >CALAPAN CITY</p></span>
