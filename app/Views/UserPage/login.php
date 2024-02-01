@@ -152,10 +152,6 @@
 
             <label for="password">PASSWORD</label>
             <input type="password" id="password" name="password" placeholder="Enter Password" required>
-
-            <label for="dob">DATE OF BIRTH</label>
-            <input type="date" id="dob" name="dob" required>
-            <br>
             <br>
             <button type='submit'>Sign In</button>
         </form>

@@ -169,6 +169,23 @@
                 display: block;
             }
         }
+        .nav-link:hover {
+        color: #ffd700 !important;
+        }
+
+        .navbar-icons i:hover {
+            color: #ffd700 !important;
+        }
+
+        .navbar form button:hover {
+            background-color: #ffd700;
+            color: black;
+        }
+
+        .navbar form input:focus {
+            border-color: #ffd700;
+            box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.25);
+        }
     </style>
 </head>
 
