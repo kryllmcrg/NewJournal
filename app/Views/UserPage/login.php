@@ -143,10 +143,7 @@
 
     <div class="form">
         <h2>Login</h2>
-        <form>
-            <label for="name">NAME</label>
-            <input type="text" id="name" name="name" placeholder="Enter Name" required>
-
+        <form action="<?= base_url('authenticate') ?>" method="post">
             <label for="email">EMAIL</label>
             <input type="email" id="email" name="email" placeholder="Enter Email" required>
 
