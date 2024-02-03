@@ -11,7 +11,7 @@
     
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+    <link rel="shortcut icon" href="assets/images/flogggo.png" />
   </head>
   <body>
     <div class="container-scroller">
