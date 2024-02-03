@@ -15,6 +15,12 @@ $routes->post('register', 'UserController::save');
 
 $routes->get('/dashboard', 'AdminController::dashboard');
 $routes->get('/manageprofile', 'AdminController::manageprofile');
+$routes->get('/addnews', 'AdminController::addnews');
+$routes->get('/managenews', 'AdminController::managenews');
+$routes->get('/managecomments', 'AdminController::managecomments');
+$routes->get('/chats', 'AdminController::chats');
+$routes->get('/addcategory', 'AdminController::addcategory');
+$routes->get('/managecategory', 'AdminController::managecategory');
 
 
 

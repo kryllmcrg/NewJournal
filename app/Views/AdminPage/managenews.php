@@ -162,7 +162,7 @@
                 </a>
                 <div class="collapse" id="comments">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="managecomment">Manage Comments</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="managecomments">Manage Comments</a></li>
                     </ul>
                 </div>
             </li>
