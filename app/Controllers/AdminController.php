@@ -11,4 +11,9 @@ class AdminController extends BaseController
     {
         return view('AdminPage/dashboard');
     }
+
+    public function manageprofile()
+    {
+        return view('AdminPage/manageprofile');
+    }
 }
