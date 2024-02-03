@@ -11,6 +11,10 @@ $routes->get('/login', 'UserController::login');
 $routes->post('authenticate', 'UserController::authenticate');
 $routes->get('/register', 'UserController::register');
 $routes->post('register', 'UserController::save');
+$routes->get('/about', 'UserController::about');
+$routes->get('/contact', 'UserController::contact');
+$routes->get('/news', 'UserController::news');
+$routes->get('/announcements', 'UserController::announcements');
 
 
 $routes->get('/dashboard', 'AdminController::dashboard');

@@ -84,4 +84,24 @@ class UserController extends BaseController
 
         return redirect()->to('/login')->with('success', 'Registration successful! You can now log in.');
     }
+
+    public function about()
+    {
+        return view('UserPage/about');
+    }
+
+    public function contact()
+    {
+        return view('UserPage/contact');
+    }
+
+    public function news()
+    {
+        return view('UserPage/news');
+    }
+
+    public function announcements()
+    {
+        return view('UserPage/announcements');
+    }
 }
