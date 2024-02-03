@@ -34,10 +34,18 @@
       </div>
       <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="dashboard"><img src="assets/images/logo.svg" alt="logo" /></a>
-          <a class="navbar-brand brand-logo-mini" href="dasboard"><img src="assets/images/logo-mini.svg" alt="logo" /></a>
-        </div>
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+          <!-- Larger Logo -->
+          <a class="navbar-brand brand-logo" href="dashboard">
+              <img src="assets/images/logo.png" alt="logo" style="width: 120px; height: auto;">
+          </a>
+
+          <!-- Smaller Logo for Mini View -->
+          <a class="navbar-brand brand-logo-mini" href="dashboard">
+              <img src="assets/images/logo.png" alt="logo" style="width: 40px; height: auto;">
+          </a>
+      </div>
+
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
@@ -242,7 +250,7 @@
           <footer class="footer">
             <div class="container-fluid d-flex justify-content-between">
               <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright © CalapanCityNews 2024</span>
-              <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> Free <a href="" target="_blank">Calapan City Information Office</a> OffcialWebsite.com</span>
+              <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> CIO <a href="" target="_blank">Calapan City Information Office</a> OffcialWebsite.com</span>
             </div>
           </footer>
           <!-- partial -->
