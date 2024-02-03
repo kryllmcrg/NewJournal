@@ -7,8 +7,8 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class AdminController extends BaseController
 {
-    public function index()
+    public function dashboard()
     {
-        //
+        return view('AdminPage/dashboard');
     }
 }

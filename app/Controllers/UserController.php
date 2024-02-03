@@ -84,9 +84,4 @@ class UserController extends BaseController
 
         return redirect()->to('/login')->with('success', 'Registration successful! You can now log in.');
     }
-
-    public function dashboard()
-    {
-        return view('AdminPage/dashboard');
-    }
 }
