@@ -135,7 +135,7 @@
                 </a>
                 <div class="collapse" id="staff">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="">Manage Profile</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="manageprofile">Manage Profile</a></li>
                     </ul>
                 </div>
             </li>
@@ -148,8 +148,8 @@
                 </a>
                 <div class="collapse" id="news">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="">Add News</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="">Manage News</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="addnews">Add News</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="managenews">Manage News</a></li>
                     </ul>
                 </div>
             </li>
@@ -162,7 +162,7 @@
                 </a>
                 <div class="collapse" id="comments">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="">Manage Comments</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="managecomment">Manage Comments</a></li>
                     </ul>
                 </div>
             </li>
@@ -175,7 +175,7 @@
                 </a>
                 <div class="collapse" id="collaboration">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="">Chats</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="chats">Chats</a></li>
                     </ul>
                 </div>
             </li>
@@ -188,8 +188,8 @@
                 </a>
                 <div class="collapse" id="category">
                     <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="">Add Category</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="">Manage Category</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="addcategory">Add Category</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="managecategory">Manage Category</a></li>
                     </ul>
                 </div>
             </li>
