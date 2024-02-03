@@ -214,6 +214,7 @@
             <br>
             <br>
             <br>
+            
             <li class="nav-item sidebar-actions">
             <a class="nav-link" href="#">
                 <span class="menu-title">Settings</span>
