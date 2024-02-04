@@ -13,6 +13,7 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/logggo.png" />
   </head>
+
   <body>
   <div class="container-scroller">
     <div class="row p-0 m-0 proBanner" id="proBanner">
@@ -73,8 +74,6 @@
               <span class="count-symbol bg-warning"></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-
-
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -194,26 +193,6 @@
             </div>
           </li>
 
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-
           <li class="nav-item sidebar-actions">
             <a class="nav-link" href="#">
               <span class="menu-title">Settings</span>
@@ -227,6 +206,72 @@
         </ul>
       </nav>
 
+      <!-- Edit News Modal -->
+      <div class="modal fade" id="editNewsModal" tabindex="-1" role="dialog" aria-labelledby="editNewsModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editNewsModalLabel">Edit News</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Add your form elements for editing here -->
+              <form>
+                <div class="row">
+                  <!-- First Column -->
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="editTitle" class="form-label">Title</label>
+                      <input type="text" class="form-control" id="editTitle" placeholder="Enter title">
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="editCategory" class="form-label">Category</label>
+                      <input type="text" class="form-control" id="editCategory" placeholder="Enter category">
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="editAuthor" class="form-label">Author</label>
+                      <input type="text" class="form-control" id="editAuthor" placeholder="Enter author">
+                    </div>
+                  </div>
+
+                  <!-- Second Column -->
+                  <div class="col-md-6">
+                    <div class="mb-3">
+                      <label for="editContent" class="form-label">Content</label>
+                      <textarea class="form-control" id="editContent" rows="4" placeholder="Enter content"></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="editImages" class="form-label">Images</label>
+                      <input type="text" class="form-control" id="editImages" placeholder="Enter image URL">
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="editPublicationUpdate" class="form-label">Publication Update</label>
+                      <input type="text" class="form-control" id="editPublicationUpdate" placeholder="Enter update date/time">
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="editPublicationDate" class="form-label">Publication Date</label>
+                      <input type="date" class="form-control" id="editPublicationDate">
+                    </div>
+                  </div>
+                </div>
+                <!-- Add more form fields as needed for editing -->
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
@@ -280,8 +325,8 @@
                     </td>
                     <td>
                       <!-- Add your action buttons or links here -->
-                      <button class="btn btn-primary btn-sm">Edit</button>
-                      <button class="btn btn-danger btn-sm">Delete</button>
+                      <button class="btn btn-primary btn-sm edit-news-btn">Edit</button>
+                      <button class="btn btn-danger btn-sm delete-news-btn">Delete</button>
                     </td>
                   </tr>
                   <!-- Add more rows as needed -->
@@ -305,10 +350,39 @@
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var editButtons = document.querySelectorAll('.edit-news-btn');
+    var deleteButtons = document.querySelectorAll('.delete-news-btn');
+
+    editButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        $('#editNewsModal').modal('show');
+      });
+    });
+
+    deleteButtons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        // Show a confirmation dialog
+        var isConfirmed = confirm("Are you sure you want to delete this news?");
+        
+        // If the user confirms, perform the deletion logic
+        if (isConfirmed) {
+          // Add your delete logic here
+          // For example, you can make an AJAX request to delete the news
+        }
+      });
+    });
+  });
+</script>
+
   <!-- plugins:js -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="assets/vendors/js/vendor.bundle.base.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendors/chart.js/Chart.min.js"></script>
   <script src="assets/js/jquery.cookie.js" type="text/javascript"></script>
   <!-- End plugin js for this page -->
