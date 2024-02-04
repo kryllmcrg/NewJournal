@@ -310,21 +310,7 @@
                 <tbody>
                   <!-- Example row, replace with dynamic data from your backend -->
                   <tr>
-                    <td>Sample Title</td>
-                    <td>News Category</td>
-                    <td>John Doe</td>
-                    <td>Sample Content...</td>
-                    <td>Image URL</td>
-                    <td>Update Date/Time</td>
-                    <td>Publication Date</td>
-                    <td>
-                      <label class="badge badge-success">Published</label>
-                    </td>
-                    <td>
-                      <!-- Add your action buttons or links here -->
-                      <button class="btn btn-primary btn-sm edit-news-btn">Edit</button>
-                      <button class="btn btn-danger btn-sm delete-news-btn">Delete</button>
-                    </td>
+                  
                   </tr>
                   <!-- Add more rows as needed -->
                 </tbody>
