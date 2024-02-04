@@ -289,10 +289,7 @@
               </ul>
             </nav>
           </div>
-        </div>
-
-        <!-- News Management Table -->
-        <div class="card">
+          <div class="card">
           <div class="card-body">
             <h4 class="card-title">Manage News</h4>
             <div class="table-responsive">
@@ -335,6 +332,10 @@
             </div>
           </div>
         </div>
+        </div>
+
+        <!-- News Management Table -->
+        
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
