@@ -259,7 +259,9 @@
                     <th>Status</th>
                     <th>Visibility</th>
                     <th>Image/Icon</th>
-                    <th>User Owner</th>
+                    <th>User Owner
+                    
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
