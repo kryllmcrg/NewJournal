@@ -244,9 +244,7 @@
                 </ul>
               </nav>
             </div>
-          </div>
-
-          <div class="container mt-5">
+            <div class="container mt-5">
             <div class="row">
               <div class="col-md-6">
                 <h2>Add Category</h2>
@@ -310,6 +308,9 @@
               </div>
             </div>
           </div>
+          </div>
+
+          
 
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
