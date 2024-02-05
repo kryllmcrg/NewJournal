@@ -256,11 +256,10 @@
                     <th>Parent Category</th>
                     <th>Attributes/Properties</th>
                     <th>Tags/Keyword</th>
-                    <th>Status</th>
-                    <th>Visibility</th>
                     <th>Image/Icon</th>
                     <th>User Owner
-                    
+                    <th>Status</th>
+                    <th>Actions</th>
                     </th>
                   </tr>
                 </thead>
@@ -275,9 +274,8 @@
             </div>
           </div>
         </div>
-          </div>
-          
-
+      </div>
+        
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">

@@ -244,74 +244,71 @@
                 </ul>
               </nav>
             </div>
-            <div class="container mt-5">
+
             <div class="row">
-              <div class="col-md-6">
-                <h2>Add Category</h2>
-                <form class="forms-sample">
-                  <div class="form-group">
-                    <label for="categoryName">Category Name/Title:</label>
-                    <input type="text" class="form-control" id="categoryName" placeholder="Enter category name" required>
-                  </div>
+              <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Add Category</h4>
+                    <form class="forms-sample">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="categoryName">Category Name/Title:</label>
+                            <input type="text" class="form-control" id="categoryName" placeholder="Enter category name" required>
+                          </div>
 
-                  <div class="form-group">
-                    <label for="description">Description:</label>
-                    <textarea class="form-control" id="description" placeholder="Enter category description"></textarea>
-                  </div>
+                          <div class="form-group">
+                            <label for="description">Description:</label>
+                            <textarea class="form-control" id="description" placeholder="Enter category description"></textarea>
+                          </div>
 
-                  <div class="form-group">
-                    <label for="parentCategory">Parent Category:</label>
-                    <input type="text" class="form-control" id="parentCategory" placeholder="Enter parent category">
-                  </div>
-                  
-                  <div class="form-group">
-                    <label for="attributes">Attributes/Properties:</label>
-                    <textarea class="form-control" id="attributes" placeholder="Enter attributes"></textarea>
+                          <div class="form-group">
+                            <label for="parentCategory">Parent Category:</label>
+                            <input type="text" class="form-control" id="parentCategory" placeholder="Enter parent category">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="attributes">Attributes/Properties:</label>
+                            <textarea class="form-control" id="attributes" placeholder="Enter attributes"></textarea>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="tags">Tags/Keywords:</label>
+                            <input type="text" class="form-control" id="tags" placeholder="Enter tags, separated by commas">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="status">Status:</label>
+                            <select class="form-control" id="status">
+                              <option value="active">Active</option>
+                              <option value="inactive">Inactive</option>
+                              <option value="archived">Archived</option>
+                            </select>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="images">Images/Icons:</label>
+                            <input type="file" class="form-control-file" id="images" name="images[]" multiple>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="userOwner">User/Owner:</label>
+                            <input type="text" class="form-control" id="userOwner" placeholder="Enter user or owner">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mt-3">
+                            <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
+                            <button class="btn btn-light">Cancel</button>
+                          </div>
+                    </form>
                   </div>
                 </div>
-
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="tags">Tags/Keywords:</label>
-                    <input type="text" class="form-control" id="tags" placeholder="Enter tags, separated by commas">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="status">Status:</label>
-                    <select class="form-control" id="status">
-                      <option value="active">Active</option>
-                      <option value="inactive">Inactive</option>
-                      <option value="archived">Archived</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="visibility">Visibility:</label>
-                    <select class="form-control" id="visibility">
-                      <option value="public">Public</option>
-                      <option value="restricted">Restricted</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group">
-                    <label for="image">Image/Icon:</label>
-                    <input type="file" class="form-control-file" id="image">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="userOwner">User/Owner:</label>
-                    <input type="text" class="form-control" id="userOwner" placeholder="Enter user or owner">
-                  </div>
-
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
               </div>
             </div>
-          </div>
-          </div>
-
-          
-
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">

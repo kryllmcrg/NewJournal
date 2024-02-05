@@ -280,14 +280,23 @@
                       </div>
                     </div>
                   </div>
-                  <!-- WYSIWYG Editor -->
-                <div class="form-group">
-                  <label for="content">Content</label>
-                  <textarea class="form-control summernote" id="content" name="content" placeholder="Enter news content"></textarea>
-                </div>
 
-                  <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
-                  <button class="btn btn-light">Cancel</button>
+                  <!-- Image Upload -->
+                  <div class="form-group">
+                    <label for="images">Images:</label>
+                    <input type="file" class="form-control-file" id="images" name="images[]" multiple>
+                  </div>
+
+                  <!-- WYSIWYG Editor -->
+                  <div class="form-group">
+                    <label for="content">Content</label>
+                    <textarea class="form-control summernote" id="content" name="content" placeholder="Enter news content"></textarea>
+                  </div>
+
+                  <div class="mt-3">
+                    <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </div>
                 </form>
               </div>
             </div>
