@@ -319,8 +319,6 @@
           </div>
         </div>
         </div>
-
-        <!-- News Management Table -->
         
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
