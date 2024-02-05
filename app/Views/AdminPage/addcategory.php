@@ -303,7 +303,7 @@
                       <div class="mt-3">
                             <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
                             <button class="btn btn-light">Cancel</button>
-                          </div>
+                          </div
                     </form>
                   </div>
                 </div>
