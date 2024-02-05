@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/logggo.png" />
+
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
   </head>
   <body>
     <div class="container-scroller">
@@ -290,7 +293,7 @@
                   <!-- WYSIWYG Editor -->
                   <div class="form-group">
                     <label for="content">Content</label>
-                    <textarea class="form-control summernote" id="content" name="content" placeholder="Enter news content"></textarea>
+                    <textarea class="form-control mySummernote" id="content" name="content" placeholder="Enter news content"></textarea>
                   </div>
 
                   <div class="mt-3">
@@ -333,6 +336,14 @@
     <!-- Custom js for this page -->
     <script src="assets/js/dashboard.js"></script>
     <script src="assets/js/todolist.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $(".mySummernote").summernote();
+        $('.dropdown-toggle').dropdown();
+    });
+    </script>
     <!-- End custom js for this page -->
   </body>
 </html>
