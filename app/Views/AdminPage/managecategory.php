@@ -244,7 +244,38 @@
                 </ul>
               </nav>
             </div>
+            <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Manage Categories</h4>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Category Name/Title</th>
+                    <th>Description</th>
+                    <th>Parent Category</th>
+                    <th>Attributes/Properties</th>
+                    <th>Tags/Keyword</th>
+                    <th>Status</th>
+                    <th>Visibility</th>
+                    <th>Image/Icon</th>
+                    <th>User Owner</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Example row, replace with dynamic data from your backend -->
+                  <tr>
+                  
+                  </tr>
+                  <!-- Add more rows as needed -->
+                </tbody>
+              </table>
+            </div>
           </div>
+        </div>
+          </div>
+          
+
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">
