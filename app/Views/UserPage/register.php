@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/css?family=Font+Name" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,300,700" rel="stylesheet" type="text/css">
-    <title>Register</title>
+    <title>Welcome Calapan City Website!</title>
     <link rel="shortcut icon" href="assets/images/logggo.png" />
     <style>
         body {
