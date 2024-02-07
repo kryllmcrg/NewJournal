@@ -142,11 +142,8 @@
     <div class="form">
         <h2>Register</h2>
         <form method="post" action="/register">
-            <label for="first_name">First Name</label>
+            <label for="first_name">Full Name</label>
             <input type="text" id="first_name" name="first_name" placeholder="Insert your first name" required>
-
-            <label for="last_name">Last Name</label>
-            <input type="text" id="last_name" name="last_name" placeholder="Insert your last name" required>
 
             <label for="email">E-mail Address</label>
             <input type="email" id="email" name="email" placeholder="Insert your e-mail address" required>
