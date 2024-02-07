@@ -327,3 +327,71 @@ in APPPATH\Views\AdminPage\manageprofile.php on line 220.
  8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-02-07 16:36:36 --> ParseError: Unterminated comment starting line 23
+in APPPATH\Config\Routes.php on line 23.
+ 1 SYSTEMPATH\CodeIgniter.php(810): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 2 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-02-07 16:38:06 --> Error: Class "Router\BaseConfig" not found
+in APPPATH\Config\Routes.php on line 8.
+ 1 SYSTEMPATH\Router\RouteCollection.php(344): require()
+ 2 SYSTEMPATH\CodeIgniter.php(810): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 3 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-02-07 16:38:07 --> Error: Class "Router\BaseConfig" not found
+in APPPATH\Config\Routes.php on line 8.
+ 1 SYSTEMPATH\Router\RouteCollection.php(344): require()
+ 2 SYSTEMPATH\CodeIgniter.php(810): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 3 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-02-07 16:46:59 --> TypeError: CodeIgniter\Router\RouteCollection::post(): Argument #3 ($options) must be of type ?array, string given, called in C:\laragon\www\NewJournal\app\Config\Routes.php on line 11
+in SYSTEMPATH\Router\RouteCollection.php on line 1029.
+ 1 APPPATH\Config\Routes.php(11): CodeIgniter\Router\RouteCollection->post('authenticate', 'UserController::login', 'GET/POST')
+ 2 SYSTEMPATH\Router\RouteCollection.php(344): require('C:\\laragon\\www\\NewJournal\\app\\Config\\Routes.php')
+ 3 SYSTEMPATH\CodeIgniter.php(810): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 4 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-02-07 16:47:01 --> TypeError: CodeIgniter\Router\RouteCollection::post(): Argument #3 ($options) must be of type ?array, string given, called in C:\laragon\www\NewJournal\app\Config\Routes.php on line 11
+in SYSTEMPATH\Router\RouteCollection.php on line 1029.
+ 1 APPPATH\Config\Routes.php(11): CodeIgniter\Router\RouteCollection->post('authenticate', 'UserController::login', 'GET/POST')
+ 2 SYSTEMPATH\Router\RouteCollection.php(344): require('C:\\laragon\\www\\NewJournal\\app\\Config\\Routes.php')
+ 3 SYSTEMPATH\CodeIgniter.php(810): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 4 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-02-07 16:47:02 --> TypeError: CodeIgniter\Router\RouteCollection::post(): Argument #3 ($options) must be of type ?array, string given, called in C:\laragon\www\NewJournal\app\Config\Routes.php on line 11
+in SYSTEMPATH\Router\RouteCollection.php on line 1029.
+ 1 APPPATH\Config\Routes.php(11): CodeIgniter\Router\RouteCollection->post('authenticate', 'UserController::login', 'GET/POST')
+ 2 SYSTEMPATH\Router\RouteCollection.php(344): require('C:\\laragon\\www\\NewJournal\\app\\Config\\Routes.php')
+ 3 SYSTEMPATH\CodeIgniter.php(810): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 4 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-02-07 16:56:26 --> ErrorException: Undefined variable $router
+in APPPATH\Config\Routes.php on line 12.
+ 1 APPPATH\Config\Routes.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $router', 'C:\\laragon\\www\\NewJournal\\app\\Config\\Routes.php', 12)
+ 2 SYSTEMPATH\Router\RouteCollection.php(344): require('C:\\laragon\\www\\NewJournal\\app\\Config\\Routes.php')
+ 3 SYSTEMPATH\CodeIgniter.php(810): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 4 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-02-07 16:56:54 --> ErrorException: Undefined variable $router
+in APPPATH\Config\Routes.php on line 12.
+ 1 APPPATH\Config\Routes.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $router', 'C:\\laragon\\www\\NewJournal\\app\\Config\\Routes.php', 12)
+ 2 SYSTEMPATH\Router\RouteCollection.php(344): require('C:\\laragon\\www\\NewJournal\\app\\Config\\Routes.php')
+ 3 SYSTEMPATH\CodeIgniter.php(810): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 4 SYSTEMPATH\CodeIgniter.php(450): CodeIgniter\CodeIgniter->tryToRouteIt(null)
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
