@@ -9,6 +9,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'UserController::home');
 $routes->get('/login', 'UserController::login');
 $routes->get('/register', 'UserController::register');
+$routes->post('/register', 'UserController::store');
 $routes->get('/about', 'UserController::about');
 $routes->get('/contact', 'UserController::contact');
 $routes->get('/news', 'UserController::news');

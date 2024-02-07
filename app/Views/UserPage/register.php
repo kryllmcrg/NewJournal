@@ -184,7 +184,7 @@
             <input type="file" id="profile_image" name="profile_image" accept="image/*" class="profile-image-input">
         </div>
         <button type="submit" class="full-width">Sign Up</button>
-        <label for="terms">
+            <label for="terms">
                 <input type="checkbox" id="terms" name="terms" required>
                 I have read the Terms & Conditions
             </label>
