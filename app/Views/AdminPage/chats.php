@@ -209,27 +209,81 @@
     <!-- End custom js for this page -->
   </body>
   <style>
-    #chat-window {
-    width: 300px;
+    /* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.main-panel {
+    max-width: 600px;
     margin: 50px auto;
-    border: 1px solid #ccc;
-    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.content-wrapper {
+    padding: 20px;
+}
+
+.page-header {
+    margin-bottom: 20px;
+}
+
+.page-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #6a1b9a; /* Purple color */
+}
+
+.breadcrumb-item.active {
+    color: #6a1b9a; /* Purple color */
+}
+
+/* Chat window styles */
+#chat-window {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-top: 1px solid #ddd;
 }
 
 #chat-output {
     height: 200px;
     overflow-y: scroll;
-    border-bottom: 1px solid #ccc;
-    margin-bottom: 10px;
+    padding-right: 20px;
 }
 
 #message-input {
-    width: 100%;
-    margin-bottom: 10px;
+    width: calc(100% - 100px);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #send-button {
-    width: 100%;
+    width: 80px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #6a1b9a; /* Purple color */
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
 }
+
+#send-button:hover {
+    background-color: #4a148c; /* Darker purple color on hover */
+}
+
   </style>
 </html>
