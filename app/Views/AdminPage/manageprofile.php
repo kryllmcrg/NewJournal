@@ -13,6 +13,40 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/logggo.png" />
   </head>
+  <style>
+    /* Card styles */
+    .card {
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+        .card-img-top {
+            width: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .card-body {
+            text-align: center;
+        }
+
+        .card-title {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        .card-text {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+  </style>
   <body>
     <div class="container-scroller">
       <div class="row p-0 m-0 proBanner" id="proBanner">
@@ -124,8 +158,8 @@
                     </ul>
                 </div>
             </li>
-
-            </li>
+            <!-- Removed the extra </li> tag -->
+            <br>
             <br>
             <br>
             <br>
@@ -177,7 +211,15 @@
             </div>
           </div>
 
-        
+          <!-- Card for profile dashboard -->
+        <div class="card">
+            <img class="card-img-top" src="assets/images/default-profile.jpeg" alt="Card image">
+            <div class="card-body">
+                <h4 class="card-title">John Doe</h4>
+                <p class="card-text">Some example text.</p>
+                <a href="#" class="btn btn-primary">See Profile</a>
+            </div>
+        </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">

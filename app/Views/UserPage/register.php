@@ -92,6 +92,58 @@
             text-decoration: none;
             font-weight: bold;
         }
+
+        .form-grid {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .form-column {
+            flex: 1;
+            max-width: calc(50% - 20px); /* Adjust the width as needed */
+        }
+
+        @media screen and (max-width: 600px) {
+            .form-column {
+                max-width: 100%;
+            }
+        }
+
+        .profile-image-label {
+            display: block;
+            margin-bottom: 10px;
+            color: #4a4a4a;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        /* Style for profile image input */
+        .profile-image-input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease;
+        }
+
+        /* Hover effect for profile image input */
+        .profile-image-input:hover {
+            border-color: #a86add;
+        }
+
+        /* Focus effect for profile image input */
+        .profile-image-input:focus {
+            outline: none;
+            border-color: #a86add;
+            box-shadow: 0 0 0 2px rgba(168, 106, 221, 0.2);
+        }
+
+        .required-sign {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -102,21 +154,25 @@
     </a>
 
     <div class="form-container">
-        <h2>Register</h2>
-        <form method="post" action="/register">
-            <label for="first_name">Full Name</label>
+    <h2>Register</h2>
+    <form method="post" action="/register" enctype="multipart/form-data" class="form-grid">
+        <div class="form-column">
+            <label for="first_name">Full Name <span class="required-sign">*</span></label>
             <input type="text" id="first_name" name="first_name" placeholder="Insert your first name" required>
 
-            <label for="email">E-mail Address</label>
+            <label for="email">E-mail Address <span class="required-sign">*</span></label>
             <input type="email" id="email" name="email" placeholder="Insert your e-mail address" required>
 
-            <label for="username">Username</label>
+            <label for="username">Username <span class="required-sign">*</span></label>
             <input type="text" id="username" name="username" placeholder="Create your username" required>
 
-            <label for="password">Password</label>
+        </div>
+
+        <div class="form-column">
+            <label for="password">Password <span class="required-sign">*</span></label>
             <input type="password" id="password" name="password" placeholder="Create your password" required>
 
-            <label for="role">Role</label>
+            <label for="role">Role <span class="required-sign">*</span></label>
             <select id="role" name="role" required>
                 <option value="">Select Role</option>
                 <option value="admin">Admin</option>
@@ -124,14 +180,16 @@
                 <option value="user">User</option>
             </select>
 
-            <label for="terms">
+            <label for="profile_image" class="profile-image-label">Profile Image <span class="required-sign">*</span></label>
+            <input type="file" id="profile_image" name="profile_image" accept="image/*" class="profile-image-input">
+        </div>
+        <button type="submit" class="full-width">Sign Up</button>
+        <label for="terms">
                 <input type="checkbox" id="terms" name="terms" required>
                 I have read the Terms & Conditions
             </label>
-
-            <button type="submit">Sign Up</button>
-        </form>
-        <p>Already have an Account? <a href="login">Click here to Sign In</a></p>
-    </div>
+    </form>
+    <p>Already have an Account? <a href="login">Click here to Sign In</a></p>
+</div>
 </body>
 </html>
