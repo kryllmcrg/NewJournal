@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Font+Name" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,300,700" rel="stylesheet" type="text/css">
     <title>Welcome Calapan City Website!</title>
     <link rel="shortcut icon" href="assets/images/logggo.png" />
@@ -21,7 +19,7 @@
             justify-content: center;
             font-family: 'Nunito', sans-serif;
             font-weight: bold;
-            position: relative; /* Add this to position the button relative to the body */
+            position: relative;
         }
 
         .back-button {
@@ -29,117 +27,81 @@
             top: 10px;
             right: 10px;
             text-decoration: none;
-        }
-
-        .back-button i{
             color: white;
-            font-size: 1.7em;
+            font-size: 1.5em;
         }
-        
-        .back-button span {
-            display: block;
-            color: black;
-            font-size: 11px;
-            text-decoration: none;
-        }
-        .form {
-            position: absolute;
-            top: 50%;
-            right: 10%;
-            transform: translateY(-50%);
-            width: 500px;
-            padding: 20px;
-            background-color: #c8a2c8;
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
         }
 
-        .form h2 {
-            margin-bottom: 20px; 
-            text-align: center; /* Center the heading text */
+        .form-container h2 {
+            margin-bottom: 20px;
+            font-family: 'Oswald', sans-serif;
+            color: #4a4a4a;
         }
 
-        button {
-            width: 100%; /* Make the button fill the width of the container */
+        .form-container label {
+            display: block;
+            margin-bottom: 10px;
+            color: #4a4a4a;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .form-container input[type=text],
+        .form-container input[type=email],
+        .form-container input[type=password],
+        .form-container select {
+            width: calc(100% - 20px);
             padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .form-container input[type=checkbox] {
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+
+        .form-container button[type=submit] {
+            width: 100%;
+            padding: 12px;
             background-color: #a86add;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 16px;
         }
 
-        .form label {
-            display: block; 
-            margin-bottom: 5px; 
-            color: white;
+        .form-container p {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #4a4a4a;
         }
 
-        .form input[type=text], .form input[type=email], .form input[type=password], .form input[type=date]{
-            width: 95%; 
-            padding: 8px; 
-            margin-bottom: 20px;
-            border-radius: 20px;
-        }
-
-        .logindesign {
-            position: absolute;
-            left: 10%;
-            background-color: rgba(133, 73, 167, 0.8);
-            height: 100%; 
-            padding: 20px; 
-            color: white; 
-        }
-
-        /* Added styles for the specified text */
-        .logindesign span {
-            font-size: 20px;
-            font-style: italic;
-        }
-
-        /* Added styles to make the "Login" text clickable */
-        .logindesign p.clickable {
-            cursor: pointer;
-            text-decoration: underline;
-        }
-
-        /* Media queries for responsiveness */
-        @media only screen and (max-width: 768px) {
-            .form {
-                width: 100%;
-                right: 0;
-            }
-
-            .logindesign p {
-                font-size: 16px;
-            }
-        }
-
-        .logo {
-            position: absolute;
-            top: 30px; 
-            right: 25px; 
-            width: 90px; 
-            height: 82px; 
+        .form-container p a {
+            color: #a86add;
+            text-decoration: none;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <a href="/" class="back-button">
         <i class="bi bi-arrow-left-circle-fill"></i>
-        <span>back</span>
+        <!-- You can adjust the text as needed -->
+        <span>Back</span>
     </a>
-    <div class="logindesign">
-        <span><p style="font-size: 24px; line-height: 0.1;" >CITY HALL</p>
-        <p style="font-size: 24px; line-height: 0.1; " >CALAPAN CITY</p></span>
-        <p style="font-size: 28px; font-weight: bold; line-height: 0.1; font-family: 'Oswald', sans-serif;">Log In</p>
-        <p style="font-size: 28px; font-weight: bold;  line-height: 0.1; font-family: 'Oswald', sans-serif;" >your Account</p>
-        <p class="clickable" onclick="location.href='login'" 
-        style="font-size: 12px; text-decoration: none; line-height: 0.1;">Already Registered? Login</p>
 
-        <img src="assets\images\loginimage.png" alt="City Hall Image">
-    </div>
-
-    <div class="form">
+    <div class="form-container">
         <h2>Register</h2>
         <form method="post" action="/register">
             <label for="first_name">Full Name</label>
@@ -154,13 +116,22 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Create your password" required>
 
-            <label for="terms">I have read the Terms & Conditions</label>
-            <input type="checkbox" id="terms" name="terms" required>
+            <label for="role">Role</label>
+            <select id="role" name="role" required>
+                <option value="">Select Role</option>
+                <option value="admin">Admin</option>
+                <option value="staff">Staff</option>
+                <option value="user">User</option>
+            </select>
 
-            <button type='submit'>Sign Up</button>
+            <label for="terms">
+                <input type="checkbox" id="terms" name="terms" required>
+                I have read the Terms & Conditions
+            </label>
+
+            <button type="submit">Sign Up</button>
         </form>
         <p>Already have an Account? <a href="login">Click here to Sign In</a></p>
     </div>
-
 </body>
 </html>
