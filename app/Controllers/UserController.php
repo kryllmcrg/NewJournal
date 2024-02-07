@@ -68,7 +68,7 @@ class UserController extends BaseController
                 ]
             ],
             'profile_image' => [
-                'rules' => 'uploaded[profile_image]|max_size[profile_image,1024]|is_image[profile_image]',
+                'rules' => 'uploaded[profile_image]|max_size[profile_image,4096]|is_image[profile_image]',
                 'errors' => [
                     'uploaded' => 'Please upload a profile image.',
                     'max_size' => 'The profile image size must not exceed 1MB.',
