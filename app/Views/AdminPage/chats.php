@@ -244,6 +244,14 @@
                 </ul>
               </nav>
             </div>
+            <div id="chat-window">
+        <div id="chat-output"></div>
+        <input type="text" id="message-input" placeholder="Type your message...">
+        <button id="send-button">Send</button>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
@@ -277,4 +285,28 @@
     <script src="assets/js/todolist.js"></script>
     <!-- End custom js for this page -->
   </body>
+  <style>
+    #chat-window {
+    width: 300px;
+    margin: 50px auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+#chat-output {
+    height: 200px;
+    overflow-y: scroll;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+#message-input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#send-button {
+    width: 100%;
+}
+  </style>
 </html>
