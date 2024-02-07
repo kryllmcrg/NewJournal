@@ -40,51 +40,51 @@ class UserController extends BaseController
                 $email = $this->request->getPost('email');
                 $password = $this->request->getPost('password');
     
-                // You would typically check the credentials against a database
-                // For demonstration purposes, let's assume a simple check
-                if ($email === 'user@example.com' && $password === 'password') {
-                    // Set session data for user
-                    $session->set([
-                        'email' => $email,
-                        'role' => 'user',
-                        'logged_in' => true
-                    ]);
+                // Check if user exists in the database
+                $userModel = new UsersModel();
+                $user = $userModel->where('email', $email)->first();
     
-                    // Redirect user to user page
-                    return redirect()->to('/AdminPage/dashboard');
-                } elseif ($email === 'staff@example.com' && $password === 'password') {
-                    // Set session data for staff
-                    $session->set([
-                        'email' => $email,
-                        'role' => 'staff',
-                        'logged_in' => true
-                    ]);
+                if ($user) {
+                    // Verify password
+                    if (password_verify($password, $user['password'])) {
+                        // Set session data
+                        $session->set([
+                            'user_id' => $user['id'],
+                            'email' => $user['email'],
+                            'logged_in' => true
+                        ]);
     
-                    // Redirect staff to staff dashboard
-                    return redirect()->to('/AdminPage/dashboard');
-                } elseif ($email === 'admin@example.com' && $password === 'password') {
-                    // Set session data for admin
-                    $session->set([
-                        'email' => $email,
-                        'role' => 'admin',
-                        'logged_in' => true
-                    ]);
-    
-                    // Redirect admin to admin dashboard
-                    return redirect()->to('/UserPage/login');
-                } else {
-                    // Invalid credentials
-                    return redirect()->back()->withInput()->with('error', 'Invalid email or password');
+                        // Redirect to appropriate dashboard
+                        switch ($user['role']) {
+                            case 'admin':
+                                return redirect()->to('/AdminPage/dashboard');
+                            case 'staff':
+                                return redirect()->to('/AdminPage/dashboard');
+                            default:
+                                return redirect()->to('/UserPage');
+                        }
+                    }
                 }
+                // Invalid credentials
+                return redirect()->back()->withInput()->with('error', 'Invalid email or password');
             } else {
                 // Validation errors
                 return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
             }
         }
-    
         // Load the login view
-        return view('login');
-    }    
+        return view('UserPage/login');
+    }
+    
+    public function logout()
+    {
+        // Destroy session
+        $session = session();
+        $session->destroy();
+
+        // Redirect to login page
+        return redirect()->to('/login');
+    }   
 
     public function register()
     {
@@ -92,81 +92,53 @@ class UserController extends BaseController
     }
 
     public function store()
-    {
-        // Load the validation library
-        helper(['form', 'url']);
-        $validation = \Config\Services::validation();
-    
-        // Set validation rules with custom error messages
-        $validation->setRules([
-            'first_name' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'The first name field is required.'
-                ]
-            ],
-            'email' => [
-                'rules' => 'required|valid_email',
-                'errors' => [
-                    'required' => 'The email field is required.',
-                    'valid_email' => 'Please enter a valid email address.'
-                ]
-            ],
-            'username' => [
-                'rules' => 'required|is_unique[users.username]',
-                'errors' => [
-                    'required' => 'The username field is required.',
-                    'is_unique' => 'The username is already taken.'
-                ]
-            ],
-            'password' => [
-                'rules' => 'required|min_length[6]',
-                'errors' => [
-                    'required' => 'The password field is required.',
-                    'min_length' => 'The password must be at least 6 characters long.'
-                ]
-            ],
-            'role' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'The role field is required.'
-                ]
-            ],
-            'profile_image' => [
-                'rules' => 'uploaded[profile_image]|max_size[profile_image,4096]|is_image[profile_image]',
-                'errors' => [
-                    'uploaded' => 'Please upload a profile image.',
-                    'max_size' => 'The profile image size must not exceed 1MB.',
-                    'is_image' => 'Please upload a valid image file.'
-                ]
-            ]
-        ]);
-    
-        // Check if validation passes
-        if (!$validation->withRequest($this->request)->run()) {
-            // If validation fails, return back to the registration form with errors
-            return redirect()->back()->withInput()->with('errors', $validation->getErrors());
-        }
-    
-        // Handle file upload
-        $profileImage = $this->request->getFile('profile_image');
+{
+    // Load the validation library
+    helper(['form', 'url']);
+    $validation = \Config\Services::validation();
+
+    // Set validation rules with custom error messages
+    $validation->setRules([
+        'first_name' => 'required',
+        'email' => 'required|valid_email',
+        'username' => 'required|is_unique[users.username]',
+        'password' => 'required|min_length[6]',
+        'role' => 'required',
+        'profile_image' => 'uploaded[profile_image]|max_size[profile_image,4096]|is_image[profile_image]'
+    ]);
+
+    // Check if validation passes
+    if (!$validation->withRequest($this->request)->run()) {
+        // If validation fails, return back to the registration form with errors
+        return redirect()->back()->withInput()->with('errors', $validation->getErrors());
+    }
+
+    // Handle file upload
+    $profileImage = $this->request->getFile('profile_image');
+
+    // Check if a profile image was uploaded
+    if ($profileImage->isValid() && !$profileImage->hasMoved()) {
+        // Move the uploaded file to the desired directory
         $profileImage->move(ROOTPATH . 'public/uploads');
-    
+
         // Create a new user record in the database
         $userModel = new UsersModel();
         $userModel->save([
             'first_name' => $this->request->getPost('first_name'),
             'email'      => $this->request->getPost('email'),
             'username'   => $this->request->getPost('username'),
+            'password'   => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT), // Hash the password
             'role'       => $this->request->getPost('role'),
             'profile_image' => $profileImage->getName()
         ]);
-    
+
         // Redirect to login page
         return redirect()->to('login')->with('success', 'Registration successful. Please log in.');
-    }    
-    
-
+    } else {
+        // If file upload fails, return back to the registration form with an error
+        return redirect()->back()->withInput()->with('error', 'Failed to upload profile image.');
+    }
+}  
     public function about()
     {
         return view('UserPage/about');
