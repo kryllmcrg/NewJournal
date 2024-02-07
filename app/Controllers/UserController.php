@@ -21,6 +21,71 @@ class UserController extends BaseController
         return view('UserPage/login');
     }
 
+    public function authenticate()
+    {
+        // Load necessary helpers and libraries
+        helper(['form']);
+        $session = session();
+    
+        // Check if the form is submitted
+        if ($this->request->getMethod() === 'post') {
+            // Validate form input
+            $rules = [
+                'email'    => 'required|valid_email',
+                'password' => 'required|min_length[6]'
+            ];
+    
+            if ($this->validate($rules)) {
+                // Get input data
+                $email = $this->request->getPost('email');
+                $password = $this->request->getPost('password');
+    
+                // You would typically check the credentials against a database
+                // For demonstration purposes, let's assume a simple check
+                if ($email === 'user@example.com' && $password === 'password') {
+                    // Set session data for user
+                    $session->set([
+                        'email' => $email,
+                        'role' => 'user',
+                        'logged_in' => true
+                    ]);
+    
+                    // Redirect user to user page
+                    return redirect()->to('/AdminPage/dashboard');
+                } elseif ($email === 'staff@example.com' && $password === 'password') {
+                    // Set session data for staff
+                    $session->set([
+                        'email' => $email,
+                        'role' => 'staff',
+                        'logged_in' => true
+                    ]);
+    
+                    // Redirect staff to staff dashboard
+                    return redirect()->to('/AdminPage/dashboard');
+                } elseif ($email === 'admin@example.com' && $password === 'password') {
+                    // Set session data for admin
+                    $session->set([
+                        'email' => $email,
+                        'role' => 'admin',
+                        'logged_in' => true
+                    ]);
+    
+                    // Redirect admin to admin dashboard
+                    return redirect()->to('/UserPage/login');
+                } else {
+                    // Invalid credentials
+                    return redirect()->back()->withInput()->with('error', 'Invalid email or password');
+                }
+            } else {
+                // Validation errors
+                return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+            }
+        }
+    
+        // Load the login view
+        return view('login');
+    }    
+
     public function register()
     {
         return view('UserPage/register');
