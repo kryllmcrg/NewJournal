@@ -217,7 +217,7 @@
                   <h4 class="card-title">Fullname:<?= esc($userData['full_name'] ?? '') ?></h4>
                   <p class="card-text">Email:<?= esc($userData['email'] ?? '') ?></p>
                   <p class="card-text">Role: <?= esc($userData['role'] ?? '') ?></p>
-                  
+                  <img src="<?= base_url('public/uploads/' . $userData['profile_image']) ?>" alt="Profile Image">
                   <p class="card-text">Username: <?= esc($userData['username'] ?? '') ?></p>           
                   <a href="#" class="btn btn-primary">See Profile</a>
               </div>

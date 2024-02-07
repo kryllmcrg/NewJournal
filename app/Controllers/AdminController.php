@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
+use App\Models\UsersModel;
 
 class AdminController extends BaseController
 {
@@ -16,10 +17,10 @@ class AdminController extends BaseController
     public function manageProfile()
     {
         // Load the UserModel
-        $userModel = new \App\Models\UsersModel();
+        $userModel = new UsersModel();
         
         // Fetch all user data
-        $data['users'] = $userModel->findAll();
+        $data['userData'] = $userModel->findAll();
 
         // Pass $data to your view
         return view('AdminPage/manageprofile', $data);
