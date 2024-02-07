@@ -12,9 +12,17 @@ class AdminController extends BaseController
         return view('AdminPage/dashboard');
     }
 
-    public function manageprofile()
+   // In your controller
+    public function manageProfile()
     {
-        return view('AdminPage/manageprofile');
+        // Load the UserModel
+        $userModel = new \App\Models\UsersModel();
+        
+        // Fetch all user data
+        $data['users'] = $userModel->findAll();
+
+        // Pass $data to your view
+        return view('AdminPage/manageprofile', $data);
     }
 
     public function addnews()
