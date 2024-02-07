@@ -212,14 +212,17 @@
           </div>
 
           <!-- Card for profile dashboard -->
-        <div class="card">
-            <img class="card-img-top" src="assets/images/default-profile.jpeg" alt="Card image">
-            <div class="card-body">
-                <h4 class="card-title">John Doe</h4>
-                <p class="card-text">Some example text.</p>
-                <a href="#" class="btn btn-primary">See Profile</a>
-            </div>
-        </div>
+          <div class="card">
+              <img class="card-img-top" src="<?= base_url('assets/images/default-profile.jpeg') ?>" alt="Card image">
+              <div class="card-body">
+                  <h4 class="card-title"><?= esc($userData['full_name'] ?? '') ?></h4>
+                  <p class="card-text"><?= esc($userData['email'] ?? '') ?></p>
+                  <p class="card-text">Role: <?= esc($userData['role'] ?? '') ?></p>
+                  <a href="#" class="btn btn-primary">See Profile</a>
+              </div>
+          </div>
+
+
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">

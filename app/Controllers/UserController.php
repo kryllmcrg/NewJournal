@@ -101,6 +101,7 @@ class UserController extends BaseController
         // Redirect to login page
         return redirect()->to('login')->with('success', 'Registration successful. Please log in.');
     }    
+    
 
     public function about()
     {
