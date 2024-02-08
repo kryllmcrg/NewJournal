@@ -11,8 +11,6 @@
     <!-- Font Awesome CSS (for icons) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/carousel/style.css">
-
     <style>
         body {
             margin: 0;
@@ -220,27 +218,9 @@
                             News
                         </a>
                         <ul class="dropdown-menu multi-column" aria-labelledby="navbarDropdown">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-4 dropdown-column">
-                                        <a class="dropdown-item" href="#">Music</a>
-                                        <a class="dropdown-item" href="#">Sports</a>
-                                        <a class="dropdown-item" href="#">Education</a>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 dropdown-column">
-                                        <a class="dropdown-item" href="#">Business</a>
-                                        <a class="dropdown-item" href="#">Entertainment</a>
-                                        <a class="dropdown-item" href="#">Fashion</a>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 dropdown-column">
-                                        <a class="dropdown-item" href="#">Technology</a>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-md-4 dropdown-column" id="news-dropdown">
+                            <!-- Categories will be dynamically populated here -->
+                        </div>
                         </ul>
                     </li>
                     <li class="nav-item">

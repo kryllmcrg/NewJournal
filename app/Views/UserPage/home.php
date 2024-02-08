@@ -11,8 +11,6 @@
     <!-- Font Awesome CSS (for icons) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/carousel/style.css">
-
     <style>
         body {
             margin: 0;
@@ -220,27 +218,9 @@
                             News
                         </a>
                         <ul class="dropdown-menu multi-column" aria-labelledby="navbarDropdown">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-4 dropdown-column">
-                                        <a class="dropdown-item" href="#">Music</a>
-                                        <a class="dropdown-item" href="#">Sports</a>
-                                        <a class="dropdown-item" href="#">Education</a>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 dropdown-column">
-                                        <a class="dropdown-item" href="#">Business</a>
-                                        <a class="dropdown-item" href="#">Entertainment</a>
-                                        <a class="dropdown-item" href="#">Fashion</a>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 dropdown-column">
-                                        <a class="dropdown-item" href="#">Technology</a>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-md-4 dropdown-column" id="news-dropdown">
+                            <!-- Categories will be dynamically populated here -->
+                        </div>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -263,34 +243,6 @@
             </div>
         </div>
     </nav>
-
-    <!-- Carousel Slider -->
-    <div class="ism-slider" data-transition_type="zoom" data-image_fx="zoompan" id="my-slider">
-        <ol>
-            <li>
-                <img src="assets/images/carousel1.jpg">
-                <div class="ism-caption ism-caption-0"></div>
-            </li>
-            <li>
-                <img src="assets/images/carousel2.jpg">
-                <div class="ism-caption ism-caption-0"></div>
-            </li>
-            <li>
-                <img src="assets/images/carousel2.jpg">
-                <div class="ism-caption ism-caption-0"></div>
-            </li>
-            <li>
-                <img src="assets/images/pic2.png">
-                <div class="ism-caption ism-caption-0"></div>
-            </li>
-            <li>
-                <img src="assets/images/pic1.png">
-                <div class="ism-caption ism-caption-0"></div>
-            </li>
-        </ol>
-    </div>
-    <p class="ism-badge" id="my-slider-ism-badge"><a class="ism-link" href="http://imageslidermaker.com"
-            rel="nofollow"></a></p>
 
     <!-- Footer -->
     <footer>
@@ -364,7 +316,6 @@
         });
 
     </script>
-    <script src="assets/js/carousel.js"></script>
 
 </body>
 

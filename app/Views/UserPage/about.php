@@ -11,8 +11,6 @@
     <!-- Font Awesome CSS (for icons) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/carousel/style.css">
-
     <style>
         body {
             margin: 0;
@@ -21,11 +19,12 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            color: black; /* Change text color to black */
         }
 
         .navbar {
-            min-height: 80px;
-            background-color: #dabfff;
+            min-height: 100px;
+            background-color: #9f8be8;
             margin-bottom: 20px;
         }
 
@@ -50,6 +49,7 @@
             font-weight: bold;
             justify-content: center;
             text-align: center;
+            color: black; /* Change text color to black */
         }
 
         .nav-item {
@@ -57,7 +57,7 @@
         }
 
         .nav-link {
-            color: black !important;
+            color: black !important; /* Change text color to black */
             font-size: 16px;
             display: block;
             text-align: center;
@@ -72,14 +72,14 @@
         .navbar-icons i {
             font-size: 24px;
             margin-left: 25px;
-            color: #3c096c;
+            color: black; /* Change icon color to black */
             cursor: pointer;
         }
 
         #time-date {
             display: none;
             font-size: 16px;
-            color: #3c096c;
+            color: black; /* Change text color to black */
             font-weight: bold;
         }
 
@@ -88,9 +88,10 @@
             justify-content: space-around;
             align-items: center;
             flex-wrap: wrap;
-            background-color: #dabfff;
+            background-color: #9f8be8;
             padding: 2px;
             font-size: 12px;
+            color: black; /* Change text color to black */
         }
 
         .footer-section {
@@ -109,13 +110,21 @@
             margin: 0;
         }
 
+        .footer-content h3 {
+            margin-bottom: 10px;
+        }
+
+        .footer-content p {
+            color: black; /* Change text color to black */
+        }
+
         .social-icons li {
             display: inline-block;
             margin: 0 10px;
         }
 
         .social-icons a {
-            color: #3c096c;
+            color: black; /* Change icon color to black */
             font-size: 24px;
         }
 
@@ -125,9 +134,10 @@
 
         footer {
             text-align: center;
-            background-color: #dabfff;
+            background-color: #9f8be8;
             padding: 5px;
             margin-top: auto;
+            color: black; /* Change text color to black */
         }
 
         @media (max-width: 767px) {
@@ -220,27 +230,9 @@
                             News
                         </a>
                         <ul class="dropdown-menu multi-column" aria-labelledby="navbarDropdown">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-4 dropdown-column">
-                                        <a class="dropdown-item" href="#">Music</a>
-                                        <a class="dropdown-item" href="#">Sports</a>
-                                        <a class="dropdown-item" href="#">Education</a>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 dropdown-column">
-                                        <a class="dropdown-item" href="#">Business</a>
-                                        <a class="dropdown-item" href="#">Entertainment</a>
-                                        <a class="dropdown-item" href="#">Fashion</a>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 dropdown-column">
-                                        <a class="dropdown-item" href="#">Technology</a>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-md-4 dropdown-column" id="news-dropdown">
+                            <!-- Categories will be dynamically populated here -->
+                        </div>
                         </ul>
                     </li>
                     <li class="nav-item">

@@ -10,7 +10,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome CSS (for icons) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/carousel/style.css">
 
     <style>
         body {
@@ -82,39 +81,6 @@
             font-weight: bold;
         }
 
-        .second-navbar {
-            background-color: #907ad6;
-            border-bottom: 1px solid #ccc;
-            margin-bottom: 20px;
-            min-height: 60px;
-        }
-
-        .second-navbar-nav {
-            justify-content: center;
-            text-align: center;
-        }
-
-        .second-nav-item {
-            margin: 0 10px;
-            padding: 10px 0;
-        }
-
-        .second-nav-link {
-            color: #fff !important;
-            font-size: 14px;
-            display: block;
-            text-align: center;
-            transition: color 0.3s ease-in-out;
-        }
-
-        .second-nav-link:hover {
-            color: #ffd700;
-        }
-
-        .second-navbar-nav {
-            box-shadow: 0 4px 6px -6px #222;
-        }
-
         .footer-content {
             display: flex;
             justify-content: space-around;
@@ -162,17 +128,18 @@
             margin-top: auto;
         }
 
-        @media (min-width: 768px) {
-            .navbar-toggler {
-                display: none;
+        @media (max-width: 767px) {
+            .nav-item {
+                margin: 0 10px;
             }
 
             #time-date {
                 display: block;
             }
         }
+
         .nav-link:hover {
-        color: #ffd700 !important;
+            color: #ffd700 !important;
         }
 
         .navbar-icons i:hover {
@@ -188,6 +155,38 @@
             border-color: #ffd700;
             box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.25);
         }
+
+        /* Dropdown Styles */
+        .dropdown-menu.multi-column {
+            columns: 3;
+            padding: 20px;
+            width: 400px;
+        }
+
+        .dropdown-column {
+            display: table-cell;
+            padding: 10px;
+            border: none;
+        }
+
+        .dropdown-item {
+            display: block;
+            width: 100%;
+            font-size: 16px;
+            color: #212529;
+            text-align: left;
+            white-space: nowrap;
+            background-color: transparent;
+            border: none;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            margin: .5rem 0;
+            overflow: hidden;
+            background-color: #e9ecef;
+        }
+
     </style>
 </head>
 
@@ -213,8 +212,16 @@
                     <li class="nav-item">
                         <a class="nav-link" href="contact">Contact</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="news">News</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            News
+                        </a>
+                        <ul class="dropdown-menu multi-column" aria-labelledby="navbarDropdown">
+                        <div class="col-md-4 dropdown-column" id="news-dropdown">
+                            <!-- Categories will be dynamically populated here -->
+                        </div>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="announcements">Announcements</a>
@@ -223,73 +230,16 @@
                         <a class="nav-link" href="login">Login</a>
                     </li>
                 </ul>
+                <form class="d-flex ms-auto">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
             </div>
             <div id="time-date"></div>
             <div class="navbar-icons">
                 <i class="fa fa-bell"></i>
                 <i class="fa fa-envelope"></i>
                 <i class="fa fa-user"></i>
-            </div>
-        </div>
-    </nav>
-
-    <nav class="navbar second-navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="assets/images/loggo.png" alt="Logo" class="img-fluid">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#secondNavbarNav"
-                aria-controls="secondNavbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="secondNavbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">News</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sports</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Entertainment</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Politics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Music</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Travels</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Science</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Business</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Technology</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            More
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Item 1</a>
-                            <a class="dropdown-item" href="#">Item 2</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Another Item</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-light" type="submit">Search</button>
-                        </form>
-                    </li>
-                </ul>
             </div>
         </div>
     </nav>
@@ -344,26 +294,30 @@
         setInterval(updateTimeDate, 1000);
         updateTimeDate();
 
+        // Add this script inside the <script> tag in your HTML file
+
         document.addEventListener('DOMContentLoaded', function () {
-            var dropdownTrigger = document.getElementById('navbarDropdown');
-            var dropdownMenu = document.getElementById('navbarDropdownMenu');
+            // Function to fetch categories from backend and populate dropdown
+            function fetchCategoriesAndPopulateDropdown() {
+                fetch('/api/news/categories') // Replace this URL with your backend route
+                    .then(response => response.json())
+                    .then(data => {
+                        const dropdownContainer = document.getElementById('news-dropdown');
+                        dropdownContainer.innerHTML = ''; // Clear existing dropdown content
+                        data.forEach(category => {
+                            const link = document.createElement('a');
+                            link.setAttribute('href', '#');
+                            link.classList.add('dropdown-item');
+                            link.textContent = category.name; // Assuming category name is provided in JSON
+                            dropdownContainer.appendChild(link);
+                        });
+                    })
+                    .catch(error => console.error('Error fetching categories:', error));
+            }
 
-            dropdownTrigger.addEventListener('click', function () {
-                dropdownMenu.classList.toggle('show');
-            });
-
-            window.addEventListener('click', function (event) {
-                if (!event.target.matches('.dropdown-toggle')) {
-                    var dropdowns = document.getElementsByClassName('dropdown-menu');
-                    for (var i = 0; i < dropdowns.length; i++) {
-                        var openDropdown = dropdowns[i];
-                        if (openDropdown.classList.contains('show')) {
-                            openDropdown.classList.remove('show');
-                        }
-                    }
-                }
-            });
+            fetchCategoriesAndPopulateDropdown();
         });
+
     </script>
 
 </body>
