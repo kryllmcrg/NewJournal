@@ -58,7 +58,7 @@
 
         .nav-link {
             color: black !important; /* Change text color to black */
-            font-size: 16px;
+            font-size: 20px;
             display: block;
             text-align: center;
         }
