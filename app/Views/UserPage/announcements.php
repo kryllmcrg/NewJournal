@@ -83,39 +83,6 @@
             font-weight: bold;
         }
 
-        .second-navbar {
-            background-color: #907ad6;
-            border-bottom: 1px solid #ccc;
-            margin-bottom: 20px;
-            min-height: 60px;
-        }
-
-        .second-navbar-nav {
-            justify-content: center;
-            text-align: center;
-        }
-
-        .second-nav-item {
-            margin: 0 10px;
-            padding: 10px 0;
-        }
-
-        .second-nav-link {
-            color: #fff !important;
-            font-size: 14px;
-            display: block;
-            text-align: center;
-            transition: color 0.3s ease-in-out;
-        }
-
-        .second-nav-link:hover {
-            color: #ffd700;
-        }
-
-        .second-navbar-nav {
-            box-shadow: 0 4px 6px -6px #222;
-        }
-
         .footer-content {
             display: flex;
             justify-content: space-around;
@@ -163,17 +130,18 @@
             margin-top: auto;
         }
 
-        @media (min-width: 768px) {
-            .navbar-toggler {
-                display: none;
+        @media (max-width: 767px) {
+            .nav-item {
+                margin: 0 10px;
             }
 
             #time-date {
                 display: block;
             }
         }
+
         .nav-link:hover {
-        color: #ffd700 !important;
+            color: #ffd700 !important;
         }
 
         .navbar-icons i:hover {
@@ -189,6 +157,38 @@
             border-color: #ffd700;
             box-shadow: 0 0 0 0.2rem rgba(255, 215, 0, 0.25);
         }
+
+        /* Dropdown Styles */
+        .dropdown-menu.multi-column {
+            columns: 3;
+            padding: 20px;
+            width: 400px;
+        }
+
+        .dropdown-column {
+            display: table-cell;
+            padding: 10px;
+            border: none;
+        }
+
+        .dropdown-item {
+            display: block;
+            width: 100%;
+            font-size: 16px;
+            color: #212529;
+            text-align: left;
+            white-space: nowrap;
+            background-color: transparent;
+            border: none;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            margin: .5rem 0;
+            overflow: hidden;
+            background-color: #e9ecef;
+        }
+
     </style>
 </head>
 
@@ -214,8 +214,34 @@
                     <li class="nav-item">
                         <a class="nav-link" href="contact">Contact</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="news">News</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            News
+                        </a>
+                        <ul class="dropdown-menu multi-column" aria-labelledby="navbarDropdown">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-4 dropdown-column">
+                                        <a class="dropdown-item" href="#">Music</a>
+                                        <a class="dropdown-item" href="#">Sports</a>
+                                        <a class="dropdown-item" href="#">Education</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 dropdown-column">
+                                        <a class="dropdown-item" href="#">Business</a>
+                                        <a class="dropdown-item" href="#">Entertainment</a>
+                                        <a class="dropdown-item" href="#">Fashion</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4 dropdown-column">
+                                        <a class="dropdown-item" href="#">Technology</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="announcements">Announcements</a>
@@ -224,6 +250,10 @@
                         <a class="nav-link" href="login">Login</a>
                     </li>
                 </ul>
+                <form class="d-flex ms-auto">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
             </div>
             <div id="time-date"></div>
             <div class="navbar-icons">
@@ -234,66 +264,33 @@
         </div>
     </nav>
 
-    <nav class="navbar second-navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="assets/images/loggo.png" alt="Logo" class="img-fluid">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#secondNavbarNav"
-                aria-controls="secondNavbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="secondNavbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">News</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sports</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Entertainment</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Politics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Music</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Travels</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Science</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Business</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Technology</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            More
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Item 1</a>
-                            <a class="dropdown-item" href="#">Item 2</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Another Item</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-light" type="submit">Search</button>
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!-- Carousel Slider -->
+    <div class="ism-slider" data-transition_type="zoom" data-image_fx="zoompan" id="my-slider">
+        <ol>
+            <li>
+                <img src="assets/images/carousel1.jpg">
+                <div class="ism-caption ism-caption-0"></div>
+            </li>
+            <li>
+                <img src="assets/images/carousel2.jpg">
+                <div class="ism-caption ism-caption-0"></div>
+            </li>
+            <li>
+                <img src="assets/images/carousel2.jpg">
+                <div class="ism-caption ism-caption-0"></div>
+            </li>
+            <li>
+                <img src="assets/images/pic2.png">
+                <div class="ism-caption ism-caption-0"></div>
+            </li>
+            <li>
+                <img src="assets/images/pic1.png">
+                <div class="ism-caption ism-caption-0"></div>
+            </li>
+        </ol>
+    </div>
+    <p class="ism-badge" id="my-slider-ism-badge"><a class="ism-link" href="http://imageslidermaker.com"
+            rel="nofollow"></a></p>
 
     <!-- Footer -->
     <footer>
@@ -365,7 +362,9 @@
                 }
             });
         });
+
     </script>
+    <script src="assets/js/carousel.js"></script>
 
 </body>
 
