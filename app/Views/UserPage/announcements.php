@@ -264,34 +264,6 @@
         </div>
     </nav>
 
-    <!-- Carousel Slider -->
-    <div class="ism-slider" data-transition_type="zoom" data-image_fx="zoompan" id="my-slider">
-        <ol>
-            <li>
-                <img src="assets/images/carousel1.jpg">
-                <div class="ism-caption ism-caption-0"></div>
-            </li>
-            <li>
-                <img src="assets/images/carousel2.jpg">
-                <div class="ism-caption ism-caption-0"></div>
-            </li>
-            <li>
-                <img src="assets/images/carousel2.jpg">
-                <div class="ism-caption ism-caption-0"></div>
-            </li>
-            <li>
-                <img src="assets/images/pic2.png">
-                <div class="ism-caption ism-caption-0"></div>
-            </li>
-            <li>
-                <img src="assets/images/pic1.png">
-                <div class="ism-caption ism-caption-0"></div>
-            </li>
-        </ol>
-    </div>
-    <p class="ism-badge" id="my-slider-ism-badge"><a class="ism-link" href="http://imageslidermaker.com"
-            rel="nofollow"></a></p>
-
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -364,7 +336,6 @@
         });
 
     </script>
-    <script src="assets/js/carousel.js"></script>
 
 </body>
 
