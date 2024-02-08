@@ -19,11 +19,12 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            color: black; /* Change text color to black */
         }
 
         .navbar {
-            min-height: 80px;
-            background-color: #dabfff;
+            min-height: 100px;
+            background-color: #9f8be8;
             margin-bottom: 20px;
         }
 
@@ -48,6 +49,7 @@
             font-weight: bold;
             justify-content: center;
             text-align: center;
+            color: black; /* Change text color to black */
         }
 
         .nav-item {
@@ -55,7 +57,7 @@
         }
 
         .nav-link {
-            color: black !important;
+            color: black !important; /* Change text color to black */
             font-size: 16px;
             display: block;
             text-align: center;
@@ -70,14 +72,14 @@
         .navbar-icons i {
             font-size: 24px;
             margin-left: 25px;
-            color: #3c096c;
+            color: black; /* Change icon color to black */
             cursor: pointer;
         }
 
         #time-date {
             display: none;
             font-size: 16px;
-            color: #3c096c;
+            color: black; /* Change text color to black */
             font-weight: bold;
         }
 
@@ -86,9 +88,10 @@
             justify-content: space-around;
             align-items: center;
             flex-wrap: wrap;
-            background-color: #dabfff;
+            background-color: #9f8be8;
             padding: 2px;
             font-size: 12px;
+            color: black; /* Change text color to black */
         }
 
         .footer-section {
@@ -107,13 +110,21 @@
             margin: 0;
         }
 
+        .footer-content h3 {
+            margin-bottom: 10px;
+        }
+
+        .footer-content p {
+            color: black; /* Change text color to black */
+        }
+
         .social-icons li {
             display: inline-block;
             margin: 0 10px;
         }
 
         .social-icons a {
-            color: #3c096c;
+            color: black; /* Change icon color to black */
             font-size: 24px;
         }
 
@@ -123,9 +134,10 @@
 
         footer {
             text-align: center;
-            background-color: #dabfff;
+            background-color: #9f8be8;
             padding: 5px;
             margin-top: auto;
+            color: black; /* Change text color to black */
         }
 
         @media (max-width: 767px) {

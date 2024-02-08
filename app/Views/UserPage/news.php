@@ -19,11 +19,12 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            color: black; /* Change text color to black */
         }
 
         .navbar {
-            min-height: 80px;
-            background-color: #dabfff;
+            min-height: 100px;
+            background-color: #9f8be8;
             margin-bottom: 20px;
         }
 
@@ -48,6 +49,7 @@
             font-weight: bold;
             justify-content: center;
             text-align: center;
+            color: black; /* Change text color to black */
         }
 
         .nav-item {
@@ -55,7 +57,7 @@
         }
 
         .nav-link {
-            color: black !important;
+            color: black !important; /* Change text color to black */
             font-size: 16px;
             display: block;
             text-align: center;
@@ -70,14 +72,14 @@
         .navbar-icons i {
             font-size: 24px;
             margin-left: 25px;
-            color: #3c096c;
+            color: black; /* Change icon color to black */
             cursor: pointer;
         }
 
         #time-date {
             display: none;
             font-size: 16px;
-            color: #3c096c;
+            color: black; /* Change text color to black */
             font-weight: bold;
         }
 
@@ -86,9 +88,10 @@
             justify-content: space-around;
             align-items: center;
             flex-wrap: wrap;
-            background-color: #dabfff;
+            background-color: #9f8be8;
             padding: 2px;
             font-size: 12px;
+            color: black; /* Change text color to black */
         }
 
         .footer-section {
@@ -107,13 +110,21 @@
             margin: 0;
         }
 
+        .footer-content h3 {
+            margin-bottom: 10px;
+        }
+
+        .footer-content p {
+            color: black; /* Change text color to black */
+        }
+
         .social-icons li {
             display: inline-block;
             margin: 0 10px;
         }
 
         .social-icons a {
-            color: #3c096c;
+            color: black; /* Change icon color to black */
             font-size: 24px;
         }
 
@@ -123,9 +134,10 @@
 
         footer {
             text-align: center;
-            background-color: #dabfff;
+            background-color: #9f8be8;
             padding: 5px;
             margin-top: auto;
+            color: black; /* Change text color to black */
         }
 
         @media (max-width: 767px) {
@@ -294,28 +306,25 @@
         setInterval(updateTimeDate, 1000);
         updateTimeDate();
 
-        // Add this script inside the <script> tag in your HTML file
-
         document.addEventListener('DOMContentLoaded', function () {
-            // Function to fetch categories from backend and populate dropdown
-            function fetchCategoriesAndPopulateDropdown() {
-                fetch('/api/news/categories') // Replace this URL with your backend route
-                    .then(response => response.json())
-                    .then(data => {
-                        const dropdownContainer = document.getElementById('news-dropdown');
-                        dropdownContainer.innerHTML = ''; // Clear existing dropdown content
-                        data.forEach(category => {
-                            const link = document.createElement('a');
-                            link.setAttribute('href', '#');
-                            link.classList.add('dropdown-item');
-                            link.textContent = category.name; // Assuming category name is provided in JSON
-                            dropdownContainer.appendChild(link);
-                        });
-                    })
-                    .catch(error => console.error('Error fetching categories:', error));
-            }
+            var dropdownTrigger = document.getElementById('navbarDropdown');
+            var dropdownMenu = document.getElementById('navbarDropdownMenu');
 
-            fetchCategoriesAndPopulateDropdown();
+            dropdownTrigger.addEventListener('click', function () {
+                dropdownMenu.classList.toggle('show');
+            });
+
+            window.addEventListener('click', function (event) {
+                if (!event.target.matches('.dropdown-toggle')) {
+                    var dropdowns = document.getElementsByClassName('dropdown-menu');
+                    for (var i = 0; i < dropdowns.length; i++) {
+                        var openDropdown = dropdowns[i];
+                        if (openDropdown.classList.contains('show')) {
+                            openDropdown.classList.remove('show');
+                        }
+                    }
+                }
+            });
         });
 
     </script>
