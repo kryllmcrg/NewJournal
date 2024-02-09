@@ -24,11 +24,11 @@ class UserController extends BaseController
     public function authenticate()
     {
         try {
-            $username = $this->request->getVar('email'); // Assuming 'Email' is equivalent to 'username'
+            $email = $this->request->getVar('email'); // Assuming 'Email' is equivalent to 'username'
             $password = $this->request->getVar('password');
 
             $accountModel = new UsersModel();
-            $user = $accountModel->where('email', $username)->first();
+            $user = $accountModel->where('email', $email)->first();
 
             if (is_null($user)) {
                 return redirect()->back()->withInput()->with('error', 'Invalid email or password.');
@@ -71,7 +71,7 @@ class UserController extends BaseController
 
         // Set validation rules with custom error messages
         $validation->setRules([
-            'first_name' => 'required',
+            'fullname' => 'required',
             'email' => 'required|valid_email',
             'username' => 'required|is_unique[users.username]',
             'password' => 'required|min_length[6]',
@@ -97,7 +97,7 @@ class UserController extends BaseController
             // Create a new user record in the database
             $userModel = new UsersModel();
             $userModel->save([
-                'first_name' => $this->request->getPost('first_name'),
+                'fullname' => $this->request->getPost('fullname'),
                 'email'      => $this->request->getPost('email'),
                 'username'   => $this->request->getPost('username'),
                 'password'   => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT), // Hash the password

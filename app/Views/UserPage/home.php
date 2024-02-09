@@ -230,9 +230,9 @@
                             News
                         </a>
                         <ul class="dropdown-menu multi-column" aria-labelledby="navbarDropdown">
-                            <?php foreach ($news_categories as $category): ?>
-                            <li class="dropdown-item"><?php echo $category['name']; ?></li>
-                            <?php endforeach; ?>
+                        <div class="col-md-4 dropdown-column" id="news-dropdown">
+                            <!-- Categories will be dynamically populated here -->
+                        </div>
                         </ul>
                     </li>
                     <li class="nav-item">
