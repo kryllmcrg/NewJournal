@@ -30,31 +30,29 @@ class UserController extends BaseController
             $accountModel = new UsersModel();
             $user = $accountModel->where('email', $email)->first();
 
+            // Check if user exists
             if (is_null($user)) {
                 return redirect()->back()->withInput()->with('error', 'Invalid email or password.');
             }
 
-            $pwd_verify = password_verify($password, $user['password']);
-
-            if (!$pwd_verify) {
+            // Verify password
+            if (!password_verify($password, $user['password'])) {
                 return redirect()->back()->withInput()->with('error', 'Invalid email or password.');
             }
 
-            // Assuming you're not setting any session data here since this is typically done after successful authentication in a web application
-
             // Redirect based on user role
-            switch ($user['Role']) {
+            switch ($user['role']) {
                 case 'admin':
                     return redirect()->to('AdminPage/dashboard');
                 case 'user':
-                    return redirect()->to('UserPage/');
+                    return redirect()->to('UserPage/ /');
                 default:
                     // If role is not defined, redirect to some default page
-                    return redirect()->to('UserPage/login');
+                    return redirect()->to('login')->with('error', 'Invalid user role.');
             }
         } catch (\Throwable $th) {
             // Handle any unexpected errors
-            return redirect()->to('UserPage/login')->with('error', 'An error occurred during authentication.');
+            return redirect()->to('login')->with('error', 'An error occurred during authentication.');
         }
     }
     
