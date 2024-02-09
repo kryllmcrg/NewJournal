@@ -21,6 +21,7 @@ $routes->get('/announcements', 'UserController::announcements');
 $routes->get('/dashboard', 'AdminController::dashboard');
 $routes->get('/manageprofile', 'AdminController::manageprofile');
 $routes->get('/addnews', 'AdminController::addnews');
+$routes->post('addnewsSubmit', 'AdminController::addNewsSubmit');
 $routes->get('/managenews', 'AdminController::managenews');
 $routes->get('/managecomments', 'AdminController::managecomments');
 $routes->get('/chats', 'AdminController::chats');
