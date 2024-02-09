@@ -69,7 +69,7 @@ class AdminController extends BaseController
         $categoryModel = new CategoryModel();
 
         // Fetch all categories from the database
-        $data['categories'] = $categoryModel->findAll();
+        $data['news_categories'] = $categoryModel->findAll();
 
         return view('home', $data);
     }

@@ -131,15 +131,4 @@ class UserController extends BaseController
     {
         return view('UserPage/announcements');
     }
-
-    public function getcategory()
-    {
-        // Load the CategoryModel
-        $categoryModel = new CategoryModel();
-
-        // Fetch all categories from the database
-        $data['categories'] = $categoryModel->findAll();
-
-        return view('home', $data);
-    }
 }

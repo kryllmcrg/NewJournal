@@ -230,7 +230,7 @@
                             News
                         </a>
                         <ul class="dropdown-menu multi-column" aria-labelledby="navbarDropdown">
-                            <?php foreach ($categories as $category): ?>
+                            <?php foreach ($news_categories as $category): ?>
                             <li class="dropdown-item"><?php echo $category['name']; ?></li>
                             <?php endforeach; ?>
                         </ul>

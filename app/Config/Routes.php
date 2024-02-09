@@ -26,7 +26,7 @@ $routes->get('/managecomments', 'AdminController::managecomments');
 $routes->get('/chats', 'AdminController::chats');
 $routes->get('/addcategory', 'AdminController::addcategory');
 $routes->post('/addcategory', 'AdminController::addcategory');
-$routes->get('/getcategory', 'AdminController::home');
+$routes->get('/getcategory', 'AdminController::getcategory');
 $routes->get('/managecategory', 'AdminController::managecategory');
 
 
