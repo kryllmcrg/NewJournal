@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\UsersModel;
 
-class UserController extends BaseController
+class LogRegController extends BaseController
 {
     public function index()
     {

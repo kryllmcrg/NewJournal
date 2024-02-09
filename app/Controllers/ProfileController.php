@@ -6,7 +6,7 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\UsersModel;
 
-class AdminController extends BaseController
+class ProfileController extends BaseController
 {
     public function dashboard()
     {

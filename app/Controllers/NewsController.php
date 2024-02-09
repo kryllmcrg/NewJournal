@@ -6,7 +6,7 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\NewsModel;
 
-class AdminController extends BaseController
+class NewsController extends BaseController
 {
     public function dashboard()
     {
