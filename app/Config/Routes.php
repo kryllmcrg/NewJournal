@@ -8,10 +8,10 @@ use CodeIgniter\Router\RouteCollection;
 // $routes->get('/', 'User::index');
 $routes->get('/', 'UserController::home');
 $routes->get('/login', 'UserController::login');
-$routes->post('authenticate', 'UserController::home'); // Route for submitting the login form
+$routes->post('authenticate', 'UserController::home');
 $routes->get('logout', 'UserController::logout');
 $routes->get('/register', 'UserController::register');
-$routes->post('/store', 'UserController::register');
+$routes->post('/store', 'UserController::store');
 $routes->get('/about', 'UserController::about');
 $routes->get('/contact', 'UserController::contact');
 $routes->get('/news', 'UserController::news');
@@ -25,6 +25,7 @@ $routes->get('/managenews', 'AdminController::managenews');
 $routes->get('/managecomments', 'AdminController::managecomments');
 $routes->get('/chats', 'AdminController::chats');
 $routes->get('/addcategory', 'AdminController::addcategory');
+$routes->post('/addcategory', 'AdminController::addcategory');
 $routes->get('/managecategory', 'AdminController::managecategory');
 
 

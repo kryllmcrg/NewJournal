@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Dashboard</title>
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
     
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/logggo.png" />
   </head>
   <body>
@@ -30,25 +32,139 @@
           </div>
         </div>
       </div>
+      <!-- partial:partials/_navbar.html -->
       <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+          <!-- Larger Logo -->
           <a class="navbar-brand brand-logo" href="dashboard">
               <img src="assets/images/logo.png" alt="logo" style="width: 120px; height: auto;">
           </a>
+
+          <!-- Smaller Logo for Mini View -->
           <a class="navbar-brand brand-logo-mini" href="dashboard">
               <img src="assets/images/logo.png" alt="logo" style="width: 40px; height: auto;">
           </a>
       </div>
       <?php include('include\header.php'); ?>
       </nav>
+      <!-- partial -->
       <div class="container-fluid page-body-wrapper">
-        
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+          <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" href="dashboard">
+                <span class="menu-title">Dashboard</span>
+                <i class="mdi mdi-home menu-icon"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#staff" aria-expanded="false" aria-controls="staff">
+                    <span class="menu-title">Staff</span>
+                    <i class="menu-arrow"></i>
+                    <i class="mdi mdi-account menu-icon"></i>
+                </a>
+                <div class="collapse" id="staff">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="manageprofile">Manage Profile</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#news" aria-expanded="false" aria-controls="news">
+                    <span class="menu-title">News</span>
+                    <i class="menu-arrow"></i>
+                    <i class="mdi mdi-newspaper menu-icon"></i>
+                </a>
+                <div class="collapse" id="news">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="addnews">Add News</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="managenews">Manage News</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#comments" aria-expanded="false" aria-controls="comments">
+                    <span class="menu-title">Comments</span>
+                    <i class="menu-arrow"></i>
+                    <i class="mdi mdi-comment menu-icon"></i>
+                </a>
+                <div class="collapse" id="comments">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="managecomments">Manage Comments</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#collaboration" aria-expanded="false" aria-controls="collaboration">
+                    <span class="menu-title">Collaboration</span>
+                    <i class="menu-arrow"></i>
+                    <i class="mdi mdi-account-group menu-icon"></i>
+                </a>
+                <div class="collapse" id="collaboration">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="chats">Chats</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#category" aria-expanded="false" aria-controls="category">
+                    <span class="menu-title">Category</span>
+                    <i class="menu-arrow"></i>
+                    <i class="mdi mdi-folder menu-icon"></i>
+                </a>
+                <div class="collapse" id="category">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="addcategory">Add Category</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="managecategory">Manage Category</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            </li>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            
+            <li class="nav-item sidebar-actions">
+            <a class="nav-link" href="#">
+                <span class="menu-title">Settings</span>
+                <i class="mdi mdi-settings menu-icon"></i>
+              </a>
+              <a class="nav-link" href="logout">
+                <span class="menu-title">Logout</span>
+                <i class="mdi mdi-logout menu-icon"></i>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
               <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
-                <i class="mdi mdi-message"></i>
+                <i class="mdi mdi-comment"></i>
                 </span> Chats
               </h3>
               <nav aria-label="breadcrumb">
@@ -59,15 +175,8 @@
                 </ul>
               </nav>
             </div>
-            <div id="chat-window">
-        <div id="chat-output"></div>
-        <input type="text" id="message-input" placeholder="Type your message...">
-        <button id="send-button">Send</button>
-    </div>
-
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="client.js"></script>
           </div>
+
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">
@@ -100,82 +209,4 @@
     <script src="assets/js/todolist.js"></script>
     <!-- End custom js for this page -->
   </body>
-  <style>
-    /* General styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    margin: 0;
-    padding: 0;
-}
-
-.main-panel {
-    max-width: 600px;
-    margin: 50px auto;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
-.content-wrapper {
-    padding: 20px;
-}
-
-.page-header {
-    margin-bottom: 20px;
-}
-
-.page-title {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #6a1b9a; /* Purple color */
-}
-
-.breadcrumb-item.active {
-    color: #6a1b9a; /* Purple color */
-}
-
-/* Chat window styles */
-#chat-window {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-top: 1px solid #ddd;
-}
-
-#chat-output {
-    height: 200px;
-    overflow-y: scroll;
-    padding-right: 20px;
-}
-
-#message-input {
-    width: calc(100% - 100px);
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    margin-right: 10px;
-    font-size: 16px;
-    outline: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#send-button {
-    width: 80px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #6a1b9a; /* Purple color */
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    outline: none;
-    transition: background-color 0.3s ease;
-}
-
-#send-button:hover {
-    background-color: #4a148c; /* Darker purple color on hover */
-}
-
-  </style>
 </html>

@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\UsersModel;
+use App\Models\CategoryModel;
 
 class AdminController extends BaseController
 {
@@ -47,9 +48,20 @@ class AdminController extends BaseController
     }
 
     public function addcategory()
-    {
+{
+    if ($this->request->getMethod() === 'post') {
+        $categoryModel = new CategoryModel();
+        $categoryName = $this->request->getPost('category_name');
+
+        // Insert the new category into the database
+        $categoryModel->insert(['name' => $categoryName]);
+
+        // Redirect after adding the category
+        return redirect()->to('/addcategory')->with('success', 'Category added successfully.');
+    } else {
         return view('AdminPage/addcategory');
     }
+}
 
     public function managecategory()
     {

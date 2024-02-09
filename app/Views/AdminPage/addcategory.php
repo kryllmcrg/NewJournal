@@ -42,61 +42,21 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Add Category</h4>
-                    <form class="forms-sample">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label for="categoryName">Category Name/Title:</label>
-                            <input type="text" class="form-control" id="categoryName" placeholder="Enter category name" required>
-                          </div>
-
-                          <div class="form-group">
-                            <label for="description">Description:</label>
-                            <textarea class="form-control" id="description" placeholder="Enter category description"></textarea>
-                          </div>
-
-                          <div class="form-group">
-                            <label for="parentCategory">Parent Category:</label>
-                            <input type="text" class="form-control" id="parentCategory" placeholder="Enter parent category">
-                          </div>
-
-                          <div class="form-group">
-                            <label for="attributes">Attributes/Properties:</label>
-                            <textarea class="form-control" id="attributes" placeholder="Enter attributes"></textarea>
-                          </div>
+                    <form method="post" action="/addcategory" class="forms-sample">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="categoryName">Category Name:</label>
+                                    <input type="text" class="form-control" id="categoryName" name="category_name" placeholder="Enter category name" required>
+                                </div>
+                                <div class="mt-3">
+                                    <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
+                                    <button type="button" class="btn btn-light">Cancel</button>
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label for="tags">Tags/Keywords:</label>
-                            <input type="text" class="form-control" id="tags" placeholder="Enter tags, separated by commas">
-                          </div>
-
-                          <div class="form-group">
-                            <label for="status">Status:</label>
-                            <select class="form-control" id="status">
-                              <option value="active">Active</option>
-                              <option value="inactive">Inactive</option>
-                              <option value="archived">Archived</option>
-                            </select>
-                          </div>
-
-                          <div class="form-group">
-                            <label for="images">Images/Icons:</label>
-                            <input type="file" class="form-control-file" id="images" name="images[]" multiple>
-                          </div>
-
-                          <div class="form-group">
-                            <label for="userOwner">User/Owner:</label>
-                            <input type="text" class="form-control" id="userOwner" placeholder="Enter user or owner">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="mt-3">
-                            <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
-                            <button class="btn btn-light">Cancel</button>
-                      </div>
                     </form>
+
                   </div>
                 </div>
               </div>

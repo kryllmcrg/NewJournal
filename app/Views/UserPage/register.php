@@ -155,7 +155,7 @@
 
     <div class="form-container">
     <h2>Register</h2>
-    <form method="post" action="/register" enctype="multipart/form-data" class="form-grid">
+    <form method="post" action="/store" enctype="multipart/form-data" class="form-grid">
         <div class="form-column">
             <label for="first_name">Full Name <span class="required-sign">*</span></label>
             <input type="text" id="first_name" name="first_name" placeholder="Insert your first name" required>
