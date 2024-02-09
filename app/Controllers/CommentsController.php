@@ -8,10 +8,15 @@ use App\Models\UsersModel;
 use App\Models\CategoryModel;
 use App\Models\NewsModel;
 
-class AdminController extends BaseController
+class CommentsController extends BaseController
 {
     public function dashboard()
     {
         return view('AdminPage/dashboard');
+    }
+
+    public function managecomments()
+    {
+        return view('AdminPage/managecomments');
     }
 }
