@@ -23,69 +23,41 @@ class UserController extends BaseController
 
     public function authenticate()
     {
-        // Load necessary helpers and libraries
-        helper(['form']);
-        $session = session();
-    
-        // Check if the form is submitted
-        if ($this->request->getMethod() === 'post') {
-            // Validate form input
-            $rules = [
-                'email'    => 'required|valid_email',
-                'password' => 'required|min_length[6]'
-            ];
-    
-            if ($this->validate($rules)) {
-                // Get input data
-                $email = $this->request->getPost('email');
-                $password = $this->request->getPost('password');
-    
-                // Check if user exists in the database
-                $userModel = new UsersModel();
-                $user = $userModel->where('email', $email)->first();
-    
-                if ($user) {
-                    // Verify password
-                    if (password_verify($password, $user['password'])) {
-                        // Set session data
-                        $session->set([
-                            'user_id' => $user['id'],
-                            'email' => $user['email'],
-                            'logged_in' => true
-                        ]);
-    
-                        // Redirect to appropriate dashboard
-                        switch ($user['role']) {
-                            case 'admin':
-                                return redirect()->to('/AdminPage/dashboard');
-                            case 'staff':
-                                return redirect()->to('/AdminPage/dashboard');
-                            default:
-                                return redirect()->to('/UserPage');
-                        }
-                    }
-                }
-                // Invalid credentials
-                return redirect()->back()->withInput()->with('error', 'Invalid email or password');
-            } else {
-                // Validation errors
-                return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        try {
+            $username = $this->request->getVar('email'); // Assuming 'Email' is equivalent to 'username'
+            $password = $this->request->getVar('password');
+
+            $accountModel = new UsersModel();
+            $user = $accountModel->where('email', $username)->first();
+
+            if (is_null($user)) {
+                return redirect()->back()->withInput()->with('error', 'Invalid email or password.');
             }
+
+            $pwd_verify = password_verify($password, $user['password']);
+
+            if (!$pwd_verify) {
+                return redirect()->back()->withInput()->with('error', 'Invalid email or password.');
+            }
+
+            // Assuming you're not setting any session data here since this is typically done after successful authentication in a web application
+
+            // Redirect based on user role
+            switch ($user['Role']) {
+                case 'admin':
+                    return redirect()->to('AdminPage/dashboard');
+                case 'user':
+                    return redirect()->to('UserPage/');
+                default:
+                    // If role is not defined, redirect to some default page
+                    return redirect()->to('UserPage/login');
+            }
+        } catch (\Throwable $th) {
+            // Handle any unexpected errors
+            return redirect()->to('UserPage/login')->with('error', 'An error occurred during authentication.');
         }
-        // Load the login view
-        return view('UserPage/login');
     }
     
-    public function logout()
-    {
-        // Destroy session
-        $session = session();
-        $session->destroy();
-
-        // Redirect to login page
-        return redirect()->to('/login');
-    }   
-
     public function register()
     {
         return view('UserPage/register');
@@ -158,5 +130,16 @@ class UserController extends BaseController
     public function announcements()
     {
         return view('UserPage/announcements');
+    }
+
+    public function getcategory()
+    {
+        // Load the CategoryModel
+        $categoryModel = new CategoryModel();
+
+        // Fetch all categories from the database
+        $data['categories'] = $categoryModel->findAll();
+
+        return view('home', $data);
     }
 }
