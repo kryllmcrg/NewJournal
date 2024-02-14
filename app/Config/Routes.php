@@ -24,7 +24,7 @@ $routes->get('/dashboard', 'AdminController::dashboard');
 $routes->get('/manageprofile', 'ProfileController::manageprofile');
 
 $routes->get('/addnews', 'NewsController::addnews');
-$routes->post('addnewsSubmit', 'NewsController::addNewsSubmit');
+$routes->post('addNewsSubmit', 'NewsController::addNewsSubmit');
 $routes->get('/managenews', 'NewsController::managenews');
 
 $routes->get('/managecomments', 'CommentsController::managecomments');

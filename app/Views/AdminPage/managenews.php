@@ -24,7 +24,6 @@
             </div>
           </div>
           <div class="d-flex align-items-center justify-content-between">
-            <a href="https://www.bootstrapdash.com/product/purple-bootstrap-admin-template/"><i class="mdi mdi-home me-3 text-white"></i></a>
             <button id="bannerClose" class="btn border-0 p-0">
               <i class="mdi mdi-close text-white me-0"></i>
             </button>
@@ -152,49 +151,54 @@
               <!-- Add your form elements for editing here -->
               <form>
                 <div class="row">
-                  <!-- First Column -->
-                  <div class="col-md-6">
-                    <div class="mb-3">
-                      <label for="editTitle" class="form-label">Title</label>
-                      <input type="text" class="form-control" id="editTitle" placeholder="Enter title">
+                    <!-- First Column -->
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="editTitle" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="editTitle" placeholder="Enter title">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="editSubTitle" class="form-label">SubTitle</label>
+                            <input type="text" class="form-control" id="editSubTitle" placeholder="Enter Subtitle">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="editCategory" class="form-label">Category</label>
+                            <input type="text" class="form-control" id="editCategory" placeholder="Enter category">
+                        </div>
                     </div>
 
-                    <div class="mb-3">
-                      <label for="editCategory" class="form-label">Category</label>
-                      <input type="text" class="form-control" id="editCategory" placeholder="Enter category">
-                    </div>
+                    <!-- Second Column -->
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="editAuthor" class="form-label">Author</label>
+                            <input type="text" class="form-control" id="editAuthor" placeholder="Enter author">
+                        </div>
 
-                    <div class="mb-3">
-                      <label for="editAuthor" class="form-label">Author</label>
-                      <input type="text" class="form-control" id="editAuthor" placeholder="Enter author">
-                    </div>
-                  </div>
+                        <div class="mb-3">
+                            <label for="editContent" class="form-label">Content</label>
+                            <textarea class="form-control" id="editContent" rows="4" placeholder="Enter content"></textarea>
+                        </div>
 
-                  <!-- Second Column -->
-                  <div class="col-md-6">
-                    <div class="mb-3">
-                      <label for="editContent" class="form-label">Content</label>
-                      <textarea class="form-control" id="editContent" rows="4" placeholder="Enter content"></textarea>
-                    </div>
+                        <div class="mb-3">
+                            <label for="editImages" class="form-label">Images</label>
+                            <input type="text" class="form-control" id="editImages" placeholder="Enter image URL">
+                        </div>
 
-                    <div class="mb-3">
-                      <label for="editImages" class="form-label">Images</label>
-                      <input type="text" class="form-control" id="editImages" placeholder="Enter image URL">
-                    </div>
+                        <div class="mb-3">
+                            <label for="editPublicationUpdate" class="form-label">Publication Update</label>
+                            <input type="text" class="form-control" id="editPublicationUpdate" placeholder="Enter update date/time">
+                        </div>
 
-                    <div class="mb-3">
-                      <label for="editPublicationUpdate" class="form-label">Publication Update</label>
-                      <input type="text" class="form-control" id="editPublicationUpdate" placeholder="Enter update date/time">
+                        <div class="mb-3">
+                            <label for="editPublicationDate" class="form-label">Publication Date</label>
+                            <input type="date" class="form-control" id="editPublicationDate">
+                        </div>
                     </div>
-
-                    <div class="mb-3">
-                      <label for="editPublicationDate" class="form-label">Publication Date</label>
-                      <input type="date" class="form-control" id="editPublicationDate">
-                    </div>
-                  </div>
                 </div>
                 <!-- Add more form fields as needed for editing -->
-              </form>
+            </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -229,6 +233,7 @@
                 <thead>
                   <tr>
                     <th>Title</th>
+                    <th>Subtitle</th>
                     <th>Category</th>
                     <th>Author</th>
                     <th>Content</th>

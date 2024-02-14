@@ -43,53 +43,76 @@
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Add News</h4>
-                <form method="post" action="<?php echo base_url('addnewsSubmit'); ?>" enctype="multipart/form-data" class="forms-sample">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" class="form-control" id="title" name="title" placeholder="Enter news title">
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="author">Author</label>
-                        <input type="text" class="form-control" id="author" placeholder="Enter author name">
-                      </div>
-                    </div>
-                  </div>
+                <form method="post" action="<?php echo base_url('/addNewsSubmit'); ?>" enctype="multipart/form-data" class="forms-sample">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <input type="text" class="form-control" id="title" name="title" placeholder="Enter news title">
+                            </div>
+                        </div>
 
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="category">Category</label>
-                        <input type="text" class="form-control" id="category" placeholder="Enter news category">
-                      </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="subTitle">SubTitle</label>
+                                <input type="text" class="form-control" id="subTitle" name="subTitle" placeholder="Enter news Subtitle">
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label for="publicationDate">Publication Date</label>
-                        <input type="date" class="form-control" id="publicationDate">
-                      </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="author">Author</label>
+                                <input type="text" class="form-control" id="author" placeholder="Enter author name">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <input type="text" class="form-control" id="category" placeholder="Enter news category">
+                            </div>
+                        </div>
                     </div>
-                  </div>
 
-                  <!-- Image Upload -->
-                  <div class="form-group">
-                    <label for="images">Images:</label>
-                    <input type="file" class="form-control-file" id="images" name="images[]" multiple>
-                  </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="publicationDate">Publication Date</label>
+                                <input type="date" class="form-control" id="publicationDate">
+                            </div>
+                        </div>
+                    </div>
 
-                  <!-- WYSIWYG Editor -->
-                  <div class="form-group">
-                    <label for="content">Content</label>
-                    <textarea class="form-control mySummernote" id="content" name="content" placeholder="Enter news content"></textarea>
-                  </div>
+                    <!-- Image Upload -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="images">Images:</label>
+                                <input type="file" class="form-control-file" id="images" name="images[]" multiple required>
+                            </div>
+                        </div>
+                    </div>
 
-                  <div class="mt-3">
-                    <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
-                    <button class="btn btn-light">Cancel</button>
-                  </div>
+                    <!-- WYSIWYG Editor -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="content">Content</label>
+                                <textarea class="form-control mySummernote" id="content" name="content" placeholder="Enter news content"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mt-3">
+                                <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
+                                <button class="btn btn-light">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
                 </form>
               </div>
             </div>
@@ -115,5 +138,6 @@
         $('.dropdown-toggle').dropdown();
     });
     </script>
+
   </body>
 </html>

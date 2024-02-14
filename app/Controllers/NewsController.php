@@ -20,51 +20,76 @@ class NewsController extends BaseController
 
     public function addNewsSubmit()
     {
-        // Check if the form is submitted
-        if ($this->request->getMethod() === 'post') {
-            // Load the necessary helper for handling file uploads
-            helper('filesystem');
-
-            // Get the posted data
-            $title = $this->request->getPost('title');
-            $author = $this->request->getPost('author');
-            $category = $this->request->getPost('category');
-            $publicationDate = date('Y-m-d', strtotime($this->request->getPost('publicationDate')));
-            $publicationUpdateDate = date('Y-m-d H:i:s');
-            $content = $this->request->getPost('content');
-            $status = 'draft'; // Assuming default status is 'draft'
-
-            // Upload images
-            $images = $this->request->getFiles();
-            $uploadedImages = [];
+        try {
+            $newsModel = new NewsModel();
+            $images = $this->request->getFiles('images');
+            
+            // Check if files were uploaded
+            if (empty($images)) {
+                return $this->response->setStatusCode(400)->setJSON(["error" => "Error: No file uploaded."]);
+            }
+            
+            $imageNames = [];
             foreach ($images as $image) {
                 if ($image->isValid() && !$image->hasMoved()) {
                     $newName = $image->getRandomName();
-                    $image->move(WRITEPATH . 'uploads', $newName);
-                    $uploadedImages[] = $newName;
+                    $image->move('./uploads', $newName);
+                    $imageNames[] = $newName;
                 }
             }
-
-            // Now, you can process the submitted data as needed (e.g., store it in the database)
-
-            // Example: Storing data in the database (you'll need to adjust this based on your database setup)
-            $newsModel = new NewsModel();
-            $newsData = [
-                'title' => $title,
-                'author' => $author,
-                'category' => $category,
-                'publicationDate' => $publicationDate,
-                'publicationUpdateDate' => $publicationUpdateDate,
-                'content' => $content,
-                'images' => json_encode($uploadedImages), // Storing image file names as JSON
-                'status' => $status
+    
+            // Retrieve other data from the request
+            $data = [
+                'title' => $this->request->getVar('title'),
+                'subTitle' => $this->request->getVar('subTitle'),
+                'author' => $this->request->getVar('author'),
+                'category' => $this->request->getVar('category'),
+                'images' => implode(',', $imageNames), // Storing multiple image filenames as comma-separated string
+                'content' => strip_tags($this->request->getVar('content')),
+                'publicationDate' => $this->request->getVar('publicationDate'),
+                // Add other fields as needed
             ];
-            $newsModel->insert($newsData);
-
-            // Redirect after successful submission
-            return redirect()->to('/AdminPage/addnews')->with('success', 'News added successfully');
+    
+            // Validate data
+            if (in_array('', $data)) {
+                return $this->response->setStatusCode(400)->setJSON(["error" => "Error: Required data is missing."]);
+            }
+    
+            // Validation Rules
+            $validationRules = [
+                'title' => 'required',
+                'subTitle' => 'required',
+                'author' => 'required',
+                'category' => 'required',
+                'images' => 'required',
+                'content' => 'required',
+                'publicationDate' => 'required',
+                // Add other validation rules as needed
+            ];
+    
+            // Set validation rules
+            $newsModel->setValidationRules($validationRules);
+    
+            // Insert data into the database
+            if (!$newsModel->insert($data)) {
+                return $this->response->setStatusCode(500)->setJSON(["error" => "Error: Unable to insert data."]);
+            }
+    
+            $response = [
+                'message' => 'News created successfully',
+                'data' => $data
+            ];
+    
+            return $this->response->setStatusCode(200)->setJSON($response);
+        } catch (\Throwable $th) {
+            return $this->response->setStatusCode(500)->setJSON(["error" => "Error: " . $th->getMessage()]);
         }
+    }    
+
+    public function __construct(){
+        $this->NewsModel = new NewsModel();
     }
+
     public function managenews()
     {
         return view('AdminPage/managenews');
