@@ -69,13 +69,11 @@ class NewsController extends BaseController
                 'data' => $data
             ];
             
-            return $this->response->setStatusCode(200)->setJSON($response);
+            // Redirect to 'addnews' page with success message
+            return redirect()->to('addnews')->with('success', 'News created successfully');
         } catch (\Throwable $th) {
             return $this->response->setStatusCode(500)->setJSON(["error" => "Error: " . $th->getMessage()]);
         }
-
-        return redirect()->to('addnews');
-
     }
 
     public function __construct(){
