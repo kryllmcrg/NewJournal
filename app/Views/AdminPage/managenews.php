@@ -238,19 +238,39 @@
                     <th>Author</th>
                     <th>Content</th>
                     <th>Images</th>
-                    <th>Publication Update</th>
                     <th>Publication Date</th>
                     <th>Status</th>
                     <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- Example row, replace with dynamic data from your backend -->
-                  <tr>
-                  
-                  </tr>
-                  <!-- Add more rows as needed -->
-                </tbody>
+                  <?php foreach ($newsData as $newsItem): ?>
+                      <tr>
+                          <td><?php echo $newsItem['title']; ?></td>
+                          <td><?php echo $newsItem['subTitle']; ?></td>
+                          <td><?php echo $newsItem['category']; ?></td>
+                          <td><?php echo $newsItem['author']; ?></td>
+                          <td><?php echo $newsItem['content']; ?></td>
+                          <td>
+                              <!-- If images are stored as comma-separated values in the database -->
+                              <?php 
+                              $images = explode(',', $newsItem['images']); 
+                              foreach ($images as $image) {
+                                  echo '<img src="public/uploads/' . $image . '" alt="Image">';
+                              }
+                              ?>
+                          </td>
+                          <td><?php echo $newsItem['publicationDate']; ?></td>
+                          <td><?php echo $newsItem['status']; ?></td>
+                          <td>
+                              <!-- Add edit and delete buttons or actions here -->
+                              <!-- Example: -->
+                              <a href="edit.php?id=<?php echo $newsItem['id_news']; ?>" class="btn btn-sm btn-primary">Edit</a>
+                              <a href="delete.php?id=<?php echo $newsItem['id_news']; ?>" class="btn btn-sm btn-danger">Delete</a>
+                          </td>
+                      </tr>
+                  <?php endforeach; ?>
+              </tbody>
               </table>
             </div>
           </div>

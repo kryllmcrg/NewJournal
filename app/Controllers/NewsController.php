@@ -81,6 +81,16 @@ class NewsController extends BaseController
 
     public function managenews()
     {
-        return view('AdminPage/managenews');
+        // Load the NewsModel
+        $newsModel = new NewsModel();
+    
+        // Fetch news data from the database
+        $data['newsData'] = $newsModel->findAll(); // Assuming findAll() fetches all news items
+    
+        // Load the view file and pass the news data to it
+        return view('AdminPage/managenews', $data); // Pass the $data array to the view
+        
     }
+    
+
 }
