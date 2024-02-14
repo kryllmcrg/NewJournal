@@ -265,8 +265,8 @@
                           <td>
                               <!-- Add edit and delete buttons or actions here -->
                               <!-- Example: -->
-                              <a href="edit.php?id=<?php echo $newsItem['id_news']; ?>" class="btn btn-sm btn-primary">Edit</a>
-                              <a href="delete.php?id=<?php echo $newsItem['id_news']; ?>" class="btn btn-sm btn-danger">Delete</a>
+                              <button type="button" class="btn btn-sm btn-primary edit-news-btn" data-news-id="<?php echo $newsItem['id_news']; ?>">Edit</button>
+                              <button type="button" class="btn btn-sm btn-danger delete-news-btn" data-news-id="<?php echo $newsItem['id_news']; ?>">Delete</button>
                           </td>
                       </tr>
                   <?php endforeach; ?>
@@ -294,30 +294,57 @@
   <!-- container-scroller -->
 
   <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var editButtons = document.querySelectorAll('.edit-news-btn');
-    var deleteButtons = document.querySelectorAll('.delete-news-btn');
+document.addEventListener('DOMContentLoaded', function () {
+  var editButtons = document.querySelectorAll('.edit-news-btn');
+  var deleteButtons = document.querySelectorAll('.delete-news-btn');
 
-    editButtons.forEach(function (button) {
-      button.addEventListener('click', function () {
-        $('#editNewsModal').modal('show');
-      });
-    });
-
-    deleteButtons.forEach(function (button) {
-      button.addEventListener('click', function () {
-        // Show a confirmation dialog
-        var isConfirmed = confirm("Are you sure you want to delete this news?");
-        
-        // If the user confirms, perform the deletion logic
-        if (isConfirmed) {
-          // Add your delete logic here
-          // For example, you can make an AJAX request to delete the news
-        }
-      });
+  editButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      // Show the edit modal
+      $('#editNewsModal').modal('show');
+      
+      // Get the news ID from the button's data attribute
+      var newsId = button.getAttribute('data-news-id');
+      
+      // Use the news ID for further processing, like fetching news data for editing
+      
+      // For demonstration purposes, let's log the news ID to the console
+      console.log("Edit News ID: " + newsId);
     });
   });
+
+  deleteButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      // Show a confirmation dialog
+      var isConfirmed = confirm("Are you sure you want to delete this news?");
+      
+      // If the user confirms, perform the deletion logic
+      if (isConfirmed) {
+        // Get the news ID from the button's data attribute
+        var newsId = button.getAttribute('data-news-id');
+        
+        // Perform deletion logic here, like making an AJAX request
+        // Example AJAX request to delete news
+        // $.ajax({
+        //   url: 'delete.php',
+        //   method: 'POST',
+        //   data: { id: newsId },
+        //   success: function(response) {
+        //     // Handle success response
+        //   },
+        //   error: function(xhr, status, error) {
+        //     // Handle error
+        //   }
+        // });
+
+        // For demonstration purposes, let's log the news ID to the console
+        console.log("Delete News ID: " + newsId);
+      }
+    });
+  });
+});
 </script>
+
 
   <!-- plugins:js -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
