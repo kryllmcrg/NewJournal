@@ -22,7 +22,7 @@ class NewsController extends BaseController
     {
         try {
             $newsModel = new NewsModel();
-            $images = $this->request->getFiles('images');
+            $images = $this->request->getFiles();
             
             // Check if files were uploaded
             if (empty($images)) {
@@ -30,61 +30,50 @@ class NewsController extends BaseController
             }
             
             $imageNames = [];
-            foreach ($images as $image) {
+            foreach ($images['images'] as $image) {
+                // Check if the file is valid and hasn't already been moved
                 if ($image->isValid() && !$image->hasMoved()) {
                     $newName = $image->getRandomName();
-                    $image->move('./uploads', $newName);
+                    $image->move('public/uploads/', $newName);
                     $imageNames[] = $newName;
+                } else {
+                    // Handle error conditions
+                    return $this->response->setStatusCode(400)->setJSON(["error" => "Error uploading file(s)."]);
                 }
             }
-    
-            // Retrieve other data from the request
+            
             $data = [
                 'title' => $this->request->getVar('title'),
                 'subTitle' => $this->request->getVar('subTitle'),
                 'author' => $this->request->getVar('author'),
                 'category' => $this->request->getVar('category'),
-                'images' => implode(',', $imageNames), // Storing multiple image filenames as comma-separated string
+                'images' => implode(',', $imageNames),
                 'content' => strip_tags($this->request->getVar('content')),
                 'publicationDate' => $this->request->getVar('publicationDate'),
-                // Add other fields as needed
             ];
-    
+            
             // Validate data
-            if (in_array('', $data)) {
-                return $this->response->setStatusCode(400)->setJSON(["error" => "Error: Required data is missing."]);
+            foreach ($data as $key => $value) {
+                if (empty($value)) {
+                    return $this->response->setStatusCode(400)->setJSON(["error" => "Error: Required data '$key' is missing."]);
+                }
             }
-    
-            // Validation Rules
-            $validationRules = [
-                'title' => 'required',
-                'subTitle' => 'required',
-                'author' => 'required',
-                'category' => 'required',
-                'images' => 'required',
-                'content' => 'required',
-                'publicationDate' => 'required',
-                // Add other validation rules as needed
-            ];
-    
-            // Set validation rules
-            $newsModel->setValidationRules($validationRules);
-    
+            
             // Insert data into the database
             if (!$newsModel->insert($data)) {
                 return $this->response->setStatusCode(500)->setJSON(["error" => "Error: Unable to insert data."]);
             }
-    
+            
             $response = [
                 'message' => 'News created successfully',
                 'data' => $data
             ];
-    
+            
             return $this->response->setStatusCode(200)->setJSON($response);
         } catch (\Throwable $th) {
             return $this->response->setStatusCode(500)->setJSON(["error" => "Error: " . $th->getMessage()]);
         }
-    }    
+    }
 
     public function __construct(){
         $this->NewsModel = new NewsModel();

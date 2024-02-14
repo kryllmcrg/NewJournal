@@ -64,14 +64,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="author">Author</label>
-                                <input type="text" class="form-control" id="author" placeholder="Enter author name">
+                                <input type="text" class="form-control" id="author" name="author" placeholder="Enter author name">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="category">Category</label>
-                                <input type="text" class="form-control" id="category" placeholder="Enter news category">
+                                <input type="text" class="form-control" id="category" name="category" placeholder="Enter news category">
                             </div>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="publicationDate">Publication Date</label>
-                                <input type="date" class="form-control" id="publicationDate">
+                                <input type="date" class="form-control" id="publicationDate" name="publicationDate">
                             </div>
                         </div>
                     </div>
