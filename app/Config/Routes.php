@@ -38,3 +38,6 @@ $routes->get('/managecategory', 'CategoryController::managecategory');
 
 
 
+$routes->get('/addingNews', 'StaffController::addingNews');
+
+
