@@ -294,34 +294,33 @@
   <!-- container-scroller -->
 
   <script>
-document.addEventListener('DOMContentLoaded', function () {
-  var editButtons = document.querySelectorAll('.edit-news-btn');
-  var deleteButtons = document.querySelectorAll('.delete-news-btn');
-
-  editButtons.forEach(function (button) {
-    button.addEventListener('click', function () {
+  $(document).ready(function() {
+    // Function to handle edit button click
+    $('.edit-news-btn').click(function() {
+      // Clear previous data from the modal
+      clearEditModal();
+      
       // Show the edit modal
       $('#editNewsModal').modal('show');
       
       // Get the news ID from the button's data attribute
-      var newsId = button.getAttribute('data-news-id');
+      var newsId = $(this).data('news-id');
       
       // Use the news ID for further processing, like fetching news data for editing
       
       // For demonstration purposes, let's log the news ID to the console
       console.log("Edit News ID: " + newsId);
     });
-  });
 
-  deleteButtons.forEach(function (button) {
-    button.addEventListener('click', function () {
+    // Function to handle delete button click
+    $('.delete-news-btn').click(function() {
       // Show a confirmation dialog
       var isConfirmed = confirm("Are you sure you want to delete this news?");
       
       // If the user confirms, perform the deletion logic
       if (isConfirmed) {
         // Get the news ID from the button's data attribute
-        var newsId = button.getAttribute('data-news-id');
+        var newsId = $(this).data('news-id');
         
         // Perform deletion logic here, like making an AJAX request
         // Example AJAX request to delete news
@@ -341,9 +340,39 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("Delete News ID: " + newsId);
       }
     });
+
+    // Event handler for close button in edit modal
+    $('#editNewsModal').on('hidden.bs.modal', function () {
+      // Clear the modal when it is closed
+      clearEditModal();
+    });
+
+    // Event handler for save changes button in edit modal
+    $('#editNewsModal').on('click', '.btn-primary', function() {
+      // Perform save changes logic here
+      
+      // For demonstration purposes, log a message to the console
+      console.log("Changes saved successfully!");
+      
+      // Close the modal
+      $('#editNewsModal').modal('hide');
+    });
+
+    // Function to clear the edit modal
+    function clearEditModal() {
+      // Clear input fields and reset any other modal content
+      $('#editTitle').val('');
+      $('#editSubTitle').val('');
+      $('#editCategory').val('');
+      $('#editAuthor').val('');
+      $('#editContent').val('');
+      $('#editImages').val('');
+      $('#editPublicationUpdate').val('');
+      $('#editPublicationDate').val('');
+    }
   });
-});
 </script>
+
 
 
   <!-- plugins:js -->

@@ -73,6 +73,9 @@ class NewsController extends BaseController
         } catch (\Throwable $th) {
             return $this->response->setStatusCode(500)->setJSON(["error" => "Error: " . $th->getMessage()]);
         }
+
+        return redirect()->to('addnews');
+
     }
 
     public function __construct(){
