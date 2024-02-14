@@ -44,4 +44,17 @@ class CategoryController extends BaseController
     {
         return view('AdminPage/managecategory');
     }
+
+    public function managenews()
+    {
+        // Load the NewsModel
+        $CategoryModel = new CategoryModel();
+    
+        // Fetch news data from the database
+        $data['CategoryData'] = $CategoryModel->findAll(); // Assuming findAll() fetches all news items
+    
+        // Load the view file and pass the news data to it
+        return view('AdminPage/managenews', $data); // Pass the $data array to the view
+        
+    }
 }

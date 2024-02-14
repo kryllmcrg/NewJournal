@@ -199,16 +199,19 @@
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th>Id</th>
                     <th>Category Name</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <!-- Example row, replace with dynamic data from your backend -->
-                  <tr>
-                  
-                  </tr>
-                  <!-- Add more rows as needed -->
+                  <tbody>
+                    <?php foreach ($categoryData as $categoryItem): ?>
+                        <tr>
+                            <td><?php echo $categoryItem['name']; ?></td>
+                            <td>
+                                <button type="button" class="btn btn-sm btn-primary" data-category-id="<?php echo $categoryItem['id_categories']; ?>">Edit</button>
+                                <button type="button" class="btn btn-sm btn-danger" data-category-id="<?php echo $categoryItem['id_categories']; ?>">Delete</button>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
               </table>
             </div>
