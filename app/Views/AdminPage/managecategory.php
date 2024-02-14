@@ -200,19 +200,20 @@
                 <thead>
                   <tr>
                     <th>Category Name</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
-                  <tbody>
-                    <?php foreach ($categoryData as $categoryItem): ?>
-                        <tr>
-                            <td><?php echo $categoryItem['name']; ?></td>
-                            <td>
-                                <button type="button" class="btn btn-sm btn-primary" data-category-id="<?php echo $categoryItem['id_categories']; ?>">Edit</button>
-                                <button type="button" class="btn btn-sm btn-danger" data-category-id="<?php echo $categoryItem['id_categories']; ?>">Delete</button>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
+                <tbody>
+                  <?php foreach ($categoryData as $categoryItem): ?>
+                      <tr>
+                          <td><?php echo $categoryItem['name']; ?></td>
+                          <td>
+                              <button type="button" class="btn btn-sm btn-primary" data-category-id="<?php echo $categoryItem['id_categories']; ?>">Edit</button>
+                              <button type="button" class="btn btn-sm btn-danger" data-category-id="<?php echo $categoryItem['id_categories']; ?>">Delete</button>
+                          </td>
+                      </tr>
+                  <?php endforeach; ?>
+              </tbody>
               </table>
             </div>
           </div>
