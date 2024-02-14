@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Chats</title>
+    <title>Dashboard</title>
     
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
@@ -20,6 +20,7 @@
           <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
             <div class="ps-lg-1">
               <div class="d-flex align-items-center justify-content-between">
+                <a href="https://www.bootstrapdash.com/product/purple-bootstrap-admin-template/?utm_source=organic&utm_medium=banner&utm_campaign=buynow_demo" target="_blank" class="btn me-2 buy-now-btn border-0">Get Pro</a>
               </div>
             </div>
             <div class="d-flex align-items-center justify-content-between">
@@ -163,7 +164,7 @@
             <div class="page-header">
               <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
-                <i class="mdi mdi-comment"></i>
+                <i class="mdi mdi-message"></i>
                 </span> Chats
               </h3>
               <nav aria-label="breadcrumb">
@@ -174,24 +175,19 @@
                 </ul>
               </nav>
             </div>
-          </div>
-
-          <!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
-          <footer class="footer">
+            <div id="chat-window">
+        <div id="chat-output"></div>
+        <input type="text" id="message-input" placeholder="Type your message...">
+        <button id="send-button">Send</button>
+        </div>
+      </div>
+      <footer class="footer">
             <div class="container-fluid d-flex justify-content-between">
               <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright © CalapanCityNews 2024</span>
               <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> CIO <a href="" target="_blank">Calapan City Information Office</a> OffcialWebsite.com</span>
             </div>
           </footer>
-          <!-- partial -->
-        </div>
-        <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
     </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
     <script src="assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
@@ -208,4 +204,82 @@
     <script src="assets/js/todolist.js"></script>
     <!-- End custom js for this page -->
   </body>
+  <style>
+    /* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.main-panel {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.content-wrapper {
+    padding: 20px;
+}
+
+.page-header {
+    margin-bottom: 20px;
+}
+
+.page-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #6a1b9a; /* Purple color */
+}
+
+.breadcrumb-item.active {
+    color: #6a1b9a; /* Purple color */
+}
+
+/* Chat window styles */
+#chat-window {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+}
+
+#chat-output {
+    height: 200px;
+    overflow-y: scroll;
+    padding-right: 20px;
+}
+
+#message-input {
+    width: calc(100% - 100px);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#send-button {
+    width: 80px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #6a1b9a; /* Purple color */
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+#send-button:hover {
+    background-color: #4a148c; /* Darker purple color on hover */
+}
+
+  </style>
 </html>
