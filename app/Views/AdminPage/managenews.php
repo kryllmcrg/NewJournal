@@ -228,6 +228,7 @@
           <div class="card">
           <div class="card-body">
             <h4 class="card-title">Manage News</h4>
+            <button type="button" class="btn btn-sm btn-success export-pdf-btn">Export to PDF</button>
             <div class="table-responsive">
               <table class="table table-striped">
                 <thead>

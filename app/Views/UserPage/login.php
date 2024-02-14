@@ -10,7 +10,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-image: url('assets/images/bg.png'); 
+            background-image: url('assets/images/cityby.png'); 
             background-size: cover; 
             background-position: center; 
             height: 100vh; 
@@ -122,9 +122,8 @@
     <a href="/" class="back-button">
         <i class="bi bi-arrow-left-circle-fill"></i>
         <!-- You can adjust the text as needed -->
-        <span>Back</span>
+        <span></span>
     </a>
-
     <div class="form-container">
         <h2>Login</h2>
         <form action="<?= base_url('authenticate') ?>" method="post">
