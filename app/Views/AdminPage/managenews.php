@@ -158,8 +158,6 @@
                       <label for="editTitle" class="form-label">Title</label>
                       <input type="text" class="form-control" id="editTitle" placeholder="Enter title">
                     </div>
-
-<<<<<<< Updated upstream
                     <!-- Second Column -->
                     <div class="col-md-6">
                         <div class="mb-3">
@@ -181,11 +179,10 @@
                             <label for="editPublicationDate" class="form-label">Publication Date</label>
                             <input type="date" class="form-control" id="editPublicationDate">
                         </div>
-=======
                     <div class="mb-3">
                       <label for="editCategory" class="form-label">Category</label>
                       <input type="text" class="form-control" id="editCategory" placeholder="Enter category">
->>>>>>> Stashed changes
+
                     </div>
 
                     <div class="mb-3">
@@ -204,11 +201,6 @@
                     <div class="mb-3">
                       <label for="editImages" class="form-label">Images</label>
                       <input type="text" class="form-control" id="editImages" placeholder="Enter image URL">
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="editPublicationUpdate" class="form-label">Publication Update</label>
-                      <input type="text" class="form-control" id="editPublicationUpdate" placeholder="Enter update date/time">
                     </div>
 
                     <div class="mb-3">
@@ -258,7 +250,6 @@
                     <th>Author</th>
                     <th>Content</th>
                     <th>Images</th>
-                    <th>Publication Update</th>
                     <th>Publication Date</th>
                     <th>Status</th>
                     <th>Actions</th>
@@ -294,7 +285,6 @@
   <!-- container-scroller -->
 
   <script>
-<<<<<<< Updated upstream
       document.querySelectorAll('.edit-news-btn').forEach(item => {
       item.addEventListener('click', event => {
           // Fetch news item data based on news ID
@@ -333,8 +323,6 @@
     });
   });
 
-  </script>
-=======
   document.addEventListener('DOMContentLoaded', function () {
     var editButtons = document.querySelectorAll('.edit-news-btn');
     var deleteButtons = document.querySelectorAll('.delete-news-btn');
@@ -358,9 +346,9 @@
       });
     });
   });
-</script>
 
->>>>>>> Stashed changes
+  </script>
+
   <!-- plugins:js -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="assets/vendors/js/vendor.bundle.base.js"></script>
