@@ -187,11 +187,6 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="editPublicationUpdate" class="form-label">Publication Update</label>
-                            <input type="text" class="form-control" id="editPublicationUpdate" placeholder="Enter update date/time">
-                        </div>
-
-                        <div class="mb-3">
                             <label for="editPublicationDate" class="form-label">Publication Date</label>
                             <input type="date" class="form-control" id="editPublicationDate">
                         </div>
@@ -295,90 +290,36 @@
   <!-- container-scroller -->
 
   <script>
-  $(document).ready(function() {
-    // Function to handle edit button click
-    $('.edit-news-btn').click(function() {
-      // Clear previous data from the modal
-      clearEditModal();
-      
-      // Show the edit modal
-      $('#editNewsModal').modal('show');
-      
-      // Get the news ID from the button's data attribute
-      var newsId = $(this).data('news-id');
-      
-      // Use the news ID for further processing, like fetching news data for editing
-      
-      // For demonstration purposes, let's log the news ID to the console
-      console.log("Edit News ID: " + newsId);
-    });
+      document.querySelectorAll('.edit-news-btn').forEach(item => {
+      item.addEventListener('click', event => {
+          // Fetch news item data based on news ID
+          const newsId = event.currentTarget.dataset.newsId;
+          console.log('Edit button clicked for news ID:', newsId);
 
-    // Function to handle delete button click
-    $('.delete-news-btn').click(function() {
-      // Show a confirmation dialog
-      var isConfirmed = confirm("Are you sure you want to delete this news?");
-      
-      // If the user confirms, perform the deletion logic
-      if (isConfirmed) {
-        // Get the news ID from the button's data attribute
-        var newsId = $(this).data('news-id');
-        
-        // Perform deletion logic here, like making an AJAX request
-        // Example AJAX request to delete news
-        // $.ajax({
-        //   url: 'delete.php',
-        //   method: 'POST',
-        //   data: { id: newsId },
-        //   success: function(response) {
-        //     // Handle success response
-        //   },
-        //   error: function(xhr, status, error) {
-        //     // Handle error
-        //   }
-        // });
+          // Show the modal
+          $('#editNewsModal').modal('show');
+      });
+  });
 
-        // For demonstration purposes, let's log the news ID to the console
-        console.log("Delete News ID: " + newsId);
-      }
-    });
+    // Event handler for Close button
+  document.querySelector('#editNewsModal .btn-secondary').addEventListener('click', function() {
+      $('#editNewsModal').modal('hide');
+  });
 
-    // Event handler for close button in edit modal
-    $('#editNewsModal').on('hidden.bs.modal', function () {
-      // Clear the modal when it is closed
-      clearEditModal();
-    });
+  // Event handler for Save changes button
+  document.querySelector('#editNewsModal .btn-primary').addEventListener('click', function() {
+      // Perform actions when Save changes button is clicked
+      console.log('Save changes button clicked');
 
-    // Event handler for save changes button in edit modal
-    $('#editNewsModal').on('click', '.btn-primary', function() {
-      // Perform save changes logic here
-      
-      // For demonstration purposes, log a message to the console
-      console.log("Changes saved successfully!");
-      
       // Close the modal
       $('#editNewsModal').modal('hide');
-    });
-
-    // Function to clear the edit modal
-    function clearEditModal() {
-      // Clear input fields and reset any other modal content
-      $('#editTitle').val('');
-      $('#editSubTitle').val('');
-      $('#editCategory').val('');
-      $('#editAuthor').val('');
-      $('#editContent').val('');
-      $('#editImages').val('');
-      $('#editPublicationUpdate').val('');
-      $('#editPublicationDate').val('');
-    }
   });
-</script>
 
-
-
+  </script>
   <!-- plugins:js -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <!-- endinject -->
   <!-- Plugin js for this page -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
