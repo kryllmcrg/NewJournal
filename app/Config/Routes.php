@@ -21,6 +21,7 @@ $routes->post('/store', 'LogRegController::store');
 
 $routes->get('/dashboard', 'AdminController::dashboard');
 
+$routes->get('/addemployee', 'ProfileController::addemployee');
 $routes->get('/manageprofile', 'ProfileController::manageprofile');
 
 $routes->get('/addnews', 'NewsController::addnews');

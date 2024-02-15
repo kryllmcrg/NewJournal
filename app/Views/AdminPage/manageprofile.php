@@ -16,7 +16,7 @@
   <style>
     /* Card styles */
     .card {
-            width: 400px;
+            width: 100%;
             border-radius: 10px;
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
             transition: 0.3s;
@@ -32,9 +32,11 @@
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
         }
-
-        .card-body {
-            text-align: center;
+        .button{
+         margin-left:85%;
+         margin-top:-1%;
+         margin-bottom:2%;
+         
         }
 
         .card-title {
@@ -207,19 +209,44 @@
                   </li>
                 </ul>
               </nav>
+              
+            </div>
+            <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Manage Employee</h4>
+            <div class="button">
+              <button ><a href="addemployee">Add Employee</a></button>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Mobile Phone</th>
+                    <th>Address</th>
+                    <th>Gender</th>
+                    <th>Position</th>
+                    <th>Action</th>
+                  </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Example row, replace with dynamic data from your backend -->
+                  <tr>
+                  
+                  </tr>
+                  <!-- Add more rows as needed -->
+                </tbody>
+              </table>
             </div>
           </div>
+        </div>
+          </div>
+          
 
          <!-- Card for profile dashboard -->
-          <div class="card">
-              <div class="card-body">
-                  <h4 class="card-title">Fullname:<?= esc($userData['full_name'] ?? '') ?></h4>
-                  <p class="card-text">Email:<?= esc($userData['email'] ?? '') ?></p>
-                  <p class="card-text">Username: <?= esc($userData['username'] ?? '') ?></p>   
-                  <p class="card-text">Role: <?= esc($userData['role'] ?? '') ?></p>        
-                  <a href="#" class="btn btn-primary">See Profile</a>
-              </div>
-          </div>
+          
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">
