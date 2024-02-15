@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Profile</title>
+    <title>Manage Profile</title>
     
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
@@ -13,42 +13,6 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/logggo.png" />
   </head>
-  <style>
-    /* Card styles */
-    .card {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            transition: 0.3s;
-            margin-top: 20px;
-        }
-
-        .card:hover {
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-        }
-
-        .card-img-top {
-            width: 100%;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-        }
-        .button{
-         margin-left:85%;
-         margin-top:-1%;
-         margin-bottom:2%;
-         
-        }
-
-        .card-title {
-            font-size: 24px;
-            margin-top: 10px;
-        }
-
-        .card-text {
-            font-size: 16px;
-            margin-top: 10px;
-        }
-  </style>
   <body>
     <div class="container-scroller">
       <div class="row p-0 m-0 proBanner" id="proBanner">
@@ -59,7 +23,6 @@
               </div>
             </div>
             <div class="d-flex align-items-center justify-content-between">
-              <a href="https://www.bootstrapdash.com/product/purple-bootstrap-admin-template/"><i class="mdi mdi-home me-3 text-white"></i></a>
               <button id="bannerClose" class="btn border-0 p-0">
                 <i class="mdi mdi-close text-white me-0"></i>
               </button>
@@ -89,7 +52,7 @@
           <ul class="nav">
             <li class="nav-item">
               <a class="nav-link" href="dashboard">
-                <span class="menu-title">Dashboard</span>
+                <span class="menu-title">Manage Profile</span>
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
@@ -159,7 +122,27 @@
                     </ul>
                 </div>
             </li>
-            
+
+            </li>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
             <li class="nav-item sidebar-actions">
             <a class="nav-link" href="#">
                 <span class="menu-title">Settings</span>
@@ -179,7 +162,7 @@
             <div class="page-header">
               <h3 class="page-title">
                 <span class="page-title-icon bg-gradient-primary text-white me-2">
-                <i class="mdi mdi-account"></i>
+                  <i class="mdi mdi-home"></i>
                 </span> Manage Profile
               </h3>
               <nav aria-label="breadcrumb">
@@ -189,42 +172,8 @@
                   </li>
                 </ul>
               </nav>
-              
-            </div>
-            <div class="card">
-          <div class="card-body">
-            <h4 class="card-title">Manage Employee</h4>
-            <div class="button">
-              <button ><a href="">Add Employee</a></button>
-            </div>
-            <div class="table-responsive">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Employees Id</th>
-                    <th>Name</th>
-                    <th>Mobile Phone</th>
-                    <th>Address</th>
-                    <th>Gender</th>
-                    <th>Position</th>
-                    <th>Action</th>
-                  </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <!-- Example row, replace with dynamic data from your backend -->
-                  <tr>
-                  
-                  </tr>
-                  <!-- Add more rows as needed -->
-                </tbody>
-              </table>
             </div>
           </div>
-        </div>
-      </div>
-         <!-- Card for profile dashboard -->
-          
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">
