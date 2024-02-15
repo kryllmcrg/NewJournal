@@ -173,6 +173,52 @@
                 </ul>
               </nav>
             </div>
+            <!-- Table -->
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Staff Information</h4>
+                    <button type="button" class="btn btn-sm btn-success add-staff-btn">Add Staff</button>
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>Staff Id</th>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Mobile Phone</th>
+                            <th>Address</th>
+                            <th>Gender</th>
+                            <th>Position</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!-- Empty row -->
+                          <tr>
+                            <td colspan="7" class="text-center">No information available</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End Table -->
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <footer class="footer">
+            <div class="container-fluid d-flex justify-content-between">
+              <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright © CalapanCityNews 2024</span>
+              <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> CIO <a href="" target="_blank">Calapan City Information Office</a> OffcialWebsite.com</span>
+            </div>
+          </footer>
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
