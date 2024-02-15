@@ -159,26 +159,6 @@
                     </ul>
                 </div>
             </li>
-            <!-- Removed the extra </li> tag -->
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
             
             <li class="nav-item sidebar-actions">
             <a class="nav-link" href="#">
@@ -215,13 +195,13 @@
           <div class="card-body">
             <h4 class="card-title">Manage Employee</h4>
             <div class="button">
-              <button ><a href="addemployee">Add Employee</a></button>
+              <button ><a href="">Add Employee</a></button>
             </div>
             <div class="table-responsive">
               <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th>Id</th>
+                    <th>Employees Id</th>
                     <th>Name</th>
                     <th>Mobile Phone</th>
                     <th>Address</th>
@@ -242,9 +222,7 @@
             </div>
           </div>
         </div>
-          </div>
-          
-
+      </div>
          <!-- Card for profile dashboard -->
           
           <!-- content-wrapper ends -->
