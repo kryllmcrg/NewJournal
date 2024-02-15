@@ -228,3 +228,4 @@ FROM `news_categories`', [], false)
 11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
 >>>>>>> 50767b71d7363e51005964a0b128d1acd15ae481
+INFO - 2024-02-15 06:55:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

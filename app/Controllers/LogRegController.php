@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controllers;
-
 use App\Models\UsersModel;
 
 class LogRegController extends BaseController
@@ -21,7 +20,7 @@ class LogRegController extends BaseController
         return view('UserPage/login');
     }
 
-    public function authenticate()
+        public function authenticate()
     {
         try {
             $email = $this->request->getVar('email'); // Assuming 'Email' is equivalent to 'username'
@@ -32,30 +31,29 @@ class LogRegController extends BaseController
 
             // Check if user exists
             if (is_null($user)) {
-                return redirect()->back()->withInput()->with('error', 'Invalid email or password.');
+                return redirect()->to(previous_url())->withInput()->with('error', 'Invalid email or password.');
             }
 
             // Verify password
             if (!password_verify($password, $user['password'])) {
-                return redirect()->back()->withInput()->with('error', 'Invalid email or password.');
+                return redirect()->to(previous_url())->withInput()->with('error', 'Invalid email or password.');
             }
 
             // Redirect based on user role
             switch ($user['role']) {
                 case 'admin':
-                    return redirect()->to('AdminPage/dashboard');
+                    return redirect()->to(site_url('AdminPage/dashboard'));
                 case 'user':
-                    return redirect()->to('UserPage/ /');
+                    return redirect()->to(site_url('UserPage'));
                 default:
                     // If role is not defined, redirect to some default page
-                    return redirect()->to('login')->with('error', 'Invalid user role.');
+                    return redirect()->to(site_url('login'))->with('error', 'Invalid user role.');
             }
         } catch (\Throwable $th) {
             // Handle any unexpected errors
-            return redirect()->to('login')->with('error', 'An error occurred during authentication.');
+            return redirect()->to(site_url('login'))->with('error', 'An error occurred during authentication.');
         }
     }
-    
     public function register()
     {
         return view('UserPage/register');
