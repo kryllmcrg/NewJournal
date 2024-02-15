@@ -139,42 +139,37 @@
 
       <!-- Edit News Modal -->
       <div class="modal fade" id="editNewsModal" tabindex="-1" role="dialog" aria-labelledby="editNewsModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="editNewsModalLabel">Edit Category</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <!-- Add your form elements for editing here -->
-              <form>
-                <div class="row">
-                  <!-- First Column -->
-                  <div class="col-md-6">
-                    <div class="mb-3">
-                      <label for="editTitle" class="form-label">Id</label>
-                      <input type="text" class="form-control" id="editTitle" placeholder="Enter title">
-                    </div>
-
-                    <div class="mb-3">
-                      <label for="editCategory" class="form-label">Category Name</label>
-                      <input type="text" class="form-control" id="editCategory" placeholder="Enter category">
-                    </div>
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="editNewsModalLabel">Edit Category</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
                   </div>
-                </div>
-                <!-- Add more form fields as needed for editing -->
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+                  <div class="modal-body">
+                      <!-- Add your form elements for editing here -->
+                      <form action="/saveCategoryChanges" method="post">
+                          <div class="row">
+                              <!-- First Column -->
+                              <div class="col-md-6">
+
+                                  <div class="mb-3">
+                                      <label for="editCategory" class="form-label">Category Name</label>
+                                      <input type="text" name="editCategory" id="editCategory" placeholder="Enter category">
+                                  </div>
+                              </div>
+                          </div>
+                          <!-- Add more form fields as needed for editing -->
+                      </form>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary save-changes-btn">Save changes</button>
+                  </div>
+              </div>
           </div>
-        </div>
       </div>
-      
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
@@ -200,6 +195,7 @@
                 <thead>
                   <tr>
                     <th>Category Name</th>
+                    <th></th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -208,8 +204,10 @@
                       <tr>
                           <td><?php echo $categoryItem['name']; ?></td>
                           <td>
-                              <button type="button" class="btn btn-sm btn-primary" data-category-id="<?php echo $categoryItem['id_categories']; ?>">Edit</button>
-                              <button type="button" class="btn btn-sm btn-danger" data-category-id="<?php echo $categoryItem['id_categories']; ?>">Delete</button>
+                          <td>
+                              <button type="button" class="btn btn-sm btn-primary edit-category-btn" data-category-id="<?php echo $categoryItem['id_categories']; ?>">Edit</button>
+                              <button type="button" class="btn btn-sm btn-danger delete-category-btn" data-category-id="<?php echo $categoryItem['id_categories']; ?>">Delete</button>
+                          </td>
                           </td>
                       </tr>
                   <?php endforeach; ?>
@@ -237,31 +235,55 @@
   <!-- container-scroller -->
 
   <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var editButtons = document.querySelectorAll('.edit-news-btn');
-    var deleteButtons = document.querySelectorAll('.delete-news-btn');
+      document.querySelectorAll('.edit-category-btn').forEach(item => {
+        item.addEventListener('click', event => {
+            const categoryId = event.currentTarget.dataset.categoryId;
+            console.log('Edit button clicked for category ID:', categoryId);
 
-    editButtons.forEach(function (button) {
-      button.addEventListener('click', function () {
-        $('#editNewsModal').modal('show');
-      });
+            fetch(`/get-category-data/${categoryId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Response from server:', data); // Log the response
+                    document.getElementById('editCategory').value = data.id_categories;
+                })
+                .catch(error => {
+                    console.error('Error fetching category data:', error);
+                });
+
+            $('#editNewsModal').modal('show');
+        });
+    });
+    // Event handler for the "Save changes" button
+    document.querySelector('.save-changes-btn').addEventListener('click', function() {
+        // Here you can add the logic to save changes
+        console.log('Save changes button clicked');
     });
 
-    deleteButtons.forEach(function (button) {
-      button.addEventListener('click', function () {
-        // Show a confirmation dialog
-        var isConfirmed = confirm("Are you sure you want to delete this news?");
-        
-        // If the user confirms, perform the deletion logic
-        if (isConfirmed) {
-          // Add your delete logic here
-          // For example, you can make an AJAX request to delete the news
-        }
+      // Event handler for Close button
+      document.querySelector('#editNewsModal .btn-secondary').addEventListener('click', function() {
+          $('#editNewsModal').modal('hide');
       });
+
+    document.querySelectorAll('.delete-category-btn').forEach(item => {
+        item.addEventListener('click', event => {
+            // Fetch category ID
+            const categoryId = event.currentTarget.dataset.categoryId;
+            console.log('Delete button clicked for category ID:', categoryId);
+            // Show confirmation dialog
+            if (confirm('Are you sure you want to delete this category?')) {
+                // Proceed with deletion logic
+                console.log('Category deleted.');
+                // You may want to perform AJAX call to delete the category from server
+                // and then remove the corresponding row from the table
+            }
+        });
     });
-  });
 </script>
-
   <!-- plugins:js -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="assets/vendors/js/vendor.bundle.base.js"></script>

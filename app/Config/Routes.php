@@ -36,6 +36,7 @@ $routes->get('/addcategory', 'CategoryController::addcategory');
 $routes->post('/addcategory', 'CategoryController::addcategory');
 $routes->get('/getcategory', 'CategoryController::getcategory');
 $routes->get('/managecategory', 'CategoryController::managecategory');
+$routes->post('/saveCategoryChanges', 'CategoryController::saveCategoryChanges');
 
 
 

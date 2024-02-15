@@ -42,14 +42,31 @@ class CategoryController extends BaseController
 
     public function manageCategory()
     {
-        // Load the CategoryModel
         $categoryModel = new CategoryModel();
-    
-        // Fetch category data from the database
-        $data['categoryData'] = $categoryModel->findAll(); // Assuming findAll() fetches all category items
-    
-        // Load the view file and pass the category data to it
-        return view('AdminPage/managecategory', $data); // Pass the $data array to the view
+        
+        $data['categoryData'] = $categoryModel->findAll();
+        
+        return view('AdminPage/managecategory', $data);
     }
-    
+
+    public function saveCategoryChanges()
+    {
+        try {
+            // Retrieve the category ID and new category name from the request
+            $categoryId = $this->request->getPost('id_categories'); // Adjusted to match the attribute name
+            $newCategoryName = $this->request->getPost('editCategory');
+
+            // Validate inputs if necessary
+
+            // Update the category in the database
+            $categoryModel = new CategoryModel();
+            $categoryModel->update($categoryId, ['name' => $newCategoryName]);
+
+            // If successful, return success response
+            return $this->response->setJSON(['success' => true, 'message' => 'Category updated successfully']);
+        } catch (\Exception $e) {
+            // If an error occurs, return error response
+            return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+        }
+    }
 }
