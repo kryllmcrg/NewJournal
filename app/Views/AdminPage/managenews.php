@@ -8,6 +8,7 @@
     
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
@@ -243,8 +244,8 @@
             <button type="button" class="btn btn-sm btn-success export-pdf-btn">Export to PDF</button>
             <div class="table-responsive">
               <table class="table table-striped">
-                <thead>
-                  <tr>
+              <thead>
+                <tr>
                     <th>Title</th>
                     <th>Category</th>
                     <th>Author</th>
@@ -252,22 +253,38 @@
                     <th>Images</th>
                     <th>Publication Date</th>
                     <th>Status</th>
-                    <th>Actions</th>
-                  </tr>
+                    <th>Actions</th> 
+                </tr>
                 </thead>
-                <tbody>
-                  <!-- Example row, replace with dynamic data from your backend -->
-                  <tr>
-                  
-                  </tr>
-                  <!-- Add more rows as needed -->
-                </tbody>
+                  <tbody>
+                      <?php foreach ($newsData as $newsItem): ?>
+                          <tr>
+                              <td><?php echo $newsItem['title']; ?></td>
+                              <td><?php echo $newsItem['subTitle']; ?></td>
+                              <td><?php echo $newsItem['author']; ?></td>
+                              <td><?php echo $newsItem['category']; ?></td>
+                              <td><?php echo $newsItem['publicationDate']; ?></td>
+                              <td>
+                                  <?php 
+                                  $images = explode(',', $newsItem['images']);
+                                  foreach ($images as $image): ?>
+                                      <img src="<?php echo base_url('public/uploads/' . $image); ?>" alt="Image">
+                                  <?php endforeach; ?>
+                              </td>
+                              <td><?php echo $newsItem['content']; ?></td>
+                              <td><?php echo $newsItem['status']; ?></td>
+                              <td> <!-- Actions column -->
+                                  <button type="button" class="btn btn-sm btn-primary edit-news-btn" data-news-id="<?php echo $newsItem['id_news']; ?>">Edit</button>
+                                  <button type="button" class="btn btn-sm btn-danger delete-news-btn" data-news-id="<?php echo $newsItem['id_news']; ?>">Delete</button>
+                              </td>
+                          </tr>
+                      <?php endforeach; ?>
+                  </tbody>
               </table>
             </div>
           </div>
         </div>
         </div>
-        
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
