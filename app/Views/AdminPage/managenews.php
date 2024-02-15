@@ -220,6 +220,7 @@
                     </div>
                 </div>
             </div>
+            
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
