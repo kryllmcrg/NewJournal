@@ -127,7 +127,6 @@
     <div class="form-container">
         <h2>Login</h2>
         <form action="<?= base_url('authenticate') ?>" method="post">
-        <?= csrf_field(); ?>
             <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
