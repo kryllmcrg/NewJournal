@@ -6,18 +6,20 @@
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="#staff" aria-expanded="false" aria-controls="staff">
-                    <span class="menu-title">Staff</span>
-                    <i class="menu-arrow"></i>
-                    <i class="mdi mdi-account menu-icon"></i>
-                </a>
-                <div class="collapse" id="staff">
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="manageprofile">Manage Profile</a></li>
-                    </ul>
-                </div>
-            </li>
+            <?php if(session()->get('role') == "ADMIN"):?>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#staff" aria-expanded="false" aria-controls="staff">
+                        <span class="menu-title">Staff</span>
+                        <i class="menu-arrow"></i>
+                        <i class="mdi mdi-account menu-icon"></i>
+                    </a>
+                    <div class="collapse" id="staff">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="manageprofile">Manage Profile</a></li>
+                        </ul>
+                    </div>
+                </li>
+            <?php endif;?>
 
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#news" aria-expanded="false" aria-controls="news">

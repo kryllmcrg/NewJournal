@@ -134,6 +134,7 @@
             <input type="password" id="password" name="password" placeholder="Enter your password" required>
 
             <button type="submit">Sign In</button>
+            <p>Don't have an account? <a href="/register">Sign up</a></p> 
         </form>
     </div>
 </body>

@@ -177,9 +177,9 @@
 
         <label for="gender">Gender <span class="required-sign">*</span></label>
         <select id="gender" name="gender" required>
-            <option value="ADMIN">Male</option>
-            <option value="STAFF">Female</option>
-            <option value="STAFF">UnIdentified</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Rather not say">Rather not say</option>
         </select>
 
         <label for="mobilePhone">Mobile Phone <span class="required-sign">*</span></label>
@@ -204,6 +204,7 @@
             I have read the Terms & Conditions
         </label>
 </form>
+<p>I have an account! <a href="/login">Sign up</a></p> 
 </div>
 </body>
 </html>
