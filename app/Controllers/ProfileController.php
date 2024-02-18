@@ -17,10 +17,10 @@ class ProfileController extends BaseController
     public function manageProfile()
     {
         // Load the UserModel
-        $userModel = new UsersModel();
+        $usersModel = new UsersModel();
         
         // Fetch all user data
-        $data['userData'] = $userModel->findAll();
+        $data['userData'] = $usersModel->findAll();
 
         // Pass $data to your view
         return view('AdminPage/manageprofile', $data);

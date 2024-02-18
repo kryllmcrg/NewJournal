@@ -73,9 +73,11 @@ class LogRegController extends BaseController
             'email' => 'required|valid_email',
             'username' => 'required|is_unique[users.username]',
             'address' => 'required',
+            'gender' => 'required',
             'mobilePhone' => 'required',
             'password' => 'required|min_length[6]',
-            'profile_image' => 'uploaded[profile_image]|is_image[profile_image]|max_size[profile_image,4096]'
+            'profile_image' => 'uploaded[profile_image]|is_image[profile_image]|max_size[profile_image,4096]',
+            'role' => 'required'
         ]);
         
 
@@ -101,6 +103,7 @@ class LogRegController extends BaseController
                 'email'      => $this->request->getPost('email'),
                 'username'   => $this->request->getPost('username'),
                 'address' => $this->request->getPost('address'),
+                'gender' => $this->request->getPost('gender'),
                 'mobilePhone' => $this->request->getPost('mobilePhone'),
                 'password'   => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
                 'profile_image' => $profileImage->getName(),

@@ -179,25 +179,42 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Staff Information</h4>
-                    <button type="button" class="btn btn-sm btn-success add-staff-btn">Add Staff</button>
                     <div class="table-responsive">
                       <table class="table table-hover">
                         <thead>
                           <tr>
-                            <th>Staff Id</th>
+                            <th>Id</th>
                             <th>Firstname</th>
                             <th>Lastname</th>
-                            <th>Mobile Phone</th>
+                            <th>Email</th>
+                            <th>Username</th>
                             <th>Address</th>
                             <th>Gender</th>
-                            <th>Position</th>
+                            <th>Mobile Phone</th>
+                            <th>Image</th>
+                            <th>Role</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <!-- Empty row -->
-                          <tr>
+                          <?php foreach ($userData as $userItem): ?>
+                              <tr>
+                                  <td><?php echo $userItem['id']; ?></td>
+                                  <td><?php echo $userItem['firstname']; ?></td>
+                                  <td><?php echo $userItem['lastname']; ?></td>
+                                  <td><?php echo $userItem['email']; ?></td>
+                                  <td><?php echo $userItem['username']; ?></td>
+                                  <td><?php echo $userItem['address']; ?></td>
+                                  <td><?php echo $userItem['gender']; ?></td>
+                                  <td><?php echo $userItem['mobilePhone']; ?></td>
+                                  <td><?php echo $userItem['profile_image']; ?></td>
+                                  <td><?php echo $userItem['role']; ?></td>
+                                  <td>
+                                  </td>
+                              </tr>
+                          <?php endforeach; ?>
+                          <!-- <tr>
                             <td colspan="7" class="text-center">No information available</td>
-                          </tr>
+                          </tr> -->
                         </tbody>
                       </table>
                     </div>

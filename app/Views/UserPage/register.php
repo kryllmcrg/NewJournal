@@ -156,40 +156,54 @@
     <div class="form-container">
     <h2>Register</h2>
     <form method="post" action="/store" enctype="multipart/form-data" class="form-grid">
-        <div class="form-column">
-            <label for="firstname">First Name <span class="required-sign">*</span></label>
-            <input type="text" id="firstname" name="firstname" placeholder="Insert your firstname" required>
+    <div class="form-column">
+        <label for="firstname">First Name <span class="required-sign">*</span></label>
+        <input type="text" id="firstname" name="firstname" placeholder="Insert your firstname" required>
 
-            <label for="lastname">Last Name <span class="required-sign">*</span></label>
-            <input type="text" id="lastname" name="lastname" placeholder="Insert your lastname" required>
-            
-            <label for="email">E-mail Address <span class="required-sign">*</span></label>
-            <input type="email" id="email" name="email" placeholder="Insert your e-mail address" required>
+        <label for="lastname">Last Name <span class="required-sign">*</span></label>
+        <input type="text" id="lastname" name="lastname" placeholder="Insert your lastname" required>
+        
+        <label for="email">E-mail Address <span class="required-sign">*</span></label>
+        <input type="email" id="email" name="email" placeholder="Insert your e-mail address" required>
 
-            <label for="username">Username <span class="required-sign">*</span></label>
-            <input type="text" id="username" name="username" placeholder="Create your username" required>
-        </div>
+        <label for="username">Username <span class="required-sign">*</span></label>
+        <input type="text" id="username" name="username" placeholder="Create your username" required>
 
-        <div class="form-column">
+        <label for="address">Address <span class="required-sign">*</span></label>
+        <input type="text" id="address" name="address" placeholder="Create your address" required>
+    </div>
 
-            <label for="address">Address <span class="required-sign">*</span></label>
-            <input type="text" id="address" name="address" placeholder="Create your address" required>
+    <div class="form-column">
 
-            <label for="mobilePhone">Mobile Phone <span class="required-sign">*</span></label>
-            <input type="text" id="mobilePhone" name="mobilePhone" placeholder="Create your mobilePhone" required>
+        <label for="gender">Gender <span class="required-sign">*</span></label>
+        <select id="gender" name="gender" required>
+            <option value="ADMIN">Male</option>
+            <option value="STAFF">Female</option>
+            <option value="STAFF">UnIdentified</option>
+        </select>
 
-            <label for="password">Password <span class="required-sign">*</span></label>
-            <input type="password" id="password" name="password" placeholder="Create your password" required>
+        <label for="mobilePhone">Mobile Phone <span class="required-sign">*</span></label>
+        <input type="text" id="mobilePhone" name="mobilePhone" placeholder="Create your mobilePhone" required>
 
-            <label for="profile_image" class="profile-image-label">Profile Image <span class="required-sign">*</span></label>
-            <input type="file" id="profile_image" name="profile_image" accept="image/*" class="profile-image-input">
-        </div>
-        <button type="submit" class="full-width">Sign Up</button>
-            <label for="terms">
-                <input type="checkbox" id="terms" name="terms" required>
-                I have read the Terms & Conditions
-            </label>
-    </form>
+        <label for="password">Password <span class="required-sign">*</span></label>
+        <input type="password" id="password" name="password" placeholder="Create your password" required>
+
+        <label for="profile_image" class="profile-image-label">Profile Image <span class="required-sign">*</span></label>
+        <input type="file" id="profile_image" name="profile_image" accept="image/*" class="profile-image-input">
+
+        <!-- Role Dropdown -->
+        <label for="role">Role <span class="required-sign">*</span></label>
+        <select id="role" name="role" required>
+            <option value="ADMIN">ADMIN</option>
+            <option value="STAFF">STAFF</option>
+        </select>
+    </div>
+    <button type="submit" class="full-width">Sign Up</button>
+        <label for="terms">
+            <input type="checkbox" id="terms" name="terms" required>
+            I have read the Terms & Conditions
+        </label>
+</form>
 </div>
 </body>
 </html>
