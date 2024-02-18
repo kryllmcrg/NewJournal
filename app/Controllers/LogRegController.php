@@ -20,14 +20,15 @@ class LogRegController extends BaseController
         return view('UserPage/login');
     }
 
-    public function authenticate()
+    public function loginAuth()
     {
+        $session = session();
         try {
-            $email = $this->request->getVar('email'); // Assuming 'Email' is equivalent to 'username'
+            $email = $this->request->getVar('email');
             $password = $this->request->getVar('password');
 
-            $accountModel = new UsersModel();
-            $user = $accountModel->where('email', $email)->first();
+            $usersModel = new UsersModel();
+            $user = $usersModel->where('email', $email)->first();
 
             // Check if user exists
             if (is_null($user)) {
@@ -38,17 +39,16 @@ class LogRegController extends BaseController
             if (!password_verify($password, $user['password'])) {
                 return redirect()->to(previous_url())->withInput()->with('error', 'Invalid email or password.');
             }
+            $ses_user= [
+                'id' => $user['id'],
+                'email' => $user['email'],
+                'role' => $user['role'],
+                'profile_image' => $user['profile_image'],
+                'fullname' => $user['firstname'].' '. $user['lastname']
+            ];
+            $session->set($ses_user);
+            return redirect()->to('/dashboard');
 
-            // Redirect based on user role
-            switch ($user['role']) {
-                case 'admin':
-                    return redirect()->to(site_url('AdminPage/dashboard'));
-                case 'user':
-                    return redirect()->to(site_url('UserPage'));
-                default:
-                    // If role is not defined, redirect to some default page
-                    return redirect()->to(site_url('login'))->with('error', 'Invalid user role.');
-            }
         } catch (\Throwable $th) {
             // Handle any unexpected errors
             return redirect()->to(site_url('login'))->with('error', 'An error occurred during authentication.');
@@ -68,12 +68,14 @@ class LogRegController extends BaseController
 
         // Set validation rules with custom error messages
         $validation->setRules([
-            'fullname' => 'required',
+            'firstname' => 'required',
+            'lastname' => 'required',
             'email' => 'required|valid_email',
             'username' => 'required|is_unique[users.username]',
+            'address' => 'required',
+            'mobilePhone' => 'required',
             'password' => 'required|min_length[6]',
-            'role' => 'required',
-            'profile_image' => 'uploaded[profile_image]|is_image[profile_image]|max_size[profile_image,4096]' // 4096 KB = 4 MB
+            'profile_image' => 'uploaded[profile_image]|is_image[profile_image]|max_size[profile_image,4096]'
         ]);
         
 
@@ -94,12 +96,15 @@ class LogRegController extends BaseController
             // Create a new user record in the database
             $userModel = new UsersModel();
             $userModel->save([
-                'fullname' => $this->request->getPost('fullname'),
+                'firstname' => $this->request->getPost('firstname'),
+                'lastname' => $this->request->getPost('lastname'),
                 'email'      => $this->request->getPost('email'),
                 'username'   => $this->request->getPost('username'),
-                'password'   => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT), // Hash the password
-                'role'       => $this->request->getPost('role'),
-                'profile_image' => $profileImage->getName()
+                'address' => $this->request->getPost('address'),
+                'mobilePhone' => $this->request->getPost('mobilePhone'),
+                'password'   => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+                'profile_image' => $profileImage->getName(),
+                'role' => $this->request->getPost('role')
             ]);
 
             // Redirect to login page

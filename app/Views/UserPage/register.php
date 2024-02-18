@@ -166,12 +166,17 @@
             <label for="email">E-mail Address <span class="required-sign">*</span></label>
             <input type="email" id="email" name="email" placeholder="Insert your e-mail address" required>
 
+            <label for="username">Username <span class="required-sign">*</span></label>
+            <input type="text" id="username" name="username" placeholder="Create your username" required>
         </div>
 
         <div class="form-column">
 
-            <label for="username">Username <span class="required-sign">*</span></label>
-            <input type="text" id="username" name="username" placeholder="Create your username" required>
+            <label for="address">Address <span class="required-sign">*</span></label>
+            <input type="text" id="address" name="address" placeholder="Create your address" required>
+
+            <label for="mobilePhone">Mobile Phone <span class="required-sign">*</span></label>
+            <input type="text" id="mobilePhone" name="mobilePhone" placeholder="Create your mobilePhone" required>
 
             <label for="password">Password <span class="required-sign">*</span></label>
             <input type="password" id="password" name="password" placeholder="Create your password" required>
