@@ -157,29 +157,24 @@
     <h2>Register</h2>
     <form method="post" action="/store" enctype="multipart/form-data" class="form-grid">
         <div class="form-column">
-            <label for="fullname">Full Name <span class="required-sign">*</span></label>
-            <input type="text" id="fullname" name="fullname" placeholder="Insert your fullname" required>
-            
+            <label for="firstname">First Name <span class="required-sign">*</span></label>
+            <input type="text" id="firstname" name="firstname" placeholder="Insert your firstname" required>
 
+            <label for="lastname">Last Name <span class="required-sign">*</span></label>
+            <input type="text" id="lastname" name="lastname" placeholder="Insert your lastname" required>
+            
             <label for="email">E-mail Address <span class="required-sign">*</span></label>
             <input type="email" id="email" name="email" placeholder="Insert your e-mail address" required>
-
-            <label for="username">Username <span class="required-sign">*</span></label>
-            <input type="text" id="username" name="username" placeholder="Create your username" required>
 
         </div>
 
         <div class="form-column">
+
+            <label for="username">Username <span class="required-sign">*</span></label>
+            <input type="text" id="username" name="username" placeholder="Create your username" required>
+
             <label for="password">Password <span class="required-sign">*</span></label>
             <input type="password" id="password" name="password" placeholder="Create your password" required>
-
-            <label for="role">Role <span class="required-sign">*</span></label>
-            <select id="role" name="role" required>
-                <option value="">Select Role</option>
-                <option value="admin">Admin</option>
-                <option value="staff">Staff</option>
-                <option value="user">User</option>
-            </select>
 
             <label for="profile_image" class="profile-image-label">Profile Image <span class="required-sign">*</span></label>
             <input type="file" id="profile_image" name="profile_image" accept="image/*" class="profile-image-input">
@@ -190,7 +185,6 @@
                 I have read the Terms & Conditions
             </label>
     </form>
-    <p>Already have an Account? <a href="login">Click here to Sign In</a></p>
 </div>
 </body>
 </html>

@@ -21,39 +21,39 @@ class LogRegController extends BaseController
     }
 
     public function authenticate()
-{
-    try {
-        $email = $this->request->getVar('email'); // Assuming 'Email' is equivalent to 'username'
-        $password = $this->request->getVar('password');
+    {
+        try {
+            $email = $this->request->getVar('email'); // Assuming 'Email' is equivalent to 'username'
+            $password = $this->request->getVar('password');
 
-        $accountModel = new UsersModel();
-        $user = $accountModel->where('email', $email)->first();
+            $accountModel = new UsersModel();
+            $user = $accountModel->where('email', $email)->first();
 
-        // Check if user exists
-        if (is_null($user)) {
-            return redirect()->to(previous_url())->withInput()->with('error', 'Invalid email or password.');
+            // Check if user exists
+            if (is_null($user)) {
+                return redirect()->to(previous_url())->withInput()->with('error', 'Invalid email or password.');
+            }
+
+            // Verify password
+            if (!password_verify($password, $user['password'])) {
+                return redirect()->to(previous_url())->withInput()->with('error', 'Invalid email or password.');
+            }
+
+            // Redirect based on user role
+            switch ($user['role']) {
+                case 'admin':
+                    return redirect()->to(site_url('AdminPage/dashboard'));
+                case 'user':
+                    return redirect()->to(site_url('UserPage'));
+                default:
+                    // If role is not defined, redirect to some default page
+                    return redirect()->to(site_url('login'))->with('error', 'Invalid user role.');
+            }
+        } catch (\Throwable $th) {
+            // Handle any unexpected errors
+            return redirect()->to(site_url('login'))->with('error', 'An error occurred during authentication.');
         }
-
-        // Verify password
-        if (!password_verify($password, $user['password'])) {
-            return redirect()->to(previous_url())->withInput()->with('error', 'Invalid email or password.');
-        }
-
-        // Redirect based on user role
-        switch ($user['role']) {
-            case 'admin':
-                return redirect()->to(site_url('AdminPage/dashboard'));
-            case 'user':
-                return redirect()->to(site_url('UserPage'));
-            default:
-                // If role is not defined, redirect to some default page
-                return redirect()->to(site_url('login'))->with('error', 'Invalid user role.');
-        }
-    } catch (\Throwable $th) {
-        // Handle any unexpected errors
-        return redirect()->to(site_url('login'))->with('error', 'An error occurred during authentication.');
     }
-}
     
     public function register()
     {

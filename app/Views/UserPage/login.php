@@ -135,7 +135,6 @@
 
             <button type="submit">Sign In</button>
         </form>
-        <p>Don't have an account?<a href="register">Click here to Sign up</a></p>
     </div>
 </body>
 </html>
