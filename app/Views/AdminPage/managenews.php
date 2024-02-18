@@ -192,14 +192,10 @@
 
                 <!-- content-wrapper ends -->
                 <!-- partial:partials/_footer.html -->
-                <footer class="footer">
-                    <div class="container-fluid d-flex justify-content-between">
-                        <span class="text-muted d-block text-center text-sm-start d-sm-inline-block">Copyright © CalapanCityNews 2024</span>
-                        <span class="float-none float-sm-end mt-1 mt-sm-0 text-end"> CIO <a href="" target="_blank">Calapan City Information Office</a> OffcialWebsite.com</span>
-                    </div>
-                </footer>
+                
                 <!-- partial -->
             </div>
+            <?php include('include\footer.php'); ?>
             <!-- main-panel ends -->
         </div>
         <!-- page-body-wrapper ends -->
@@ -245,29 +241,42 @@
     });
   });
 
-  document.addEventListener('DOMContentLoaded', function () {
-    var editButtons = document.querySelectorAll('.edit-news-btn');
-    var deleteButtons = document.querySelectorAll('.delete-news-btn');
+  document.querySelectorAll('.delete-news-btn').forEach(item => {
+    item.addEventListener('click', event => {
+        // Fetch news item data based on news ID
+        const newsId = event.currentTarget.dataset.newsId;
+        console.log('Delete button clicked for news ID:', newsId);
 
-    editButtons.forEach(function (button) {
-      button.addEventListener('click', function () {
-        $('#editNewsModal').modal('show');
-      });
-    });
-
-    deleteButtons.forEach(function (button) {
-      button.addEventListener('click', function () {
         // Show a confirmation dialog
         var isConfirmed = confirm("Are you sure you want to delete this news?");
-        
+
         // If the user confirms, perform the deletion logic
         if (isConfirmed) {
-          // Add your delete logic here
-          // For example, you can make an AJAX request to delete the news
+            // Make an AJAX request to delete the news item
+            fetch('/delete-news', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    id_news: newsId
+                }),
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Refresh the page or update the news list after successful deletion
+                    location.reload();
+                } else {
+                    // Handle error response
+                    console.error('Failed to delete news item');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         }
-      });
     });
-  });
+});
 
   </script>
 

@@ -83,29 +83,33 @@ class NewsController extends BaseController
     public function deleteNews()
     {
         try {
+            // Get the ID of the news item to delete
             $id_news = $this->request->getVar('id_news');
-
+    
             // Load the NewsModel through dependency injection or using service container
             $newsModel = new NewsModel(); 
-
+    
             // Check if the news item exists before attempting deletion
             $existingNews = $newsModel->find($id_news);
             if (!$existingNews) {
                 return $this->response->setJSON(['error' => 'News item not found'])->setStatusCode(404);
             }
-
+    
             // Delete the news item
             $deleted = $newsModel->delete($id_news);
-
+    
             if ($deleted) {
+                // Return success message if deletion was successful
                 return $this->response->setJSON(['message' => 'Record deleted successfully']);
             } else {
+                // Return error message if deletion failed
                 return $this->response->setJSON(['error' => 'Failed to delete the record'])->setStatusCode(500);
             }
         } catch (\Throwable $th) {
+            // Return error message if an exception occurred during deletion
             return $this->response->setJSON(['error' => 'An error occurred during deletion'])->setStatusCode(500);
         }
-    }
+    }    
 
     public function updateNews()
     {
