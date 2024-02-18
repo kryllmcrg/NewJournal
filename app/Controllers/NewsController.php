@@ -80,6 +80,60 @@ class NewsController extends BaseController
         $this->NewsModel = new NewsModel();
     }
 
+    public function deleteNews()
+    {
+        try {
+            $id_news = $this->request->getVar('id_news');
+
+            // Load the NewsModel through dependency injection or using service container
+            $newsModel = new NewsModel(); 
+
+            // Check if the news item exists before attempting deletion
+            $existingNews = $newsModel->find($id_news);
+            if (!$existingNews) {
+                return $this->response->setJSON(['error' => 'News item not found'])->setStatusCode(404);
+            }
+
+            // Delete the news item
+            $deleted = $newsModel->delete($id_news);
+
+            if ($deleted) {
+                return $this->response->setJSON(['message' => 'Record deleted successfully']);
+            } else {
+                return $this->response->setJSON(['error' => 'Failed to delete the record'])->setStatusCode(500);
+            }
+        } catch (\Throwable $th) {
+            return $this->response->setJSON(['error' => 'An error occurred during deletion'])->setStatusCode(500);
+        }
+    }
+
+    public function updateNews()
+    {
+        try {
+            $id_news = $this->request->getVar('id_news');
+
+            $data = [
+                'title' => $this->request->getVar('title'),
+                'author' => $this->request->getVar('author'),
+                'category' => $this->request->getVar('category'),
+                'content' => strip_tags($this->request->getVar('content')),
+                'publicationDate' => $this->request->getVar('publicationDate')
+            ];
+
+            // Assuming $this->news is a model instance (e.g., NewsModel)
+            $newsModel = new NewsModel();
+            $updated = $newsModel->where('id_news', $id_news)->set($data)->update();
+
+            if ($updated) {
+                return $this->respond(['message' => 'Record updated successfully']);
+            } else {
+                return $this->respond(['error' => 'Failed to update record']);
+            }
+        } catch (\Throwable $th) {
+            return $this->respond(["error" => "Error: " . $th->getMessage()]);
+        }
+    }
+
     public function managenews()
     {
         // Load the NewsModel
