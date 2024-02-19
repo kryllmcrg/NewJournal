@@ -36,6 +36,20 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#announce" aria-expanded="false" aria-controls="announce">
+                    <span class="menu-title">Announcements</span>
+                    <i class="menu-arrow"></i>
+                    <i class="mdi mdi-bullhorn menu-icon"></i>
+                </a>
+                <div class="collapse" id="announce">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="addannounce">Add Announcements</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="manageannounce">Manage Announcements</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#comments" aria-expanded="false" aria-controls="comments">
                     <span class="menu-title">Comments</span>
                     <i class="menu-arrow"></i>

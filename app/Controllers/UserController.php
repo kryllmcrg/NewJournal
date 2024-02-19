@@ -30,9 +30,4 @@ class UserController extends BaseController
     {
         return view('UserPage/news');
     }
-
-    public function announcements()
-    {
-        return view('UserPage/announcements');
-    }
 }

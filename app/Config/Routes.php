@@ -10,7 +10,6 @@ $routes->get('/', 'UserController::home');
 $routes->get('/about', 'UserController::about');
 $routes->get('/contact', 'UserController::contact');
 $routes->get('/news', 'UserController::news');
-$routes->get('/announcements', 'UserController::announcements');
 
 $routes->get('/login', 'LogRegController::login');
 $routes->post('loginAuth', 'LogRegController::loginAuth');
@@ -40,7 +39,8 @@ $routes->get('/managecategory', 'CategoryController::managecategory');
 $routes->post('/saveCategoryChanges', 'CategoryController::saveCategoryChanges');
 
 
-
-$routes->get('/addingNews', 'StaffController::addingNews');
-
+$routes->get('/announcements', 'AnnounceController::announcements');
+$routes->get('/addannounce', 'AnnounceController::addannounce');
+$routes->get('/manageannounce', 'AnnounceController::manageannounce');
+$routes->post('addAnnounceSubmit', 'AnnounceController::addAnnounceSubmit');
 
