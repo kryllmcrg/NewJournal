@@ -17,18 +17,17 @@
     <div class="container-scroller">
         <div class="row p-0 m-0 proBanner" id="proBanner">
             <div class="col-md-12 p-0 m-0">
-                <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
+                <!-- <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
                     <div class="ps-lg-1">
                         <div class="d-flex align-items-center justify-content-between">
                         </div>
                     </div>
                     <div class="d-flex align-items-center justify-content-between">
-                        <a href="https://www.bootstrapdash.com/product/purple-bootstrap-admin-template/"><i class="mdi mdi-home me-3 text-white"></i></a>
                         <button id="bannerClose" class="btn border-0 p-0">
                             <i class="mdi mdi-close text-white me-0"></i>
                         </button>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <!-- partial:partials/_navbar.html -->
@@ -130,23 +129,95 @@
         <!-- page-body-wrapper ends -->
     </div>
 
+    <!-- Modal for Edit -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Edit Announcement</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Add your form for editing announcement here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- container-scroller -->
-    <!-- plugins:js -->
+
+    <!-- <script>
+    // Script for showing edit modal
+    $('.edit-announce-btn').on('click', function() {
+        var announceId = $(this).data('announce-id');
+        // Here you can fetch the announcement data using Ajax and populate the edit modal
+        $('#editModal').modal('show');
+    });
+
+    // Script for showing delete alert
+    $('.delete-announce-btn').on('click', function() {
+        var announceId = $(this).data('announce-id');
+        if (confirm('Are you sure you want to delete this announcement?')) {
+            // Here you can send a delete request using Ajax or submit a form for deleting the announcement
+            // You can also redirect the user to a delete route/controller
+            alert('Announcement deleted successfully.');
+        }
+    });
+</script> -->
+
+<script>
+      document.querySelectorAll('.edit-announce-btn').forEach(item => {
+      item.addEventListener('click', event => {
+          
+          const announceId = event.currentTarget.dataset.newsId;
+          console.log('Edit button clicked for announcement ID:', announceId);
+
+          // Show the modal
+          $('#editAnnounceModal').modal('show');
+      });
+  });
+
+    // Event handler for Close button
+  document.querySelector('#editAnnounceModal .btn-secondary').addEventListener('click', function() {
+      $('#editAnnounceModal').modal('hide');
+  });
+
+  // Event handler for Save changes button
+  document.querySelector('#editAnnounceModal .btn-primary').addEventListener('click', function() {
+      // Perform actions when Save changes button is clicked
+      console.log('Save changes button clicked');
+
+      // Close the modal
+      $('#editAnnounceModal').modal('hide');
+  });
+
+  document.querySelectorAll('.delete-announce-btn').forEach(item => {
+    item.addEventListener('click', event => {
+      // Fetch news item data based on news ID
+      const newsId = event.currentTarget.dataset.newsId;
+      console.log('Delete button clicked for announcement ID:', newsId);
+      
+      // Show alert
+      alert('Are you sure you want to delete this announcement item?');
+      
+      // Here you can proceed with actual deletion logic if needed
+    });
+  });
+
     <script src="assets/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
+    
     <script src="assets/vendors/chart.js/Chart.min.js"></script>
     <script src="assets/js/jquery.cookie.js" type="text/javascript"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
+    
     <script src="assets/js/off-canvas.js"></script>
     <script src="assets/js/hoverable-collapse.js"></script>
     <script src="assets/js/misc.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
+    
     <script src="assets/js/dashboard.js"></script>
     <script src="assets/js/todolist.js"></script>
-    <!-- End custom js for this page -->
+    
 </body>
 </html>
