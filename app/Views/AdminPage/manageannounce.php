@@ -129,83 +129,76 @@
         <!-- page-body-wrapper ends -->
     </div>
 
-    <!-- Modal for Edit -->
-    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+   <!-- Modal for Edit -->
+    <div class="modal fade" id="editAnnounceModal" tabindex="-1" aria-labelledby="editAnnounceModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editModalLabel">Edit Announcement</h5>
+                    <h5 class="modal-title" id="editAnnounceModalLabel">Edit Announcement</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- Add your form for editing announcement here -->
+                    <form id="editAnnounceForm">
+                        <div class="mb-3">
+                            <label for="editTitle" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="editTitle" name="editTitle" placeholder="Enter title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="editDescription" name="editDescription" placeholder="Enter description" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="editNewsImages">Images</label>
+                            <input type="file" class="form-control-file" id="editImages" name="editImages[]" multiple>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary" id="saveChangesBtn">Save changes</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <script>
+        document.querySelectorAll('.edit-announce-btn').forEach(item => {
+            item.addEventListener('click', event => {
+                const announceId = event.currentTarget.dataset.announceId;
+                console.log('Edit button clicked for announcement ID:', announceId);
+                
+                // Show the modal
+                $('#editAnnounceModal').modal('show');
+            });
+        });
 
-    <!-- <script>
-    // Script for showing edit modal
-    $('.edit-announce-btn').on('click', function() {
-        var announceId = $(this).data('announce-id');
-        // Here you can fetch the announcement data using Ajax and populate the edit modal
-        $('#editModal').modal('show');
-    });
+        // Event handler for Close button
+        document.querySelector('#editAnnounceModal .btn-secondary').addEventListener('click', function() {
+            $('#editAnnounceModal').modal('hide');
+        });
 
-    // Script for showing delete alert
-    $('.delete-announce-btn').on('click', function() {
-        var announceId = $(this).data('announce-id');
-        if (confirm('Are you sure you want to delete this announcement?')) {
-            // Here you can send a delete request using Ajax or submit a form for deleting the announcement
-            // You can also redirect the user to a delete route/controller
-            alert('Announcement deleted successfully.');
-        }
-    });
-</script> -->
+        // Event handler for Save changes button
+        document.querySelector('#editAnnounceModal .btn-primary').addEventListener('click', function() {
+            // Perform actions when Save changes button is clicked
+            console.log('Save changes button clicked');
 
-<script>
-      document.querySelectorAll('.edit-announce-btn').forEach(item => {
-      item.addEventListener('click', event => {
-          
-          const announceId = event.currentTarget.dataset.newsId;
-          console.log('Edit button clicked for announcement ID:', announceId);
+            // Close the modal
+            $('#editAnnounceModal').modal('hide');
+        });
 
-          // Show the modal
-          $('#editAnnounceModal').modal('show');
-      });
-  });
-
-    // Event handler for Close button
-  document.querySelector('#editAnnounceModal .btn-secondary').addEventListener('click', function() {
-      $('#editAnnounceModal').modal('hide');
-  });
-
-  // Event handler for Save changes button
-  document.querySelector('#editAnnounceModal .btn-primary').addEventListener('click', function() {
-      // Perform actions when Save changes button is clicked
-      console.log('Save changes button clicked');
-
-      // Close the modal
-      $('#editAnnounceModal').modal('hide');
-  });
-
-  document.querySelectorAll('.delete-announce-btn').forEach(item => {
-    item.addEventListener('click', event => {
-      // Fetch news item data based on news ID
-      const newsId = event.currentTarget.dataset.newsId;
-      console.log('Delete button clicked for announcement ID:', newsId);
-      
-      // Show alert
-      alert('Are you sure you want to delete this announcement item?');
-      
-      // Here you can proceed with actual deletion logic if needed
-    });
-  });
+        document.querySelectorAll('.delete-announce-btn').forEach(item => {
+            item.addEventListener('click', event => {
+                // Fetch announce item data based on announce ID
+                const announceId = event.currentTarget.dataset.announceId;
+                console.log('Delete button clicked for announcement ID:', announceId);
+                
+                // Show alert
+                if (confirm('Are you sure you want to delete this announcement item?')) {
+                    // Here you can proceed with actual deletion logic if needed
+                }
+            });
+        });
+    </script>
 
     <script src="assets/vendors/js/vendor.bundle.base.js"></script>
     
