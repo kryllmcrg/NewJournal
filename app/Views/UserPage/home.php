@@ -256,34 +256,26 @@
         </div>
     </nav>
 
-    <div class="py-5 bg-light">
+    <div class="py-5 bg light">
         <div class="container">
             <div class="row">
-                <?php foreach ($newsData as $newsItem): ?>
                 <div class="col-md-3 mb-3">
                     <div class="card shadow-sm">
-                        <?php 
-                           $images = explode(',', $newsItem['images']);
-                           foreach ($images as $image): ?>
-                           <img src="<?php echo base_url('public/uploads/' . $image); ?>" alt="Image">
-                        <?php endforeach; ?>
+                        <img src="assets/images/no_image.jpeg" class="w-100 rounded" alt="Img">
                         <div class="card-body">
-                            <h5><?php echo $newsItem['title']; ?></h5>
-                            <p><?php echo $newsItem['subTitle']; ?></p>
-                            <p>Author: <?php echo $newsItem['author']; ?></p>
-                            <p>Category: <?php echo $newsItem['category']; ?></p>
-                            <p>Publication Date: <?php echo $newsItem['publicationDate']; ?></p>
+                            <h5>News</h5>
+                            <p>
+                                Calapan Festival HAHAHA
+                            </p>
                             <div>
-                                <a href="UserPage/view/<?php echo $newsItem['slug']; ?>" class="text-primary">Read More</a>
+                                <a href="UserPage/view.php?slug=" class="text-primary">readmore</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <?php endforeach; ?>
             </div>
         </div>
     </div>
-
     <!-- Footer -->
     <footer>
         <div class="footer-content">
