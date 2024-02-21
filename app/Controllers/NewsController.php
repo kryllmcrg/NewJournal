@@ -138,6 +138,18 @@ class NewsController extends BaseController
         }
     }
 
+    public function displayNews()
+    {
+       // Load the NewsModel
+       $newsModel = new NewsModel();
+    
+       // Fetch news data from the database
+       $data['newsData'] = $newsModel->findAll(); // Assuming findAll() fetches all news items
+   
+       // Load the view file and pass the news data to it
+       return view('UserPage/home', $data); // Pass the $data array to the view
+    }
+
     public function managenews()
     {
         // Load the NewsModel
