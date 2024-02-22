@@ -20,7 +20,7 @@ class AnnounceController extends BaseController
     public function addAnnounceSubmit()
     {
         try {
-            $announceModel = new AnnounceModel(); // Corrected model instantiation
+            $announceModel = new AnnounceModel();
             $images = $this->request->getFiles();
             
             // Check if files were uploaded
@@ -64,7 +64,7 @@ class AnnounceController extends BaseController
             // Redirect to 'addnews' page with success message
             return redirect()->to('/announcements')->with('success', 'Announcement created successfully');
         } catch (\Throwable $th) {
-            return redirect()->back()->withInput()->with('error', 'Error: ' . $th->getMessage()); // Corrected redirection
+            return $this->response->setStatusCode(500)->setJSON(["error" => "Error: " . $th->getMessage()]);
         }
     }
 
