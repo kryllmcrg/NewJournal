@@ -80,27 +80,17 @@ class NewsController extends BaseController
         $this->NewsModel = new NewsModel();
     }
 
-    public function deleteNews()
+    public function deleteNews($id)
     {
         try {
-            // Get the ID of the news item to delete
-            $id_news = $this->request->getVar('id_news');
-    
-            // Load the NewsModel through dependency injection or using service container
-            $newsModel = new NewsModel(); 
-    
-            // Check if the news item exists before attempting deletion
-            $existingNews = $newsModel->find($id_news);
-            if (!$existingNews) {
-                return $this->response->setJSON(['error' => 'News item not found'])->setStatusCode(404);
-            }
-    
+            $newsModel = new NewsModel();
+            
             // Delete the news item
-            $deleted = $newsModel->delete($id_news);
+            $deleted = $newsModel->where('id_news',$id)->delete();
     
             if ($deleted) {
                 // Return success message if deletion was successful
-                return $this->response->setJSON(['message' => 'Record deleted successfully']);
+                return redirect()->to('managenews');
             } else {
                 // Return error message if deletion failed
                 return $this->response->setJSON(['error' => 'Failed to delete the record'])->setStatusCode(500);
@@ -117,37 +107,22 @@ class NewsController extends BaseController
             $id_news = $this->request->getVar('id_news');
 
             $data = [
-                'title' => $this->request->getVar('title'),
-                'author' => $this->request->getVar('author'),
-                'category' => $this->request->getVar('category'),
-                'content' => strip_tags($this->request->getVar('content')),
-                'publicationDate' => $this->request->getVar('publicationDate')
+                'title' => $this->request->getVar('editNewsTitle'),
+                'subTitle' => $this->request->getVar('editNewsSubTitle'),
+                'author' => $this->request->getVar('editNewsAuthor'),
+                'category' => $this->request->getVar('editCategory'),
+                'content' => strip_tags($this->request->getVar('editNewsContent')),
+                'publicationDate' => $this->request->getVar('editNewsPublicationDate')
             ];
 
             // Assuming $this->news is a model instance (e.g., NewsModel)
             $newsModel = new NewsModel();
             $updated = $newsModel->where('id_news', $id_news)->set($data)->update();
 
-            if ($updated) {
-                return $this->respond(['message' => 'Record updated successfully']);
-            } else {
-                return $this->respond(['error' => 'Failed to update record']);
-            }
+            return redirect()->to('managenews');
         } catch (\Throwable $th) {
             return $this->respond(["error" => "Error: " . $th->getMessage()]);
         }
-    }
-
-    public function displayNews()
-    {
-       // Load the NewsModel
-       $newsModel = new NewsModel();
-    
-       // Fetch news data from the database
-       $data['newsData'] = $newsModel->findAll(); // Assuming findAll() fetches all news items
-   
-       // Load the view file and pass the news data to it
-       return view('UserPage/home', $data); // Pass the $data array to the view
     }
 
     public function managenews()

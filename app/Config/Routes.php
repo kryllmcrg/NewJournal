@@ -26,9 +26,8 @@ $routes->get('/manageprofile', 'ProfileController::manageprofile');
 $routes->get('/addnews', 'NewsController::addnews');
 $routes->post('addNewsSubmit', 'NewsController::addNewsSubmit');
 $routes->get('/managenews', 'NewsController::managenews');
-$routes->post('/deleteNews', 'NewsController::deleteNews');
-$routes->post('/updateNews', 'NewsController::updateNews');
-$routes->get('/displayNews', 'NewsController::displayNews');
+$routes->get('/deleteNews/(:any)', 'NewsController::deleteNews/$1');
+$routes->post('/editNews', 'NewsController::updateNews');
 
 $routes->get('/managecomments', 'CommentsController::managecomments');
 

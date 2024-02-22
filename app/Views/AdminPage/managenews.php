@@ -51,70 +51,6 @@
             <!-- partial:partials/_sidebar.html -->
             <div class="container-fluid page-body-wrapper">
             <?php include('include\sidebar.php'); ?>
-
-
-            <!-- Modal for Editing News -->
-            <div class="modal fade" id="editNewsModal" tabindex="-1" role="dialog" aria-labelledby="editNewsModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="editNewsModalLabel">Edit News</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <!-- Form for editing news -->
-                            <form id="editNewsForm">
-                                <div class="form-group">
-                                    <label for="editNewsTitle">Title</label>
-                                    <input type="text" class="form-control" id="editNewsTitle" name="editNewsTitle" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="editNewsSubTitle">SubTitle</label>
-                                    <input type="text" class="form-control" id="editNewsSubTitle" name="editNewsSubTitle" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="editNewsAuthor">Author</label>
-                                    <input type="text" class="form-control" id="editNewsAuthor" name="editNewsAuthor" required>
-                                </div>
-
-                                <div class="mb-3">
-                                  <label for="editCategory" class="form-label">Category</label>
-                                  <input type="text" class="form-control" id="editCategory" placeholder="Enter category">
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="editNewsPublicationDate">Publication Date</label>
-                                    <input type="date" class="form-control" id="editNewsPublicationDate" name="editNewsPublicationDate" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="editNewsImages">Images</label>
-                                    <input type="file" class="form-control-file" id="editNewsImages" name="editNewsImages[]" multiple>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="editNewsContent">Content</label>
-                                    <textarea class="form-control" id="editNewsContent" name="editNewsContent" rows="5" required></textarea>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="editNewsStatus">Status</label>
-                                    <select class="form-control" id="editNewsStatus" name="editNewsStatus" required>
-                                        <option value="draft">Draft</option>
-                                        <option value="published">Published</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" id="saveEditedNewsBtn">Save Changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
             
             <!-- partial -->
             <div class="main-panel">
@@ -174,10 +110,81 @@
                                                         <td><?php echo $newsItem['content']; ?></td>
                                                         <td><?php echo $newsItem['status']; ?></td>
                                                         <td> <!-- Actions column -->
-                                                            <button type="button" class="btn btn-sm btn-primary edit-news-btn" data-news-id="<?php echo $newsItem['id_news']; ?>">Edit</button>
-                                                            <button type="button" class="btn btn-sm btn-danger delete-news-btn" data-news-id="<?php echo $newsItem['id_news']; ?>">Delete</button>
+                                                            <button type="button" class="btn btn-sm btn-primary edit-news-btn"  data-news-id="<?= $newsItem['id_news'] ?>">Edit</button>
+                                                            <a href="<?php echo base_url('/deleteNews/'.$newsItem['id_news']); ?>" class="btn btn-sm btn-danger delete-news-btn">Delete</a>
                                                         </td>
                                                     </tr>
+
+                                                    <!-- Modal for Editing News -->
+                                                    <div class="modal fade" id="editNewsModal<?=$newsItem['id_news']?>" tabindex="-1" role="dialog" aria-labelledby="editNewsModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                             <!-- Form for editing news -->
+                                                             <form id="editNewsForm" action="<?php echo base_url('/editNews'); ?>" method="POST">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="editNewsModalLabel">Edit News</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                   
+                                                                    <input type="hidden" name="id_news" value="<?= $newsItem['id_news']?>">
+                                                                        <div class="form-group">
+                                                                            <label for="editNewsTitle">Title</label>
+                                                                            <input value="<?= $newsItem['title'];?>" type="text" class="form-control" id="editNewsTitle" name="editNewsTitle" required>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="editNewsSubTitle">SubTitle</label>
+                                                                            <input value="<?= $newsItem['subTitle'];?>" type="text" class="form-control" id="editNewsSubTitle" name="editNewsSubTitle" required>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="editNewsAuthor">Author</label>
+                                                                            <input value="<?= $newsItem['author'];?>" type="text" class="form-control" id="editNewsAuthor" name="editNewsAuthor" required>
+                                                                        </div>
+
+                                                                        <div class="mb-3">
+                                                                        <label for="editCategory" class="form-label">Category</label>
+                                                                        <input value="<?= $newsItem['category'];?>" type="text" class="form-control" id="editCategory" placeholder="Enter category">
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label for="editNewsPublicationDate">Publication Date</label>
+                                                                            <input value="<?= $newsItem['publicationDate'];?>" type="date" class="form-control" id="editNewsPublicationDate" name="editNewsPublicationDate" required>
+                                                                        </div>
+
+                                                                        <div style="display: flex; justify-content: center;">
+                                                                            <img width="150px" src="<?= base_url('public/uploads/' . $image); ?>" alt="" srcset="">
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label for="editNewsImages">Images</label>
+                                                                            <input type="file" class="form-control-file" id="editNewsImages" name="editNewsImages[]" multiple>
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label for="editNewsContent">Content</label>
+                                                                            <textarea class="form-control" id="editNewsContent" name="editNewsContent" rows="5" required><?= $newsItem['content'];?></textarea>
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label for="editNewsStatus">Status</label>
+                                                                            <select class="form-control" id="editNewsStatus" name="editNewsStatus" required>
+                                                                                <option <?php if($newsItem['status'] === "") echo "selected"?> value="published">Select Status</option>
+                                                                                <option <?php if($newsItem['status'] === "Draft") echo "selected"?> value="draft">Draft</option>
+                                                                                <option <?php if($newsItem['status'] === "Published") echo "selected"?> value="published">Published</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-primary" id="saveEditedNewsBtn">Save Changes</button>
+                                                                </div>
+                                                            </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
                                                 <?php endforeach; ?>
                                             </tbody>
                                         </table>
@@ -203,17 +210,21 @@
 
 
     <script>
-      document.querySelectorAll('.edit-news-btn').forEach(item => {
-      item.addEventListener('click', event => {
-          // Fetch news item data based on news ID
-          const newsId = event.currentTarget.dataset.newsId;
-          console.log('Edit button clicked for news ID:', newsId);
+      // JavaScript to handle the click event of the "Edit" button
+      document.addEventListener('DOMContentLoaded', function () {
+        const editButtons = document.querySelectorAll('.edit-news-btn');
 
-          // Show the modal
-          $('#editNewsModal').modal('show');
-      });
-  });
+        editButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                const newsId = button.getAttribute('data-news-id');
+                const modalId = `#editNewsModal${newsId}`;
+                const modal = document.querySelector(modalId);
 
+                // Open the corresponding modal
+                $(modal).modal('show');
+            });
+        });
+    });
     // Event handler for Close button
   document.querySelector('#editNewsModal .btn-secondary').addEventListener('click', function() {
       $('#editNewsModal').modal('hide');
