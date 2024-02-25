@@ -81,15 +81,6 @@
 
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="publicationDate">Publication Date</label>
-                                <input type="date" class="form-control" id="publicationDate" name="publicationDate">
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- Image Upload -->
                     <div class="row">
                         <div class="col-md-6">

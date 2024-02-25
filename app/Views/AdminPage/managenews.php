@@ -78,10 +78,12 @@
                                               <th>SubTitle</th>
                                               <th>Author</th>
                                               <th>Category</th>
-                                              <th>Publication Date</th>
                                               <th>Images</th>
                                               <th>Content</th>
                                               <th>Status</th>
+                                              <th>Comment</th>
+                                              <th>Created Date</th>
+                                              <th>Update Date</th>
                                               <th>Actions</th> 
                                           </tr>
                                           </thead>
@@ -92,7 +94,6 @@
                                                         <td><?php echo $newsItem['subTitle']; ?></td>
                                                         <td><?php echo $newsItem['author']; ?></td>
                                                         <td><?php echo $newsItem['category']; ?></td>
-                                                        <td><?php echo $newsItem['publicationDate']; ?></td>
                                                         <td>
                                                             <?php 
                                                             $images = explode(',', $newsItem['images']);
@@ -115,6 +116,9 @@
                                                                 </div>
                                                             </div>
                                                         </td>
+                                                        <td><?php echo $newsItem['comment']; ?></td>
+                                                        <td><?php echo $newsItem['created_at']; ?></td>
+                                                        <td><?php echo $newsItem['updated_at']; ?></td>
                                                         <td>
                                                             <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" data-placement="top" title="View News" onclick="viewNews(<?php echo $newsItem['id_news']; ?>)">
                                                                 <i class="fas fa-eye"></i> View

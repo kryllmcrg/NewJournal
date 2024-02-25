@@ -86,7 +86,9 @@
                                         <tr>
                                             <td><?php echo $newsItem['title']; ?></td>
                                             <td><?php echo $newsItem['author']; ?></td>
-                                            <td><?php echo $newsItem['publicationDate']; ?></td>
+                                            <td><?php echo $newsItem['comment']; ?></td>
+                                            <td><?php echo $newsItem['created_at']; ?></td>
+                                            <td><?php echo $newsItem['updated_at']; ?></td>
                                             <td> <!-- Actions column -->
                                                 <a href="<?php echo base_url('/restoreNews/'.$newsItem['id_news']); ?>" class="btn btn-sm btn-success restore-news-btn">Restore</a>
                                             </td>

@@ -73,7 +73,6 @@
                       <table class="table table-hover">
                         <thead>
                           <tr>
-                            <th>Id</th>
                             <th>Firstname</th>
                             <th>Lastname</th>
                             <th>Email</th>
@@ -88,7 +87,6 @@
                         <tbody>
                           <?php foreach ($userData as $userItem): ?>
                               <tr>
-                                  <td><?php echo $userItem['id']; ?></td>
                                   <td><?php echo $userItem['firstname']; ?></td>
                                   <td><?php echo $userItem['lastname']; ?></td>
                                   <td><?php echo $userItem['email']; ?></td>

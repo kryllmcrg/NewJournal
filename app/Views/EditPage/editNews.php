@@ -82,15 +82,6 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="publicationDate">Publication Date</label>
-                                <input type="date" class="form-control" id="publicationDate" name="publicationDate">
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- Image Upload -->
                     <div class="row">
                         <div class="col-md-6">
@@ -107,6 +98,15 @@
                             <div class="form-group">
                                 <label for="content">Content</label>
                                 <textarea class="form-control mySummernote" id="content" name="content" placeholder="Enter news content"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="comment">Comment</label>
+                                <input type="text" class="form-control" id="comment" name="comment" placeholder="Enter comment">
                             </div>
                         </div>
                     </div>

@@ -66,7 +66,9 @@ class NewsController extends BaseController
                 'category' => $this->request->getVar('category'),
                 'images' => implode(',', $imageNames),
                 'content' => strip_tags($this->request->getVar('content')),
-                'publicationDate' => $this->request->getVar('publicationDate'),
+                'comment' => $this->request->getVar('comment'),
+                'create_at' => $this->request->getVar('create_at'),
+                'updated_at' => $this->request->getVar('updated_at'),
             ];
             
             // Validate data
@@ -189,7 +191,7 @@ class NewsController extends BaseController
         $newsModel = new NewsModel();
     
         // Fetch news data from the database including only the specified columns
-        $newsData = $newsModel->select('title, author, publicationDate, id_news')->findAll();
+        $newsData = $newsModel->select('title, author,created_at, updated_at comment, id_news')->findAll();
     
         // Pass the data to the view
         return view('AdminPage/archive', ['newsData' => $newsData]);
