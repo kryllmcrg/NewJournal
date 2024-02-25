@@ -46,10 +46,10 @@
             <div class="col-lg-5 offset-lg-1">
                 <div class="owl-banner owl-carousel">
                     <div class="item">
-                        <img src="assets/images/calapan-news-01.jpg" alt="Calapan Oriental Mindoro">
+                        <img src="assets/images/carousel1.jpg" alt="Calapan Oriental Mindoro">
                     </div>
                     <div class="item">
-                        <img src="assets/images/calapan-news-02.jpg" alt="Calapan Oriental Mindoro">
+                        <img src="assets/images/carousel2.jpg" alt="Calapan Oriental Mindoro">
                     </div>
                 </div>
             </div>
