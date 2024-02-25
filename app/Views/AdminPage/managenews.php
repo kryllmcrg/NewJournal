@@ -259,8 +259,8 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="<?= base_url('assets/vendors/js/vendor.bundle.base.js')?>"></script>
-    <script src="<?= base_url('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js')?>"></script>
-    <script src="<?= base_url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js')?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <script src="<?= base_url('assets/vendors/chart.js/Chart.min.js')?>"></script>
