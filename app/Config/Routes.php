@@ -28,6 +28,7 @@ $routes->post('addNewsSubmit', 'NewsController::addNewsSubmit');
 $routes->get('/managenews', 'NewsController::managenews');
 $routes->get('/deleteNews/(:any)', 'NewsController::deleteNews/$1');
 $routes->post('/editNews', 'NewsController::updateNews');
+$routes->get('changeStatus/(:any)', 'NewsController::changeStatus/$1/$2');
 
 $routes->get('/archive', 'NewsController::archive');
 

@@ -137,6 +137,18 @@ class NewsController extends BaseController
         return view('AdminPage/managenews', $data); // Pass the $data array to the view
         
     }
+
+    public function changeStatus($id_news, $status)
+    {
+        // Load the NewsModel
+        $newsModel = new NewsModel();
+
+        // Update the status of the news item in the database
+        $newsModel->status($id_news, $status);
+
+        redirect('addnews'); 
+    }
+
     
     public function archive()
     {

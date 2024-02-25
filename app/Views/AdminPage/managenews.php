@@ -8,6 +8,11 @@
     
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
     
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
@@ -76,7 +81,6 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Manage News</h4>
-                                    <button type="button" class="btn btn-sm btn-success export-pdf-btn">Export to PDF</button>
                                       <div class="table-responsive">
                                         <table class="table table-striped">
                                         <thead>
@@ -108,30 +112,22 @@
                                                             <?php endforeach; ?>
                                                         </td>
                                                         <td><?php echo $newsItem['content']; ?></td>
-                                                        <td> <!-- Status column -->
-                                                            <?php
-                                                            $status = $newsItem['status'];
-                                                            $statusIcons = [
-                                                                'pending' => '<i class="mdi mdi-clock-outline text-info"></i>',
-                                                                'approved' => '<i class="mdi mdi-check-circle-outline text-success"></i>',
-                                                                'decline' => '<i class="mdi mdi-alert-circle-outline text-warning"></i>',
-                                                                'reject' => '<i class="mdi mdi-close-circle-outline text-danger"></i>'
-                                                            ];
-                                                            ?>
-                                                            <div class="dropdown">
-                                                                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="statusDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                    <?php echo $statusIcons[$status]; ?>
-                                                                </button>
-                                                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="statusDropdown">
-                                                                    <?php foreach ($statusIcons as $key => $icon): ?>
-                                                                        <li><a class="dropdown-item" href="<?php echo base_url('/changeStatus/'.$newsItem['id_news'].'/'.$key); ?>"><?php echo $icon; ?> <?php echo ucfirst($key); ?></a></li>
-                                                                    <?php endforeach; ?>
-                                                                </ul>
+                                                        <td>
+                                                            <div class="d-flex align-items-center">
+                                                                <span id="statusText"><?php echo $newsItem['status']; ?></span>
+                                                                <div class="dropdown ml-auto">
+                                                                    <i class="fas fa-ellipsis-h" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('approved')"><i class="fas fa-check-circle text-success mr-1"></i>Approved</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('pending')"><i class="fas fa-hourglass-half text-warning mr-1"></i>Pending</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('decline')"><i class="fas fa-times-circle text-danger mr-1"></i>Decline</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('reject')"><i class="fas fa-ban text-danger mr-1"></i>Reject</a>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </td>
 
-
-                                                        <td> <!-- Actions column -->
+                                                        <td>
                                                             <button type="button" class="btn btn-sm btn-primary edit-news-btn"  data-news-id="<?= $newsItem['id_news'] ?>">Edit</button>
                                                             <a href="<?php echo base_url('/deleteNews/'.$newsItem['id_news']); ?>" class="btn btn-sm btn-danger delete-news-btn">Delete</a>
                                                         </td>
@@ -158,7 +154,13 @@
         </div>
         <!-- page-body-wrapper ends -->
     </div>
-
+        <script>
+            function changeStatus(status) 
+            {
+            document.getElementById('statusText').innerText = status;
+            // Add code here to update the status in your database via AJAX or form submission
+    }
+        </script>
 
     <script>
       // JavaScript to handle the click event of the "Edit" button
@@ -246,6 +248,8 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
     <script src="assets/vendors/chart.js/Chart.min.js"></script>
