@@ -19,6 +19,7 @@ class NewsController extends BaseController
         $newsModel = new NewsModel();
 
         $news = $newsModel->find($id);
+
         return view('AdminPage/viewnews');
     }
 

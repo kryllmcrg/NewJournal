@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Manage News</title>
     
-    <link rel="stylesheet" href="<?= base_url('assets/vendors/mdi/css/materialdesignicons.min.css')?>">
-    <link rel="stylesheet" href="<?= base_url('assets/vendors/css/vendor.bundle.base.css')?>">
-    <link rel="stylesheet" href="<?= base_url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css')?>">
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
     
-    <link rel="stylesheet" href="<?= base_url('assets/css/style.css')?>">
+    <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="<?= base_url('assets/images/ciologo.png')?>" />
+    <link rel="shortcut icon" href="assets/images/ciologo.png" />
 </head>
 
 <body>
@@ -118,10 +118,10 @@
                                                                 <div class="dropdown ml-auto">
                                                                     <i class="fas fa-ellipsis-h" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?=$newsItem['id_news'];?>','Approved')"><i class="fas fa-check-circle text-success mr-1"></i>Approved</a>
-                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?=$newsItem['id_news'];?>','Pending')"><i class="fas fa-hourglass-half text-warning mr-1"></i>Pending</a>
-                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?=$newsItem['id_news'];?>','Decline')"><i class="fas fa-times-circle text-danger mr-1"></i>Decline</a>
-                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?=$newsItem['id_news'];?>','Reject')"><i class="fas fa-ban text-danger mr-1"></i>Reject</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['id_news']; ?>','Approved')"><i class="fas fa-check-circle text-success mr-1"></i>Approved</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['id_news']; ?>','Pending')"><i class="fas fa-hourglass-half text-warning mr-1"></i>Pending</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['id_news']; ?>','Decline')"><i class="fas fa-times-circle text-danger mr-1"></i>Decline</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['id_news']; ?>','Reject')"><i class="fas fa-ban text-danger mr-1"></i>Reject</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -157,24 +157,26 @@
 
     <!-- change status -->
     <script>
-            function changeStatus(id, status) {
-                document.getElementById('statusText').innerText = status;
-            $.ajax({
-                url: '<?php echo base_url('changeStatus');?>',
-                type: 'POST',
-                data: {
-                    id_news: id,
-                    status: status
-                },
-                success: function(response){
-                    console.log(response);
-                },
-                error: function(err){
-                    console.log(err);
-                }
-            });
-            console.log('invalid')
-        }
+    function changeStatus(id,status) {
+        document.getElementById('statusText').innerText = status;
+        $.ajax({
+            url: "<?php echo base_url('changeStatus');?>",
+            type: "POST",
+            data: {
+                id_news: id,
+                status: status
+            },
+            success: function(data) {
+                console.log(data);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        })
+    }
+    function viewNews(newsId) {
+        window.location.href = '<?php echo base_url('viewnews/')?>' + newsId; // Change the URL as needed
+    }
     </script>
 
     <script>
