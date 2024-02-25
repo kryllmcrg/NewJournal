@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>News</title>
     
-    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="shortcut icon" href="assets/images/ciologo.png" />
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url('assets/vendors/mdi/css/materialdesignicons.min.css')?>">
+    <link rel="stylesheet" href="<?= base_url('assets/vendors/css/vendor.bundle.base.css')?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/style.css')?>">
+    <link rel="shortcut icon" href="<?= base_url('assets/images/ciologo.png')?>" />
+    <link href="<?= base_url('https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet')?>">
+    <link href="<?= base_url('https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet')?>">
   </head>
   <body>
     <div class="container-scroller">
@@ -127,16 +127,17 @@
         </div>
       </div>
     </div>
-    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
-    <script src="assets/vendors/chart.js/Chart.min.js"></script>
-    <script src="assets/js/jquery.cookie.js" type="text/javascript"></script>
-    <script src="assets/js/off-canvas.js"></script>
-    <script src="assets/js/hoverable-collapse.js"></script>
-    <script src="assets/js/misc.js"></script>
-    <script src="assets/js/dashboard.js"></script>
-    <script src="assets/js/todolist.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script src="<?= base_url('assets/vendors/js/vendor.bundle.base.js')?>"></script>
+    <script src="<?= base_url('assets/vendors/chart.js/Chart.min.js')?>"></script>
+    <script src="<?= base_url('assets/js/jquery.cookie.js" type="text/javascript')?>"></script>
+    <script src="<?= base_url('assets/js/off-canvas.js')?>"></script>
+    <script src="<?= base_url('assets/js/hoverable-collapse.js')?>"></script>
+    <script src="<?= base_url('assets/js/misc.js')?>"></script>
+    <script src="<?= base_url('assets/js/dashboard.js')?>"></script>
+    <script src="<?= base_url('assets/js/todolist.js')?>"></script>
+    
+    <script src="<?= base_url('https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js')?>"></script>
     <script>
     $(document).ready(function() {
         $(".mySummernote").summernote();
