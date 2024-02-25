@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="<?= base_url('assets/vendors/css/vendor.bundle.base.css')?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css')?>">
     <link rel="shortcut icon" href="<?= base_url('assets/images/ciologo.png')?>" />
-    <link href="<?= base_url('https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet')?>">
-    <link href="<?= base_url('https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet')?>">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
   </head>
   <body>
     <div class="container-scroller">
@@ -78,7 +78,16 @@
                                 </select>
                             </div>
                         </div>
+                    </div>
 
+                      <!-- WYSIWYG Editor -->
+                      <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="content">Content</label>
+                                <textarea class="form-control mySummernote" id="content" name="content" placeholder="Enter news content"></textarea>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Image Upload -->
@@ -91,12 +100,11 @@
                         </div>
                     </div>
 
-                    <!-- WYSIWYG Editor -->
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <label for="content">Content</label>
-                                <textarea class="form-control mySummernote" id="content" name="content" placeholder="Enter news content"></textarea>
+                                <label for="comment">Comment</label>
+                                <input type="text" class="form-control" id="comment" name="comment" placeholder="Enter comment">
                             </div>
                         </div>
                     </div>
@@ -128,7 +136,7 @@
     <script src="<?= base_url('assets/js/dashboard.js')?>"></script>
     <script src="<?= base_url('assets/js/todolist.js')?>"></script>
     
-    <script src="<?= base_url('https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js')?>"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script>
     $(document).ready(function() {
         $(".mySummernote").summernote();

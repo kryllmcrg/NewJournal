@@ -67,8 +67,6 @@ class NewsController extends BaseController
                 'images' => implode(',', $imageNames),
                 'content' => strip_tags($this->request->getVar('content')),
                 'comment' => $this->request->getVar('comment'),
-                'create_at' => $this->request->getVar('create_at'),
-                'updated_at' => $this->request->getVar('updated_at'),
             ];
             
             // Validate data
