@@ -78,12 +78,12 @@
                                               <th>SubTitle</th>
                                               <th>Author</th>
                                               <th>Category</th>
-                                              <th>Images</th>
                                               <th>Content</th>
-                                              <th>Status</th>
+                                              <th>Images</th>
                                               <th>Comment</th>
                                               <th>Created Date</th>
                                               <th>Update Date</th>
+                                              <th>Status</th>
                                               <th>Actions</th> 
                                           </tr>
                                           </thead>
@@ -94,6 +94,7 @@
                                                         <td><?php echo $newsItem['subTitle']; ?></td>
                                                         <td><?php echo $newsItem['author']; ?></td>
                                                         <td><?php echo $newsItem['category']; ?></td>
+                                                        <td><?php echo $newsItem['content']; ?></td>
                                                         <td>
                                                             <?php 
                                                             $images = explode(',', $newsItem['images']);
@@ -101,7 +102,9 @@
                                                                 <img src="<?php echo base_url('public/uploads/' . $image); ?>" alt="Image">
                                                             <?php endforeach; ?>
                                                         </td>
-                                                        <td><?php echo $newsItem['content']; ?></td>
+                                                        <td><?php echo $newsItem['comment']; ?></td>
+                                                        <td><?php echo $newsItem['created_at']; ?></td>
+                                                        <td><?php echo $newsItem['updated_at']; ?></td>
                                                         <td>
                                                             <div class="d-flex align-items-center">
                                                                 <span id="statusText"><?php echo $newsItem['status']; ?></span>
@@ -116,18 +119,11 @@
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        <td><?php echo $newsItem['comment']; ?></td>
-                                                        <td><?php echo $newsItem['created_at']; ?></td>
-                                                        <td><?php echo $newsItem['updated_at']; ?></td>
                                                         <td>
                                                             <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" data-placement="top" title="View News" onclick="viewNews(<?php echo $newsItem['id_news']; ?>)">
                                                                 <i class="fas fa-eye"></i> View
                                                             </button>
-                                                            <br>
-                                                            <br>
-                                                            <a href="<?php echo base_url('/deleteNews/'.$newsItem['id_news']); ?>" class="btn btn-sm btn-danger delete-news-btn" onclick="return confirm('Are you sure you want to delete this news?')">
-                                                                <i class="fas fa-trash-alt"></i> Delete
-                                                            </a>
+                                                            <a href="<?php echo base_url('/deleteNews/'.$newsItem['id_news']); ?>" class="btn btn-sm btn-danger delete-news-btn">Delete</a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>
