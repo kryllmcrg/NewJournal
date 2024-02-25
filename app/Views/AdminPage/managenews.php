@@ -155,6 +155,7 @@
         <!-- page-body-wrapper ends -->
     </div>
 
+    <!-- change status -->
     <script>
     function changeStatus(status) {
         document.getElementById('statusText').innerText = status;
