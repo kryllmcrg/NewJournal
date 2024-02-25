@@ -97,26 +97,26 @@ class NewsController extends BaseController
         $this->NewsModel = new NewsModel();
     }
 
-    // public function deleteNews($id)
-    // {
-    //     try {
-    //         $newsModel = new NewsModel();
+    public function deleteNews($id)
+    {
+        try {
+            $newsModel = new NewsModel();
             
-    //         // Delete the news item
-    //         $deleted = $newsModel->where('id_news',$id)->delete();
+            // Delete the news item
+            $deleted = $newsModel->where('id_news',$id)->delete();
     
-    //         if ($deleted) {
-    //             // Return success message if deletion was successful
-    //             return redirect()->to('managenews');
-    //         } else {
-    //             // Return error message if deletion failed
-    //             return $this->response->setJSON(['error' => 'Failed to delete the record'])->setStatusCode(500);
-    //         }
-    //     } catch (\Throwable $th) {
-    //         // Return error message if an exception occurred during deletion
-    //         return $this->response->setJSON(['error' => 'An error occurred during deletion'])->setStatusCode(500);
-    //     }
-    // }    
+            if ($deleted) {
+                // Return success message if deletion was successful
+                return redirect()->to('managenews');
+            } else {
+                // Return error message if deletion failed
+                return $this->response->setJSON(['error' => 'Failed to delete the record'])->setStatusCode(500);
+            }
+        } catch (\Throwable $th) {
+            // Return error message if an exception occurred during deletion
+            return $this->response->setJSON(['error' => 'An error occurred during deletion'])->setStatusCode(500);
+        }
+    }    
 
     // public function updateNews()
     // {

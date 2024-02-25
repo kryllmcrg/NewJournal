@@ -123,7 +123,11 @@
                                                             <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" data-placement="top" title="View News" onclick="viewNews(<?php echo $newsItem['id_news']; ?>)">
                                                                 <i class="fas fa-eye"></i> View
                                                             </button>
-                                                            <a href="<?php echo base_url('/deleteNews/'.$newsItem['id_news']); ?>" class="btn btn-sm btn-danger delete-news-btn">Delete</a>
+                                                            <br>
+                                                            <br>
+                                                            <a href="<?php echo base_url('/deleteNews/'.$newsItem['id_news']); ?>" class="btn btn-sm btn-danger delete-news-btn" onclick="return confirm('Are you sure you want to delete this news?')">
+                                                                <i class="fas fa-trash-alt"></i> Delete
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>
