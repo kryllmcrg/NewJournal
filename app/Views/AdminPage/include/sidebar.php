@@ -1,7 +1,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link" href="dashboard">
+            <a class="nav-link" href="<?= base_url('dashboard')?>">
                 <span class="menu-title">Dashboard</span>
                 <i class="mdi mdi-home menu-icon"></i>
             </a>
@@ -15,7 +15,7 @@
             </a>
             <div class="collapse" id="staff">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="manageprofile">Manage Profile</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('manageprofile')?>">Manage Profile</a></li>
                 </ul>
             </div>
         </li>
@@ -29,8 +29,8 @@
             </a>
             <div class="collapse" id="news">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="addnews">Add News</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="managenews">Manage News</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('addnews')?>">Add News</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('managenews')?>">Manage News</a></li>
                 </ul>
             </div>
         </li>
@@ -43,8 +43,8 @@
             </a>
             <div class="collapse" id="announce">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="addannounce">Add Announcements</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="manageannounce">Manage Announcements</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('addannounce')?>">Add Announcements</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('manageannounce')?>">Manage Announcements</a></li>
                 </ul>
             </div>
         </li>
@@ -57,7 +57,7 @@
             </a>
             <div class="collapse" id="comments">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="managecomments">Manage Comments</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('managecomments')?>">Manage Comments</a></li>
                 </ul>
             </div>
         </li>
@@ -70,7 +70,7 @@
             </a>
             <div class="collapse" id="collaboration">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="chats">Chats</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('chats')?>">Chats</a></li>
                 </ul>
             </div>
         </li>
@@ -83,8 +83,8 @@
             </a>
             <div class="collapse" id="category">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="addcategory">Add Category</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="managecategory">Manage Category</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('addcategory')?>">Add Category</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('managecategory')?>">Manage Category</a></li>
                 </ul>
             </div>
         </li>
@@ -97,7 +97,7 @@
             </a>
             <div class="collapse" id="settings">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="archive">Archive</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('archive')?>">Archive</a></li>
                 </ul>
             </div>
         </li>
