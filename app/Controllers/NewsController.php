@@ -140,7 +140,14 @@ class NewsController extends BaseController
     
     public function archive()
     {
-        return view('AdminPage/archive');
-    }
+        // Load the NewsModel
+        $newsModel = new NewsModel();
+    
+        // Fetch news data from the database including only the specified columns
+        $newsData = $newsModel->select('title, author, publicationDate, id_news')->findAll();
+    
+        // Pass the data to the view
+        return view('AdminPage/archive', ['newsData' => $newsData]);
+    }    
 
 }
