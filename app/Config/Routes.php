@@ -30,7 +30,7 @@ $routes->get('/deleteNews/(:any)', 'NewsController::deleteNews/$1');
 $routes->post('/editNews', 'NewsController::updateNews');
 $routes->post('changeStatus', 'NewsController::changeStatus');
 
-$routes->get('/viewnews', 'NewsController::viewnews');
+$routes->get('/viewnews/(:any)', 'NewsController::viewnews/$1');
 $routes->get('/editNews', 'NewsController::editNews');
 
 $routes->get('/archive', 'NewsController::archive');
