@@ -138,18 +138,23 @@ class NewsController extends BaseController
         
     }
 
-    public function changeStatus($id_news, $status)
+    public function changeStatus()
     {
-        // Load the NewsModel
-        $newsModel = new NewsModel();
+        try {
+            $newsID = $this->request->getVar('id_news');
+            $status = $this->request->getVar('status');
 
-        // Update the status of the news item in the database
-        $newsModel->status($id_news, $status);
+            $data['status'] = $status;
 
-        redirect('addnews'); 
+            $model = new NewsModel();
+            $model->where('id_news', $newsID)->set($data)->update();
+
+            return $this->response->setJSON([$data, $newsID]);
+        } catch (\Throwable $th) {
+            return $this->response->setJSON(['message' => 'Error: ' . $th->getMessage()]);
+        }
     }
 
-    
     public function archive()
     {
         // Load the NewsModel
