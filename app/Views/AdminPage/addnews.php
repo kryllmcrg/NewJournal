@@ -69,14 +69,12 @@
                         </div>
 
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="category">Category</label>
-                                <select class="form-control" id="category" name="category">
-                                    <?php foreach ($categories as $category): ?>
-                                        <option value="<?php echo $category['id_categories']; ?>"><?php echo $category['name']; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
+                            <label for="category">Category</label>
+                            <select class="form-control" id="category" name="category">
+                                <?php foreach ($categories as $category): ?>
+                                    <option value="<?php echo $category['name']; ?>"><?php echo $category['name']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
                         </div>
                     </div>
 

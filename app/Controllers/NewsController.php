@@ -31,9 +31,30 @@ class NewsController extends BaseController
     
         $data['categories'] = $categories;
     
+        if ($this->request->getMethod() === 'post') {
+            $newsModel = new NewsModel();
+    
+            // Get the submitted form data
+            $newsData = [
+                'title' => $this->request->getPost('title'),
+                'subtitle' => $this->request->getPost('subtitle'),
+                'author' => $this->request->getPost('author'),
+                'category' => $this->request->getPost('category'), // Store category name
+                'publication_date' => $this->request->getPost('publication_date'),
+                // Add other fields as needed
+            ];
+    
+            // Save the news item
+            $newsModel->insert($newsData);
+    
+            // Redirect to the news list page or show a success message
+            return redirect()->to('/newslist');
+        }
+    
         // Load the view with the categories data
         return view('AdminPage/addnews', $data);
     }
+    
 
     public function addNewsSubmit()
     {

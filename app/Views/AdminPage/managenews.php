@@ -205,21 +205,11 @@
 
   document.querySelectorAll('.delete-news-btn').forEach(item => {
     item.addEventListener('click', event => {
-      // Fetch news item data based on news ID
-      const newsId = event.currentTarget.dataset.newsId;
-      console.log('Delete button clicked for news ID:', newsId);
-      
-      // Show alert
-      alert('Are you sure you want to delete this news item?');
-      
-      // Here you can proceed with actual deletion logic if needed
-    });
-  });
-
-  document.querySelectorAll('.delete-news-btn').forEach(item => {
-    item.addEventListener('click', event => {
+        // Prevent the default action of the anchor tag
+        event.preventDefault();
+        
         // Fetch news item data based on news ID
-        const newsId = event.currentTarget.dataset.newsId;
+        const newsId = item.getAttribute('data-news-id');
         console.log('Delete button clicked for news ID:', newsId);
 
         // Show a confirmation dialog
