@@ -126,10 +126,10 @@
                                                                 </div>
                                                             </div>
                                                         </td>
-
                                                         <td>
-                                                            <button type="button" class="btn btn-sm btn-primary edit-news-btn"  data-news-id="<?= $newsItem['id_news'] ?>">Edit</button>
-                                                            <a href="<?php echo base_url('/deleteNews/'.$newsItem['id_news']); ?>" class="btn btn-sm btn-danger delete-news-btn">Delete</a>
+                                                            <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" data-placement="top" title="View News" onclick="viewNews(<?php echo $newsItem['id_news']; ?>)">
+                                                                <i class="fas fa-eye"></i> View
+                                                            </button>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>
@@ -154,13 +154,15 @@
         </div>
         <!-- page-body-wrapper ends -->
     </div>
-        <script>
-            function changeStatus(status) 
-            {
-            document.getElementById('statusText').innerText = status;
-            // Add code here to update the status in your database via AJAX or form submission
+
+    <script>
+    function changeStatus(status) {
+        document.getElementById('statusText').innerText = status;
+        let badge = document.getElementById('statusBadge');
+        badge.innerText = status;
+        badge.className = 'badge badge-pill ' + getStatusClass(status);
     }
-        </script>
+    </script>
 
     <script>
       // JavaScript to handle the click event of the "Edit" button
