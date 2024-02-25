@@ -3,13 +3,18 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\AnnounceModel; // Corrected model import
+use App\Models\AnnounceModel;
+use App\Models\CategoryModel;
 
 class AnnounceController extends BaseController
 {
     public function announcements()
     {
-        return view('UserPage/announcements');
+        $categoryModel = new CategoryModel();
+        $categories = $categoryModel->findAll();
+    
+        $data['categories'] = $categories;
+        return view('UserPage/announcements', $data);
     }
 
     public function addannounce()

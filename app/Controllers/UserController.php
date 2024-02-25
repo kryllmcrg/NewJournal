@@ -25,12 +25,22 @@ class UserController extends BaseController
     
     public function about()
     {
-        return view('UserPage/about');
+        $categoryModel = new CategoryModel();
+        $categories = $categoryModel->findAll();
+    
+        $data['categories'] = $categories;
+
+        return view('UserPage/about', $data);
     }
 
     public function contact()
     {
-        return view('UserPage/contact');
+        $categoryModel = new CategoryModel();
+        $categories = $categoryModel->findAll();
+    
+        $data['categories'] = $categories;
+
+        return view('UserPage/contact', $data);
     }
 
     public function news()
