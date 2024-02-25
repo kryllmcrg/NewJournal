@@ -29,6 +29,9 @@ $routes->get('/managenews', 'NewsController::managenews');
 $routes->get('/deleteNews/(:any)', 'NewsController::deleteNews/$1');
 $routes->post('/editNews', 'NewsController::updateNews');
 
+$routes->get('/archive', 'NewsController::archive');
+
+
 $routes->get('/managecomments', 'CommentsController::managecomments');
 
 $routes->get('/chats', 'ChatController::chats');

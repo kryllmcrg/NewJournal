@@ -138,5 +138,9 @@ class NewsController extends BaseController
         
     }
     
+    public function archive()
+    {
+        return view('AdminPage/archive');
+    }
 
 }
