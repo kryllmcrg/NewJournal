@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\NewsModel;
+use App\Models\CategoryModel;
 
 class NewsController extends BaseController
 {
@@ -15,7 +16,13 @@ class NewsController extends BaseController
 
     public function addnews()
     {
-        return view('AdminPage/addnews');
+        $categoryModel = new CategoryModel();
+        $categories = $categoryModel->findAll();
+    
+        $data['categories'] = $categories;
+    
+        // Load the view with the categories data
+        return view('AdminPage/addnews', $data);
     }
 
     public function addNewsSubmit()
@@ -80,49 +87,60 @@ class NewsController extends BaseController
         $this->NewsModel = new NewsModel();
     }
 
-    public function deleteNews($id)
-    {
-        try {
-            $newsModel = new NewsModel();
+    // public function deleteNews($id)
+    // {
+    //     try {
+    //         $newsModel = new NewsModel();
             
-            // Delete the news item
-            $deleted = $newsModel->where('id_news',$id)->delete();
+    //         // Delete the news item
+    //         $deleted = $newsModel->where('id_news',$id)->delete();
     
-            if ($deleted) {
-                // Return success message if deletion was successful
-                return redirect()->to('managenews');
-            } else {
-                // Return error message if deletion failed
-                return $this->response->setJSON(['error' => 'Failed to delete the record'])->setStatusCode(500);
-            }
-        } catch (\Throwable $th) {
-            // Return error message if an exception occurred during deletion
-            return $this->response->setJSON(['error' => 'An error occurred during deletion'])->setStatusCode(500);
-        }
-    }    
+    //         if ($deleted) {
+    //             // Return success message if deletion was successful
+    //             return redirect()->to('managenews');
+    //         } else {
+    //             // Return error message if deletion failed
+    //             return $this->response->setJSON(['error' => 'Failed to delete the record'])->setStatusCode(500);
+    //         }
+    //     } catch (\Throwable $th) {
+    //         // Return error message if an exception occurred during deletion
+    //         return $this->response->setJSON(['error' => 'An error occurred during deletion'])->setStatusCode(500);
+    //     }
+    // }    
 
-    public function updateNews()
+    // public function updateNews()
+    // {
+    //     try {
+    //         $id_news = $this->request->getVar('id_news');
+
+    //         $data = [
+    //             'title' => $this->request->getVar('editNewsTitle'),
+    //             'subTitle' => $this->request->getVar('editNewsSubTitle'),
+    //             'author' => $this->request->getVar('editNewsAuthor'),
+    //             'category' => $this->request->getVar('editCategory'),
+    //             'content' => strip_tags($this->request->getVar('editNewsContent')),
+    //             'publicationDate' => $this->request->getVar('editNewsPublicationDate')
+    //         ];
+
+    //         // Assuming $this->news is a model instance (e.g., NewsModel)
+    //         $newsModel = new NewsModel();
+    //         $updated = $newsModel->where('id_news', $id_news)->set($data)->update();
+
+    //         return redirect()->to('managenews');
+    //     } catch (\Throwable $th) {
+    //         return $this->respond(["error" => "Error: " . $th->getMessage()]);
+    //     }
+    // }
+
+    public function editNews()
     {
-        try {
-            $id_news = $this->request->getVar('id_news');
-
-            $data = [
-                'title' => $this->request->getVar('editNewsTitle'),
-                'subTitle' => $this->request->getVar('editNewsSubTitle'),
-                'author' => $this->request->getVar('editNewsAuthor'),
-                'category' => $this->request->getVar('editCategory'),
-                'content' => strip_tags($this->request->getVar('editNewsContent')),
-                'publicationDate' => $this->request->getVar('editNewsPublicationDate')
-            ];
-
-            // Assuming $this->news is a model instance (e.g., NewsModel)
-            $newsModel = new NewsModel();
-            $updated = $newsModel->where('id_news', $id_news)->set($data)->update();
-
-            return redirect()->to('managenews');
-        } catch (\Throwable $th) {
-            return $this->respond(["error" => "Error: " . $th->getMessage()]);
-        }
+        $categoryModel = new CategoryModel();
+        $categories = $categoryModel->findAll();
+    
+        $data['categories'] = $categories;
+    
+        // Load the view with the categories data
+        return view('EditPage/editNews' , $data);
     }
 
     public function managenews()

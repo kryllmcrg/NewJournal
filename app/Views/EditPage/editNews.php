@@ -27,7 +27,7 @@
           <h3 class="page-title">
             <span class="page-title-icon bg-gradient-primary text-white me-2">
               <i class="mdi mdi-plus"></i>
-            </span> Add News
+            </span> Edit News
           </h3>
           <nav aria-label="breadcrumb">
             <ul class="breadcrumb">
@@ -42,7 +42,7 @@
           <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h4 class="card-title">Add News</h4>
+                <h4 class="card-title">Edit News</h4>
                 <form method="post" action="<?php echo base_url('/addNewsSubmit'); ?>" enctype="multipart/form-data" class="forms-sample">
                     <div class="row">
                         <div class="col-md-6">
@@ -78,7 +78,6 @@
                                 </select>
                             </div>
                         </div>
-
                     </div>
 
                     <div class="row">
