@@ -13,6 +13,7 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="assets/images/ciologo.png" />
 </head>
+
 <body>
     <div class="container-scroller">
         <div class="row p-0 m-0 proBanner" id="proBanner">
@@ -23,7 +24,6 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-center justify-content-between">
-                        <a href="https://www.bootstrapdash.com/product/purple-bootstrap-admin-template/"><i class="mdi mdi-home me-3 text-white"></i></a>
                         <button id="bannerClose" class="btn border-0 p-0">
                             <i class="mdi mdi-close text-white me-0"></i>
                         </button>
@@ -108,7 +108,29 @@
                                                             <?php endforeach; ?>
                                                         </td>
                                                         <td><?php echo $newsItem['content']; ?></td>
-                                                        <td><?php echo $newsItem['status']; ?></td>
+                                                        <td> <!-- Status column -->
+                                                            <?php
+                                                            $status = $newsItem['status'];
+                                                            $statusIcons = [
+                                                                'pending' => '<i class="mdi mdi-clock-outline text-info"></i>',
+                                                                'approved' => '<i class="mdi mdi-check-circle-outline text-success"></i>',
+                                                                'decline' => '<i class="mdi mdi-alert-circle-outline text-warning"></i>',
+                                                                'reject' => '<i class="mdi mdi-close-circle-outline text-danger"></i>'
+                                                            ];
+                                                            ?>
+                                                            <div class="dropdown">
+                                                                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="statusDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    <?php echo $statusIcons[$status]; ?>
+                                                                </button>
+                                                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="statusDropdown">
+                                                                    <?php foreach ($statusIcons as $key => $icon): ?>
+                                                                        <li><a class="dropdown-item" href="<?php echo base_url('/changeStatus/'.$newsItem['id_news'].'/'.$key); ?>"><?php echo $icon; ?> <?php echo ucfirst($key); ?></a></li>
+                                                                    <?php endforeach; ?>
+                                                                </ul>
+                                                            </div>
+                                                        </td>
+
+
                                                         <td> <!-- Actions column -->
                                                             <button type="button" class="btn btn-sm btn-primary edit-news-btn"  data-news-id="<?= $newsItem['id_news'] ?>">Edit</button>
                                                             <a href="<?php echo base_url('/deleteNews/'.$newsItem['id_news']); ?>" class="btn btn-sm btn-danger delete-news-btn">Delete</a>
