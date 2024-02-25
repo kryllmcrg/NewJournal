@@ -11,7 +11,7 @@
     
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="assets/images/logggo.png" />
+    <link rel="shortcut icon" href="assets/images/ciologo.png" />
   </head>
   <body>
     <div class="container-scroller">
