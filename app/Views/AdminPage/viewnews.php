@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Archive</title>
+    <title>View News</title>
     
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
@@ -57,9 +57,9 @@
           <div class="content-wrapper">
             <div class="page-header">
               <h3 class="page-title">
-              <span class="page-title-icon bg-gradient-primary text-white me-2">
-                  <i class="fas fa-archive"></i>
-              </span> Archive
+                <span class="page-title-icon bg-gradient-primary text-white me-2">
+                    <i class="fas fa-eye"></i>
+                </span> View News
               </h3>
               <nav aria-label="breadcrumb">
                 <ul class="breadcrumb">
@@ -70,42 +70,6 @@
               </nav>
             </div>
           </div>
-
-          <div class="content-wrapper">
-            <div class="row">
-                <div class="col-12 grid-margin">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title">Archive Table</h4>
-                            <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Title</th>
-                                        <th>Author</th>
-                                        <th>Publication Date</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($newsData as $newsItem): ?>
-                                        <tr>
-                                            <td><?php echo $newsItem['title']; ?></td>
-                                            <td><?php echo $newsItem['author']; ?></td>
-                                            <td><?php echo $newsItem['publicationDate']; ?></td>
-                                            <td> <!-- Actions column -->
-                                                <a href="<?php echo base_url('/restoreNews/'.$newsItem['id_news']); ?>" class="btn btn-sm btn-success restore-news-btn">Restore</a>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <?php include('include\footer.php'); ?>

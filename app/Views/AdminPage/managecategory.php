@@ -8,6 +8,7 @@
     
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
@@ -90,9 +91,10 @@
         <div class="content-wrapper">
           <div class="page-header">
             <h3 class="page-title">
-              <span class="page-title-icon bg-gradient-primary text-white me-2">
-                <i class="mdi mdi-newspaper"></i>
-              </span> Manage Category
+            <span class="page-title-icon bg-gradient-primary text-white me-2">
+                <i class="fas fa-list"></i>
+            </span> Manage Category
+
             </h3>
             <nav aria-label="breadcrumb">
               <ul class="breadcrumb">

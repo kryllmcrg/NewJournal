@@ -11,6 +11,7 @@
     <link rel="shortcut icon" href="assets/images/ciologo.png" />
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   </head>
   <body>
     <div class="container-scroller">
@@ -25,9 +26,9 @@
       <div class="content-wrapper">
         <div class="page-header">
           <h3 class="page-title">
-            <span class="page-title-icon bg-gradient-primary text-white me-2">
-              <i class="mdi mdi-plus"></i>
-            </span> Edit News
+          <span class="page-title-icon bg-gradient-primary text-white me-2">
+              <i class="fas fa-edit"></i>
+          </span> Edit News
           </h3>
           <nav aria-label="breadcrumb">
             <ul class="breadcrumb">
