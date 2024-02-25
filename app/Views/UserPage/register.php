@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,300,700" rel="stylesheet" type="text/css">
     <title>Welcome Calapan City Website!</title>
-    <link rel="shortcut icon" href="assets/images/logggo.png" />
+    <link rel="shortcut icon" href="assets/images/ciologo.png" />
     <style>
         body {
             margin: 0;
