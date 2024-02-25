@@ -118,10 +118,10 @@
                                                                 <div class="dropdown ml-auto">
                                                                     <i class="fas fa-ellipsis-h" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('Approved')"><i class="fas fa-check-circle text-success mr-1"></i>Approved</a>
-                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('Pending')"><i class="fas fa-hourglass-half text-warning mr-1"></i>Pending</a>
-                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('Decline')"><i class="fas fa-times-circle text-danger mr-1"></i>Decline</a>
-                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('Reject')"><i class="fas fa-ban text-danger mr-1"></i>Reject</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?=$newsItem['id_news'];?>','Approved')"><i class="fas fa-check-circle text-success mr-1"></i>Approved</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?=$newsItem['id_news'];?>','Pending')"><i class="fas fa-hourglass-half text-warning mr-1"></i>Pending</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?=$newsItem['id_news'];?>','Decline')"><i class="fas fa-times-circle text-danger mr-1"></i>Decline</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?=$newsItem['id_news'];?>','Reject')"><i class="fas fa-ban text-danger mr-1"></i>Reject</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -157,12 +157,24 @@
 
     <!-- change status -->
     <script>
-    function changeStatus(status) {
-        document.getElementById('statusText').innerText = status;
-        let badge = document.getElementById('statusBadge');
-        badge.innerText = status;
-        badge.className = 'badge badge-pill ' + getStatusClass(status);
-    }
+            function changeStatus(id, status) {
+                document.getElementById('statusText').innerText = status;
+            $.ajax({
+                url: '<?php echo base_url('changeStatus');?>',
+                type: 'POST',
+                data: {
+                    id_news: id,
+                    status: status
+                },
+                success: function(response){
+                    console.log(response);
+                },
+                error: function(err){
+                    console.log(err);
+                }
+            });
+            console.log('invalid')
+        }
     </script>
 
     <script>
