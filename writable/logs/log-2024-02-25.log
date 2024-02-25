@@ -337,3 +337,71 @@ in APPPATH\Views\AdminPage\managenews.php on line 130.
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
 INFO - 2024-02-25 04:12:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-02-25 04:14:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-02-25 04:15:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-02-25 04:15:24 --> ErrorException: Undefined variable $newsItem
+in APPPATH\Views\AdminPage\manageannounce.php on line 94.
+ 1 APPPATH\Views\AdminPage\manageannounce.php(94): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $newsItem', 'C:\\laragon\\www\\NewJournal\\app\\Views\\AdminPage\\manageannounce.php', 94)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\NewJournal\\app\\Views\\AdminPage\\manageannounce.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('AdminPage/manageannounce', [], true)
+ 5 APPPATH\Controllers\AnnounceController.php(78): view('AdminPage/manageannounce', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\AnnounceController->manageannounce()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnnounceController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-02-25 04:15:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-02-25 04:15:53 --> ErrorException: Undefined variable $newsItem
+in APPPATH\Views\AdminPage\manageannounce.php on line 94.
+ 1 APPPATH\Views\AdminPage\manageannounce.php(94): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $newsItem', 'C:\\laragon\\www\\NewJournal\\app\\Views\\AdminPage\\manageannounce.php', 94)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\NewJournal\\app\\Views\\AdminPage\\manageannounce.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('AdminPage/manageannounce', [], true)
+ 5 APPPATH\Controllers\AnnounceController.php(78): view('AdminPage/manageannounce', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\AnnounceController->manageannounce()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnnounceController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-02-25 04:15:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-02-25 04:15:55 --> ErrorException: Undefined variable $newsItem
+in APPPATH\Views\AdminPage\manageannounce.php on line 94.
+ 1 APPPATH\Views\AdminPage\manageannounce.php(94): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $newsItem', 'C:\\laragon\\www\\NewJournal\\app\\Views\\AdminPage\\manageannounce.php', 94)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\NewJournal\\app\\Views\\AdminPage\\manageannounce.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('AdminPage/manageannounce', [], true)
+ 5 APPPATH\Controllers\AnnounceController.php(78): view('AdminPage/manageannounce', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\AnnounceController->manageannounce()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnnounceController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-02-25 04:16:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-02-25 04:17:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-02-25 04:17:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-02-25 04:17:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-02-25 04:18:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-02-25 04:19:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-02-25 04:19:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-02-25 04:19:59 --> ErrorException: Undefined array key "content"
+in APPPATH\Views\AdminPage\manageannounce.php on line 109.
+ 1 APPPATH\Views\AdminPage\manageannounce.php(109): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "content"', 'C:\\laragon\\www\\NewJournal\\app\\Views\\AdminPage\\manageannounce.php', 109)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\NewJournal\\app\\Views\\AdminPage\\manageannounce.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('AdminPage/manageannounce', [], true)
+ 5 APPPATH\Controllers\AnnounceController.php(78): view('AdminPage/manageannounce', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\AnnounceController->manageannounce()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AnnounceController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-02-25 04:20:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-02-25 04:22:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-02-25 04:22:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-02-25 04:22:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-02-25 04:23:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-02-25 04:23:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-02-25 04:23:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-02-25 04:23:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-02-25 04:23:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

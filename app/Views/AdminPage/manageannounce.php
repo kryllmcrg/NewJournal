@@ -8,6 +8,7 @@
     
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- End layout styles -->
@@ -58,54 +59,51 @@
                         </nav>
                     </div>
                     
-                    <!-- Table -->
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Manage Announcements</h4>
-                                      <div class="table-responsive">
+                                    <div class="table-responsive">
                                         <table class="table table-striped">
-                                        <thead>
-                                          <tr>
-                                              <th>Title</th>
-                                              <th>Description</th>
-                                              <th>Images</th>
-                                              <th>Created</th>
-                                              <th>Updated</th>
-                                              <th>Action</th>
-                                          </tr>
-                                          </thead>
-                                            <tbody>
-                                            <?php foreach ($announceData as $announceItem): ?>
+                                            <thead>
                                                 <tr>
-                                                    <td><?php echo $announceItem['title']; ?></td>
-                                                    <td><?php echo $announceItem['description']; ?></td>
-                                                    <td>
-                                                        <?php 
-                                                        $images = explode(',', $announceItem['images']);
-                                                        foreach ($images as $image): ?>
-                                                            <img src="<?php echo base_url('public/uploads/' . $image); ?>" alt="Image">
-                                                        <?php endforeach; ?>
-                                                    </td>
-                                                    <td><?php echo $announceItem['created_at']; ?></td>
-                                                    <td><?php echo $announceItem['updated_at']; ?></td>
-                                                    <td> <!-- Actions column -->
-                                                        <button type="button" class="btn btn-sm btn-primary edit-announce-btn" data-announce-id="<?php echo $announceItem['id_announce']; ?>">Edit</button>
-                                                        <button type="button" class="btn btn-sm btn-danger delete-announce-btn" data-announce-id="<?php echo $announceItem['id_announce']; ?>">Delete</button>
-                                                    </td>
+                                                    <th>Title</th>
+                                                    <th>Description</th>
+                                                    <th>Images</th>
+                                                    <th>Created</th>
+                                                    <th>Updated</th>
+                                                    <th>Action</th>
                                                 </tr>
-                                            <?php endforeach; ?>
+                                            </thead>
+                                            <tbody>
+                                                <?php foreach ($announceData as $announceItem): ?>
+                                                    <tr>
+                                                        <td><?php echo $announceItem['title']; ?></td>
+                                                        <td><?php echo $announceItem['description']; ?></td>
+                                                        <td>
+                                                            <?php 
+                                                            $images = explode(',', $announceItem['images']);
+                                                            foreach ($images as $image): ?>
+                                                                <img src="<?php echo base_url('public/uploads/' . $image); ?>" alt="Image">
+                                                            <?php endforeach; ?>
+                                                        </td>
+                                                        <td><?php echo $announceItem['created_at']; ?></td>
+                                                        <td><?php echo $announceItem['updated_at']; ?></td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#announcementModal<?php echo $announceItem['id_announce']; ?>">
+                                                                <i class="fas fa-eye"></i> View
+                                                            </button>  
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach; ?>
                                             </tbody>
                                         </table>
-                                      </div>
                                     </div>
-                                  </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
                 <!-- content-wrapper ends -->
                 <!-- partial:partials/_footer.html -->
