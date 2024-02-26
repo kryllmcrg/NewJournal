@@ -743,10 +743,11 @@ Banner Style
   margin-bottom: 15px;
   font-weight: 500;
   letter-spacing: 0.5px;
+  color: black;
 }
 
 .main-banner h2 {
-  color: #fff;
+  color: black;
   font-size: 50px;
   font-weight: 700;
   line-height: 66px;
@@ -755,16 +756,20 @@ Banner Style
 
 .main-banner p {
   margin-top: 20px;
+  color: black;
 }
 
 .main-banner .buttons {
   margin-top: 30px;
   display: flex;
   justify-content: start;
+  color: black;
 }
 
 .main-banner .border-button {
   margin-right: 15px;
+  color: black;
+  
 }
 
 .main-banner .owl-banner {

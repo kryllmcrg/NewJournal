@@ -13,6 +13,11 @@
   <link rel="stylesheet" href="assets/css/animate.css">
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 </head>
+<style>
+    .nav {
+        color: black;
+    }
+</style>
 <body>
 <header class="header-area header-sticky">
     <div class="container">

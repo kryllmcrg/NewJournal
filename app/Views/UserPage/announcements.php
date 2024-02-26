@@ -25,7 +25,43 @@
       </div>
     </div>
   </div>
-  <?php include('include\header.php'); ?>
+    <header class="header-area header-sticky">
+      <div class="container">
+          <div class="row">
+              <div class="col-12">
+                  <nav class="main-nav">
+                      <a href="/" class="logo">
+                          <img src="assets/images/ciologo.png" alt="" style="width: 70px; height: auto;">
+                      </a>
+                      <ul class="nav">
+                          <li><a href="/">Home</a></li>
+                          <li><a href="about">About</a></li>
+                          <li><a href="contact">Contact</a></li>
+                          <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                  data-bs-toggle="dropdown" aria-expanded="false">
+                                  News
+                              </a>
+                              <ul class="dropdown-menu multi-column" aria-labelledby="navbarDropdown">
+                                  <div class="col-md-4 dropdown-column" id="news-dropdown">
+                                      <?php foreach ($categories as $category): ?>
+                                          <a class="dropdown-item" href="#"><?php echo $category['name']; ?></a>
+                                      <?php endforeach; ?>
+                                  </div>
+                              </ul>
+                          </li>
+
+                          <li><a href="announcements" class="active">Announcements<s/a></li>
+                          <li><a href="login">Login</a></li>
+                      </ul>
+                      <a class="menu-trigger">
+                          <span>Menu</span>
+                      </a>
+                  </nav>
+              </div>
+          </div>
+      </div>
+  </header>
   <div class="main-banner">
     <div class="container">
         <div class="row">

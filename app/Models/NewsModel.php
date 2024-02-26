@@ -13,7 +13,6 @@ class NewsModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = ['title','subTitle','author','category','content','images','status','comment','created_at','updated_at'];
-
     // Dates
     protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
