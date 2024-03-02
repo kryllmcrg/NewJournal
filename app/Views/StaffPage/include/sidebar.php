@@ -21,6 +21,7 @@
         </li>
         <?php endif;?>
 
+        <?php if(session()->get('role') == "ADMIN"):?>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#news" aria-expanded="false" aria-controls="news">
                 <span class="menu-title">News</span>
@@ -34,7 +35,9 @@
                 </ul>
             </div>
         </li>
+        <?php endif;?>
 
+        <?php if(session()->get('role') == "STAFF"):?>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#news" aria-expanded="false" aria-controls="news">
                 <span class="menu-title">News Staff</span>
@@ -44,12 +47,12 @@
             <div class="collapse" id="news">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="<?= base_url('createnews')?>">Create News</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('managenewstaff')?>">Manage News Staff</a></li> <!-- Changed link text to "Manage News Staff" -->
-                </ul>
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('managenewstaff')?>">Manage News Staff</a></li>
             </div>
         </li>
+        <?php endif;?>
 
-
+        <?php if(session()->get('role') == "ADMIN"):?>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#announce" aria-expanded="false" aria-controls="announce">
                 <span class="menu-title">Announcements</span>
@@ -63,6 +66,23 @@
                 </ul>
             </div>
         </li>
+        <?php endif;?>
+
+        <?php if(session()->get('role') == "STAFF"):?>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#announce" aria-expanded="false" aria-controls="announce">
+                <span class="menu-title">Announcements Staff</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-bullhorn menu-icon"></i>
+            </a>
+            <div class="collapse" id="announce">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('createannounce')?>">Create Announcements</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('manageannouncestaff')?>">Manage Staff Announcements</a></li>
+                </ul>
+            </div>
+        </li>
+        <?php endif;?>
 
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#comments" aria-expanded="false" aria-controls="comments">

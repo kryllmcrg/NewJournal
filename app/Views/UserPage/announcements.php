@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="assets/css/owl.css">
   <link rel="stylesheet" href="assets/css/animate.css">
   <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+
   <link rel="shortcut icon" href="assets/images/ciologo.png" />
 </head>
 <body>
@@ -25,43 +26,7 @@
       </div>
     </div>
   </div>
-    <header class="header-area header-sticky">
-      <div class="container">
-          <div class="row">
-              <div class="col-12">
-                  <nav class="main-nav">
-                      <a href="/" class="logo">
-                          <img src="assets/images/ciologo.png" alt="" style="width: 70px; height: auto;">
-                      </a>
-                      <ul class="nav">
-                          <li><a href="/">Home</a></li>
-                          <li><a href="about">About</a></li>
-                          <li><a href="contact">Contact</a></li>
-                          <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                  data-bs-toggle="dropdown" aria-expanded="false">
-                                  News
-                              </a>
-                              <ul class="dropdown-menu multi-column" aria-labelledby="navbarDropdown">
-                                  <div class="col-md-4 dropdown-column" id="news-dropdown">
-                                      <?php foreach ($categories as $category): ?>
-                                          <a class="dropdown-item" href="#"><?php echo $category['name']; ?></a>
-                                      <?php endforeach; ?>
-                                  </div>
-                              </ul>
-                          </li>
-
-                          <li><a href="announcements" class="active">Announcements<s/a></li>
-                          <li><a href="login">Login</a></li>
-                      </ul>
-                      <a class="menu-trigger">
-                          <span>Menu</span>
-                      </a>
-                  </nav>
-              </div>
-          </div>
-      </div>
-  </header>
+  <?php include('include\header.php'); ?>
   <div class="main-banner">
     <div class="container">
         <div class="row">
@@ -72,7 +37,7 @@
                     <p>Get the hottest updates and latest news about Calapan Oriental Mindoro. Stay informed about community events, government initiatives, and local developments.</p>
                     <div class="buttons">
                         <div class="border-button">
-                            <a href="news.html">Read Latest News</a>
+                            <a href="news">Read Latest News</a>
                         </div>
                         <div class="main-button">
                             <a href="https://citygovernmentofcalapan.gov.ph/" target="_blank">Visit Official Website</a>
@@ -83,99 +48,38 @@
             <div class="col-lg-5 offset-lg-1">
                 <div class="owl-banner owl-carousel">
                     <div class="item">
-                        <img src="assets/images/calapan-news-01.jpg" alt="Calapan Oriental Mindoro">
+                        <img src="assets/images/carousel1.jpg" alt="Calapan Oriental Mindoro">
                     </div>
                     <div class="item">
-                        <img src="assets/images/calapan-news-02.jpg" alt="Calapan Oriental Mindoro">
+                        <img src="assets/images/carousel2.jpg" alt="Calapan Oriental Mindoro">
                     </div>
                 </div>
             </div>
         </div>
     </div>
   </div>
-  <div class="categories-collections">
+  <div class="py-5 bg-light">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="categories">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="section-heading">
-                  <div class="line-dec"></div>
-                  <h2>Browse Through Our <em>Categories</em> Here.</h2>
+        <div class="row">
+            <div class="col-md-6 offset-md-3" style="width: 600px;">
+                <div class="card border-0 shadow-sm rounded-3">
+                <img src="assets/images/profile_picture.jpg" class="rounded-circle me-3" style="width: 40px; height: 40px;" alt="Profile">
+                    <img src="assets/images/no_image.jpeg" class="card-img-top rounded-3" alt="Img">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <h5 class="card-title">Username</h5>
+                        </div>
+                        <p class="card-text">Calapan Festival HAHAHA</p>
+                        <div>
+                            <a href="UserPage/view.php?slug=" class="text-primary">Read More</a>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-01.png" alt="">
-                  </div>
-                  <h4>Blockchain</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-02.png" alt="">
-                  </div>
-                  <h4>Digital Art</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-03.png" alt="">
-                  </div>
-                  <h4>Music Art</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-04.png" alt="">
-                  </div>
-                  <h4>Virtual World</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-05.png" alt="">
-                  </div>
-                  <h4>Valuable</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-06.png" alt="">
-                  </div>
-                  <h4>Triple NFT</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
+</div>
+
   </div>
   <?php include('include\footer.php'); ?>
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -207,7 +111,7 @@
               }
           };
           xhr.open("GET", "/getCategories", true); // Use the correct route without controller name
- // Replace '/controller/getCategories' with your actual route
+          // Replace '/controller/getCategories' with your actual route
           xhr.send();
       });
 
