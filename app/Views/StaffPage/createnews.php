@@ -14,11 +14,11 @@
   </head>
   <body>
     <div class="container-scroller">
-      <?php include('StaffPage\include\logo.php'); ?>
-      <?php include('StaffPage\include\header.php'); ?>
+      <?php include('include\logo.php'); ?>
+      <?php include('include\header.php'); ?>
       </nav>
       <div class="container-fluid page-body-wrapper">
-        <?php include('StaffPage\include\sidebar.php'); ?>
+        <?php include('include\sidebar.php'); ?>
       
       <!-- MAIN CONTENTS -->
       <div class="main-panel">

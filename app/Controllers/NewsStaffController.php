@@ -121,6 +121,6 @@ class NewsStaffController extends BaseController
 
     public function managenewstaff()
     {
-        return view('StaffPage/managenewsstaff');
+        return view('StaffPage/managenewstaff');
     }
 }

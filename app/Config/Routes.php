@@ -52,7 +52,6 @@ $routes->get('/addannounce', 'AnnounceController::addannounce');
 $routes->get('/manageannounce', 'AnnounceController::manageannounce');
 $routes->post('addAnnounceSubmit', 'AnnounceController::addAnnounceSubmit');
 
-
 //staff//
 $routes->get('/createnews', 'NewsStaffController::createnews');
 $routes->get('/managenewstaff', 'NewsStaffController::managenewstaff');

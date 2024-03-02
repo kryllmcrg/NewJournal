@@ -39,15 +39,16 @@
             <a class="nav-link" data-bs-toggle="collapse" href="#news" aria-expanded="false" aria-controls="news">
                 <span class="menu-title">News Staff</span>
                 <i class="menu-arrow"></i>
-                <i class="mdi mdi-account menu-icon"></i>
+                <i class="mdi mdi-account-group menu-icon"></i> <!-- Changed icon class to mdi-account-group -->
             </a>
             <div class="collapse" id="news">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="<?= base_url('createnews')?>">Create News</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('managenewsstaff')?>">Manage News</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('managenewstaff')?>">Manage News Staff</a></li> <!-- Changed link text to "Manage News Staff" -->
                 </ul>
             </div>
         </li>
+
 
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#announce" aria-expanded="false" aria-controls="announce">
