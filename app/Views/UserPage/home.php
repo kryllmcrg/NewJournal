@@ -61,139 +61,63 @@
   <div class="categories-collections">
     <div class="container">
       <div class="row">
-        <div class="col-lg-12">
-          <div class="categories">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="section-heading">
-                  <div class="line-dec"></div>
-                  <h2>Browse Through Our <em>Categories</em> Here.</h2>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/politics.png" alt="">
+      <div class="col-md-3 mb-3">
+        <div class="card shadow-sm">
+          <img src="assets/images/no_image.jpeg" class="w-100 rounded" alt="Img">
+            <div class="card-body">
+              <h5>News</h5>
+                <p>
+                    Calapan Festival HAHAHA
+                </p>
+                  <div>
+                     <a href="UserPage/view.php?slug=" class="text-primary">readmore</a>
                   </div>
-                  <h4>Politics</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/technology.jpg" alt="">
-                  </div>
-                  <h4>Technology</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/entertainment.jpg" alt="">
-                  </div>
-                  <h4>Entertainment</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/sports.png" alt="">
-                  </div>
-                  <h4>Sports</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/music2.jpg" alt="">
-                  </div>
-                  <h4>Music</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/cultural2.png" alt="">
-                  </div>
-                  <h4>Cultural</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-lg-12">
-          <div class="collections">
+  <div class="py-5 bg light">
+        <div class="container">
             <div class="row">
-              <div class="col-lg-12">
-                <div class="section-heading">
-                  <div class="line-dec"></div>
-                  <h2 style="color: black ">Explore Some Hot <em>News</em> Here. </h2>
+                <div class="col-md-3 mb-3">
+                    <div class="card shadow-sm">
+                        <img src="assets/images/no_image.jpeg" class="w-100 rounded" alt="Img">
+                        <div class="card-body">
+                            <h5>News</h5>
+                            <p>
+                                Calapan Festival HAHAHA
+                            </p>
+                            <div>
+                                <a href="UserPage/view.php?slug=" class="text-primary">readmore</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <div class="col-lg-12">
-                <div class="owl-collection owl-carousel">
-                  <div class="item">
-                    <img src="assets/images/carousel3.jpg" alt="">
-                    <div class="down-content">
-                      <h4>Kalap Festival</h4>
-                      <span class="collection">Description:<br><strong>Hello World</strong></span>
-                      <span class="category">Category:<br><strong>Politics</strong></span>
-                      <div class="main-button">
-                        <a href="readmore">Read More</a>
-                      </div>
-                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="categories-collections">
+    <div class="container">
+      <div class="row">
+      <div class="col-md-3 mb-3">
+        <div class="card shadow-sm">
+          <img src="assets/images/no_image.jpeg" class="w-100 rounded" alt="Img">
+            <div class="card-body">
+              <h5>News</h5>
+                <p>
+                    Calapan Festival HAHAHA
+                </p>
+                  <div>
+                     <a href="UserPage/view.php?slug=" class="text-primary">readmore</a>
                   </div>
-                  
-                  <div class="item">
-                    <img src="assets/images/carousel1.jpg" alt="">
-                    <div class="down-content">
-                      <h4>Genesis Collective Statue</h4>
-                      <span class="collection">Description:<br><strong>Trending News</strong></span>
-                      <span class="category">Category:<br><strong>Music Art</strong></span>
-                      <div class="main-button">
-                        <a href="readmore">Read More</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <img src="assets/images/carousel2.jpg" alt="">
-                    <div class="down-content">
-                      <h4>Worldwide Artwork Ground</h4>
-                      <span class="collection">Description:<br><strong>426/468</strong></span>
-                      <span class="category">Category:<br><strong>Sports</strong></span>
-                      <div class="main-button">
-                        <a href="readmore">Read More</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> 
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   </div>
   <?php include('include\footer.php'); ?>
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -225,7 +149,7 @@
               }
           };
           xhr.open("GET", "/getCategories", true); // Use the correct route without controller name
- // Replace '/controller/getCategories' with your actual route
+          // Replace '/controller/getCategories' with your actual route
           xhr.send();
       });
 
