@@ -43,19 +43,12 @@
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Add News</h4>
-                <form method="post" action="<?php echo base_url('/addNewsSubmit'); ?>" enctype="multipart/form-data" class="forms-sample">
+                <form method="post" action="<?= base_url('/addNewsSubmitTrial'); ?>" enctype="multipart/form-data" class="forms-sample" id="newsForm">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="title">Title</label>
                                 <input type="text" class="form-control" id="title" name="title" placeholder="Enter news title">
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="subTitle">SubTitle</label>
-                                <input type="text" class="form-control" id="subTitle" name="subTitle" placeholder="Enter news Subtitle">
                             </div>
                         </div>
                     </div>
@@ -83,17 +76,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="content">Content</label>
-                                <textarea class="form-control mySummernote" id="content" name="content" placeholder="Enter news content"></textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Image Upload -->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="images">Images:</label>
-                                <input type="file" class="form-control-file" id="images" name="images[]" multiple required>
+                                <textarea class="form-control" id="mySummernote" name="content" placeholder="Enter news content"></textarea>
                             </div>
                         </div>
                     </div>
@@ -110,7 +93,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="mt-3">
-                                <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
+                                <button id="btn-submit" type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
                                 <button class="btn btn-light">Cancel</button>
                             </div>
                         </div>
@@ -137,8 +120,69 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script>
     $(document).ready(function() {
-        $(".mySummernote").summernote();
+        // $(".mySummernote").summernote();
         $('.dropdown-toggle').dropdown();
+    });
+    </script>
+
+    <script>
+      const form = document.querySelector('#newsForm');
+      var formData = new FormData();
+      $(document).ready(function() {
+        $('#mySummernote').summernote({
+            placeholder: 'Enter your content',
+            height: 300,
+            toolbar: [
+              ['style', ['style']],
+              ['font', ['bold', 'underline', 'clear']],
+              ['color', ['color']],
+              ['para', ['ul', 'ol', 'paragraph']],
+              ['table', ['table']],
+              ['insert', ['link', 'picture', 'video']],
+              ['view', ['fullscreen', 'codeview', 'help']]
+            ],
+            callbacks: {  
+              onImageUpload: function(files, editor, welEditable) {
+                    for (var i = 0; i < files.length; i++) {
+                        formData.append('files[]', files[i]);
+                    }
+
+                    var imagesArray = [];
+                    for (var i = 0; i < files.length; i++) {
+                        var reader = new FileReader();
+                        reader.onload = function(e) {
+                            var imgData = e.target.result;
+                            imagesArray.push(imgData);
+                            var imgNode = document.createElement('img');
+                            imgNode.src = imgData;
+                            $('#mySummernote').summernote('insertNode', imgNode);
+                        }
+                        reader.readAsDataURL(files[i]);
+                    }
+                    // You can now use the imagesArray to send the images to the database
+                }
+            }
+        });
+    });
+
+    $('#btn-submit').click(function(e) {
+        e.preventDefault();
+        formData.append('title', $('#title').val());
+        formData.append('author', $('#author').val());
+        formData.append('category', $('#category').val());
+        formData.append('content', $('#mySummernote').summernote('code'));
+        formData.append('comment', $('#comment').val());
+        $.ajax({
+            url: '<?= base_url('addNewsSubmitTrial')?>',
+            method: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                console.log(response);
+                // Handle response from the server
+            }
+        });
     });
     </script>
 

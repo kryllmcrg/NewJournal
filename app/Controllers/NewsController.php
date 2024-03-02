@@ -28,12 +28,12 @@ class NewsController extends BaseController
     {
         $categoryModel = new CategoryModel();
         $categories = $categoryModel->findAll();
-    
+
         $data['categories'] = $categories;
-    
+
         if ($this->request->getMethod() === 'post') {
             $newsModel = new NewsModel();
-    
+
             // Get the submitted form data
             $newsData = [
                 'title' => $this->request->getPost('title'),
@@ -43,30 +43,88 @@ class NewsController extends BaseController
                 'publication_date' => $this->request->getPost('publication_date'),
 
             ];
-    
+
             // Save the news item
             $newsModel->insert($newsData);
-    
+
             // Redirect to the news list page or show a success message
             return redirect()->to('/newslist');
         }
-    
+
         // Load the view with the categories data
         return view('AdminPage/addnews', $data);
     }
-    
+
+    public function uploadImage()
+    {
+        $file = $this->request->getFile('files');
+
+        if ($file->isValid() && $file->hasMoved()) {
+            $newName = $file->getRandomName();
+            $file->move('./uploads', $newName);
+            $imageUrl = base_url('uploads/' . $newName);
+            echo json_encode(['imageUrl' => $imageUrl]);
+        } else {
+            echo json_encode(['error' => 'Invalid file']);
+        }
+    }
+
+    public function addNewsSubmitTrial()
+{
+    try {
+        $title = $this->request->getPost('title');
+        $author = $this->request->getPost('author');
+        $category = $this->request->getPost('category');
+        $content = $this->request->getPost('content');
+        $comment = $this->request->getPost('comment');
+
+        $images = $this->request->getFiles('files');
+
+        $uploadedImages = [];
+
+        foreach ($images as $file) {
+            foreach ($file as $uploadedFile) {
+                if ($uploadedFile->isValid() && !$uploadedFile->hasMoved()) {
+                    $newName = $uploadedFile->getRandomName();
+                    $uploadedFile->move('./uploads', $newName);
+                    $imageUrl = base_url('uploads/' . $newName);
+                    $uploadedImages[] = $imageUrl;
+                } else {
+                    $uploadedImages[] = ['error' => 'Invalid file'];
+                }
+            }
+        }
+
+        // Prepare the response data
+        $response = [
+            'title' => $title,
+            'author' => $author,
+            'category' => $category,
+            'content' => $content,
+            'comment' => $comment,
+            'files' => $uploadedImages,
+        ];
+
+        return $this->response->setJSON($response);
+    } catch (\Throwable $th) {
+        return $this->response->setJSON(['error' => $th->getMessage()]);
+    }
+}
+
+
+
 
     public function addNewsSubmit()
     {
         try {
             $newsModel = new NewsModel();
             $images = $this->request->getFiles();
-            
+
             // Check if files were uploaded
             if (empty($images)) {
                 return $this->response->setStatusCode(400)->setJSON(["error" => "Error: No file uploaded."]);
             }
-            
+
             $imageNames = [];
             foreach ($images['images'] as $image) {
                 // Check if the file is valid and hasn't already been moved
@@ -79,7 +137,7 @@ class NewsController extends BaseController
                     return $this->response->setStatusCode(400)->setJSON(["error" => "Error uploading file(s)."]);
                 }
             }
-            
+
             $data = [
                 'title' => $this->request->getVar('title'),
                 'subTitle' => $this->request->getVar('subTitle'),
@@ -89,24 +147,24 @@ class NewsController extends BaseController
                 'content' => strip_tags($this->request->getVar('content')),
                 'comment' => $this->request->getVar('comment'),
             ];
-            
+
             // Validate data
             foreach ($data as $key => $value) {
                 if (empty($value)) {
                     return $this->response->setStatusCode(400)->setJSON(["error" => "Error: Required data '$key' is missing."]);
                 }
             }
-            
+
             // Insert data into the database
             if (!$newsModel->insert($data)) {
                 return $this->response->setStatusCode(500)->setJSON(["error" => "Error: Unable to insert data."]);
             }
-            
+
             $response = [
                 'message' => 'News created successfully',
                 'data' => $data
             ];
-            
+
             // Redirect to 'addnews' page with success message
             return redirect()->to('addnews')->with('success', 'News created successfully');
         } catch (\Throwable $th) {
@@ -114,7 +172,8 @@ class NewsController extends BaseController
         }
     }
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->NewsModel = new NewsModel();
     }
 
@@ -122,10 +181,10 @@ class NewsController extends BaseController
     {
         try {
             $newsModel = new NewsModel();
-            
+
             // Delete the news item
-            $deleted = $newsModel->where('id_news',$id)->delete();
-    
+            $deleted = $newsModel->where('id_news', $id)->delete();
+
             if ($deleted) {
                 // Return success message if deletion was successful
                 return redirect()->to('managenews');
@@ -137,7 +196,7 @@ class NewsController extends BaseController
             // Return error message if an exception occurred during deletion
             return $this->response->setJSON(['error' => 'An error occurred during deletion'])->setStatusCode(500);
         }
-    }    
+    }
 
     // public function updateNews()
     // {
@@ -167,24 +226,24 @@ class NewsController extends BaseController
     {
         $categoryModel = new CategoryModel();
         $categories = $categoryModel->findAll();
-    
+
         $data['categories'] = $categories;
-    
+
         // Load the view with the categories data
-        return view('EditPage/editNews' , $data);
+        return view('EditPage/editNews', $data);
     }
 
     public function managenews()
     {
         // Load the NewsModel
         $newsModel = new NewsModel();
-    
+
         // Fetch news data from the database
         $data['newsData'] = $newsModel->findAll(); // Assuming findAll() fetches all news items
-    
+
         // Load the view file and pass the news data to it
         return view('AdminPage/managenews', $data); // Pass the $data array to the view
-        
+
     }
 
     public function changeStatus()
@@ -208,12 +267,12 @@ class NewsController extends BaseController
     {
         // Load the NewsModel
         $newsModel = new NewsModel();
-    
+
         // Fetch news data from the database including only the specified columns
         $newsData = $newsModel->select('title, author,created_at, updated_at, id_news')->findAll();
-    
+
         // Pass the data to the view
         return view('AdminPage/archive', ['newsData' => $newsData]);
-    }    
+    }
 
 }
