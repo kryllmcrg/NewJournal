@@ -14,11 +14,11 @@
   </head>
   <body>
     <div class="container-scroller">
-      <?php include('include\logo.php'); ?>
-      <?php include('include\header.php'); ?>
+      <?php include('StaffPage\include\logo.php'); ?>
+      <?php include('StaffPage\include\header.php'); ?>
       </nav>
       <div class="container-fluid page-body-wrapper">
-        <?php include('include\sidebar.php'); ?>
+        <?php include('StaffPage\include\sidebar.php'); ?>
       
       <!-- MAIN CONTENTS -->
       <div class="main-panel">
@@ -27,23 +27,23 @@
           <h3 class="page-title">
             <span class="page-title-icon bg-gradient-primary text-white me-2">
               <i class="mdi mdi-plus"></i>
-        </span> Create News
-          </h3>
-          <nav aria-label="breadcrumb">
-            <ul class="breadcrumb">
-              <li class="breadcrumb-item active" aria-current="page">
-                <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-              </li>
-            </ul>
-          </nav>
-        </div>
+            </span> Create News
+            </h3>
+            <nav aria-label="breadcrumb">
+                <ul class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">
+                    <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                </li>
+                </ul>
+            </nav>
+            </div>
 
         <div class="row">
           <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Create News</h4>
-                <form method="post" action="<?php echo base_url('/addNewsSubmit'); ?>" enctype="multipart/form-data" class="forms-sample">
+                <form method="post" action="<?php echo base_url('/createNewsSubmit'); ?>" enctype="multipart/form-data" class="forms-sample">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -78,8 +78,8 @@
                         </div>
                     </div>
 
-                      <!-- WYSIWYG Editor -->
-                      <div class="row">
+                    <!-- WYSIWYG Editor -->
+                    <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="content">Content</label>

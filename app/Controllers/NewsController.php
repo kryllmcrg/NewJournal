@@ -41,7 +41,7 @@ class NewsController extends BaseController
                 'author' => $this->request->getPost('author'),
                 'category' => $this->request->getPost('category'), // Store category name
                 'publication_date' => $this->request->getPost('publication_date'),
-                // Add other fields as needed
+
             ];
     
             // Save the news item
