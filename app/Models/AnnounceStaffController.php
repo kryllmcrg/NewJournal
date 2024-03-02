@@ -4,16 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class AnnounceModel extends Model
+class AnnounceStaffController extends Model
 {
-    protected $table            = 'announcements_admin';
-    protected $primaryKey       = 'id_announce';
+    protected $table            = 'announcestaffcontrollers';
+    protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['title', 'description', 'images',  'created_at', 'updated_at'];
-    
+    protected $allowedFields    = [];
+
     // Dates
     protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';

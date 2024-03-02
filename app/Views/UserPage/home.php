@@ -154,32 +154,22 @@
               <div class="col-lg-12">
                 <div class="owl-collection owl-carousel">
                   <div class="item">
-                    <img src="assets/images/collection-01.jpg" alt="">
+                    <img src="assets/images/carousel3.jpg" alt="">
                     <div class="down-content">
-                      <h4>Mutant Bored Ape Yacht Club</h4>
-                      <span class="collection">Items In Collection:<br><strong>310/340</strong></span>
-                      <span class="category">Category:<br><strong>Digital Crypto</strong></span>
+                      <h4>Kalap Festival</h4>
+                      <span class="collection">Description:<br><strong>Hello World</strong></span>
+                      <span class="category">Category:<br><strong>Politics</strong></span>
                       <div class="main-button">
                         <a href="readmore">Read More</a>
                       </div>
                     </div>
                   </div>
+                  
                   <div class="item">
-                    <img src="assets/images/collection-01.jpg" alt="">
-                    <div class="down-content">
-                      <h4>Bored Ape Kennel Club</h4>
-                      <span class="collection">Items In Collection:<br><strong>324/324</strong></span>
-                      <span class="category">Category:<br><strong>Visual Art</strong></span>
-                      <div class="main-button">
-                        <a href="readmore">Read More</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <img src="assets/images/collection-01.jpg" alt="">
+                    <img src="assets/images/carousel1.jpg" alt="">
                     <div class="down-content">
                       <h4>Genesis Collective Statue</h4>
-                      <span class="collection">Items In Collection:<br><strong>380/394</strong></span>
+                      <span class="collection">Description:<br><strong>Trending News</strong></span>
                       <span class="category">Category:<br><strong>Music Art</strong></span>
                       <div class="main-button">
                         <a href="readmore">Read More</a>
@@ -187,11 +177,11 @@
                     </div>
                   </div>
                   <div class="item">
-                    <img src="assets/images/collection-01.jpg" alt="">
+                    <img src="assets/images/carousel2.jpg" alt="">
                     <div class="down-content">
                       <h4>Worldwide Artwork Ground</h4>
-                      <span class="collection">Items In Collection:<br><strong>426/468</strong></span>
-                      <span class="category">Category:<br><strong>Blockchain</strong></span>
+                      <span class="collection">Description:<br><strong>426/468</strong></span>
+                      <span class="category">Category:<br><strong>Sports</strong></span>
                       <div class="main-button">
                         <a href="readmore">Read More</a>
                       </div>

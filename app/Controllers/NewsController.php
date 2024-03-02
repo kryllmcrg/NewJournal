@@ -210,7 +210,7 @@ class NewsController extends BaseController
         $newsModel = new NewsModel();
     
         // Fetch news data from the database including only the specified columns
-        $newsData = $newsModel->select('title, author,created_at, updated_at comment, id_news')->findAll();
+        $newsData = $newsModel->select('title, author,created_at, updated_at, id_news')->findAll();
     
         // Pass the data to the view
         return view('AdminPage/archive', ['newsData' => $newsData]);

@@ -77,7 +77,8 @@
                                     <tr>
                                         <th>Title</th>
                                         <th>Author</th>
-                                        <th>Publication Date</th>
+                                        <th>Created At</th>
+                                        <th>Updated At</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -86,7 +87,6 @@
                                         <tr>
                                             <td><?php echo $newsItem['title']; ?></td>
                                             <td><?php echo $newsItem['author']; ?></td>
-                                            <td><?php echo $newsItem['comment']; ?></td>
                                             <td><?php echo $newsItem['created_at']; ?></td>
                                             <td><?php echo $newsItem['updated_at']; ?></td>
                                             <td> <!-- Actions column -->

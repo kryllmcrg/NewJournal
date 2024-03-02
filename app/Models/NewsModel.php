@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class NewsModel extends Model
 {
-    protected $table            = 'news';
+    protected $table            = 'news_admin';
     protected $primaryKey       = 'id_news';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
