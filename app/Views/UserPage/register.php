@@ -233,7 +233,7 @@
                             class="form-control" type="date" />
                     </div>
                     <div class="col-md-4">
-                        <label for="civil_status">Contact Number <span class="required-sign">*</span></label>
+                        <label for="civil_status">Civil Status <span class="required-sign">*</span></label>
                         <input type="text" id="civil_status" name="civil_status" placeholder="Create your civil_status"
                             required>
                     </div>

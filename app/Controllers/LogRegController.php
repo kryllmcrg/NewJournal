@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\UsersModel;
+use App\Models\UserAccountsModel;
 
 class LogRegController extends BaseController
 {
@@ -27,7 +28,7 @@ class LogRegController extends BaseController
             $email = $this->request->getVar('email');
             $password = $this->request->getVar('password');
 
-            $usersModel = new UsersModel();
+            $usersModel = new UserAccountsModel();
             $user = $usersModel->where('email', $email)->first();
 
             // Check if user exists
@@ -62,7 +63,8 @@ class LogRegController extends BaseController
 
     public function store()
     {
-        // Load the validation library
+        try {
+            // Load the validation library
         helper(['form', 'url']);
         $validation = \Config\Services::validation();
 
@@ -93,14 +95,15 @@ class LogRegController extends BaseController
 
         // Handle file upload
         $profileImage = $this->request->getFile('image');
+        $newName = $profileImage->getRandomName();
 
         // Check if a profile image was uploaded
         if ($profileImage->isValid() && !$profileImage->hasMoved()) {
             // Move the uploaded file to the desired directory
-            $profileImage->move(ROOTPATH . 'public/uploads');
+            $profileImage->move(ROOTPATH . 'public/uploads'.$newName);
 
             // Create a new user record in the database
-            $userModel = new UsersModel();
+            $userModel = new UserAccountsModel();
             $userModel->save([
                 'firstname' => $this->request->getPost('firstname'),
                 'middlename' => $this->request->getPost('middlename'),
@@ -110,18 +113,18 @@ class LogRegController extends BaseController
                 'email'      => $this->request->getPost('email'),
                 'password'   => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
                 'contact_number' => $this->request->getPost('contact_number'),
-                'image' => $profileImage->getName(),
+                'image' => $newName,
                 'role' => $this->request->getPost('role'),
                 'gender' => $this->request->getPost('gender'),
                 'date_of_birth' => $this->request->getPost('date_of_birth'),
                 'civil_status' => $this->request->getPost('civil_status'),
             ]);
-
-            // Redirect to login page
-            return redirect()->to('login')->with('success', 'Registration successful. Please log in.');
         } else {
             // If file upload fails, return back to the registration form with an error
-            return redirect()->back()->withInput()->with('error', 'Failed to upload profile image.');
+            return redirect()->to('login')->with('error', 'Failed to upload profile image.');
         }
-    }  
+        } catch (\Throwable $th) {
+            return redirect()->to('dashboard')->with('error', 'Failed to upload profile image.');
+        }
+    } 
 }

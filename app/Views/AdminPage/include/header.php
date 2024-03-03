@@ -47,7 +47,7 @@
                 <li class="nav-item nav-profile dropdown">
                   <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                     <div class="nav-profile-img">
-                      <img src="/uploads/<?= session()->get('profile_image')?>" alt="image">
+                      <img src="/uploads/<?= session()->get('image')?>" alt="image">
                       <span class="availability-status online"></span>
                     </div>
                     <div class="nav-profile-text">
