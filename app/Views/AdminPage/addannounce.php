@@ -54,12 +54,12 @@
                         </div>
 
                     <!-- Image Upload -->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="images">Images:</label>
-                                <input type="file" class="form-control-file" id="images" name="images[]" multiple required>
-                            </div>
+                    <div class="col-md-12 mb-2">
+                        <label for="image" class="image-label">Profile Image <span
+                                class="required-sign"></span></label>
+                        <div class="input-group">
+                            <input type="file" class="form-control" id="image" name="image" accept="image/*"
+                                aria-describedby="inputFileAddon" aria-label="Upload">
                         </div>
                     </div>
 

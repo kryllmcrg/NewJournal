@@ -5,7 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\CategoryModel;
-use App\Models\NewsStaffModel;
+use App\Models\NewsModel;
 
 class NewsStaffController extends BaseController
 {
@@ -18,7 +18,7 @@ class NewsStaffController extends BaseController
             $data['categories'] = $categories;
 
             if ($this->request->getMethod() === 'post') {
-                $newsStaffModel = new NewsStaffModel();
+                $newsStaffModel = new NewsModel();
 
                 // Validate form data
                 $validation =  \Config\Services::validation();
@@ -64,7 +64,7 @@ class NewsStaffController extends BaseController
     public function createNewsSubmit()
     {
         try {
-            $newsStaffModel = new NewsStaffModel();
+            $newsStaffModel = new NewsModel();
             $images = $this->request->getFiles();
             
             // Check if files were uploaded
