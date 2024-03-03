@@ -64,8 +64,8 @@
                         <div class="col-md-6">
                             <label for="category">Category</label>
                             <select class="form-control" id="category" name="category">
-                                <?php foreach ($categories as $category): ?>
-                                    <option value="<?php echo $category['name']; ?>"><?php echo $category['name']; ?></option>
+                                <?php foreach ($category as $category): ?>
+                                    <option value="<?php echo $category['category_name']; ?>"><?php echo $category['category_name']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>

@@ -123,4 +123,9 @@ class NewsStaffController extends BaseController
     {
         return view('StaffPage/managenewstaff');
     }
+
+    public function dashboard()
+    {
+        return view('StaffPage/dashboard');
+    }
 }

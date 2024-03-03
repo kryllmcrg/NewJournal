@@ -75,12 +75,10 @@
                                         <thead>
                                           <tr>
                                               <th>Title</th>
-                                              <th>SubTitle</th>
                                               <th>Author</th>
                                               <th>Category</th>
                                               <th>Content</th>
                                               <th>Images</th>
-                                              <th>Comment</th>
                                               <th>Created Date</th>
                                               <th>Update Date</th>
                                               <th>Status</th>
@@ -91,9 +89,8 @@
                                                 <?php foreach ($newsData as $newsItem): ?>
                                                     <tr>
                                                         <td><?php echo $newsItem['title']; ?></td>
-                                                        <td><?php echo $newsItem['subTitle']; ?></td>
                                                         <td><?php echo $newsItem['author']; ?></td>
-                                                        <td><?php echo $newsItem['category']; ?></td>
+                                                        <td><?php echo $newsItem['category_id']; ?></td>
                                                         <td><?php echo $newsItem['content']; ?></td>
                                                         <td>
                                                             <?php 
@@ -102,7 +99,6 @@
                                                                 <img src="<?php echo base_url('public/uploads/' . $image); ?>" alt="Image">
                                                             <?php endforeach; ?>
                                                         </td>
-                                                        <td><?php echo $newsItem['comment']; ?></td>
                                                         <td><?php echo $newsItem['created_at']; ?></td>
                                                         <td><?php echo $newsItem['updated_at']; ?></td>
                                                         <td>

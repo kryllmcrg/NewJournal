@@ -20,7 +20,7 @@ class CategoryController extends BaseController
             $categoryName = $this->request->getPost('category_name');
 
             // Insert the new category into the database
-            $categoryModel->insert(['name' => $categoryName]);
+            $categoryModel->insert(['category_name' => $categoryName]);
 
             // Redirect after adding the category
             return redirect()->to('/addcategory')->with('success', 'Category added successfully.');
@@ -35,7 +35,7 @@ class CategoryController extends BaseController
         $categoryModel = new CategoryModel();
 
         // Fetch all categories from the database
-        $data['news_categories'] = $categoryModel->findAll();
+        $data['category'] = $categoryModel->findAll();
 
         return view('home', $data);
     }
@@ -53,14 +53,14 @@ class CategoryController extends BaseController
     {
         try {
             // Retrieve the category ID and new category name from the request
-            $categoryId = $this->request->getPost('id_categories'); // Adjusted to match the attribute name
+            $categoryId = $this->request->getPost('category_id'); // Adjusted to match the attribute name
             $newCategoryName = $this->request->getPost('editCategory');
 
             // Validate inputs if necessary
 
             // Update the category in the database
             $categoryModel = new CategoryModel();
-            $categoryModel->update($categoryId, ['name' => $newCategoryName]);
+            $categoryModel->update($categoryId, ['category_name' => $newCategoryName]);
 
             // If successful, return success response
             return $this->response->setJSON(['success' => true, 'message' => 'Category updated successfully']);

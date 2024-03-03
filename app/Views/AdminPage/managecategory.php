@@ -113,11 +113,11 @@
                 <tbody>
                   <?php foreach ($categoryData as $categoryItem): ?>
                       <tr>
-                          <td><?php echo $categoryItem['name']; ?></td>
+                          <td><?php echo $categoryItem['category_name']; ?></td>
                           <td>
                           <td>
-                              <button type="button" class="btn btn-sm btn-primary edit-category-btn" data-category-id="<?php echo $categoryItem['id_categories']; ?>">Edit</button>
-                              <button type="button" class="btn btn-sm btn-danger delete-category-btn" data-category-id="<?php echo $categoryItem['id_categories']; ?>">Delete</button>
+                              <button type="button" class="btn btn-sm btn-primary edit-category-btn" data-category-id="<?php echo $categoryItem['category_id']; ?>">Edit</button>
+                              <button type="button" class="btn btn-sm btn-danger delete-category-btn" data-category-id="<?php echo $categoryItem['category_id']; ?>">Delete</button>
                           </td>
                           </td>
                       </tr>

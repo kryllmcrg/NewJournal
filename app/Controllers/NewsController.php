@@ -29,7 +29,7 @@ class NewsController extends BaseController
         $categoryModel = new CategoryModel();
         $categories = $categoryModel->findAll();
 
-        $data['categories'] = $categories;
+        $data['category'] = $categories;
 
         if ($this->request->getMethod() === 'post') {
             $newsModel = new NewsModel();
@@ -135,8 +135,7 @@ class NewsController extends BaseController
                 'author' => $this->request->getVar('author'),
                 'content' => strip_tags($this->request->getVar('content')),
                 'category_id' => $this->request->getVar('category_id'),
-                'images' => implode(',', $imageNames),
-                'comment' => $this->request->getVar('comment'),
+                'images' => implode(',', $imageNames)
             ];
 
             // Validate data
@@ -174,7 +173,7 @@ class NewsController extends BaseController
             $newsModel = new NewsModel();
 
             // Delete the news item
-            $deleted = $newsModel->where('id_news', $id)->delete();
+            $deleted = $newsModel->where('news_id', $id)->delete();
 
             if ($deleted) {
                 // Return success message if deletion was successful
@@ -240,13 +239,13 @@ class NewsController extends BaseController
     public function changeStatus()
     {
         try {
-            $newsID = $this->request->getVar('id_news');
+            $newsID = $this->request->getVar('news_id');
             $status = $this->request->getVar('status');
 
             $data['status'] = $status;
 
             $model = new NewsModel();
-            $model->where('id_news', $newsID)->set($data)->update();
+            $model->where('news_id', $newsID)->set($data)->update();
 
             return $this->response->setJSON([$data, $newsID]);
         } catch (\Throwable $th) {
@@ -260,7 +259,7 @@ class NewsController extends BaseController
         $newsModel = new NewsModel();
 
         // Fetch news data from the database including only the specified columns
-        $newsData = $newsModel->select('title, author,created_at, updated_at, id_news')->findAll();
+        $newsData = $newsModel->select('title, author,created_at, updated_at, news_id')->findAll();
 
         // Pass the data to the view
         return view('AdminPage/archive', ['newsData' => $newsData]);
