@@ -43,7 +43,7 @@ class LogRegController extends BaseController
                 'id' => $user['id'],
                 'email' => $user['email'],
                 'role' => $user['role'],
-                'profile_image' => $user['profile_image'],
+                'image' => $user['image'],
                 'fullname' => $user['firstname'].' '. $user['lastname']
             ];
             $session->set($ses_user);
@@ -68,16 +68,20 @@ class LogRegController extends BaseController
 
         // Set validation rules with custom error messages
         $validation->setRules([
+
             'firstname' => 'required',
+            'middlename' => 'required',
             'lastname' => 'required',
-            'email' => 'required|valid_email',
-            'username' => 'required|is_unique[users.username]',
             'address' => 'required',
-            'gender' => 'required',
-            'mobilePhone' => 'required',
+            'username' => 'required|is_unique[users.username]',
+            'email' => 'required|valid_email',
             'password' => 'required|min_length[6]',
-            'profile_image' => 'uploaded[profile_image]|is_image[profile_image]|max_size[profile_image,4096]',
-            'role' => 'required'
+            'contact_number' => 'required',
+            'image' => 'uploaded[image]|is_image[image]|max_size[image,4096]',
+            'gender' => 'required',
+            'role' => 'required',
+            'date_of_birth' => 'required',
+            'civil_status' => 'required'
         ]);
         
 
@@ -88,7 +92,7 @@ class LogRegController extends BaseController
         }
 
         // Handle file upload
-        $profileImage = $this->request->getFile('profile_image');
+        $profileImage = $this->request->getFile('image');
 
         // Check if a profile image was uploaded
         if ($profileImage->isValid() && !$profileImage->hasMoved()) {
@@ -99,15 +103,18 @@ class LogRegController extends BaseController
             $userModel = new UsersModel();
             $userModel->save([
                 'firstname' => $this->request->getPost('firstname'),
+                'middlename' => $this->request->getPost('middlename'),
                 'lastname' => $this->request->getPost('lastname'),
-                'email'      => $this->request->getPost('email'),
-                'username'   => $this->request->getPost('username'),
                 'address' => $this->request->getPost('address'),
-                'gender' => $this->request->getPost('gender'),
-                'mobilePhone' => $this->request->getPost('mobilePhone'),
+                'username'   => $this->request->getPost('username'),
+                'email'      => $this->request->getPost('email'),
                 'password'   => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-                'profile_image' => $profileImage->getName(),
-                'role' => $this->request->getPost('role')
+                'contact_number' => $this->request->getPost('contact_number'),
+                'image' => $profileImage->getName(),
+                'role' => $this->request->getPost('role'),
+                'gender' => $this->request->getPost('gender'),
+                'date_of_birth' => $this->request->getPost('date_of_birth'),
+                'civil_status' => $this->request->getPost('civil_status'),
             ]);
 
             // Redirect to login page

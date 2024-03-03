@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,10 +11,10 @@
         body {
             margin: 0;
             padding: 0;
-            background-image: url('assets/images/cityby.png'); 
-            background-size: cover; 
-            background-position: center; 
-            height: 100vh; 
+            background-image: url('assets/images/cityby.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -35,7 +36,7 @@
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
             padding: 30px;
-            max-width: 500px;
+            max-width: 800px;
             width: 100%;
             text-align: center;
         }
@@ -95,13 +96,15 @@
 
         .form-grid {
             display: flex;
+            flex-direction: column;
             justify-content: space-between;
             flex-wrap: wrap;
         }
 
         .form-column {
             flex: 1;
-            max-width: calc(50% - 20px); /* Adjust the width as needed */
+            max-width: calc(50% - 20px);
+            /* Adjust the width as needed */
         }
 
         @media screen and (max-width: 600px) {
@@ -145,66 +148,120 @@
             color: red;
         }
     </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdnjs.com/libraries/bootstrap-datetimepicker/4.17.37" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
 </head>
+
 <body>
-    <a href="/" class="back-button">
-        <i class="bi bi-arrow-left-circle-fill"></i>
-        <!-- You can adjust the text as needed -->
-        <span>Back</span>
-    </a>
+    <div class="container d-flex justify-content-center p-4">
+        <a href="/" class="back-button">
+            <i class="bi bi-arrow-left-circle-fill"></i>
+            <!-- You can adjust the text as needed -->
+            <span>Back</span>
+        </a>
 
-    <div class="form-container">
-    <h2>Register</h2>
-    <form method="post" action="/store" enctype="multipart/form-data" class="form-grid">
-    <div class="form-column">
-        <label for="firstname">First Name <span class="required-sign">*</span></label>
-        <input type="text" id="firstname" name="firstname" placeholder="Insert your firstname" required>
+        <div class="form-container">
+            <h2>Register</h2>
+            <form method="post" action="/store" enctype="multipart/form-data" class="form-grid">
 
-        <label for="lastname">Last Name <span class="required-sign">*</span></label>
-        <input type="text" id="lastname" name="lastname" placeholder="Insert your lastname" required>
-        
-        <label for="email">E-mail Address <span class="required-sign">*</span></label>
-        <input type="email" id="email" name="email" placeholder="Insert your e-mail address" required>
+                <div class="row gx-3">
+                    <div class="col-md-4">
+                        <label for="firstname">First Name <span class="required-sign">*</span></label>
+                        <input type="text" id="firstname" name="firstname" placeholder="Insert your firstname" required>
+                    </div>
 
-        <label for="username">Username <span class="required-sign">*</span></label>
-        <input type="text" id="username" name="username" placeholder="Create your username" required>
+                    <div class="col-md-4">
+                        <label for="middlename">Middle Name <span class="required-sign">*</span></label>
+                        <input type="text" id="middlename" name="middlename" placeholder="Insert your middlename"
+                            required>
+                    </div>
 
-        <label for="address">Address <span class="required-sign">*</span></label>
-        <input type="text" id="address" name="address" placeholder="Create your address" required>
+                    <div class="col-md-4">
+                        <label for="lastname">Last Name <span class="required-sign">*</span></label>
+                        <input type="text" id="lastname" name="lastname" placeholder="Insert your lastname" required>
+                    </div>
+
+                    <div class="col-md-12">
+                        <label for="address">Address <span class="required-sign">*</span></label>
+                        <input type="text" id="address" name="address" placeholder="Create your address" required>
+                    </div>
+
+                    <div class="col-md-12">
+                        <label for="username">Username <span class="required-sign">*</span></label>
+                        <input type="text" id="username" name="username" placeholder="Create your username" required>
+                    </div>
+
+                    <div class="col-md-12">
+                        <label for="email">E-mail Address <span class="required-sign">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="Insert your e-mail address" required>
+                    </div>
+
+                    <div class="col-md-12">
+                        <label for="password">Password <span class="required-sign">*</span></label>
+                        <input type="password" id="password" name="password" placeholder="Create your password"
+                            required>
+                    </div>
+
+                    <div class="col-md-5">
+                        <label for="gender">Gender <span class="required-sign">*</span></label>
+                        <select id="gender" name="gender" required>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Rather not say">Rather not say</option>
+                        </select>
+                    </div>
+                    <div class="col-md-7">
+                        <label for="contact_number">Contact Number <span class="required-sign">*</span></label>
+                        <input type="text" id="contact_number" name="contact_number"
+                            placeholder="Create your contact_number" required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="role">Role <span class="required-sign">*</span></label>
+                        <select id="role" name="role" required>
+                            <option value="ADMIN">ADMIN</option>
+                            <option value="STAFF">STAFF</option>
+                            <option value="STAFF">USER</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="date_of_birth">Date of Birth <span class="required-sign">*</span></label>
+                        <input id="date_of_birth" name="date_of_birth" placeholder="Create your date_of_birth" required
+                            class="form-control" type="date" />
+                    </div>
+                    <div class="col-md-4">
+                        <label for="civil_status">Contact Number <span class="required-sign">*</span></label>
+                        <input type="text" id="civil_status" name="civil_status" placeholder="Create your civil_status"
+                            required>
+                    </div>
+
+                    <div class="col-md-12 mb-2">
+                        <label for="image" class="image-label">Profile Image <span
+                                class="required-sign">*</span></label>
+                        <div class="input-group">
+                            <input type="file" class="form-control" id="image" name="image" accept="image/*"
+                                aria-describedby="inputFileAddon" aria-label="Upload">
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <button type="submit">Sign Up</button>
+                        <label for="terms">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            I have read the Terms & Conditions
+                        </label>
+                    </div>
+                </div>
+            </form>
+            <p>I have an account! <a href="/login">Sign in</a></p>
+        </div>
     </div>
-
-    <div class="form-column">
-
-        <label for="gender">Gender <span class="required-sign">*</span></label>
-        <select id="gender" name="gender" required>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Rather not say">Rather not say</option>
-        </select>
-
-        <label for="mobilePhone">Mobile Phone <span class="required-sign">*</span></label>
-        <input type="text" id="mobilePhone" name="mobilePhone" placeholder="Create your mobilePhone" required>
-
-        <label for="password">Password <span class="required-sign">*</span></label>
-        <input type="password" id="password" name="password" placeholder="Create your password" required>
-
-        <label for="profile_image" class="profile-image-label">Profile Image <span class="required-sign">*</span></label>
-        <input type="file" id="profile_image" name="profile_image" accept="image/*" class="profile-image-input">
-
-        <!-- Role Dropdown -->
-        <label for="role">Role <span class="required-sign">*</span></label>
-        <select id="role" name="role" required>
-            <option value="ADMIN">ADMIN</option>
-            <option value="STAFF">STAFF</option>
-        </select>
-    </div>
-    <button type="submit" class="full-width">Sign Up</button>
-        <label for="terms">
-            <input type="checkbox" id="terms" name="terms" required>
-            I have read the Terms & Conditions
-        </label>
-</form>
-<p>I have an account! <a href="/login">Sign up</a></p> 
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

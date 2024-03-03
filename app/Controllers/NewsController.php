@@ -37,11 +37,10 @@ class NewsController extends BaseController
             // Get the submitted form data
             $newsData = [
                 'title' => $this->request->getPost('title'),
-                'subtitle' => $this->request->getPost('subtitle'),
+                'content' => $this->request->getPost('content'),
                 'author' => $this->request->getPost('author'),
-                'category' => $this->request->getPost('category'), // Store category name
-                'publication_date' => $this->request->getPost('publication_date'),
-
+                'category_id' => $this->request->getPost('category_id'),
+                'images' => $this->request->getPost('images'),
             ];
 
             // Save the news item
@@ -73,10 +72,9 @@ class NewsController extends BaseController
     {
         try {
             $title = $this->request->getPost('title');
-            $author = $this->request->getPost('author');
-            $category = $this->request->getPost('category');
             $content = $this->request->getPost('content');
-            $comment = $this->request->getPost('comment');
+            $author = $this->request->getPost('author');
+            $category_id = $this->request->getPost('category_id');
             $images = $this->request->getFiles('files');
 
             $uploadedImages = [];
@@ -93,14 +91,12 @@ class NewsController extends BaseController
                     }
                 }
             }
-
             // Prepare the response data
             $response = [
                 'title' => $title,
                 'author' => $author,
-                'category' => $category,
                 'content' => $content,
-                'comment' => $comment,
+                'category_id' => $category_id,
                 'files' => $uploadedImages,
             ];
 
@@ -136,11 +132,10 @@ class NewsController extends BaseController
 
             $data = [
                 'title' => $this->request->getVar('title'),
-                'subTitle' => $this->request->getVar('subTitle'),
                 'author' => $this->request->getVar('author'),
-                'category' => $this->request->getVar('category'),
-                'images' => implode(',', $imageNames),
                 'content' => strip_tags($this->request->getVar('content')),
+                'category_id' => $this->request->getVar('category_id'),
+                'images' => implode(',', $imageNames),
                 'comment' => $this->request->getVar('comment'),
             ];
 
