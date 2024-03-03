@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class CategoryModel extends Model
+class UserAuditModel extends Model
 {
-    protected $table            = 'category';
-    protected $primaryKey       = 'category_id';
+    protected $table            = 'user_audit_trail';
+    protected $primaryKey       = 'user_audit_id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['category_name'];
+    protected $allowedFields    = ['users_id','action','action_desciption','timestamp'];
 
     // Dates
     protected $useTimestamps = false;

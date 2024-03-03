@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class CategoryModel extends Model
+class CommentModel extends Model
 {
-    protected $table            = 'category';
-    protected $primaryKey       = 'category_id';
+    protected $table            = 'comments';
+    protected $primaryKey       = 'comment_id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['category_name'];
+    protected $allowedFields    = ['comment_id','news_id','comment','comment_author'];
 
     // Dates
     protected $useTimestamps = false;

@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class CategoryModel extends Model
+class LikeModel extends Model
 {
-    protected $table            = 'category';
-    protected $primaryKey       = 'category_id';
+    protected $table            = 'likes';
+    protected $primaryKey       = 'like_id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['category_name'];
+    protected $allowedFields    = ['news_id','likes_count'];
 
     // Dates
     protected $useTimestamps = false;

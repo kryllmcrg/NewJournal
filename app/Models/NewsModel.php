@@ -6,13 +6,13 @@ use CodeIgniter\Model;
 
 class NewsModel extends Model
 {
-    protected $table            = 'news_admin';
-    protected $primaryKey       = 'id_news';
+    protected $table            = 'news';
+    protected $primaryKey       = 'news_id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['title','subTitle','author','category','content','images','status','comment','created_at','updated_at'];
+    protected $allowedFields    = ['title','content','category_id','user_id','images','new_status','publication_staus','date_approved','date_submitted','publication_date'];
     // Dates
     protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';

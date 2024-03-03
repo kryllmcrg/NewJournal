@@ -70,49 +70,45 @@ class NewsController extends BaseController
     }
 
     public function addNewsSubmitTrial()
-{
-    try {
-        $title = $this->request->getPost('title');
-        $author = $this->request->getPost('author');
-        $category = $this->request->getPost('category');
-        $content = $this->request->getPost('content');
-        $comment = $this->request->getPost('comment');
+    {
+        try {
+            $title = $this->request->getPost('title');
+            $author = $this->request->getPost('author');
+            $category = $this->request->getPost('category');
+            $content = $this->request->getPost('content');
+            $comment = $this->request->getPost('comment');
+            $images = $this->request->getFiles('files');
 
-        $images = $this->request->getFiles('files');
+            $uploadedImages = [];
 
-        $uploadedImages = [];
-
-        foreach ($images as $file) {
-            foreach ($file as $uploadedFile) {
-                if ($uploadedFile->isValid() && !$uploadedFile->hasMoved()) {
-                    $newName = $uploadedFile->getRandomName();
-                    $uploadedFile->move('./uploads', $newName);
-                    $imageUrl = base_url('uploads/' . $newName);
-                    $uploadedImages[] = $imageUrl;
-                } else {
-                    $uploadedImages[] = ['error' => 'Invalid file'];
+            foreach ($images as $file) {
+                foreach ($file as $uploadedFile) {
+                    if ($uploadedFile->isValid() && !$uploadedFile->hasMoved()) {
+                        $newName = $uploadedFile->getRandomName();
+                        $uploadedFile->move('./uploads', $newName);
+                        $imageUrl = base_url('uploads/' . $newName);
+                        $uploadedImages[] = $imageUrl;
+                    } else {
+                        $uploadedImages[] = ['error' => 'Invalid file'];
+                    }
                 }
             }
+
+            // Prepare the response data
+            $response = [
+                'title' => $title,
+                'author' => $author,
+                'category' => $category,
+                'content' => $content,
+                'comment' => $comment,
+                'files' => $uploadedImages,
+            ];
+
+            return $this->response->setJSON($response);
+        } catch (\Throwable $th) {
+            return $this->response->setJSON(['error' => $th->getMessage()]);
         }
-
-        // Prepare the response data
-        $response = [
-            'title' => $title,
-            'author' => $author,
-            'category' => $category,
-            'content' => $content,
-            'comment' => $comment,
-            'files' => $uploadedImages,
-        ];
-
-        return $this->response->setJSON($response);
-    } catch (\Throwable $th) {
-        return $this->response->setJSON(['error' => $th->getMessage()]);
     }
-}
-
-
-
 
     public function addNewsSubmit()
     {

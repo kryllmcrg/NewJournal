@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class CategoryModel extends Model
+class ReaderAccountModel extends Model
 {
-    protected $table            = 'category';
-    protected $primaryKey       = 'category_id';
+    protected $table            = 'reader_user_account';
+    protected $primaryKey       = 'reader_id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['category_name'];
+    protected $allowedFields    = ['username','password'];
 
     // Dates
     protected $useTimestamps = false;
