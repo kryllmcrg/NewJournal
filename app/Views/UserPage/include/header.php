@@ -1,17 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+  <!-- Basic Page Needs
+================================================== -->
   <meta charset="utf-8">
-  <meta name="author" content="templatemo">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-  <title>Home</title>
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/fontawesome.css">
-  <link rel="stylesheet" href="assets/css/style2.css">
-  <link rel="stylesheet" href="assets/css/owl.css">
-  <link rel="stylesheet" href="assets/css/animate.css">
-  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+  <title>Constra - Construction Html5 Template</title>
+
+  <!-- Mobile Specific Metas
+================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Construction Html5 Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+  <!-- Favicon
+================================================== -->
+  <link rel="icon" type="assets/image/png" href="assets/images/favicon.png">
+
+  <!-- CSS
+================================================== -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="assets/plugins/bootstrap/bootstrap.min.css">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+  <!-- Animation -->
+  <link rel="stylesheet" href="assets/plugins/animate-css/animate.css">
+  <!-- slick Carousel -->
+  <link rel="stylesheet" href="assets/plugins/slick/slick.css">
+  <link rel="stylesheet" href="assets/plugins/slick/slick-theme.css">
+  <!-- Colorbox -->
+  <link rel="stylesheet" href="assets/plugins/colorbox/colorbox.css">
+  <!-- Template styles-->
+  <link rel="stylesheet" href="assets/css/style.css">
+
 </head>
 <style>
     .nav {
@@ -19,42 +40,139 @@
     }
 </style>
 <body>
-<header class="header-area header-sticky">
+<div class="body-inner">
+
+<div id="top-bar" class="top-bar">
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-8 col-md-8">
+            <ul class="top-info text-center text-md-left">
+                <li><i class="fas fa-map-marker-alt"></i> <p class="info-text">9051 Constra Incorporate, USA</p>
+                </li>
+            </ul>
+          </div>
+          <!--/ Top info end -->
+
+          <div class="col-lg-4 col-md-4 top-social text-center text-md-right">
+            <ul class="list-unstyled">
+                <li>
+                  <a title="Facebook" href="https://facebbok.com/themefisher.com">
+                      <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
+                  </a>
+                  <a title="Twitter" href="https://twitter.com/themefisher.com">
+                      <span class="social-icon"><i class="fab fa-twitter"></i></span>
+                  </a>
+                  <a title="Instagram" href="https://instagram.com/themefisher.com">
+                      <span class="social-icon"><i class="fab fa-instagram"></i></span>
+                  </a>
+                  <a title="Linkdin" href="https://github.com/themefisher.com">
+                      <span class="social-icon"><i class="fab fa-github"></i></span>
+                  </a>
+                </li>
+            </ul>
+          </div>
+          <!--/ Top social end -->
+      </div>
+      <!--/ Content row end -->
+    </div>
+    <!--/ Container end -->
+</div>
+<!--/ Topbar end -->
+<!-- Header start -->
+<header id="header" class="header-one">
+  <div class="bg-white">
+    <div class="container">
+      <div class="logo-area">
+          <div class="row align-items-center">
+            <div class="logo col-lg-3 text-center text-lg-left mb-3 mb-md-5 mb-lg-0">
+                <a class="d-block" href="index.html">
+                  <img loading="lazy" src="assets/images/logo.png" alt="Constra">
+                </a>
+            </div><!-- logo end -->
+  
+            <div class="col-lg-9 header-right">
+                <ul class="top-info-box">
+                  <li>
+                    <div class="info-box">
+                      <div class="info-box-content">
+                          <p class="info-box-title">Call Us</p>
+                          <p class="info-box-subtitle">(+9) 847-291-4353</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="info-box">
+                      <div class="info-box-content">
+                          <p class="info-box-title">Email Us</p>
+                          <p class="info-box-subtitle">office@Constra.com</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="last">
+                    <div class="info-box last">
+                      <div class="info-box-content">
+                          <p class="info-box-title">Global Certificate</p>
+                          <p class="info-box-subtitle">ISO 9001:2017</p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="header-get-a-quote">
+                    <a class="btn btn-primary" href="contact.html">Get A Quote</a>
+                  </li>
+                </ul><!-- Ul end -->
+            </div><!-- header right end -->
+          </div><!-- logo area end -->
+  
+      </div><!-- Row end -->
+    </div><!-- Container end -->
+  </div>
+
+  <div class="site-navigation">
     <div class="container">
         <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <a href="/" class="logo">
-                        <img src="assets/images/ciologo.png" alt="" style="width: 70px; height: auto;">
-                    </a>
-                    <ul class="nav">
-                        <li><a href="/" class="active">Home</a></li>
-                        <li><a href="about">About</a></li>
-                        <li><a href="contact">Contact</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                News
-                            </a>
-                            <ul class="dropdown-menu multi-column" aria-labelledby="navbarDropdown">
-                                <div class="col-md-4 dropdown-column" id="news-dropdown">
-                                    <?php foreach ($categories as $category): ?>
-                                        <a class="dropdown-item" href="#"><?php echo $category['category_name']; ?></a>
-                                    <?php endforeach; ?>
-                                </div>
-                            </ul>
-                        </li>
+          <div class="col-lg-12">
+              <nav class="navbar navbar-expand-lg navbar-dark p-0">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div id="navbar-collapse" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
 
-                        <li><a href="announcements">Announcements</a></li>
-                        <li><a href="login">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about">About</a></li>
+              
+                      <li class="nav-item"><a class="nav-link" href="announcement">Announcement</a></li>
+              
+                      <li class="nav-item"><a class="nav-link" href="news">News</a></li>
+              
+                      <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
+
+                      <li class="nav-item"><a class="nav-link" href="login">Login</a></li>
                     </ul>
-                    <a class="menu-trigger">
-                        <span>Menu</span>
-                    </a>
-                </nav>
-            </div>
+                </div>
+              </nav>
+          </div>
+          <!--/ Col end -->
         </div>
+        <!--/ Row end -->
+
+        <div class="nav-search">
+          <span id="search"><i class="fa fa-search"></i></span>
+        </div><!-- Search end -->
+
+        <div class="search-block" style="display: none;">
+          <label for="search-field" class="w-100 mb-0">
+            <input type="text" class="form-control" id="search-field" placeholder="Type what you want and enter">
+          </label>
+          <span class="search-close">&times;</span>
+        </div><!-- Site search end -->
     </div>
+    <!--/ Container end -->
+
+  </div>
+  <!--/ Navigation end -->
 </header>
+<!--/ Header end -->
 </body>
 </html>

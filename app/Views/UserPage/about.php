@@ -1,217 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="author" content="templatemo">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-  <title>About</title>
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/fontawesome.css">
-  <link rel="stylesheet" href="assets/css/style2.css">
-  <link rel="stylesheet" href="assets/css/owl.css">
-  <link rel="stylesheet" href="assets/css/animate.css">
-  <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-  <link rel="shortcut icon" href="assets/images/ciologo.png" />
-</head>
-<body>
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-    <header class="header-area header-sticky">
-      <div class="container">
-          <div class="row">
-              <div class="col-12">
-                  <nav class="main-nav">
-                      <a href="/" class="logo">
-                          <img src="assets/images/ciologo.png" alt="" style="width: 70px; height: auto;">
-                      </a>
-                      <ul class="nav">
-                          <li><a href="/">Home</a></li>
-                          <li><a href="about" class="active">About</a></li>
-                          <li><a href="contact">Contact</a></li>
-                          <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                  data-bs-toggle="dropdown" aria-expanded="false">
-                                  News
-                              </a>
-                              <ul class="dropdown-menu multi-column" aria-labelledby="navbarDropdown">
-                                  <div class="col-md-4 dropdown-column" id="news-dropdown">
-                                      <?php foreach ($categories as $category): ?>
-                                          <a class="dropdown-item" href="#"><?php echo $category['category_name']; ?></a>
-                                      <?php endforeach; ?>
-                                  </div>
-                              </ul>
-                          </li>
 
-                          <li><a href="announcements">Announcements</a></li>
-                          <li><a href="login">Login</a></li>
-                      </ul>
-                      <a class="menu-trigger">
-                          <span>Menu</span>
-                      </a>
-                  </nav>
-              </div>
-          </div>
-      </div>
-  </header>
-  <div class="main-banner">
+  <!-- Basic Page Needs
+================================================== -->
+  <meta charset="utf-8">
+  <title>Constra - Construction Html5 Template</title>
+
+  <!-- Mobile Specific Metas
+================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Construction Html5 Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+  <!-- Favicon
+================================================== -->
+  <link rel="icon" type="assets/image/png" href="assets/images/favicon.png">
+
+  <!-- CSS
+================================================== -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="assets/plugins/bootstrap/bootstrap.min.css">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+  <!-- Animation -->
+  <link rel="stylesheet" href="assets/plugins/animate-css/animate.css">
+  <!-- slick Carousel -->
+  <link rel="stylesheet" href="assets/plugins/slick/slick.css">
+  <link rel="stylesheet" href="assets/plugins/slick/slick-theme.css">
+  <!-- Colorbox -->
+  <link rel="stylesheet" href="assets/plugins/colorbox/colorbox.css">
+  <!-- Template styles-->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+<style>
+    .nav {
+        color: black;
+    }
+</style>
+<body>
+<?php include('include\header.php'); ?>
+
+<div id="banner-area" class="banner-area" style="background-image:url(assets/images/banner/banner1.jpg)">
+  <div class="banner-text">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 align-self-center">
-                <div class="header-text">
-                    <h6>Calapan Oriental Mindoro Updates</h6>
-                    <h2>Stay Updated with the Latest News</h2>
-                    <p>Get the hottest updates and latest news about Calapan Oriental Mindoro. Stay informed about community events, government initiatives, and local developments.</p>
-                    <div class="buttons">
-                        <div class="border-button">
-                            <a href="news.html">Read Latest News</a>
-                        </div>
-                        <div class="main-button">
-                            <a href="https://citygovernmentofcalapan.gov.ph/" target="_blank">Visit Official Website</a>
-                        </div>
+          <div class="col-lg-12">
+              <div class="banner-heading">
+                <h1 class="banner-title">About</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center">
+                      <li class="breadcrumb-item"><a href="#">Home</a></li>
+                      <li class="breadcrumb-item"><a href="#">company</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">About Us</li>
+                    </ol>
+                </nav>
+              </div>
+          </div><!-- Col end -->
+        </div><!-- Row end -->
+    </div><!-- Container end -->
+  </div><!-- Banner text end -->
+</div><!-- Banner area end --> 
+
+<section id="main-container" class="main-container">
+  <div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+          <h3 class="column-title">Who We Are</h3>
+          <p>when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin.</p>
+          <blockquote><p>Semporibus autem quibusdam et aut officiis debitis aut rerum est aut optio cumque nihil necessitatibus autemn ec tincidunt nunc posuere ut</p></blockquote>
+          <p>He lay on his armour-like  back, and if he lifted. ultrices ultrices sapien, nec tincidunt nunc posuere ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn’t anything embarrassing.</p>
+
+        </div><!-- Col end -->
+
+        <div class="col-lg-6 mt-5 mt-lg-0">
+          
+          <div id="page-slider" class="page-slider small-bg">
+
+              <div class="item" style="background-image:url(assets/images/slider-pages/slide-page1.jpg)">
+                <div class="container">
+                    <div class="box-slider-content">
+                      <div class="box-slider-text">
+                          <h2 class="box-slide-title">Leadership</h2>
+                      </div>    
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-5 offset-lg-1">
-                <div class="owl-banner owl-carousel">
-                    <div class="item">
-                        <img src="assets/images/calapan-news-01.jpg" alt="Calapan Oriental Mindoro">
-                    </div>
-                    <div class="item">
-                        <img src="assets/images/calapan-news-02.jpg" alt="Calapan Oriental Mindoro">
+              </div><!-- Item 1 end -->
+
+              <div class="item" style="background-image:url(assets/images/slider-pages/slide-page2.jpg)">
+                <div class="container">
+                    <div class="box-slider-content">
+                      <div class="box-slider-text">
+                          <h2 class="box-slide-title">Relationships</h2>
+                      </div>    
                     </div>
                 </div>
-            </div>
-        </div>
+              </div><!-- Item 1 end -->
+
+              <div class="item" style="background-image:url(assets/images/slider-pages/slide-page3.jpg)">
+                <div class="container">
+                    <div class="box-slider-content">
+                      <div class="box-slider-text">
+                          <h2 class="box-slide-title">Performance</h2>
+                      </div>    
+                    </div>
+                </div>
+              </div><!-- Item 1 end -->
+          </div><!-- Page slider end-->          
+        
+
+        </div><!-- Col end -->
+    </div><!-- Content row end -->
+
+  </div><!-- Container end -->
+</section><!-- Main container end -->
+
+
+<section id="facts" class="facts-area dark-bg">
+  <div class="container">
+    <div class="facts-wrapper">
+        <div class="row">
+          <div class="col-md-3 col-sm-6 ts-facts">
+              <div class="ts-facts-img">
+                <img loading="lazy" src="assets/images/icon-image/fact1.png" alt="facts-img">
+              </div>
+              <div class="ts-facts-content">
+                <h2 class="ts-facts-num"><span class="counterUp" data-count="1789">0</span></h2>
+                <h3 class="ts-facts-title">Total Projects</h3>
+              </div>
+          </div><!-- Col end -->
+
+          <div class="col-md-3 col-sm-6 ts-facts mt-5 mt-sm-0">
+              <div class="ts-facts-img">
+                <img loading="lazy" src="assets/images/icon-image/fact2.png" alt="facts-img">
+              </div>
+              <div class="ts-facts-content">
+                <h2 class="ts-facts-num"><span class="counterUp" data-count="647">0</span></h2>
+                <h3 class="ts-facts-title">Staff Members</h3>
+              </div>
+          </div><!-- Col end -->
+
+          <div class="col-md-3 col-sm-6 ts-facts mt-5 mt-md-0">
+              <div class="ts-facts-img">
+                <img loading="lazy" src="assets/images/icon-image/fact3.png" alt="facts-img">
+              </div>
+              <div class="ts-facts-content">
+                <h2 class="ts-facts-num"><span class="counterUp" data-count="4000">0</span></h2>
+                <h3 class="ts-facts-title">Hours of Work</h3>
+              </div>
+          </div><!-- Col end -->
+
+          <div class="col-md-3 col-sm-6 ts-facts mt-5 mt-md-0">
+              <div class="ts-facts-img">
+                <img loading="lazy" src="assets/images/icon-image/fact4.png" alt="facts-img">
+              </div>
+              <div class="ts-facts-content">
+                <h2 class="ts-facts-num"><span class="counterUp" data-count="44">0</span></h2>
+                <h3 class="ts-facts-title">Countries Experience</h3>
+              </div>
+          </div><!-- Col end -->
+
+        </div> <!-- Facts end -->
     </div>
+    <!--/ Content row end -->
   </div>
-  <div class="categories-collections">
-    <div class="container">
-      <div class="row">
+  <!--/ Container end -->
+</section><!-- Facts end -->
+
+<section id="ts-team" class="ts-team">
+  <div class="container">
+    <div class="row text-center">
         <div class="col-lg-12">
-          <div class="categories">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="section-heading">
-                  <div class="line-dec"></div>
-                  <h2>Browse Through Our <em>Categories</em> Here.</h2>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-01.png" alt="">
-                  </div>
-                  <h4>Blockchain</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-02.png" alt="">
-                  </div>
-                  <h4>Digital Art</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-03.png" alt="">
-                  </div>
-                  <h4>Music Art</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-04.png" alt="">
-                  </div>
-                  <h4>Virtual World</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-05.png" alt="">
-                  </div>
-                  <h4>Valuable</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-06.png" alt="">
-                  </div>
-                  <h4>Triple NFT</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <h2 class="section-title">Quality Service</h2>
+          <h3 class="section-sub-title">Professional Team</h3>
         </div>
-      </div>
-    </div>
-  </div>
+    </div><!--/ Title row end -->
+
+    <div class="row">
+        <div class="col-lg-12">
+          <div id="team-slide" class="team-slide">
+              <div class="item">
+                <div class="ts-team-wrapper">
+                    <div class="team-img-wrapper">
+                      <img loading="lazy" class="w-100" src="assets/images/team/team1.jpg" alt="team-img">
+                    </div>
+                    <div class="ts-team-content">
+                      <h3 class="ts-name">Nats Stenman</h3>
+                      <p class="ts-designation">Chief Operating Officer</p>
+                      <p class="ts-description">Nats Stenman began his career in construction with boots on the ground</p>
+                      <div class="team-social-icons">
+                          <a target="_blank" href="#"><i class="fab fa-facebook-f"></i></a>
+                          <a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
+                          <a target="_blank" href="#"><i class="fab fa-google-plus"></i></a>
+                          <a target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
+                      </div><!--/ social-icons-->
+                    </div>
+                </div><!--/ Team wrapper end -->
+              </div><!-- Team 1 end -->
+
+              <div class="item">
+                <div class="ts-team-wrapper">
+                    <div class="team-img-wrapper">
+                      <img loading="lazy" class="w-100" src="assets/images/team/team2.jpg" alt="team-img">
+                    </div>
+                    <div class="ts-team-content">
+                      <h3 class="ts-name">Angela Lyouer</h3>
+                      <p class="ts-designation">Innovation Officer</p>
+                      <p class="ts-description">Nats Stenman began his career in construction with boots on the ground</p>
+                      <div class="team-social-icons">
+                          <a target="_blank" href="#"><i class="fab fa-facebook-f"></i></a>
+                          <a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
+                          <a target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
+                      </div><!--/ social-icons-->
+                    </div>
+                </div><!--/ Team wrapper end -->
+              </div><!-- Team 2 end -->
+
+              <div class="item">
+                <div class="ts-team-wrapper">
+                    <div class="team-img-wrapper">
+                      <img loading="lazy" class="w-100" src="assets/images/team/team3.jpg" alt="team-img">
+                    </div>
+                    <div class="ts-team-content">
+                      <h3 class="ts-name">Mark Conter</h3>
+                      <p class="ts-designation">Safety Officer</p>
+                      <p class="ts-description">Nats Stenman began his career in construction with boots on the ground</p>
+                      <div class="team-social-icons">
+                          <a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
+                          <a target="_blank" href="#"><i class="fab fa-google-plus"></i></a>
+                          <a target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
+                      </div><!--/ social-icons-->
+                    </div>
+                </div><!--/ Team wrapper end -->
+              </div><!-- Team 3 end -->
+
+              <div class="item">
+                <div class="ts-team-wrapper">
+                    <div class="team-img-wrapper">
+                      <img loading="lazy" class="w-100" src="assets/images/team/team4.jpg" alt="team-img">
+                    </div>
+                    <div class="ts-team-content">
+                      <h3 class="ts-name">Ayesha Stewart</h3>
+                      <p class="ts-designation">Finance Officer</p>
+                      <p class="ts-description">Nats Stenman began his career in construction with boots on the ground</p>
+                      <div class="team-social-icons">
+                          <a target="_blank" href="#"><i class="fab fa-facebook-f"></i></a>
+                          <a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
+                          <a target="_blank" href="#"><i class="fab fa-google-plus"></i></a>
+                          <a target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
+                      </div><!--/ social-icons-->
+                    </div>
+                </div><!--/ Team wrapper end -->
+              </div><!-- Team 4 end -->
+
+              <div class="item">
+                <div class="ts-team-wrapper">
+                    <div class="team-img-wrapper">
+                      <img loading="lazy" class="w-100" src="assets/images/team/team5.jpg" alt="team-img">
+                    </div>
+                    <div class="ts-team-content">
+                      <h3 class="ts-name">Dave Clarkte</h3>
+                      <p class="ts-designation">Civil Engineer</p>
+                      <p class="ts-description">Nats Stenman began his career in construction with boots on the ground</p>
+                      <div class="team-social-icons">
+                          <a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
+                          <a target="_blank" href="#"><i class="fab fa-google-plus"></i></a>
+                          <a target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
+                      </div><!--/ social-icons-->
+                    </div>
+                </div><!--/ Team wrapper end -->
+              </div><!-- Team 5 end -->
+
+              <div class="item">
+                <div class="ts-team-wrapper">
+                    <div class="team-img-wrapper">
+                      <img loading="lazy" class="w-100" src="assets/images/team/team6.jpg" alt="team-img">
+                    </div>
+                    <div class="ts-team-content">
+                      <h3 class="ts-name">Elton Joe</h3>
+                      <p class="ts-designation">Site Supervisor</p>
+                      <p class="ts-description">Nats Stenman began his career in construction with boots on the ground</p>
+                      <div class="team-social-icons">
+                          <a target="_blank" href="#"><i class="fab fa-facebook-f"></i></a>
+                          <a target="_blank" href="#"><i class="fab fa-twitter"></i></a>
+                          <a target="_blank" href="#"><i class="fab fa-google-plus"></i></a>
+                          <a target="_blank" href="#"><i class="fab fa-linkedin"></i></a>
+                      </div><!--/ social-icons-->
+                    </div>
+                </div><!--/ Team wrapper end -->
+              </div><!-- Team 6 end -->
+
+          </div><!-- Team slide end -->
+        </div>
+    </div><!--/ Content row end -->
+  </div><!--/ Container end -->
+</section><!--/ Team end -->
+
   <?php include('include\footer.php'); ?>
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/tabs.js"></script>
-  <script src="assets/js/popup.js"></script>
-  <script src="assets/js/custom.js"></script>
+   <!-- Javascript Files
+  ================================================== -->
 
-  <script>
-    // Function to dynamically populate the dropdown menu with categories
-      document.addEventListener("DOMContentLoaded", function() {
-          var dropdownDiv = document.getElementById("news-dropdown");
+  <!-- initialize jQuery Library -->
+  <script src="assets/plugins/jQuery/jquery.min.js"></script>
+  <!-- Bootstrap jQuery -->
+  <script src="assets/plugins/bootstrap/bootstrap.min.js" defer></script>
+  <!-- Slick Carousel -->
+  <script src="assets/plugins/slick/slick.min.js"></script>
+  <script src="assets/plugins/slick/slick-animation.min.js"></script>
+  <!-- Color box -->
+  <script src="assets/plugins/colorbox/jquery.colorbox.js"></script>
+  <!-- shuffle -->
+  <script src="assets/plugins/shuffle/shuffle.min.js" defer></script>
 
-          // Make an AJAX request to fetch categories
-          var xhr = new XMLHttpRequest();
-          xhr.onreadystatechange = function() {
-              if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-                  var categories = JSON.parse(this.responseText);
-                  categories.forEach(function(category) {
-                      var listItem = document.createElement("li");
-                      var link = document.createElement("a");
-                      link.setAttribute("href", "#" + category.name.toLowerCase());
-                      link.textContent = category.name;
-                      listItem.appendChild(link);
-                      dropdownDiv.appendChild(listItem);
-                  });
-              }
-          };
-          xhr.open("GET", "/getCategories", true); // Use the correct route without controller name
- // Replace '/controller/getCategories' with your actual route
-          xhr.send();
-      });
 
-</script>
+  <!-- Google Map API Key-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
+  <!-- Google Map Plugin-->
+  <script src="assets/plugins/google-map/map.js" defer></script>
+
+  <!-- Template custom -->
+  <script src="assets/js/script.js"></script>
 </body>
 </html>
 
