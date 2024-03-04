@@ -1,217 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+  <!-- Basic Page Needs
+================================================== -->
   <meta charset="utf-8">
-  <meta name="author" content="templatemo">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-  <title>Contacts</title>
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/fontawesome.css">
-  <link rel="stylesheet" href="assets/css/style2.css">
-  <link rel="stylesheet" href="assets/css/owl.css">
-  <link rel="stylesheet" href="assets/css/animate.css">
-  <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-  <link rel="shortcut icon" href="assets/images/ciologo.png" />
+  <title>Constra - Construction Html5 Template</title>
+
+  <!-- Mobile Specific Metas
+================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Construction Html5 Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+  <!-- Favicon
+================================================== -->
+  <link rel="icon" type="assets/image/png" href="assets/images/favicon.png">
+
+  <!-- CSS
+================================================== -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="assets/plugins/bootstrap/bootstrap.min.css">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+  <!-- Animation -->
+  <link rel="stylesheet" href="assets/plugins/animate-css/animate.css">
+  <!-- slick Carousel -->
+  <link rel="stylesheet" href="assets/plugins/slick/slick.css">
+  <link rel="stylesheet" href="assets/plugins/slick/slick-theme.css">
+  <!-- Colorbox -->
+  <link rel="stylesheet" href="assets/plugins/colorbox/colorbox.css">
+  <!-- Template styles-->
+  <link rel="stylesheet" href="assets/css/style.css">
+
 </head>
+<style>
+    .nav {
+        color: black;
+    }
+</style>
 <body>
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
+  
+  <?php include('include\header.php'); ?>
+
+  <section id="main-container" class="main-container">
+  <div class="container">
+
+    <div class="row text-center">
+      <div class="col-12">
+        <h2 class="section-title">Reaching our Office</h2>
+        <h3 class="section-sub-title">Find Our Location</h3>
       </div>
     </div>
-  </div>
-    <header class="header-area header-sticky">
-      <div class="container">
+    <!--/ Title row end -->
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="ts-service-box-bg text-center h-100">
+          <span class="ts-service-icon icon-round">
+            <i class="fas fa-map-marker-alt mr-0"></i>
+          </span>
+          <div class="ts-service-box-content">
+            <h4>Visit Our Office</h4>
+            <p>9051 Constra Incorporate, USA</p>
+          </div>
+        </div>
+      </div><!-- Col 1 end -->
+
+      <div class="col-md-4">
+        <div class="ts-service-box-bg text-center h-100">
+          <span class="ts-service-icon icon-round">
+            <i class="fa fa-envelope mr-0"></i>
+          </span>
+          <div class="ts-service-box-content">
+            <h4>Email Us</h4>
+            <p>office@Constra.com</p>
+          </div>
+        </div>
+      </div><!-- Col 2 end -->
+
+      <div class="col-md-4">
+        <div class="ts-service-box-bg text-center h-100">
+          <span class="ts-service-icon icon-round">
+            <i class="fa fa-phone-square mr-0"></i>
+          </span>
+          <div class="ts-service-box-content">
+            <h4>Call Us</h4>
+            <p>(+9) 847-291-4353</p>
+          </div>
+        </div>
+      </div><!-- Col 3 end -->
+
+    </div><!-- 1st row end -->
+
+    <div class="gap-60"></div>
+
+    <div class="google-map">
+      <div id="map" class="map" data-latitude="40.712776" data-longitude="-74.005974" data-marker="images/marker.png" data-marker-name="Constra"></div>
+    </div>
+
+    <div class="gap-40"></div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="column-title">We love to hear</h3>
+        <!-- contact form works with formspree.io  -->
+        <!-- contact form activation doc: https://docs.themefisher.com/constra/contact-form/ -->
+        <form id="contact-form" action="#" method="post" role="form">
+          <div class="error-container"></div>
           <div class="row">
-              <div class="col-12">
-                  <nav class="main-nav">
-                      <a href="/" class="logo">
-                          <img src="assets/images/ciologo.png" alt="" style="width: 70px; height: auto;">
-                      </a>
-                      <ul class="nav">
-                          <li><a href="/">Home</a></li>
-                          <li><a href="about">About</a></li>
-                          <li><a href="contact" class="active">Contact</a></li>
-                          <li class="nav-item dropdown">
-                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                  data-bs-toggle="dropdown" aria-expanded="false">
-                                  News
-                              </a>
-                              <ul class="dropdown-menu multi-column" aria-labelledby="navbarDropdown">
-                                  <div class="col-md-4 dropdown-column" id="news-dropdown">
-                                      <?php foreach ($categories as $category): ?>
-                                          <a class="dropdown-item" href="#"><?php echo $category['category_name']; ?></a>
-                                      <?php endforeach; ?>
-                                  </div>
-                              </ul>
-                          </li>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Name</label>
+                <input class="form-control form-control-name" name="name" id="name" placeholder="" type="text" required>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Email</label>
+                <input class="form-control form-control-email" name="email" id="email" placeholder="" type="email"
+                  required>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label>Subject</label>
+                <input class="form-control form-control-subject" name="subject" id="subject" placeholder="" required>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea class="form-control form-control-message" name="message" id="message" placeholder="" rows="10"
+              required></textarea>
+          </div>
+          <div class="text-right"><br>
+            <button class="btn btn-primary solid blank" type="submit">Send Message</button>
+          </div>
+        </form>
+      </div>
 
-                          <li><a href="announcements">Announcements</a></li>
-                          <li><a href="login">Login</a></li>
-                      </ul>
-                      <a class="menu-trigger">
-                          <span>Menu</span>
-                      </a>
-                  </nav>
-              </div>
-          </div>
-      </div>
-  </header>
-  <div class="main-banner">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 align-self-center">
-                <div class="header-text">
-                    <h6>Calapan Oriental Mindoro Updates</h6>
-                    <h2>Stay Updated with the Latest News</h2>
-                    <p>Get the hottest updates and latest news about Calapan Oriental Mindoro. Stay informed about community events, government initiatives, and local developments.</p>
-                    <div class="buttons">
-                        <div class="border-button">
-                            <a href="news.html">Read Latest News</a>
-                        </div>
-                        <div class="main-button">
-                            <a href="https://citygovernmentofcalapan.gov.ph/" target="_blank">Visit Official Website</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-5 offset-lg-1">
-                <div class="owl-banner owl-carousel">
-                    <div class="item">
-                        <img src="assets/images/calapan-news-01.jpg" alt="Calapan Oriental Mindoro">
-                    </div>
-                    <div class="item">
-                        <img src="assets/images/calapan-news-02.jpg" alt="Calapan Oriental Mindoro">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
-  <div class="categories-collections">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="categories">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="section-heading">
-                  <div class="line-dec"></div>
-                  <h2>Browse Through Our <em>Categories</em> Here.</h2>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-01.png" alt="">
-                  </div>
-                  <h4>Blockchain</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-02.png" alt="">
-                  </div>
-                  <h4>Digital Art</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-03.png" alt="">
-                  </div>
-                  <h4>Music Art</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-04.png" alt="">
-                  </div>
-                  <h4>Virtual World</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-05.png" alt="">
-                  </div>
-                  <h4>Valuable</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-06.png" alt="">
-                  </div>
-                  <h4>Triple NFT</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    </div><!-- Content row -->
+  </div><!-- Conatiner end -->
+</section><!-- Main container end -->
+
   <?php include('include\footer.php'); ?>
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/tabs.js"></script>
-  <script src="assets/js/popup.js"></script>
-  <script src="assets/js/custom.js"></script>
+   <!-- Javascript Files
+  ================================================== -->
 
-  <script>
-    // Function to dynamically populate the dropdown menu with categories
-      document.addEventListener("DOMContentLoaded", function() {
-          var dropdownDiv = document.getElementById("news-dropdown");
+  <!-- initialize jQuery Library -->
+  <script src="assets/plugins/jQuery/jquery.min.js"></script>
+  <!-- Bootstrap jQuery -->
+  <script src="assets/plugins/bootstrap/bootstrap.min.js" defer></script>
+  <!-- Slick Carousel -->
+  <script src="assets/plugins/slick/slick.min.js"></script>
+  <script src="assets/plugins/slick/slick-animation.min.js"></script>
+  <!-- Color box -->
+  <script src="assets/plugins/colorbox/jquery.colorbox.js"></script>
+  <!-- shuffle -->
+  <script src="assets/plugins/shuffle/shuffle.min.js" defer></script>
 
-          // Make an AJAX request to fetch categories
-          var xhr = new XMLHttpRequest();
-          xhr.onreadystatechange = function() {
-              if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-                  var categories = JSON.parse(this.responseText);
-                  categories.forEach(function(category) {
-                      var listItem = document.createElement("li");
-                      var link = document.createElement("a");
-                      link.setAttribute("href", "#" + category.name.toLowerCase());
-                      link.textContent = category.name;
-                      listItem.appendChild(link);
-                      dropdownDiv.appendChild(listItem);
-                  });
-              }
-          };
-          xhr.open("GET", "/getCategories", true); // Use the correct route without controller name
- // Replace '/controller/getCategories' with your actual route
-          xhr.send();
-      });
 
-</script>
+  <!-- Google Map API Key-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
+  <!-- Google Map Plugin-->
+  <script src="assets/plugins/google-map/map.js" defer></script>
+
+  <!-- Template custom -->
+  <script src="assets/js/script.js"></script>  
 </body>
 </html>
-

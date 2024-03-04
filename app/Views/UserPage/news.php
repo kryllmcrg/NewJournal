@@ -1,219 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+  <!-- Basic Page Needs
+================================================== -->
   <meta charset="utf-8">
-  <meta name="author" content="templatemo">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-  <title>News</title>
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/fontawesome.css">
-  <link rel="stylesheet" href="assets/css/style2.css">
-  <link rel="stylesheet" href="assets/css/owl.css">
-  <link rel="stylesheet" href="assets/css/animate.css">
-  <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+  <title>Constra - Construction Html5 Template</title>
+
+  <!-- Mobile Specific Metas
+================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Construction Html5 Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+  <!-- Favicon
+================================================== -->
+  <link rel="icon" type="assets/image/png" href="assets/images/ciologo.png">
+
+  <!-- CSS
+================================================== -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="assets/plugins/bootstrap/bootstrap.min.css">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+  <!-- Animation -->
+  <link rel="stylesheet" href="assets/plugins/animate-css/animate.css">
+  <!-- slick Carousel -->
+  <link rel="stylesheet" href="assets/plugins/slick/slick.css">
+  <link rel="stylesheet" href="assets/plugins/slick/slick-theme.css">
+  <!-- Colorbox -->
+  <link rel="stylesheet" href="assets/plugins/colorbox/colorbox.css">
+  <!-- Template styles-->
+  <link rel="stylesheet" href="assets/css/style.css">
+
 </head>
+<style>
+    .nav {
+        color: black;
+    }
+</style>
 <body>
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div>
-  <header class="header-area header-sticky">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="/" class="logo">
-                        <img src="assets/images/ciologo.png" alt="" style="width: 70px; height: auto;">
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-    <li><a href="/">Home</a></li>
-    <li><a href="about">About</a></li>
-    <li><a href="contact">Contact</a></li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-          data-bs-toggle="dropdown" aria-expanded="false">
-          News
-      </a>
-      <ul class="dropdown-menu multi-column" aria-labelledby="navbarDropdown">
-          <div class="col-md-4 dropdown-column" id="news-dropdown">
-              <!-- Categories will be dynamically populated here -->
-          </div>
-      </ul>
-  </li>
-
-    <li><a href="announcements">Announcements</a></li>
-    <li><a href="login">Login</a></li>
-</ul>
   
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
+  <?php include('include\header.php'); ?>
+
+  <section id="main-container" class="main-container">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-8 mb-5 mb-lg-0">
+        <div class="post">
+          <div class="post-media post-image">
+            <img loading="lazy" src="assets/images/news/news1.jpg" class="img-fluid" alt="post-image">
+          </div>
+
+          <div class="post-body">
+            <div class="entry-header">
+              <div class="post-meta">
+                <span class="post-author">
+                  <i class="far fa-user"></i><a href="#"> Admin</a>
+                </span>
+                <span class="post-cat">
+                  <i class="far fa-folder-open"></i><a href="#"> News</a>
+                </span>
+                <span class="post-meta-date"><i class="far fa-calendar"></i> June 14, 2016</span>
+                <span class="post-comment"><i class="far fa-comment"></i> 03<a href="#"
+                    class="comments-link">Comments</a></span>
+              </div>
+              <h2 class="entry-title">
+                <a href="news-single.html">We Just Completes $17.6 million Medical Clinic in Mid-Missouri</a>
+              </h2>
+            </div><!-- header end -->
+
+            <div class="entry-content">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur ...</p>
             </div>
-        </div>
-    </div>
-  </header>
-  <div class="main-banner">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 align-self-center">
-                <div class="header-text">
-                    <h6>Calapan Oriental Mindoro Updates</h6>
-                    <h2>Stay Updated with the Latest News</h2>
-                    <p>Get the hottest updates and latest news about Calapan Oriental Mindoro. Stay informed about community events, government initiatives, and local developments.</p>
-                    <div class="buttons">
-                        <div class="border-button">
-                            <a href="news.html">Read Latest News</a>
-                        </div>
-                        <div class="main-button">
-                            <a href="https://citygovernmentofcalapan.gov.ph/" target="_blank">Visit Official Website</a>
-                        </div>
-                    </div>
-                </div>
+
+            <div class="post-footer">
+              <a href="news-single.html" class="btn btn-primary">Continue Reading</a>
             </div>
-            <div class="col-lg-5 offset-lg-1">
-                <div class="owl-banner owl-carousel">
-                    <div class="item">
-                        <img src="assets/images/calapan-news-01.jpg" alt="Calapan Oriental Mindoro">
-                    </div>
-                    <div class="item">
-                        <img src="assets/images/calapan-news-02.jpg" alt="Calapan Oriental Mindoro">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  </div>
-  <div class="categories-collections">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="categories">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="section-heading">
-                  <div class="line-dec"></div>
-                  <h2>Browse Through Our <em>Categories</em> Here.</h2>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-01.png" alt="">
-                  </div>
-                  <h4>Blockchain</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-02.png" alt="">
-                  </div>
-                  <h4>Digital Art</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-03.png" alt="">
-                  </div>
-                  <h4>Music Art</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-04.png" alt="">
-                  </div>
-                  <h4>Virtual World</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-05.png" alt="">
-                  </div>
-                  <h4>Valuable</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-2 col-sm-6">
-                <div class="item">
-                  <div class="icon">
-                    <img src="assets/images/icon-06.png" alt="">
-                  </div>
-                  <h4>Triple NFT</h4>
-                  <div class="icon-button">
-                    <a href="#"><i class="fa fa-angle-right"></i></a>
-                  </div>
-                </div>
-              </div>
+
+          </div><!-- post-body end -->
+        </div><!-- 1st post end -->
+
+        <div class="post">
+          <div class="post-media post-video">
+            <div class="embed-responsive embed-responsive-16by9">
+              <!-- Change the url -->
+              <iframe class="embed-responsive-item" src="//player.vimeo.com/video/153089270?title=0&amp;byline=0&amp;portrait=0&amp;color=8aba56" allowfullscreen></iframe>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+          <div class="post-body">
+            <div class="entry-header">
+              <div class="post-meta">
+                <span class="post-author">
+                  <i class="far fa-user"></i><a href="#"> Admin</a>
+                </span>
+                <span class="post-cat">
+                  <i class="far fa-folder-open"></i><a href="#"> News</a>
+                </span>
+                <span class="post-meta-date"><i class="far fa-calendar"></i> June 14, 2016</span>
+                <span class="post-comment"><i class="far fa-comment"></i> 03<a href="#"
+                    class="comments-link">Comments</a></span>
+              </div>
+              <h2 class="entry-title">
+                <a href="news-single.html">Thandler Airport Water Reclamation Facility Expansion Project Named</a>
+              </h2>
+            </div><!-- header end -->
+
+            <div class="entry-content">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur ...</p>
+            </div>
+
+            <div class="post-footer">
+              <a href="news-single.html" class="btn btn-primary">Continue Reading</a>
+            </div>
+
+          </div><!-- post-body end -->
+        </div><!-- 2nd post end -->
+
+        <div class="post">
+          <div class="post-media post-image">
+            <img loading="lazy" src="assets/images/news/news3.jpg" class="img-fluid" alt="post-image">
+          </div>
+
+          <div class="post-body">
+            <div class="entry-header">
+              <div class="post-meta">
+                <span class="post-author">
+                  <i class="far fa-user"></i><a href="#"> Admin</a>
+                </span>
+                <span class="post-cat">
+                  <i class="far fa-folder-open"></i><a href="#"> News</a>
+                </span>
+                <span class="post-meta-date"><i class="far fa-calendar"></i> June 14, 2016</span>
+                <span class="post-comment"><i class="far fa-comment"></i> 03<a href="#"
+                    class="comments-link">Comments</a></span>
+              </div>
+              <h2 class="entry-title">
+                <a href="news-single.html">Silicon Bench and Cornike Begin Construction of Large-Scale Solar Facilities
+                  for Trade</a>
+              </h2>
+            </div><!-- header end -->
+
+            <div class="entry-content">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur ...</p>
+            </div>
+
+            <div class="post-footer">
+              <a href="news-single.html" class="btn btn-primary">Continue Reading</a>
+            </div>
+
+          </div><!-- post-body end -->
+        </div><!-- 3rd post end -->
+
+        <nav class="paging" aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-double-left"></i></a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-double-right"></i></a></li>
+          </ul>
+        </nav>
+
+      </div><!-- Content Col end -->
+
+      <div class="col-lg-4">
+
+        <div class="sidebar sidebar-right">
+          <div class="widget recent-posts">
+            <h3 class="widget-title">Recent Posts</h3>
+            <ul class="list-unstyled">
+              <li class="d-flex align-items-center">
+                <div class="posts-thumb">
+                  <a href="#"><img loading="lazy" alt="img" src="assets/images/news/news1.jpg"></a>
+                </div>
+                <div class="post-info">
+                  <h4 class="entry-title">
+                    <a href="#">We Just Completes $17.6 Million Medical Clinic In Mid-missouri</a>
+                  </h4>
+                </div>
+              </li><!-- 1st post end-->
+
+              <li class="d-flex align-items-center">
+                <div class="posts-thumb">
+                  <a href="#"><img loading="lazy" alt="img" src="assets/images/news/news2.jpg"></a>
+                </div>
+                <div class="post-info">
+                  <h4 class="entry-title">
+                    <a href="#">Thandler Airport Water Reclamation Facility Expansion Project Named</a>
+                  </h4>
+                </div>
+              </li><!-- 2nd post end-->
+
+              <li class="d-flex align-items-center">
+                <div class="posts-thumb">
+                  <a href="#"><img loading="lazy" alt="img" src="assets/images/news/news3.jpg"></a>
+                </div>
+                <div class="post-info">
+                  <h4 class="entry-title">
+                    <a href="#">Silicon Bench And Cornike Begin Construction Solar Facilities</a>
+                  </h4>
+                </div>
+              </li><!-- 3rd post end-->
+
+            </ul>
+
+          </div><!-- Recent post end -->
+
+          <div class="widget">
+            <h3 class="widget-title">Categories</h3>
+            <ul class="arrow nav nav-tabs">
+              <li><a href="#">Construction</a></li>
+              <li><a href="#">Commercial</a></li>
+              <li><a href="#">Building</a></li>
+              <li><a href="#">Safety</a></li>
+              <li><a href="#">Structure</a></li>
+            </ul>
+          </div><!-- Categories end -->
+
+          <div class="widget">
+            <h3 class="widget-title">Archives </h3>
+            <ul class="arrow nav nav-tabs">
+              <li><a href="#">Feburay 2016</a></li>
+              <li><a href="#">January 2016</a></li>
+              <li><a href="#">December 2015</a></li>
+              <li><a href="#">November 2015</a></li>
+              <li><a href="#">October 2015</a></li>
+            </ul>
+          </div><!-- Archives end -->
+
+          <div class="widget widget-tags">
+            <h3 class="widget-title">Tags </h3>
+
+            <ul class="list-unstyled">
+              <li><a href="#">Construction</a></li>
+              <li><a href="#">Design</a></li>
+              <li><a href="#">Project</a></li>
+              <li><a href="#">Building</a></li>
+              <li><a href="#">Finance</a></li>
+              <li><a href="#">Safety</a></li>
+              <li><a href="#">Contracting</a></li>
+              <li><a href="#">Planning</a></li>
+            </ul>
+          </div><!-- Tags end -->
+
+
+        </div><!-- Sidebar end -->
+      </div><!-- Sidebar Col end -->
+
+    </div><!-- Main row end -->
+
+  </div><!-- Container end -->
+</section><!-- Main container end -->
+
+
   <?php include('include\footer.php'); ?>
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/tabs.js"></script>
-  <script src="assets/js/popup.js"></script>
-  <script src="assets/js/custom.js"></script>
+   <!-- Javascript Files
+  ================================================== -->
 
-  <script>
-    // Function to dynamically populate the dropdown menu with categories
-      document.addEventListener("DOMContentLoaded", function() {
-          var dropdownDiv = document.getElementById("news-dropdown");
+  <!-- initialize jQuery Library -->
+  <script src="assets/plugins/jQuery/jquery.min.js"></script>
+  <!-- Bootstrap jQuery -->
+  <script src="assets/plugins/bootstrap/bootstrap.min.js" defer></script>
+  <!-- Slick Carousel -->
+  <script src="assets/plugins/slick/slick.min.js"></script>
+  <script src="assets/plugins/slick/slick-animation.min.js"></script>
+  <!-- Color box -->
+  <script src="assets/plugins/colorbox/jquery.colorbox.js"></script>
+  <!-- shuffle -->
+  <script src="assets/plugins/shuffle/shuffle.min.js" defer></script>
 
-          // Make an AJAX request to fetch categories
-          var xhr = new XMLHttpRequest();
-          xhr.onreadystatechange = function() {
-              if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-                  var categories = JSON.parse(this.responseText);
-                  categories.forEach(function(category) {
-                      var listItem = document.createElement("li");
-                      var link = document.createElement("a");
-                      link.setAttribute("href", "#" + category.name.toLowerCase());
-                      link.textContent = category.name;
-                      listItem.appendChild(link);
-                      dropdownDiv.appendChild(listItem);
-                  });
-              }
-          };
-          xhr.open("GET", "/getCategories", true); // Use the correct route without controller name
- // Replace '/controller/getCategories' with your actual route
-          xhr.send();
-      });
 
-</script>
+  <!-- Google Map API Key-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
+  <!-- Google Map Plugin-->
+  <script src="assets/plugins/google-map/map.js" defer></script>
+
+  <!-- Template custom -->
+  <script src="assets/js/script.js"></script>  
 </body>
 </html>
-
