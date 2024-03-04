@@ -57,6 +57,7 @@
               </nav>
             </div>
           </div>
+          
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <?php include('include\footer.php'); ?>
