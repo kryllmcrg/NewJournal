@@ -26,33 +26,30 @@ class NewsController extends BaseController
 
     public function addnews()
     {
-        $categoryModel = new CategoryModel();
-        $categories = $categoryModel->findAll();
-
-        $data['category'] = $categories;
-
-        if ($this->request->getMethod() === 'post') {
-            $newsModel = new NewsModel();
-
-            // Get the submitted form data
+        try {
             $newsData = [
                 'title' => $this->request->getPost('title'),
                 'content' => $this->request->getPost('content'),
-                'author' => $this->request->getPost('author'),
                 'category_id' => $this->request->getPost('category_id'),
-                'images' => $this->request->getPost('images'),
+                'author' => $this->request->getPost('author'),
+                // Assuming you have saved the image URLs in an array called 'files'
+                'image' => implode(',', $this->request->getPost('files')),
             ];
 
-            // Save the news item
+            // Load the NewsModel
+            $newsModel = new NewsModel();
+
+            // Insert the news data into the database
             $newsModel->insert($newsData);
 
-            // Redirect to the news list page or show a success message
-            return redirect()->to('/newslist');
+            // Redirect to a success page or show a success message
+            return redirect()->to('/success')->with('success', 'News saved successfully.');
+        } catch (\Exception $e) {
+            // Handle the exception (e.g., log the error, show an error message)
+            return redirect()->to('/error')->with('error', 'Failed to save news: ' . $e->getMessage());
         }
-
-        // Load the view with the categories data
-        return view('AdminPage/addnews', $data);
     }
+
 
     public function uploadImage()
     {
@@ -73,8 +70,8 @@ class NewsController extends BaseController
         try {
             $title = $this->request->getPost('title');
             $content = $this->request->getPost('content');
-            $author = $this->request->getPost('author');
             $category_id = $this->request->getPost('category_id');
+            $author = $this->request->getPost('author');
             $images = $this->request->getFiles('files');
 
             $uploadedImages = [];
@@ -94,9 +91,9 @@ class NewsController extends BaseController
             // Prepare the response data
             $response = [
                 'title' => $title,
-                'author' => $author,
                 'content' => $content,
                 'category_id' => $category_id,
+                'author' => $author,
                 'files' => $uploadedImages,
             ];
 
@@ -106,61 +103,61 @@ class NewsController extends BaseController
         }
     }
 
-    public function addNewsSubmit()
-    {
-        try {
-            $newsModel = new NewsModel();
-            $images = $this->request->getFiles();
+    // public function addNewsSubmit()
+    // {
+    //     try {
+    //         $newsModel = new NewsModel();
+    //         $images = $this->request->getFiles();
 
-            // Check if files were uploaded
-            if (empty($images)) {
-                return $this->response->setStatusCode(400)->setJSON(["error" => "Error: No file uploaded."]);
-            }
+    //         // Check if files were uploaded
+    //         if (empty($images)) {
+    //             return $this->response->setStatusCode(400)->setJSON(["error" => "Error: No file uploaded."]);
+    //         }
 
-            $imageNames = [];
-            foreach ($images['images'] as $image) {
-                // Check if the file is valid and hasn't already been moved
-                if ($image->isValid() && !$image->hasMoved()) {
-                    $newName = $image->getRandomName();
-                    $image->move('public/uploads/', $newName);
-                    $imageNames[] = $newName;
-                } else {
-                    // Handle error conditions
-                    return $this->response->setStatusCode(400)->setJSON(["error" => "Error uploading file(s)."]);
-                }
-            }
+    //         $imageNames = [];
+    //         foreach ($images['images'] as $image) {
+    //             // Check if the file is valid and hasn't already been moved
+    //             if ($image->isValid() && !$image->hasMoved()) {
+    //                 $newName = $image->getRandomName();
+    //                 $image->move('public/uploads/', $newName);
+    //                 $imageNames[] = $newName;
+    //             } else {
+    //                 // Handle error conditions
+    //                 return $this->response->setStatusCode(400)->setJSON(["error" => "Error uploading file(s)."]);
+    //             }
+    //         }
 
-            $data = [
-                'title' => $this->request->getVar('title'),
-                'author' => $this->request->getVar('author'),
-                'content' => strip_tags($this->request->getVar('content')),
-                'category_id' => $this->request->getVar('category_id'),
-                'images' => implode(',', $imageNames)
-            ];
+    //         $data = [
+    //             'title' => $this->request->getVar('title'),
+    //             'author' => $this->request->getVar('author'),
+    //             'content' => strip_tags($this->request->getVar('content')),
+    //             'category_id' => $this->request->getVar('category_id'),
+    //             'images' => implode(',', $imageNames)
+    //         ];
 
-            // Validate data
-            foreach ($data as $key => $value) {
-                if (empty($value)) {
-                    return $this->response->setStatusCode(400)->setJSON(["error" => "Error: Required data '$key' is missing."]);
-                }
-            }
+    //         // Validate data
+    //         foreach ($data as $key => $value) {
+    //             if (empty($value)) {
+    //                 return $this->response->setStatusCode(400)->setJSON(["error" => "Error: Required data '$key' is missing."]);
+    //             }
+    //         }
 
-            // Insert data into the database
-            if (!$newsModel->insert($data)) {
-                return $this->response->setStatusCode(500)->setJSON(["error" => "Error: Unable to insert data."]);
-            }
+    //         // Insert data into the database
+    //         if (!$newsModel->insert($data)) {
+    //             return $this->response->setStatusCode(500)->setJSON(["error" => "Error: Unable to insert data."]);
+    //         }
 
-            $response = [
-                'message' => 'News created successfully',
-                'data' => $data
-            ];
+    //         $response = [
+    //             'message' => 'News created successfully',
+    //             'data' => $data
+    //         ];
 
-            // Redirect to 'addnews' page with success message
-            return redirect()->to('addnews')->with('success', 'News created successfully');
-        } catch (\Throwable $th) {
-            return $this->response->setStatusCode(500)->setJSON(["error" => "Error: " . $th->getMessage()]);
-        }
-    }
+    //         // Redirect to 'addnews' page with success message
+    //         return redirect()->to('addnews')->with('success', 'News created successfully');
+    //     } catch (\Throwable $th) {
+    //         return $this->response->setStatusCode(500)->setJSON(["error" => "Error: " . $th->getMessage()]);
+    //     }
+    // }
 
     public function __construct()
     {

@@ -58,26 +58,6 @@
         </div>
     </div>
   </div>
-  <div class="categories-collections">
-    <div class="container">
-      <div class="row">
-      <div class="col-md-3 mb-3">
-        <div class="card shadow-sm">
-          <img src="assets/images/no_image.jpeg" class="w-100 rounded" alt="Img">
-            <div class="card-body">
-              <h5>News</h5>
-                <p>
-                    Calapan Festival HAHAHA
-                </p>
-                  <div>
-                     <a href="UserPage/view.php?slug=" class="text-primary">readmore</a>
-                  </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="py-5 bg light">
         <div class="container">
             <div class="row">
@@ -97,25 +77,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="categories-collections">
-    <div class="container">
-      <div class="row">
-      <div class="col-md-3 mb-3">
-        <div class="card shadow-sm">
-          <img src="assets/images/no_image.jpeg" class="w-100 rounded" alt="Img">
-            <div class="card-body">
-              <h5>News</h5>
-                <p>
-                    Calapan Festival HAHAHA
-                </p>
-                  <div>
-                     <a href="UserPage/view.php?slug=" class="text-primary">readmore</a>
-                  </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
   </div>
