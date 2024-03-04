@@ -9,137 +9,11 @@
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/fontawesome.css">
   <link rel="stylesheet" href="assets/css/style2.css">
+  <!-- <link rel="stylesheet" href="assets/css/home.css"> -->
   <link rel="stylesheet" href="assets/css/owl.css">
   <link rel="stylesheet" href="assets/css/animate.css">
-  <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <link rel="shortcut icon" href="assets/images/ciologo.png" />
+  <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/><link rel="shortcut icon" href="assets/images/ciologo.png" />
 </head>
-
-<style>
-    body{
-    margin: 0;
-    padding: 0;
-    font-family: 'roboto' , sans-serif;
-    background-color: #F2F2F2;
-}
-h1{
-    text-align: center;
-    color: #333333;
-}
-.cardcontainer{
-    width: 350px;
-    height: 500px;
-    background-color: white;
-    margin-left: auto;
-    margin-right: auto;
-    transition: 0.3s;
-}
-.cardcontainer:hover{
-    box-shadow: 0 0 45px gray;
-}
-.photo{
-    height: 300px;
-    width: 100%;
-}
-.photo img{
-    height: 100%;
-    width: 100%;
-}
-.txt1{
-    margin: auto;
-    text-align: center;
-    font-size: 17px;
-}
-.content{
-    width: 80%;
-    height: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    top: -33px;
-}
-.photos{
-    width: 90px;
-    height: 30px;
-    background-color: #E74C3C;
-    color: white;
-    position: relative;
-    top: -30px;
-    padding-left: 10px;
-    font-size: 20px;
-}
-.txt4{
-    font-size:27px;
-    position: relative;
-    top: 33px;
-}
-.txt5{
-    position: relative;
-    top: 18px;
-    color: #E74C3C;
-    font-size: 23px;
-}
-.txt2{
-    position: relative;
-    top: 10px;
-}
-.cardcontainer:hover > .photo{
-    height: 200px;
-    animation: move1 0.5s ease both;
-}
-@keyframes move1{
-    0%{height: 300px}
-    100%{height: 200px}
-}
-.cardcontainer:hover > .content{
-    height: 200px;
-}
-.footer{
-    width: 80%;
-    height: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: white;
-    position: relative;
-    top: -15px;
-}
-.btn{
-    position: relative;
-    top: 20px;
-}
-#heart{
-    cursor: pointer;
-}
-.like{
-    float: right;
-    font-size: 22px;
-    position: relative;
-    top: 20px;
-    color: #333333;
-}
-.fa-gratipay{
-    margin-right: 10px;
-    transition: 0.5s;
-}
-.fa-gratipay:hover{
-    color: #E74C3C;
-}
-.txt3{
-    color: gray;
-    position: relative;
-    top: 18px;
-    font-size: 14px;
-}
-.comments{
-    float: right;
-    cursor: pointer;
-}
-.fa-clock, .fa-comments{
-    margin-right: 7px;
-}
-</style>
 
 
 <body>
@@ -186,8 +60,91 @@ h1{
     </div>
   </div>
 
-  
+  <div class="categories-collections">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="categories">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="section-heading">
+                  <div class="line-dec"></div>
+                  <h2>Browse Through Our <em>Categories</em> Here.</h2>
+                </div>
+              </div>
+              <div class="col-lg-2 col-sm-6">
+                <div class="item">
+                  <div class="icon">
+                    <img src="assets/images/icon-01.png" alt="">
+                  </div>
+                  <h4>Blockchain</h4>
+                  <div class="icon-button">
+                    <a href="#"><i class="fa fa-angle-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-2 col-sm-6">
+                <div class="item">
+                  <div class="icon">
+                    <img src="assets/images/icon-02.png" alt="">
+                  </div>
+                  <h4>Digital Art</h4>
+                  <div class="icon-button">
+                    <a href="#"><i class="fa fa-angle-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-2 col-sm-6">
+                <div class="item">
+                  <div class="icon">
+                    <img src="assets/images/icon-03.png" alt="">
+                  </div>
+                  <h4>Music Art</h4>
+                  <div class="icon-button">
+                    <a href="#"><i class="fa fa-angle-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-2 col-sm-6">
+                <div class="item">
+                  <div class="icon">
+                    <img src="assets/images/icon-04.png" alt="">
+                  </div>
+                  <h4>Virtual World</h4>
+                  <div class="icon-button">
+                    <a href="#"><i class="fa fa-angle-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-2 col-sm-6">
+                <div class="item">
+                  <div class="icon">
+                    <img src="assets/images/icon-05.png" alt="">
+                  </div>
+                  <h4>Valuable</h4>
+                  <div class="icon-button">
+                    <a href="#"><i class="fa fa-angle-right"></i></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-2 col-sm-6">
+                <div class="item">
+                  <div class="icon">
+                    <img src="assets/images/icon-06.png" alt="">
+                  </div>
+                  <h4>Triple NFT</h4>
+                  <div class="icon-button">
+                    <a href="#"><i class="fa fa-angle-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+  </div>
   <?php include('include\footer.php'); ?>
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -225,4 +182,3 @@ h1{
 </script>
 </body>
 </html>
-

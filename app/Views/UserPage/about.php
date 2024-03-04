@@ -45,7 +45,7 @@
                               <ul class="dropdown-menu multi-column" aria-labelledby="navbarDropdown">
                                   <div class="col-md-4 dropdown-column" id="news-dropdown">
                                       <?php foreach ($categories as $category): ?>
-                                          <a class="dropdown-item" href="#"><?php echo $category['name']; ?></a>
+                                          <a class="dropdown-item" href="#"><?php echo $category['category_name']; ?></a>
                                       <?php endforeach; ?>
                                   </div>
                               </ul>
