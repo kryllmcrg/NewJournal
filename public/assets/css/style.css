@@ -736,7 +736,7 @@ ul.navbar-nav > li.active > a {
 /*-- Logo --*/
 .logo img {
   width: auto;
-  height: 55px;
+  height: 80px;
 }
 
 .header-two .logo img {
@@ -2440,7 +2440,7 @@ img.testimonial-thumb {
 ================================================== */
 /*- Footer common */
 .footer {
-  background-color: #0d0d0d;
+  background-color: #7f7f7f;
   color: #999;
 }
 
@@ -2462,7 +2462,7 @@ img.testimonial-thumb {
 /* Footer about us */
 .footer-logo {
   margin-bottom: 25px;
-  max-height: 35px;
+  max-height: 70px;
 }
 
 /* Footer social */

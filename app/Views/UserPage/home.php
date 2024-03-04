@@ -5,7 +5,7 @@
   <!-- Basic Page Needs
 ================================================== -->
   <meta charset="utf-8">
-  <title>Constra - Construction Html5 Template</title>
+  <title>CIO Offcial Website</title>
 
   <!-- Mobile Specific Metas
 ================================================== -->
@@ -15,7 +15,7 @@
 
   <!-- Favicon
 ================================================== -->
-  <link rel="icon" type="assets/image/png" href="assets/images/favicon.png">
+  <link rel="icon" type="assets/image/png" href="assets/images/cio.png">
 
   <!-- CSS
 ================================================== -->
