@@ -63,7 +63,6 @@
         <div class="row">
             <div class="col-md-6 offset-md-3" style="width: 600px;">
                 <div class="card border-0 shadow-sm rounded-3">
-                <img src="assets/images/profile_picture.jpg" class="rounded-circle me-3" style="width: 40px; height: 40px;" alt="Profile">
                     <img src="assets/images/no_image.jpeg" class="card-img-top rounded-3" alt="Img">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
@@ -118,4 +117,3 @@
 </script>
 </body>
 </html>
-

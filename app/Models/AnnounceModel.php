@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class AnnounceModel extends Model
 {
-    protected $table            = 'announcements_admin';
+    protected $table            = 'announcements';
     protected $primaryKey       = 'id_announce';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
