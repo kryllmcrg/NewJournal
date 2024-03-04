@@ -15,7 +15,7 @@
 
   <!-- Favicon
 ================================================== -->
-  <link rel="icon" type="assets/image/png" href="assets/images/ciologo.png">
+  <link rel="icon" type="assets/image/png" href="assets/images/favicon.png">
 
   <!-- CSS
 ================================================== -->
