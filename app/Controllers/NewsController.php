@@ -50,7 +50,7 @@ class NewsController extends BaseController
                      if ($uploadedFile->isValid() && !$uploadedFile->hasMoved()) {
                         $newName = $uploadedFile->getRandomName();
                         $uploadedFile->move('./uploads/', $newName);
-                        $imageUrl = base_url('uploads/' . $newName);
+                        $imageUrl = base_url('./uploads/' . $newName);
                         $uploadedImages[] = $imageUrl;
                     } else {
                         $uploadedImages[] = ['error' => 'Invalid file'];
