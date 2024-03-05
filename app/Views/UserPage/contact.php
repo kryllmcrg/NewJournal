@@ -93,14 +93,6 @@
 
     </div><!-- 1st row end -->
 
-    <div class="gap-60"></div>
-
-    <div class="google-map">
-      <div id="map" class="map" data-latitude="40.712776" data-longitude="-74.005974" data-marker="images/marker.png" data-marker-name="Constra"></div>
-    </div>
-
-    <div class="gap-40"></div>
-
     <div class="row">
       <div class="col-md-12">
         <h3 class="column-title">We love to hear</h3>
