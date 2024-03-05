@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Comments</title>
     
-    <link rel="stylesheet" href="<?= base_url('assets/vendors/mdi/css/materialdesignicons.min.css')?>">
-    <link rel="stylesheet" href="<?= base_url('assets/vendors/css/vendor.bundle.base.css')?>">
+    <link rel="stylesheet" href="<?= base_url('assets2/vendors/mdi/css/materialdesignicons.min.css')?>">
+    <link rel="stylesheet" href="<?= base_url('assets2/vendors/css/vendor.bundle.base.css')?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
     
-    <link rel="stylesheet" href="<?= base_url('assets/css/style.css')?>">
+    <link rel="stylesheet" href="<?= base_url('assets2/css/style.css')?>">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="<?= base_url('assets/images/ciologo.png')?>" />
+    <link rel="shortcut icon" href="<?= base_url('assets2/images/ciologo.png')?>" />
   </head>
   <body>
     <div class="container-scroller">
@@ -29,12 +29,12 @@
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
           <!-- Larger Logo -->
           <a class="navbar-brand brand-logo" href="dashboard">
-          <img src="<?= base_url('assets/images/ciologo.png')?>" alt="logo" style="width: 70px; height: auto;">
+          <img src="<?= base_url('assets2/images/ciologo.png')?>" alt="logo" style="width: 70px; height: auto;">
           </a>
 
           <!-- Smaller Logo for Mini View -->
           <a class="navbar-brand brand-logo-mini" href="dashboard">
-          <img src="<?= base_url('assets/images/ciologo.png')?>" alt="logo" style="width: 70px; height: auto;">
+          <img src="<?= base_url('assets2/images/ciologo.png')?>" alt="logo" style="width: 70px; height: auto;">
           </a>
       </div>
       <?php include('include\header.php'); ?>
@@ -74,13 +74,13 @@
       <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
-    <script src="<?= base_url('assets/vendors/js/vendor.bundle.base.js')?>"></script>
-    <script src="<?= base_url('assets/vendors/chart.js/Chart.min.js')?>"></script>
-    <script src="<?= base_url('assets/js/jquery.cookie.js" type="text/javascript')?>"></script>
-    <script src="<?= base_url('assets/js/off-canvas.js')?>"></script>
-    <script src="<?= base_url('assets/js/hoverable-collapse.js')?>"></script>
-    <script src="<?= base_url('assets/js/misc.js')?>"></script>
-    <script src="<?= base_url('assets/js/dashboard.js')?>"></script>
-    <script src="<?= base_url('assets/js/todolist.js')?>"></script>
+    <script src="<?= base_url('assets2/vendors/js/vendor.bundle.base.js')?>"></script>
+    <script src="<?= base_url('assets2/vendors/chart.js/Chart.min.js')?>"></script>
+    <script src="<?= base_url('assets2/js/jquery.cookie.js" type="text/javascript')?>"></script>
+    <script src="<?= base_url('assets2/js/off-canvas.js')?>"></script>
+    <script src="<?= base_url('assets2/js/hoverable-collapse.js')?>"></script>
+    <script src="<?= base_url('assets2/js/misc.js')?>"></script>
+    <script src="<?= base_url('assets2/js/dashboard.js')?>"></script>
+    <script src="<?= base_url('assets2/js/todolist.js')?>"></script>
   </body>
 </html>

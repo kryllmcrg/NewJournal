@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Dashboard</title>
     
-    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="assets2/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="assets2/vendors/css/vendor.bundle.base.css">
     
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets2/css/style.css">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="assets/images/logggo.png" />
+    <link rel="shortcut icon" href="assets2/images/logggo.png" />
   </head>
   <body>
     <div class="container-scroller">
@@ -37,12 +37,12 @@
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
           <!-- Larger Logo -->
           <a class="navbar-brand brand-logo" href="dashboard">
-              <img src="assets/images/logo.png" alt="logo" style="width: 120px; height: auto;">
+              <img src="assets2/images/logo.png" alt="logo" style="width: 120px; height: auto;">
           </a>
 
           <!-- Smaller Logo for Mini View -->
           <a class="navbar-brand brand-logo-mini" href="dashboard">
-              <img src="assets/images/logo.png" alt="logo" style="width: 40px; height: auto;">
+              <img src="assets2/images/logo.png" alt="logo" style="width: 40px; height: auto;">
           </a>
       </div>
       <?php include('include\header.php'); ?>
@@ -78,20 +78,20 @@
       </div>
       <?php include('include\footer.php'); ?>
     </div>
-    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="assets2/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="assets/vendors/chart.js/Chart.min.js"></script>
-    <script src="assets/js/jquery.cookie.js" type="text/javascript"></script>
+    <script src="assets2/vendors/chart.js/Chart.min.js"></script>
+    <script src="assets2/js/jquery.cookie.js" type="text/javascript"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="assets/js/off-canvas.js"></script>
-    <script src="assets/js/hoverable-collapse.js"></script>
-    <script src="assets/js/misc.js"></script>
+    <script src="assets2/js/off-canvas.js"></script>
+    <script src="assets2/js/hoverable-collapse.js"></script>
+    <script src="assets2/js/misc.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="assets/js/dashboard.js"></script>
-    <script src="assets/js/todolist.js"></script>
+    <script src="assets2/js/dashboard.js"></script>
+    <script src="assets2/js/todolist.js"></script>
     <!-- End custom js for this page -->
   </body>
   <style>

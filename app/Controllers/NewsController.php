@@ -26,45 +26,15 @@ class NewsController extends BaseController
 
     public function addnews()
     {
-        try {
-            $newsData = [
-                'title' => $this->request->getPost('title'),
-                'content' => $this->request->getPost('content'),
-                'category_id' => $this->request->getPost('category_id'),
-                'author' => $this->request->getPost('author'),
-                // Assuming you have saved the image URLs in an array called 'files'
-                'image' => implode(',', $this->request->getPost('files')),
-            ];
+        $categories = new CategoryModel();
 
-            // Load the NewsModel
-            $newsModel = new NewsModel();
+        $data = [
+            'categories' => $categories->select('category_id,category_name')->findAll(),
+        ];
 
-            // Insert the news data into the database
-            $newsModel->insert($newsData);
-
-            // Redirect to a success page or show a success message
-            return redirect()->to('/success')->with('success', 'News saved successfully.');
-        } catch (\Exception $e) {
-            // Handle the exception (e.g., log the error, show an error message)
-            return redirect()->to('/error')->with('error', 'Failed to save news: ' . $e->getMessage());
-        }
+        return view('AdminPage/addnews',$data);
     }
-
-
-    public function uploadImage()
-    {
-        $file = $this->request->getFile('files');
-
-        if ($file->isValid() && $file->hasMoved()) {
-            $newName = $file->getRandomName();
-            $file->move('./uploads', $newName);
-            $imageUrl = base_url('uploads/' . $newName);
-            echo json_encode(['imageUrl' => $imageUrl]);
-        } else {
-            echo json_encode(['error' => 'Invalid file']);
-        }
-    }
-
+    
     public function addNewsSubmitTrial()
     {
         try {
@@ -80,7 +50,7 @@ class NewsController extends BaseController
                 foreach ($file as $uploadedFile) {
                     if ($uploadedFile->isValid() && !$uploadedFile->hasMoved()) {
                         $newName = $uploadedFile->getRandomName();
-                        $uploadedFile->move('./uploads', $newName);
+                        $uploadedFile->move('./uploads/', $newName);
                         $imageUrl = base_url('uploads/' . $newName);
                         $uploadedImages[] = $imageUrl;
                     } else {
@@ -102,7 +72,6 @@ class NewsController extends BaseController
             return $this->response->setJSON(['error' => $th->getMessage()]);
         }
     }
-
     // public function addNewsSubmit()
     // {
     //     try {
