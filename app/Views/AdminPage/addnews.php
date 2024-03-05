@@ -62,14 +62,17 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label for="category">Category</label>
+                          <label for="category">Category</label>
                             <select class="form-control" id="categories" name="categories">
-                                <?php foreach ($categories as $categories): ?>
-                                    <option value="<?php echo $categories['category_name']; ?>"><?php echo $categories['category_name']; ?></option>
-                                <?php endforeach; ?>
+                               <option value="">Select News Category</option>
+                                   <?php foreach ($categories as $categories): ?>
+                                      <option value="<?php echo $categories['category_id']; ?>">
+                                      <?php echo $categories['category_name']; ?>
+                                </option>
+                                    <?php endforeach; ?>
                             </select>
                         </div>
-                    </div>
+                      </div>
 
                       <!-- WYSIWYG Editor -->
                       <div class="row">
@@ -119,7 +122,14 @@
     <script>
       const form = document.querySelector('#newsForm');
       var formData = new FormData();
+      var selectedCategory;
+
       $(document).ready(function() {
+        $('#categories').change(function () {
+          // Get the selected value
+          selectedCategory = $(this).val();
+          // Log the selected category to the console
+          console.log("Selected Category: " + selectedCategory)
         $('#mySummernote').summernote({
             placeholder: 'Enter your content',
             height: 300,
@@ -160,7 +170,7 @@
         e.preventDefault();
         formData.append('title', $('#title').val());
         formData.append('author', $('#author').val());
-        formData.append('category', $('#category').val());
+        formData.append('category_id', selectedCategory);
         formData.append('content', $('#mySummernote').summernote('code'));
         formData.append('comment', $('#comment').val());
         $.ajax({

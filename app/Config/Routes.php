@@ -26,7 +26,7 @@ $routes->get('/manageprofile', 'ProfileController::manageprofile');
 
 $routes->get('/addnews', 'NewsController::addnews');
 
-$routes->post('addNewsSubmitTrial', 'NewsController::addNewsSubmitTrial');
+$routes->post('addNewsSubmit', 'NewsController::addNewsSubmit');
 $routes->post('upload_image', 'NewsController::uploadImage');
 
 

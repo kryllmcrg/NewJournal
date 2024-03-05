@@ -35,20 +35,19 @@ class NewsController extends BaseController
         return view('AdminPage/addnews',$data);
     }
     
-    public function addNewsSubmitTrial()
+    public function addNewsSubmit()
     {
         try {
+            $userId = session()->get('userId') ?? '11';
             $title = $this->request->getPost('title');
             $content = $this->request->getPost('content');
             $category_id = $this->request->getPost('category_id');
             $author = $this->request->getPost('author');
             $images = $this->request->getFiles('files');
-
             $uploadedImages = [];
-
             foreach ($images as $file) {
-                foreach ($file as $uploadedFile) {
-                    if ($uploadedFile->isValid() && !$uploadedFile->hasMoved()) {
+                 foreach ($file as $uploadedFile) {
+                     if ($uploadedFile->isValid() && !$uploadedFile->hasMoved()) {
                         $newName = $uploadedFile->getRandomName();
                         $uploadedFile->move('./uploads/', $newName);
                         $imageUrl = base_url('uploads/' . $newName);
@@ -56,22 +55,34 @@ class NewsController extends BaseController
                     } else {
                         $uploadedImages[] = ['error' => 'Invalid file'];
                     }
-                }
             }
-            // Prepare the response data
-            $response = [
-                'title' => $title,
-                'content' => $content,
-                'category_id' => $category_id,
-                'author' => $author,
-                'files' => $uploadedImages,
-            ];
-
-            return $this->response->setJSON($response);
-        } catch (\Throwable $th) {
-            return $this->response->setJSON(['error' => $th->getMessage()]);
         }
+        $data = [
+            'title' => $title,
+            'content' => $content,
+            'category_id' => $category_id,
+            'author' => $author,
+            'images' => $uploadedImages,
+            'user_id' => $userId,
+            'news_status' => 'Pending',
+            'publication_status' => 'Draft'
+        ];
+        // Validate data
+        foreach ($data as $key => $value) {
+            if (empty($value)) {
+                return $this->response->setStatusCode(400)->setJSON(["error" => "Error: Required data '$key' is missing."]);
+            }
+        }
+        $newsModel = new NewsModel();
+
+        $result = $newsModel->insert($data);
+        
+        return $this->response->setJSON($result);
+    } catch (\Throwable $th) {
+    return $this->response->setJSON(['error' => $th->getMessage()]);
     }
+}
+
     // public function addNewsSubmit()
     // {
     //     try {
