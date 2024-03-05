@@ -12,6 +12,12 @@ class UserController extends BaseController
         return view('welcome_message');
     }
 
+    public function news_read()
+    {
+        return view('UserPage/news_read');
+    }
+
+
     public function home()
     {
         $categoryModel = new CategoryModel();
