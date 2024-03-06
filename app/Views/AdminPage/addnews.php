@@ -130,7 +130,7 @@
             // Get the selected value
             selectedCategory = $(this).val();
             // Log the selected category to the console
-            console.log("Selected Category: " + selectedCategory)
+            console.log("Selected Category: " + selectedCategory);
         });
         
         $('#mySummernote').summernote({
@@ -177,7 +177,7 @@
         formData.append('content', $('#mySummernote').summernote('code'));
         formData.append('comment', $('#comment').val());
         $.ajax({
-            url: '<?= base_url('addNewsSubmitTrial')?>',
+            url: '<?= base_url('addNewsSubmit')?>',
             method: 'POST',
             data: formData,
             contentType: false,
