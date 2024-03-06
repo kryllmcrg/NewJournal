@@ -23,7 +23,6 @@ class NewsController extends BaseController
         return view('AdminPage/viewnews');
     }
 
-
     public function addnews()
     {
         $categories = new CategoryModel();
