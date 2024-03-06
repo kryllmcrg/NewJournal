@@ -43,7 +43,7 @@
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Add News</h4>
-                <form method="post" action="<?= base_url('/addNewsSubmitTrial'); ?>" enctype="multipart/form-data" class="forms-sample" id="newsForm">
+                <form method="post" action="<?= base_url('/addNewsSubmit'); ?>" enctype="multipart/form-data" class="forms-sample" id="newsForm">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -64,15 +64,16 @@
                         <div class="col-md-6">
                           <label for="category">Category</label>
                             <select class="form-control" id="categories" name="categories">
-                               <option value="">Select News Category</option>
-                                   <?php foreach ($categories as $categories): ?>
-                                      <option value="<?php echo $categories['category_id']; ?>">
-                                      <?php echo $categories['category_name']; ?>
-                                </option>
-                                    <?php endforeach; ?>
+                              <option value="">Select News Category</option>
+                                <?php foreach ($categories as $categories): ?>
+                              <option value="<?php echo $categories['category_id']; ?>">
+                                  <?php echo $categories['category_name']; ?>
+                              </option>
+                                <?php endforeach; ?>
                             </select>
+                          </div>
                         </div>
-                      </div>
+
 
                       <!-- WYSIWYG Editor -->
                       <div class="row">
@@ -119,31 +120,33 @@
     });
     </script>
 
-    <script>
-      const form = document.querySelector('#newsForm');
-      var formData = new FormData();
-      var selectedCategory;
+<script>
+    const form = document.querySelector('#newsForm');
+    var formData = new FormData();
+    var selectedCategory;
 
-      $(document).ready(function() {
+    $(document).ready(function() {
         $('#categories').change(function () {
-          // Get the selected value
-          selectedCategory = $(this).val();
-          // Log the selected category to the console
-          console.log("Selected Category: " + selectedCategory)
+            // Get the selected value
+            selectedCategory = $(this).val();
+            // Log the selected category to the console
+            console.log("Selected Category: " + selectedCategory)
+        });
+        
         $('#mySummernote').summernote({
             placeholder: 'Enter your content',
             height: 300,
             toolbar: [
-              ['style', ['style']],
-              ['font', ['bold', 'underline', 'clear']],
-              ['color', ['color']],
-              ['para', ['ul', 'ol', 'paragraph']],
-              ['table', ['table']],
-              ['insert', ['link', 'picture', 'video']],
-              ['view', ['fullscreen', 'codeview', 'help']]
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
             ],
             callbacks: {  
-              onImageUpload: function(files, editor, welEditable) {
+                onImageUpload: function(files, editor, welEditable) {
                     for (var i = 0; i < files.length; i++) {
                         formData.append('files[]', files[i]);
                     }
@@ -185,7 +188,7 @@
             }
         });
     });
-    </script>
+</script>
 
   </body>
 </html>
