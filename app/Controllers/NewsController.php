@@ -83,62 +83,6 @@ class NewsController extends BaseController
     }
 }
 
-    // public function addNewsSubmit()
-    // {
-    //     try {
-    //         $newsModel = new NewsModel();
-    //         $images = $this->request->getFiles();
-
-    //         // Check if files were uploaded
-    //         if (empty($images)) {
-    //             return $this->response->setStatusCode(400)->setJSON(["error" => "Error: No file uploaded."]);
-    //         }
-
-    //         $imageNames = [];
-    //         foreach ($images['images'] as $image) {
-    //             // Check if the file is valid and hasn't already been moved
-    //             if ($image->isValid() && !$image->hasMoved()) {
-    //                 $newName = $image->getRandomName();
-    //                 $image->move('public/uploads/', $newName);
-    //                 $imageNames[] = $newName;
-    //             } else {
-    //                 // Handle error conditions
-    //                 return $this->response->setStatusCode(400)->setJSON(["error" => "Error uploading file(s)."]);
-    //             }
-    //         }
-
-    //         $data = [
-    //             'title' => $this->request->getVar('title'),
-    //             'author' => $this->request->getVar('author'),
-    //             'content' => strip_tags($this->request->getVar('content')),
-    //             'category_id' => $this->request->getVar('category_id'),
-    //             'images' => implode(',', $imageNames)
-    //         ];
-
-    //         // Validate data
-    //         foreach ($data as $key => $value) {
-    //             if (empty($value)) {
-    //                 return $this->response->setStatusCode(400)->setJSON(["error" => "Error: Required data '$key' is missing."]);
-    //             }
-    //         }
-
-    //         // Insert data into the database
-    //         if (!$newsModel->insert($data)) {
-    //             return $this->response->setStatusCode(500)->setJSON(["error" => "Error: Unable to insert data."]);
-    //         }
-
-    //         $response = [
-    //             'message' => 'News created successfully',
-    //             'data' => $data
-    //         ];
-
-    //         // Redirect to 'addnews' page with success message
-    //         return redirect()->to('addnews')->with('success', 'News created successfully');
-    //     } catch (\Throwable $th) {
-    //         return $this->response->setStatusCode(500)->setJSON(["error" => "Error: " . $th->getMessage()]);
-    //     }
-    // }
-
     public function __construct()
     {
         $this->NewsModel = new NewsModel();
