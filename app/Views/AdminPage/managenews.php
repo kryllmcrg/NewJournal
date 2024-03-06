@@ -75,13 +75,17 @@
                                         <thead>
                                           <tr>
                                               <th>Title</th>
-                                              <th>Author</th>
-                                              <th>Category</th>
                                               <th>Content</th>
-                                              <th>Images</th>
-                                              <th>Created Date</th>
-                                              <th>Update Date</th>
-                                              <th>Status</th>
+                                              <th>Category</th>
+                                              <th>Author</th>
+                                              <th>Image</th>
+                                              <th>News Status</th>
+                                              <th>Publication Status</th>
+                                              <th>Created At</th>
+                                              <th>Updated At</th>
+                                              <th>Date Approved</th> 
+                                              <th>Date Submitted</th> 
+                                              <th>Publication Date</th> 
                                               <th>Actions</th> 
                                           </tr>
                                           </thead>
@@ -89,37 +93,47 @@
                                                 <?php foreach ($newsData as $newsItem): ?>
                                                     <tr>
                                                         <td><?php echo $newsItem['title']; ?></td>
-                                                        <td><?php echo $newsItem['author']; ?></td>
-                                                        <td><?php echo $newsItem['category_id']; ?></td>
                                                         <td><?php echo $newsItem['content']; ?></td>
-                                                        <td>
-                                                            <?php 
-                                                            $images = explode(',', $newsItem['images']);
-                                                            foreach ($images as $image): ?>
-                                                                <img src="<?php echo base_url('public/uploads/' . $image); ?>" alt="Image">
-                                                            <?php endforeach; ?>
-                                                        </td>
-                                                        <td><?php echo $newsItem['created_at']; ?></td>
-                                                        <td><?php echo $newsItem['updated_at']; ?></td>
+                                                        <td><?php echo $newsItem['category_id']; ?></td>
+                                                        <td><?php echo $newsItem['author']; ?></td>
+                                                        <td><?php echo $newsItem['images']; ?></td>
                                                         <td>
                                                             <div class="d-flex align-items-center">
-                                                                <span id="statusText"><?php echo $newsItem['status']; ?></span>
+                                                                <span id="statusText"><?php echo $newsItem['news_status']; ?></span>
                                                                 <div class="dropdown ml-auto">
                                                                     <i class="fas fa-ellipsis-h" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['id_news']; ?>','Approved')"><i class="fas fa-check-circle text-success mr-1"></i>Approved</a>
-                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['id_news']; ?>','Pending')"><i class="fas fa-hourglass-half text-warning mr-1"></i>Pending</a>
-                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['id_news']; ?>','Decline')"><i class="fas fa-times-circle text-danger mr-1"></i>Decline</a>
-                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['id_news']; ?>','Reject')"><i class="fas fa-ban text-danger mr-1"></i>Reject</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['news_id']; ?>','Approved')"><i class="fas fa-check-circle text-success mr-1"></i>Approved</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['news_id']; ?>','Decline')"><i class="fas fa-times-circle text-danger mr-1"></i>Decline</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['news_id']; ?>','Reject')"><i class="fas fa-ban text-danger mr-1"></i>Reject</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" data-placement="top" title="View News" onclick="viewNews(<?php echo $newsItem['id_news']; ?>)">
+                                                            <div class="d-flex align-items-center">
+                                                                <span id="statusText"><?php echo ucfirst(strtolower($newsItem['publication_status'])); ?></span>
+                                                                <div class="dropdown ml-auto">
+                                                                    <i class="fas fa-ellipsis-h" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['news_id']; ?>','Published')"><i class="fas fa-check-circle text-success mr-1"></i>Published</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['news_id']; ?>','Unpublished')"><i class="fas fa-times-circle text-danger mr-1"></i>Unpublished</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['news_id']; ?>','Draft')"><i class="fas fa-pencil-alt text-info mr-1"></i>Draft</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+
+                                                        <td><?php echo $newsItem['created_at']; ?></td>
+                                                        <td><?php echo $newsItem['updated_at']; ?></td>
+                                                        <td><?php echo $newsItem['date_approved']; ?></td>
+                                                        <td><?php echo $newsItem['date_submitted']; ?></td>
+                                                        <td><?php echo $newsItem['publication_date']; ?></td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" data-placement="top" title="View News" onclick="viewNews(<?php echo $newsItem['news_id']; ?>)">
                                                                 <i class="fas fa-eye"></i> View
                                                             </button>
-                                                            <a href="<?php echo base_url('/deleteNews/'.$newsItem['id_news']); ?>" class="btn btn-sm btn-danger delete-news-btn">Delete</a>
+                                                            <a href="<?php echo base_url('/deleteNews/'.$newsItem['news_id']); ?>" class="btn btn-sm btn-danger delete-news-btn">Delete</a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>
@@ -147,13 +161,13 @@
 
     <!-- change status -->
     <script>
-    function changeStatus(id,status) {
-        document.getElementById('statusText').innerText = status;
+    function changeStatus(id, status, statusTextElement) {
+        statusTextElement.innerText = status;
         $.ajax({
             url: "<?php echo base_url('changeStatus');?>",
             type: "POST",
             data: {
-                id_news: id,
+                news_id: id,
                 status: status
             },
             success: function(data) {
@@ -161,13 +175,16 @@
             },
             error: function(error) {
                 console.log(error);
+                alert("Failed to update status. Please try again.");
             }
         })
     }
+
     function viewNews(newsId) {
         window.location.href = '<?php echo base_url('viewnews/')?>' + newsId; // Change the URL as needed
     }
-    </script>
+</script>
+
 
     <script>
       // JavaScript to handle the click event of the "Edit" button
@@ -220,7 +237,7 @@
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    id_news: newsId
+                    news_id: newsId
                 }),
             })
             .then(response => {

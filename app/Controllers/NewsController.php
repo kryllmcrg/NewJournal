@@ -158,9 +158,11 @@ class NewsController extends BaseController
     {
         try {
             $newsID = $this->request->getVar('news_id');
-            $status = $this->request->getVar('status');
+            $publicationStatus = $this->request->getVar('publication_status');
+            $newsStatus = $this->request->getVar('news_status');
 
-            $data['status'] = $status;
+            $data['publication_status'] = $publicationStatus;
+            $data['news_status'] = $newsStatus;
 
             $model = new NewsModel();
             $model->where('news_id', $newsID)->set($data)->update();
@@ -170,6 +172,7 @@ class NewsController extends BaseController
             return $this->response->setJSON(['message' => 'Error: ' . $th->getMessage()]);
         }
     }
+
 
     public function archive()
     {
