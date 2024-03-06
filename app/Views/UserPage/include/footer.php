@@ -89,13 +89,7 @@
             <div class="copyright-info text-center">
               <span>Copyright &copy; <script>
                   document.write(new Date().getFullYear())
-                </script>, Designed &amp; Developed by <a href="https://themefisher.com">Themefisher</a></span>
-            </div>
-          </div>
-
-          <div class="col-md-12">
-            <div class="copyright-info text-center">
-              <span>Distributed by <a href="https://themewagon.com/">Themewagon</a></span>
+                </script>, Designed &amp; Developed by <a href="https://cityofcalapan.gov.ph">Calapan City Information Office.</a></span>
             </div>
           </div>
 

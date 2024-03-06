@@ -47,7 +47,7 @@
       <div class="row">
           <div class="col-lg-8 col-md-8">
             <ul class="top-info text-center text-md-left">
-                <li><i class="fas fa-map-marker-alt"></i> <p class="info-text">9051 Constra Incorporate, USA</p>
+                <li><i class="fas fa-map-marker-alt"></i> <p class="info-text">Calapan City Information Office, Philippines</p>
                 </li>
             </ul>
           </div>
@@ -96,7 +96,7 @@
                     <div class="info-box">
                       <div class="info-box-content">
                           <p class="info-box-title">Call Us</p>
-                          <p class="info-box-subtitle">(+9) 847-291-4353</p>
+                          <p class="info-box-subtitle">+63 9</p> <!--di ko pa knows-->
                       </div>
                     </div>
                   </li>
@@ -104,7 +104,7 @@
                     <div class="info-box">
                       <div class="info-box-content">
                           <p class="info-box-title">Email Us</p>
-                          <p class="info-box-subtitle">office@Constra.com</p>
+                          <p class="info-box-subtitle">calapancio@gmail.com</p><!--di ko pa knows-->
                       </div>
                     </div>
                   </li>
@@ -112,12 +112,12 @@
                     <div class="info-box last">
                       <div class="info-box-content">
                           <p class="info-box-title">Global Certificate</p>
-                          <p class="info-box-subtitle">ISO 9001:2017</p>
+                          <p class="info-box-subtitle">ISO 9001:2017</p><!--di ko pa knows-->
                       </div>
                     </div>
                   </li>
                   <li class="header-get-a-quote">
-                    <a class="btn btn-primary" href="contact.html">Get A Quote</a>
+                    <a class="btn btn-primary" href="subscribe">Subscribe</a>
                   </li>
                 </ul><!-- Ul end -->
             </div><!-- header right end -->
@@ -127,7 +127,7 @@
     </div><!-- Container end -->
   </div>
 
-  <div class="site-navigation">
+  <div class="site-navigation"  style="background-color: #e056fd; background-image: linear-gradient(315deg, #e056fd 0%, #000000 74%);">
     <div class="container">
         <div class="row">
           <div class="col-lg-12">
@@ -158,7 +158,7 @@
         <!--/ Row end -->
 
         <div class="nav-search">
-          <span id="search"><i class="fa fa-search"></i></span>
+          <span id="search" style="color: #333;"><i class="fa fa-search"></i></span>
         </div><!-- Search end -->
 
         <div class="search-block" style="display: none;">
