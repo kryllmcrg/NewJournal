@@ -155,24 +155,32 @@ class NewsController extends BaseController
     }
 
     public function changeStatus()
-    {
-        try {
-            $newsID = $this->request->getVar('news_id');
-            $publicationStatus = $this->request->getVar('publication_status');
-            $newsStatus = $this->request->getVar('news_status');
+{
+    try {
+        $newsID = $this->request->getVar('news_id');
+        $publicationStatus = $this->request->getVar('publication_status');
+        $newsStatus = $this->request->getVar('news_status');
 
+        $data = [];
+        if ($publicationStatus !== null) {
             $data['publication_status'] = $publicationStatus;
-            $data['news_status'] = $newsStatus;
-
-            $model = new NewsModel();
-            $model->where('news_id', $newsID)->set($data)->update();
-
-            return $this->response->setJSON([$data, $newsID]);
-        } catch (\Throwable $th) {
-            return $this->response->setJSON(['message' => 'Error: ' . $th->getMessage()]);
         }
-    }
+        if ($newsStatus !== null) {
+            $data['news_status'] = $newsStatus;
+        }
 
+        if (empty($data)) {
+            throw new \Exception('No status to update.');
+        }
+
+        $model = new NewsModel();
+        $model->where('news_id', $newsID)->set($data)->update();
+
+        return $this->response->setJSON([$data, $newsID]);
+    } catch (\Throwable $th) {
+        return $this->response->setJSON(['message' => 'Error: ' . $th->getMessage()]);
+    }
+}
 
     public function archive()
     {
