@@ -61,7 +61,7 @@ class NewsController extends BaseController
         'content' => $content,
         'category_id' => $category_id,
         'author' => $author,
-        'images' => $uploadedImages,
+        'images' => json_encode($uploadedImages),
         'user_id' => $userId,
         'news_status' => 'Pending',
         'publication_status' => 'Draft'
