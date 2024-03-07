@@ -62,7 +62,7 @@
           </span>
           <div class="ts-service-box-content">
             <h4>Visit Our Office</h4>
-            <p>9051 Constra Incorporate, USA</p>
+            <p>Guinobatan, Calapan City</p>
           </div>
         </div>
       </div><!-- Col 1 end -->
@@ -74,7 +74,7 @@
           </span>
           <div class="ts-service-box-content">
             <h4>Email Us</h4>
-            <p>office@Constra.com</p>
+            <p>calapancio@gmail.com</p>
           </div>
         </div>
       </div><!-- Col 2 end -->
@@ -92,10 +92,12 @@
       </div><!-- Col 3 end -->
 
     </div><!-- 1st row end -->
-
+<br>
+<br>
+<br>
     <div class="row">
       <div class="col-md-12">
-        <h3 class="column-title">We love to hear</h3>
+        <h3 class="column-title">We love to hear your suggestions and Comments</h3>
         <!-- contact form works with formspree.io  -->
         <!-- contact form activation doc: https://docs.themefisher.com/constra/contact-form/ -->
         <form id="contact-form" action="#" method="post" role="form">

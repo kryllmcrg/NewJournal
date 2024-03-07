@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,300,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-sr9OO8F4UAxJLT8KgGr9Vj2ZhaorSzBfFz/Tq2JHZIzB0IuMvqQFcFUpI6InZIlB" crossorigin="anonymous">
     <title>Welcome Calapan City Website!</title>
     <link rel="shortcut icon" href="assets/images/ciologo.png" />
     <style>
         body {
             margin: 0;
             padding: 0;
-            background-image: url('assets/images/cityby.png'); 
+            background-image: url('assets/images/bglogin.png'); 
             background-size: cover; 
             background-position: center; 
             height: 100vh; 
@@ -25,7 +26,7 @@
         .back-button {
             position: absolute;
             top: 10px;
-            right: 10px;
+            left: 10px; /* Adjusted position to upper left */
             text-decoration: none;
             color: white;
             font-size: 1.5em;
@@ -120,9 +121,7 @@
 </head>
 <body>
     <a href="/" class="back-button">
-        <i class="bi bi-arrow-left-circle-fill"></i>
-        <!-- You can adjust the text as needed -->
-        <span></span>
+        <span style="font-size: 24px;">&lt;</span> <!-- Left arrow icon -->
     </a>
     <div class="form-container">
         <h2>Login</h2>

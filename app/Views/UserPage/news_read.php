@@ -90,7 +90,7 @@
                     class="comments-link">Comments</a></span>
               </div>
               <h2 class="entry-title">
-                We Just Completes $17.6 million Medical Clinic in Mid-Missouri
+              Get ready to mark your calendars because the 𝗞𝗔𝗟𝗔𝗣 𝗙𝗲𝘀𝘁𝗶𝘃𝗮𝗹 𝟮𝟬𝟮𝟰 is just around the corner!
               </h2>
             </div><!-- header end -->
 

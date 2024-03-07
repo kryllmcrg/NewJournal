@@ -40,10 +40,11 @@
       <div class="container">
         <div class="row justify-content-between">
           <div class="col-lg-4 col-md-6 footer-widget footer-about">
-            <h3 class="widget-title">About Us</h3>
-            <img loading="lazy" class="footer-logo" src="assets/images/footer-logo.png" alt="Constra">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor inci done idunt ut
-              labore et dolore magna aliqua.</p>
+          <h3 class="widget-title">About Calapan City Information Office</h3>
+            <img loading="lazy" class="footer-logo" src="assets/images/footer-logo.png" alt="Calapan City Information Office">
+            <p>The Calapan City Information Office serves as the primary source of official information for residents and visitors alike. 
+              Our mission is to provide accurate and timely updates on city initiatives, events, and services. From announcements to community engagement, 
+              we strive to foster transparency and connectivity within the community.</p>
             <div class="footer-social">
               <ul>
                 <li><a href="https://facebook.com/themefisher" aria-label="Facebook"><i
@@ -60,24 +61,24 @@
           <div class="col-lg-4 col-md-6 footer-widget mt-5 mt-md-0">
             <h3 class="widget-title">Working Hours</h3>
             <div class="working-hours">
-              We work 7 days a week, every day excluding major holidays. Contact us if you have an emergency, with our
+              We work 5 days a week, every day excluding major holidays. Contact us if you have an emergency, with our
               Hotline and Contact form.
-              <br><br> Monday - Friday: <span class="text-right">10:00 - 16:00 </span>
-              <br> Saturday: <span class="text-right">12:00 - 15:00</span>
-              <br> Sunday and holidays: <span class="text-right">09:00 - 12:00</span>
+              <br><br> Monday - Friday: <span class="text-right">8:00 - 5:00 </span>
             </div>
+            <br>
+            <br>
+            <div>
+              <h3 class="widget-title">Our Vision</h3>
+              <p>A premier Green City with God-loving, economically-empowered, 
+                and culture-rich citizens actively participating in good governance and co-existing harmoniously with the environment.</p>
+          </div>
           </div><!-- Col end -->
 
           <div class="col-lg-3 col-md-6 mt-5 mt-lg-0 footer-widget">
-            <h3 class="widget-title">Services</h3>
-            <ul class="list-arrow">
-              <li><a href="service-single.html">Pre-Construction</a></li>
-              <li><a href="service-single.html">General Contracting</a></li>
-              <li><a href="service-single.html">Construction Management</a></li>
-              <li><a href="service-single.html">Design and Build</a></li>
-              <li><a href="service-single.html">Self-Perform Construction</a></li>
-            </ul>
-          </div><!-- Col end -->
+            <h3 class="widget-title">Our Mission</h3>
+            <p>The Green City of Calapan shall initiate and sustain programs to create an environment conducive to 
+              development and responsive to people's needs through a transparent, accountable and participatory governance.</p>
+        </div><!-- Col end -->
         </div><!-- Row end -->
       </div><!-- Container end -->
     </div><!-- Footer main end -->
@@ -95,16 +96,15 @@
 
           <div class="col-md-12">
             <div class="footer-menu text-center">
-              <ul class="list-unstyled mb-0">
-                <li><a href="about.html">About</a></li>
-                <li><a href="team.html">Our people</a></li>
-                <li><a href="faq.html">Faq</a></li>
-                <li><a href="news-left-sidebar.html">Blog</a></li>
-                <li><a href="pricing.html">Pricing</a></li>
-              </ul>
+                <ul class="list-unstyled mb-0">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="team.html">Our People</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="calapan-city-news.html">City News</a></li>
+                    <li><a href="calapan-city-services.html">Services</a></li>
+                </ul>
             </div>
-          </div>
-        </div><!-- Row end -->
+        </div>
 
         <div id="back-to-top" data-spy="affix" data-offset-top="10" class="back-to-top position-fixed">
           <button class="btn btn-primary" title="Back to Top">

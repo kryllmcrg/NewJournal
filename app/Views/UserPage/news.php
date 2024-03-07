@@ -50,7 +50,7 @@
       <div class="col-lg-8 mb-5 mb-lg-0">
         <div class="post">
           <div class="post-media post-image">
-            <img loading="lazy" src="assets/images/news/news1.jpg" class="img-fluid" alt="post-image">
+            <img loading="lazy" src="assets\images\slider-main\kalap.png" class="img-fluid" alt="post-image">
           </div>
 
           <div class="post-body">
@@ -67,30 +67,25 @@
                     class="comments-link">Comments</a></span>
               </div>
               <h2 class="entry-title">
-                <a href="news-single.html">We Just Completes $17.6 million Medical Clinic in Mid-Missouri</a>
+                <a href="kalapnews">Get ready to mark your calendars because the KALAP FESTIVAL 2024 is just around the corner!</a>
               </h2>
             </div><!-- header end -->
 
             <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur ...</p>
+              <p>We are beyond excited to announce the complete schedule of activities for the 26𝒕𝒉 𝑪𝒊𝒕𝒚𝒉𝒐𝒐𝒅 𝑨𝒏𝒏𝒊𝒗𝒆𝒓𝒔𝒂𝒓𝒚 𝑪𝒆𝒍𝒆𝒃𝒓𝒂𝒕𝒊𝒐𝒏 𝒐𝒇 𝑪𝒂𝒍𝒂𝒑𝒂𝒏! From dazzling parades and colorful street dances to mouth-watering food fairs and heart-pumping concerts, this year’s KALAP Festival promises to be an unforgettable experience for all! So gather your friends and family and join us as we celebrate the vibrant culture and rich history of our beloved city.
+                See you there!</p>
             </div>
 
             <div class="post-footer">
-              <a href="news-single.html" class="btn btn-primary">Continue Reading</a>
+              <a href="kalapnews" class="btn btn-primary">Continue Reading</a>
             </div>
 
           </div><!-- post-body end -->
         </div><!-- 1st post end -->
 
         <div class="post">
-          <div class="post-media post-video">
-            <div class="embed-responsive embed-responsive-16by9">
-              <!-- Change the url -->
-              <iframe class="embed-responsive-item" src="//player.vimeo.com/video/153089270?title=0&amp;byline=0&amp;portrait=0&amp;color=8aba56" allowfullscreen></iframe>
-            </div>
+          <div class="post-media post-image">
+            <img loading="lazy" src="assets/images/news/bridge.jpg" class="img-fluid" alt="post-image">
           </div>
 
           <div class="post-body">
@@ -107,15 +102,12 @@
                     class="comments-link">Comments</a></span>
               </div>
               <h2 class="entry-title">
-                <a href="news-single.html">Thandler Airport Water Reclamation Facility Expansion Project Named</a>
+                <a href="maidlang">Brgy. Maidlang rehabilitation and regravelling of road going to Abaton Bridge.</a>
               </h2>
             </div><!-- header end -->
 
             <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur ...</p>
+              <p>Calapan City, Oriental Mindoro announces rehab and regravelling of road in Brgy. Maidlang leading to Abaton Bridge, aiming to improve accessibility and safety.</p>
             </div>
 
             <div class="post-footer">
@@ -127,7 +119,7 @@
 
         <div class="post">
           <div class="post-media post-image">
-            <img loading="lazy" src="assets/images/news/news3.jpg" class="img-fluid" alt="post-image">
+            <img loading="lazy" src="assets/images/news/inflation.jpg" class="img-fluid" alt="post-image">
           </div>
 
           <div class="post-body">
@@ -144,16 +136,16 @@
                     class="comments-link">Comments</a></span>
               </div>
               <h2 class="entry-title">
-                <a href="news-single.html">Silicon Bench and Cornike Begin Construction of Large-Scale Solar Facilities
-                  for Trade</a>
+                <a href="inflation">PSA: Ormin Inflation Rate, bumaba sa 2.5% nitong Enero 2024</a>
               </h2>
             </div><!-- header end -->
 
             <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur ...</p>
+              <p>Patuloy na bumababa ang inflation rate sa lalawigan ng Oriental Mindoro at ayon nga sa PSA Provincial Statistical Office, pumalo ito sa 2.5% nitong Enero 2024.
+                
+                Kabilang sa naging bahagi ng pagbaba ng implasyon ay ang Housing, Water, Electricty, Gas and Other Fuels, (2) Transport, and (3) Furnishings, Household Equipment, and Routine Household.
+                
+                Samantala, patuloy naman ang pagtaas ng ilang bilihin tulad ng alcoholic beverages at tobacco, gamot at health services, bigas, gatas, dairy products, itlog, prutas, karne, at mga ready-made food.</p>
             </div>
 
             <div class="post-footer">
@@ -183,33 +175,33 @@
             <ul class="list-unstyled">
               <li class="d-flex align-items-center">
                 <div class="posts-thumb">
-                  <a href="#"><img loading="lazy" alt="img" src="assets/images/news/news1.jpg"></a>
+                  <a href="#"><img loading="lazy" alt="img" src="assets\images\slider-main\kalap.png"></a>
                 </div>
                 <div class="post-info">
                   <h4 class="entry-title">
-                    <a href="#">We Just Completes $17.6 Million Medical Clinic In Mid-missouri</a>
+                    <a href="#">Get ready to mark your calendars because the KALAP FESTIVAL 2024 is just around the corner!</a>
                   </h4>
                 </div>
               </li><!-- 1st post end-->
 
               <li class="d-flex align-items-center">
                 <div class="posts-thumb">
-                  <a href="#"><img loading="lazy" alt="img" src="assets/images/news/news2.jpg"></a>
+                  <a href="#"><img loading="lazy" alt="img" src="assets/images/news/bridge.jpg"></a>
                 </div>
                 <div class="post-info">
                   <h4 class="entry-title">
-                    <a href="#">Thandler Airport Water Reclamation Facility Expansion Project Named</a>
+                    <a href="#">Brgy. Maidlang rehabilitation and regravelling of road going to Abaton Bridge.</a>
                   </h4>
                 </div>
               </li><!-- 2nd post end-->
 
               <li class="d-flex align-items-center">
                 <div class="posts-thumb">
-                  <a href="#"><img loading="lazy" alt="img" src="assets/images/news/news3.jpg"></a>
+                  <a href="#"><img loading="lazy" alt="img" src="assets/images/news/inflation.jpg"></a>
                 </div>
                 <div class="post-info">
                   <h4 class="entry-title">
-                    <a href="#">Silicon Bench And Cornike Begin Construction Solar Facilities</a>
+                    <a href="#">PSA: Ormin Inflation Rate, bumaba sa 2.5% nitong Enero 2024</a>
                   </h4>
                 </div>
               </li><!-- 3rd post end-->
@@ -221,22 +213,22 @@
           <div class="widget">
             <h3 class="widget-title">Categories</h3>
             <ul class="arrow nav nav-tabs">
-              <li><a href="#">Construction</a></li>
-              <li><a href="#">Commercial</a></li>
-              <li><a href="#">Building</a></li>
-              <li><a href="#">Safety</a></li>
-              <li><a href="#">Structure</a></li>
+              <li><a href="#">Entertainment</a></li>
+              <li><a href="#">Technology</a></li>
+              <li><a href="#">Business</a></li>
+              <li><a href="#">Politics</a></li>
+              <li><a href="#">Culture</a></li>
             </ul>
           </div><!-- Categories end -->
 
           <div class="widget">
             <h3 class="widget-title">Archives </h3>
             <ul class="arrow nav nav-tabs">
-              <li><a href="#">Feburay 2016</a></li>
-              <li><a href="#">January 2016</a></li>
-              <li><a href="#">December 2015</a></li>
-              <li><a href="#">November 2015</a></li>
-              <li><a href="#">October 2015</a></li>
+              <li><a href="#">Feburay 2024</a></li>
+              <li><a href="#">January 2024</a></li>
+              <li><a href="#">December 2023</a></li>
+              <li><a href="#">November 2023</a></li>
+              <li><a href="#">October 2023</a></li>
             </ul>
           </div><!-- Archives end -->
 
@@ -244,14 +236,13 @@
             <h3 class="widget-title">Tags </h3>
 
             <ul class="list-unstyled">
-              <li><a href="#">Construction</a></li>
-              <li><a href="#">Design</a></li>
-              <li><a href="#">Project</a></li>
-              <li><a href="#">Building</a></li>
+              <li><a href="#">News</a></li>
+              <li><a href="#">Politics</a></li>
+              <li><a href="#">Crime</a></li>
+              <li><a href="#">Rehabilitation</a></li>
               <li><a href="#">Finance</a></li>
               <li><a href="#">Safety</a></li>
-              <li><a href="#">Contracting</a></li>
-              <li><a href="#">Planning</a></li>
+              <li><a href="#">Kalap</a></li>
             </ul>
           </div><!-- Tags end -->
 
