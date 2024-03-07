@@ -11,7 +11,7 @@
         body {
             margin: 0;
             padding: 0;
-            background-image: url('assets/images/cityby.png');
+            background-image: url('assets/images/bglogin.png'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
