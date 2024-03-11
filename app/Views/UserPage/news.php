@@ -46,11 +46,11 @@
   <section id="main-container" class="main-container">
   <div class="container">
     <div class="row">
-
+      <?php foreach($newsData as $news): ?>
       <div class="col-lg-8 mb-5 mb-lg-0">
         <div class="post">
           <div class="post-media post-image">
-            <img loading="lazy" src="assets\images\slider-main\kalap.png" class="img-fluid" alt="post-image">
+            <img loading="lazy" class="img-fluid" alt="post-image"><?= $news['images']; ?>
           </div>
 
           <div class="post-body">
@@ -67,13 +67,12 @@
                     class="comments-link">Comments</a></span>
               </div>
               <h2 class="entry-title">
-                <a href="kalapnews">Get ready to mark your calendars because the KALAP FESTIVAL 2024 is just around the corner!</a>
+                <a href="kalapnews"><?= $news['title']; ?></a>
               </h2>
             </div><!-- header end -->
 
             <div class="entry-content">
-              <p>We are beyond excited to announce the complete schedule of activities for the 26𝒕𝒉 𝑪𝒊𝒕𝒚𝒉𝒐𝒐𝒅 𝑨𝒏𝒏𝒊𝒗𝒆𝒓𝒔𝒂𝒓𝒚 𝑪𝒆𝒍𝒆𝒃𝒓𝒂𝒕𝒊𝒐𝒏 𝒐𝒇 𝑪𝒂𝒍𝒂𝒑𝒂𝒏! From dazzling parades and colorful street dances to mouth-watering food fairs and heart-pumping concerts, this year’s KALAP Festival promises to be an unforgettable experience for all! So gather your friends and family and join us as we celebrate the vibrant culture and rich history of our beloved city.
-                See you there!</p>
+              <p><?= $news['content']; ?></p>
             </div>
 
             <div class="post-footer">
@@ -82,6 +81,7 @@
 
           </div><!-- post-body end -->
         </div><!-- 1st post end -->
+        <?php endforeach ?>
 
         <div class="post">
           <div class="post-media post-image">

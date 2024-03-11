@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\UsersModel;
 use App\Models\CategoryModel;
+use App\Models\NewsModel;
 
 class UserController extends BaseController
 {
@@ -22,12 +23,15 @@ class UserController extends BaseController
     {
         $categoryModel = new CategoryModel();
         $categories = $categoryModel->findAll();
-    
+
         $data['categories'] = $categories;
-    
-        // Load the view with the categories data
-        return view('UserPage/home' , $data);
+
+        $newsModel = new NewsModel();
+        $data['newsData'] = $newsModel->findAll();
+
+        return view('UserPage/home', $data);
     }
+
     
     public function about()
     {

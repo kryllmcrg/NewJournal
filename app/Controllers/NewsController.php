@@ -194,4 +194,5 @@ class NewsController extends BaseController
         return view('AdminPage/archive', ['newsData' => $newsData]);
     }
 
+
 }
