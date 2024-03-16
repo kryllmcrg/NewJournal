@@ -23,15 +23,6 @@
             position: relative;
         }
 
-        .back-button {
-            position: absolute;
-            top: 10px;
-            left: 10px; /* Adjusted position to upper left */
-            text-decoration: none;
-            color: white;
-            font-size: 1.5em;
-        }
-
         .form-container {
             background-color: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
@@ -65,6 +56,11 @@
             box-sizing: border-box; /* Ensure padding and border are included in width */
         }
 
+        .form-container input[type=email] + .text-danger,
+        .form-container input[type=password] + .text-danger {
+            color: red; /* Set color to red for error messages */
+        }
+
         .form-container button[type=submit] {
             width: 100%;
             padding: 12px;
@@ -88,46 +84,33 @@
             font-weight: bold;
         }
 
-        .logindesign {
-            position: absolute;
-            left: 15%;
-            background-color: rgba(133, 73, 167, 0.8);
-            height: 100%;
-            padding: 20px;
-            color: white;
-            border-radius: 10px;
-        }
-
-        .logindesign span {
-            font-size: 24px;
-            font-style: italic;
-        }
-
-        .logindesign p {
-            font-size: 16px;
-        }
-
-        .logindesign p.clickable {
-            cursor: pointer;
-            text-decoration: underline;
-        }
-
         @media only screen and (max-width: 768px) {
             .form-container {
                 max-width: 90%;
             }
+        }
+
+        .required-sign {
+            color: red;
         }
     </style>
 </head>
 <body>
     <div class="form-container">
         <h2>Login</h2>
-        <form action="/loginAuth" method="post">
+        <form action="<?= base_url('/check') ?>" method="post" autocomplete="off">
+        <?= csrf_field(); ?>
+
+        <?php if (!empty(session()->getFlashdata('fail'))) :?>
+                <div class="alert alert-danger"><?= session()->getFlashdata('fail'); ?></div>
+        <?php endif ?>
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            <input type="email" id="email" name="email" placeholder="Enter your email" value="<?= set_value('email'); ?>">
+            <span class="text-danger"><?= isset($validation) ? display_error($validation, 'email'): ''?></span>
 
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            <input type="password" id="password" name="password" placeholder="Enter your password" value="<?= set_value('password'); ?>">
+            <span class="text-danger"><?= isset($validation) ? display_error($validation, 'password'): ''?></span>
 
             <button type="submit">Sign In</button>
             <p>Don't have an account? <a href="/register">Sign up</a></p> 

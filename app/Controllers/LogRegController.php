@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\Models\UsersModel;
 use App\Models\UserAccountsModel;
+use App\Libraries\Hash;
 
 class LogRegController extends BaseController
 {
@@ -21,40 +22,40 @@ class LogRegController extends BaseController
         return view('UserPage/login');
     }
 
-    public function loginAuth()
-    {
-        $session = session();
-        try {
-            $email = $this->request->getVar('email');
-            $password = $this->request->getVar('password');
+    // public function loginAuth()
+    // {
+    //     $session = session();
+    //     try {
+            // $email = $this->request->getVar('email');
+            // $password = $this->request->getVar('password');
 
-            $usersModel = new UserAccountsModel();
-            $user = $usersModel->where('email', $email)->first();
+            // $usersModel = new UserAccountsModel();
+            // $user = $usersModel->where('email', $email)->first();
 
-            // Check if user exists
-            if (is_null($user)) {
-                return redirect()->to(previous_url())->withInput()->with('error', 'Invalid email or password.');
-            }
+    //         // Check if user exists
+    //         if (is_null($user)) {
+    //             return redirect()->to(previous_url())->withInput()->with('error', 'Invalid email or password.');
+    //         }
 
-            // Verify password
-            if (!password_verify($password, $user['password'])) {
-                return redirect()->to(previous_url())->withInput()->with('error', 'Invalid email or password.');
-            }
-            $ses_user= [
-                'id' => $user['id'],
-                'email' => $user['email'],
-                'role' => $user['role'],
-                'image' => $user['image'],
-                'fullname' => $user['firstname'].' '. $user['lastname']
-            ];
-            $session->set($ses_user);
-            return redirect()->to('/dashboard');
+    //         // Verify password
+    //         if (!password_verify($password, $user['password'])) {
+    //             return redirect()->to(previous_url())->withInput()->with('error', 'Invalid email or password.');
+    //         }
+    //         $ses_user= [
+    //             'id' => $user['id'],
+    //             'email' => $user['email'],
+    //             'role' => $user['role'],
+    //             'image' => $user['image'],
+    //             'fullname' => $user['firstname'].' '. $user['lastname']
+    //         ];
+    //         $session->set($ses_user);
+    //         return redirect()->to('/dashboard');
 
-        } catch (\Throwable $th) {
-            // Handle any unexpected errors
-            return redirect()->to(site_url('login'))->with('error', 'An error occurred during authentication.');
-        }
-    }
+    //     } catch (\Throwable $th) {
+    //         // Handle any unexpected errors
+    //         return redirect()->to(site_url('login'))->with('error', 'An error occurred during authentication.');
+    //     }
+    // }
     
     public function register()
     {
@@ -215,7 +216,7 @@ class LogRegController extends BaseController
                     'lastname' => $lastname,
                     'address' => $address,
                     'email' => $email,
-                    'password' => $password,
+                    'password' => Hash::make($password),
                     'contact_number' => $contact_number,
                     'image' => $image,
                     'role' => $role,
@@ -226,14 +227,61 @@ class LogRegController extends BaseController
                 $query = $usersModel->insert($values);
         
                 if (!$query) {
-                    return redirect()->back()->with('fail', 'Something went wrong');
+                    session()->setFlashdata('fail', 'Something went wrong');
+                    return redirect()->back()->withInput();
                 } else {
                     return redirect()->back()->with('fail', $profileImage->getErrorString());
                 }
             } else {
-                return redirect()->to('register')->with('success', 'You are now registered successfully');
+                session()->setFlashdata('success', 'You are now registered successfully');
+                    return redirect()->to('register')->withInput();
             }
         }
-        
     }
+    function check()
+        {
+            $validation = $this->validate([
+                'email' =>[
+                    'rules'=>'required|valid_email|is_not_unique[users.email]',
+                    'errors'=>[
+                        'required' => 'Your email is required',
+                        'valid_email' => 'You must enter a valid email address',
+                        'is_not_unique' => 'This email is not registered on our service'
+                    ]
+                    ],
+                'password' => [
+                    'rules' => 'required|min_length[6]|max_length[12]',
+                    'errors' => [
+                        'required' => 'Your password is required',
+                        'min_length' => 'Password must have at least 6 characters in length',
+                        'max_length' => 'Password must not have characters more than 12 in length',
+                    ]
+                    ],
+            ]);
+            if(!$validation){
+                return view('UserPage/login',['validation'=>$this->validator]);
+            }else{
+                
+                $email = $this->request->getPost('email');
+                $password = $this->request->getPost('password');
+                $usersModel = new UsersModel();
+                $user_info = $usersModel->where('email', $email)->first();
+                $check_password = Hash::check($password, $user_info['password']);
+
+                if(!$check_password){
+                    session()->setFlashdata('fail', 'Incorrect password');
+                    return redirect()->to('login')->withInput();
+                }else{
+                    $user_id = $user_info['user_id'];
+                    session()->set('loggedUser',$user_id);
+                    return redirect()->to('/');
+                }
+            }
+        }
+        function logout(){
+            if(session()->has('loggedUser')){
+                session()->remove('loggedUser');
+                return redirect()->to('login?/access=out')->with('fail', 'You are logged out!');
+            }
+        }
 }

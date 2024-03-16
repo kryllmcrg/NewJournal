@@ -13,11 +13,10 @@ $routes->get('/news', 'UserController::news');
 $routes->get('/news_read', 'UserController::news_read');
 
 $routes->get('/login', 'LogRegController::login');
-$routes->post('loginAuth', 'LogRegController::loginAuth');
+$routes->post('check', 'LogRegController::check');
 $routes->get('logout', 'LogRegController::logout');
 $routes->get('/register', 'LogRegController::register');
 $routes->post('/save', 'LogRegController::save');
-
 
 $routes->get('/dashboard', 'AdminController::dashboard');
 

@@ -38,6 +38,7 @@
     .nav {
         color: black;
     }
+
 </style>
 <body>
 <div class="body-inner">
@@ -121,6 +122,7 @@
                   </li>
                 </ul><!-- Ul end -->
             </div><!-- header right end -->
+          </div>
           </div><!-- logo area end -->
   
       </div><!-- Row end -->

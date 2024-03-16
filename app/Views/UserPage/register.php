@@ -159,7 +159,7 @@
     <div class="container d-flex justify-content-center p-4">
         <div class="form-container">
             <h2>Register Now</h2>
-            <form method="post" action="<?= base_url('/save');?>" enctype="multipart/form-data" class="form-grid">
+            <form method="post" action="<?= base_url('/save');?>" enctype="multipart/form-data" class="form-grid" autocomplete="off">
                 <?= csrf_field();?>
                 <?php if (!empty(session()->getFlashdata('fail'))) :?>
                     <div class="alert alert-danger"><?= session()->getFlashdata('fail'); ?></div>
