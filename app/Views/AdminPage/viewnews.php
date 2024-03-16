@@ -14,6 +14,9 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="<?= base_url('assets2/images/ciologo.png')?>" />
   </head>
+ 
+  
+
   <body>
     <div class="container-scroller">
       <div class="row p-0 m-0 proBanner" id="proBanner">
@@ -63,7 +66,8 @@
             </div>
           </div>
 
-         
+          
+
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <?php include('include\footer.php'); ?>

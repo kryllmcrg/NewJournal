@@ -93,7 +93,7 @@
                                                 <?php foreach ($newsData as $newsItem): ?>
                                                     <tr>
                                                         <td><?php echo $newsItem['title']; ?></td>
-                                                        <td><?php echo $newsItem['content']; ?></td>
+                                                        <td class="advisoryContent"><?php echo $newsItem['content']; ?></td>
                                                         <td><?php echo $newsItem['category_id']; ?></td>
                                                         <td><?php echo $newsItem['author']; ?></td>
                                                         <td><?php echo $newsItem['images']; ?></td>
@@ -157,6 +157,36 @@
         </div>
         <!-- page-body-wrapper ends -->
     </div>
+
+    <script>
+    function formatAdvisoryDetails(content) {
+        // Define the maximum width percentage or retrieve it from an appropriate source
+        var maxWidthPercentage = 80; // Adjust this according to your needs
+
+        // Calculate the maximum width based on the window width and maximum width percentage
+        var maxWidth = (window.innerWidth * maxWidthPercentage) / 100;
+
+        // Calculate the maximum length for the combined subject and content
+        var maxLength = Math.floor(maxWidth / 8);
+
+        // Check if content length exceeds the maximum length
+        if (content.length > maxLength) {
+            // If combined length exceeds maxLength, truncate and add ellipsis
+            content = content.substring(0, maxLength - 3) + "...";
+        }
+
+        return content;
+    }
+
+    // Call the function to truncate content after page load
+    window.onload = function() {
+        var advisoryContents = document.getElementsByClassName("advisoryContent");
+        for (var i = 0; i < advisoryContents.length; i++) {
+            advisoryContents[i].innerText = formatAdvisoryDetails(advisoryContents[i].innerText);
+        }
+    };
+</script>
+
 
     <!-- change status -->
     <script>
