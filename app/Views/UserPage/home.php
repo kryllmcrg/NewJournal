@@ -51,7 +51,7 @@
               <h3 class="box-slide-sub-title">Experience the Vibrancy of Calapan City</h3>
               <p class="box-slide-description">Join us in commemorating the colorful Kalap Festival, a celebration of culture, tradition, and unity in Calapan City, Oriental Mindoro. Immerse yourself in the rich heritage of the region, witness dazzling performances, indulge in local delicacies, and create lasting memories with your loved ones.</p>
               <p>
-                <a href="#" class="slider btn btn-primary">Learn More</a>
+                <a href="#" class="slider btn btn-primary">Read more</a>
               </p>
           </div>
         </div>
@@ -66,7 +66,7 @@
                 <h2 class="box-slide-title">Remembering Dentist Doc Ting</h2>
                 <h3 class="box-slide-sub-title">A Loss to the Community</h3>
                 <p class="box-slide-description">In the wake of the tragic loss of Dentist Doc Ting, a pillar of our community and dedicated public servant, we mourn the untimely passing of a beloved figure. His contributions to the betterment of Calapan City, Oriental Mindoro, will forever be remembered. Let us honor his memory by cherishing the values he stood for and continuing his legacy of service and compassion.</p>
-                <p><a href="#" class="slider btn btn-primary" aria-label="about-us">Learn More</a></p>
+                <p><a href="#" class="slider btn btn-primary" aria-label="about-us">Read more</a></p>
               </div>
           </div>
         </div>
@@ -74,75 +74,73 @@
   </div>
 </div>
 
-<section class="call-to-action no-padding">
-  <div class="container">
-    <div class="action-style-box">
-        <div class="row">
-          <div class="col-md-12 text-center">
-              <div class="call-to-action-btn">
-                <a class="btn btn-primary mr-2 mb-2" href="#">Entertainment</a>
-                <a class="btn btn-primary mr-2 mb-2" href="#">Technology</a>
-                <a class="btn btn-primary mr-2 mb-2" href="#">Business</a>
-                <a class="btn btn-primary mb-2" href="#">Politics</a>
-              </div>
-          </div><!-- Col end -->
-        </div><!-- row end -->
-    </div><!-- Action style box -->
-  </div><!-- Container end -->
-</section><!-- Action end -->
 
 <section id="ts-features" class="ts-features pb-2">
-  <div class="container">
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="shuffle-btn-group">
+          <label class="active" for="all">
+            <input type="radio" name="shuffle-filter" id="all" value="all" checked="checked">Show All
+          </label>
+          <label for="commercial">
+            <input type="radio" name="shuffle-filter" id="commercial" value="commercial">Commercial
+          </label>
+          <label for="education">
+            <input type="radio" name="shuffle-filter" id="education" value="education">Education
+          </label>
+          <label for="government">
+            <input type="radio" name="shuffle-filter" id="government" value="government">Government
+          </label>
+          <label for="infrastructure">
+            <input type="radio" name="shuffle-filter" id="infrastructure" value="infrastructure">Infrastructure
+          </label>
+          <label for="residential">
+            <input type="radio" name="shuffle-filter" id="residential" value="residential">Residential
+          </label>
+          <label for="healthcare">
+            <input type="radio" name="shuffle-filter" id="healthcare" value="healthcare">Healthcare
+          </label>
+        </div><!-- project filter end -->
+        
+<div class="container">
     <div class="row">
         <div class="col-lg-4 col-md-6 mb-5">
-        <?php foreach($newsData as $news): ?>
           <div class="ts-service-box">
-            <div class="ts-service-image-wrapper">
-              <img loading="lazy" class="w-100" alt="service-image"><?= $news['images']; ?>
-            </div>
+              <div class="ts-service-image-wrapper">
+                <img loading="lazy" class="w-100" src="assets/images/pic6.png" alt="service-image">
+              </div>
               <div class="d-flex">
-                <div class="ts-service-box-img">
-                    <img loading="lazy" src="assets/images/icon-image/service-icon1.png" alt="service-icon" />
-                </div>
                 <div class="ts-service-info">
-                    <h3 class="service-box-title"><a href=""><?= $news['title']; ?></a></h3>
-                    <p><?= $news['content']; ?></p>
-                    <a class="learn-more d-inline-block" href="" aria-label="service-details"><i class="fa fa-caret-right"></i> Read more</a>
+                    <h3 class="service-box-title"><a href="service-single.html">Zero Harm Everyday</a></h3>
+                    <p>You have ideas, goals, and dreams. We have a culturally diverse, forward thinking team looking for talent like. Lorem ipsum dolor suscipit.</p>
+                    <a class="learn-more d-inline-block" href="service-single.html" aria-label="service-details"><i class="fa fa-caret-right"></i> Read more</a>
                 </div>
               </div>
           </div><!-- Service1 end -->
         </div><!-- Col 1 end -->
-        <?php endforeach ?>
 
         <div class="col-lg-4 col-md-6 mb-5">
-        <?php foreach($newsData as $news): ?>
           <div class="ts-service-box">
               <div class="ts-service-image-wrapper">
-                <img loading="lazy" class="w-100" alt="service-image"><?= $news['images']; ?>
+                <img loading="lazy" class="w-100" src="assets/images/pic6.png" alt="service-image">
               </div>
               <div class="d-flex">
-                <div class="ts-service-box-img">
-                    <img loading="lazy" src="assets/images/icon-image/service-icon2.png" alt="service-icon" />
-                </div>
                 <div class="ts-service-info">
-                    <h3 class="service-box-title"><a href=""><?= $news['title']; ?></a></h3>
-                    <p><?= $news['content']; ?></p>
-                    <a class="learn-more d-inline-block" href="" aria-label="service-details"><i class="fa fa-caret-right"></i> Read more</a>
+                    <h3 class="service-box-title"><a href="service-single.html">Virtual Construction</a></h3>
+                    <p>You have ideas, goals, and dreams. We have a culturally diverse, forward thinking team looking for talent like. Lorem ipsum dolor suscipit.</p>
+                    <a class="learn-more d-inline-block" href="service-single.html" aria-label="service-details"><i class="fa fa-caret-right"></i> Read more</a>
                 </div>
               </div>
           </div><!-- Service2 end -->
         </div><!-- Col 2 end -->
-        <?php endforeach ?>
 
         <div class="col-lg-4 col-md-6 mb-5">
           <div class="ts-service-box">
               <div class="ts-service-image-wrapper">
-                <img loading="lazy" class="w-100" src="assets/images/services/service3.jpg" alt="service-image">
+                <img loading="lazy" class="w-100" src="assets/images/pic6.png" alt="service-image">
               </div>
               <div class="d-flex">
-                <div class="ts-service-box-img">
-                    <img loading="lazy" src="assets/images/icon-image/service-icon3.png" alt="service-icon" />
-                </div>
                 <div class="ts-service-info">
                     <h3 class="service-box-title"><a href="">Build To Last</a></h3>
                     <p>You have ideas, goals, and dreams. We have a culturally diverse, forward thinking team looking for talent like. Lorem ipsum dolor suscipit.</p>

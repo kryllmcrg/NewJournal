@@ -46,11 +46,11 @@
   <section id="main-container" class="main-container">
   <div class="container">
     <div class="row">
-      <?php foreach($newsData as $news): ?>
+
       <div class="col-lg-8 mb-5 mb-lg-0">
         <div class="post">
           <div class="post-media post-image">
-            <img loading="lazy" class="img-fluid" alt="post-image"><?= $news['images']; ?>
+            <img loading="lazy" src="images/news/news1.jpg" class="img-fluid" alt="post-image">
           </div>
 
           <div class="post-body">
@@ -67,25 +67,30 @@
                     class="comments-link">Comments</a></span>
               </div>
               <h2 class="entry-title">
-                <a href="kalapnews"><?= $news['title']; ?></a>
+                <a href="news-single.html">We Just Completes $17.6 million Medical Clinic in Mid-Missouri</a>
               </h2>
             </div><!-- header end -->
 
             <div class="entry-content">
-              <p><?= $news['content']; ?></p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur ...</p>
             </div>
 
             <div class="post-footer">
-              <a href="kalapnews" class="btn btn-primary">Continue Reading</a>
+              <a href="news-single.html" class="btn btn-primary">Continue Reading</a>
             </div>
 
           </div><!-- post-body end -->
         </div><!-- 1st post end -->
-        <?php endforeach ?>
 
         <div class="post">
-          <div class="post-media post-image">
-            <img loading="lazy" src="assets/images/news/bridge.jpg" class="img-fluid" alt="post-image">
+          <div class="post-media post-video">
+            <div class="embed-responsive embed-responsive-16by9">
+              <!-- Change the url -->
+              <iframe class="embed-responsive-item" src="//player.vimeo.com/video/153089270?title=0&amp;byline=0&amp;portrait=0&amp;color=8aba56" allowfullscreen></iframe>
+            </div>
           </div>
 
           <div class="post-body">
@@ -102,12 +107,15 @@
                     class="comments-link">Comments</a></span>
               </div>
               <h2 class="entry-title">
-                <a href="maidlang">Brgy. Maidlang rehabilitation and regravelling of road going to Abaton Bridge.</a>
+                <a href="news-single.html">Thandler Airport Water Reclamation Facility Expansion Project Named</a>
               </h2>
             </div><!-- header end -->
 
             <div class="entry-content">
-              <p>Calapan City, Oriental Mindoro announces rehab and regravelling of road in Brgy. Maidlang leading to Abaton Bridge, aiming to improve accessibility and safety.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur ...</p>
             </div>
 
             <div class="post-footer">
@@ -119,7 +127,7 @@
 
         <div class="post">
           <div class="post-media post-image">
-            <img loading="lazy" src="assets/images/news/inflation.jpg" class="img-fluid" alt="post-image">
+            <img loading="lazy" src="images/news/news3.jpg" class="img-fluid" alt="post-image">
           </div>
 
           <div class="post-body">
@@ -136,16 +144,16 @@
                     class="comments-link">Comments</a></span>
               </div>
               <h2 class="entry-title">
-                <a href="inflation">PSA: Ormin Inflation Rate, bumaba sa 2.5% nitong Enero 2024</a>
+                <a href="news-single.html">Silicon Bench and Cornike Begin Construction of Large-Scale Solar Facilities
+                  for Trade</a>
               </h2>
             </div><!-- header end -->
 
             <div class="entry-content">
-              <p>Patuloy na bumababa ang inflation rate sa lalawigan ng Oriental Mindoro at ayon nga sa PSA Provincial Statistical Office, pumalo ito sa 2.5% nitong Enero 2024.
-                
-                Kabilang sa naging bahagi ng pagbaba ng implasyon ay ang Housing, Water, Electricty, Gas and Other Fuels, (2) Transport, and (3) Furnishings, Household Equipment, and Routine Household.
-                
-                Samantala, patuloy naman ang pagtaas ng ilang bilihin tulad ng alcoholic beverages at tobacco, gamot at health services, bigas, gatas, dairy products, itlog, prutas, karne, at mga ready-made food.</p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur ...</p>
             </div>
 
             <div class="post-footer">
@@ -175,33 +183,33 @@
             <ul class="list-unstyled">
               <li class="d-flex align-items-center">
                 <div class="posts-thumb">
-                  <a href="#"><img loading="lazy" alt="img" src="assets\images\slider-main\kalap.png"></a>
+                  <a href="#"><img loading="lazy" alt="img" src="images/news/news1.jpg"></a>
                 </div>
                 <div class="post-info">
                   <h4 class="entry-title">
-                    <a href="#">Get ready to mark your calendars because the KALAP FESTIVAL 2024 is just around the corner!</a>
+                    <a href="#">We Just Completes $17.6 Million Medical Clinic In Mid-missouri</a>
                   </h4>
                 </div>
               </li><!-- 1st post end-->
 
               <li class="d-flex align-items-center">
                 <div class="posts-thumb">
-                  <a href="#"><img loading="lazy" alt="img" src="assets/images/news/bridge.jpg"></a>
+                  <a href="#"><img loading="lazy" alt="img" src="images/news/news2.jpg"></a>
                 </div>
                 <div class="post-info">
                   <h4 class="entry-title">
-                    <a href="#">Brgy. Maidlang rehabilitation and regravelling of road going to Abaton Bridge.</a>
+                    <a href="#">Thandler Airport Water Reclamation Facility Expansion Project Named</a>
                   </h4>
                 </div>
               </li><!-- 2nd post end-->
 
               <li class="d-flex align-items-center">
                 <div class="posts-thumb">
-                  <a href="#"><img loading="lazy" alt="img" src="assets/images/news/inflation.jpg"></a>
+                  <a href="#"><img loading="lazy" alt="img" src="images/news/news3.jpg"></a>
                 </div>
                 <div class="post-info">
                   <h4 class="entry-title">
-                    <a href="#">PSA: Ormin Inflation Rate, bumaba sa 2.5% nitong Enero 2024</a>
+                    <a href="#">Silicon Bench And Cornike Begin Construction Solar Facilities</a>
                   </h4>
                 </div>
               </li><!-- 3rd post end-->
@@ -213,22 +221,22 @@
           <div class="widget">
             <h3 class="widget-title">Categories</h3>
             <ul class="arrow nav nav-tabs">
-              <li><a href="#">Entertainment</a></li>
-              <li><a href="#">Technology</a></li>
-              <li><a href="#">Business</a></li>
-              <li><a href="#">Politics</a></li>
-              <li><a href="#">Culture</a></li>
+              <li><a href="#">Construction</a></li>
+              <li><a href="#">Commercial</a></li>
+              <li><a href="#">Building</a></li>
+              <li><a href="#">Safety</a></li>
+              <li><a href="#">Structure</a></li>
             </ul>
           </div><!-- Categories end -->
 
           <div class="widget">
             <h3 class="widget-title">Archives </h3>
             <ul class="arrow nav nav-tabs">
-              <li><a href="#">Feburay 2024</a></li>
-              <li><a href="#">January 2024</a></li>
-              <li><a href="#">December 2023</a></li>
-              <li><a href="#">November 2023</a></li>
-              <li><a href="#">October 2023</a></li>
+              <li><a href="#">Feburay 2016</a></li>
+              <li><a href="#">January 2016</a></li>
+              <li><a href="#">December 2015</a></li>
+              <li><a href="#">November 2015</a></li>
+              <li><a href="#">October 2015</a></li>
             </ul>
           </div><!-- Archives end -->
 
@@ -236,13 +244,14 @@
             <h3 class="widget-title">Tags </h3>
 
             <ul class="list-unstyled">
-              <li><a href="#">News</a></li>
-              <li><a href="#">Politics</a></li>
-              <li><a href="#">Crime</a></li>
-              <li><a href="#">Rehabilitation</a></li>
+              <li><a href="#">Construction</a></li>
+              <li><a href="#">Design</a></li>
+              <li><a href="#">Project</a></li>
+              <li><a href="#">Building</a></li>
               <li><a href="#">Finance</a></li>
               <li><a href="#">Safety</a></li>
-              <li><a href="#">Kalap</a></li>
+              <li><a href="#">Contracting</a></li>
+              <li><a href="#">Planning</a></li>
             </ul>
           </div><!-- Tags end -->
 
@@ -254,6 +263,7 @@
 
   </div><!-- Container end -->
 </section><!-- Main container end -->
+
 
 
   <?php include('include\footer.php'); ?>
