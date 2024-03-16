@@ -41,13 +41,7 @@ $routes->get('/editNews', 'NewsController::editNews');
 $routes->get('/archive', 'NewsController::archive');
 
 
-
 $routes->get('displaynews', 'NewsController::userdisplaynews');
-
-
-
-
-
 
 $routes->get('/managecomments', 'CommentsController::managecomments');
 

@@ -157,55 +157,39 @@
 
 <body>
     <div class="container d-flex justify-content-center p-4">
-        <a href="/" class="back-button">
-            <i class="bi bi-arrow-left-circle-fill"></i>
-            <!-- You can adjust the text as needed -->
-            <span>Back</span>
-        </a>
-
+       
         <div class="form-container">
-            <h2>Register</h2>
+            <h2>Register Now</h2>
             <form method="post" action="/store" enctype="multipart/form-data" class="form-grid">
 
                 <div class="row gx-3">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label for="firstname">First Name <span class="required-sign">*</span></label>
                         <input type="text" id="firstname" name="firstname" placeholder="Insert your firstname" required>
                     </div>
 
-                    <div class="col-md-4">
-                        <label for="middlename">Middle Name <span class="required-sign">*</span></label>
-                        <input type="text" id="middlename" name="middlename" placeholder="Insert your middlename"
-                            required>
-                    </div>
-
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label for="lastname">Last Name <span class="required-sign">*</span></label>
                         <input type="text" id="lastname" name="lastname" placeholder="Insert your lastname" required>
                     </div>
 
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <label for="address">Address <span class="required-sign">*</span></label>
                         <input type="text" id="address" name="address" placeholder="Create your address" required>
                     </div>
 
-                    <div class="col-md-12">
-                        <label for="username">Username <span class="required-sign">*</span></label>
-                        <input type="text" id="username" name="username" placeholder="Create your username" required>
-                    </div>
-
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <label for="email">E-mail Address <span class="required-sign">*</span></label>
                         <input type="email" id="email" name="email" placeholder="Insert your e-mail address" required>
                     </div>
 
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <label for="password">Password <span class="required-sign">*</span></label>
                         <input type="password" id="password" name="password" placeholder="Create your password"
                             required>
                     </div>
 
-                    <div class="col-md-5">
+                    <div class="col-md-6">
                         <label for="gender">Gender <span class="required-sign">*</span></label>
                         <select id="gender" name="gender" required>
                             <option value="Male">Male</option>
@@ -213,32 +197,13 @@
                             <option value="Rather not say">Rather not say</option>
                         </select>
                     </div>
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <label for="contact_number">Contact Number <span class="required-sign">*</span></label>
                         <input type="text" id="contact_number" name="contact_number"
                             placeholder="Create your contact_number" required>
                     </div>
 
-                    <div class="col-md-4">
-                        <label for="role">Role <span class="required-sign">*</span></label>
-                        <select id="role" name="role" required>
-                            <option value="ADMIN">ADMIN</option>
-                            <option value="STAFF">STAFF</option>
-                            <option value="STAFF">USER</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="date_of_birth">Date of Birth <span class="required-sign">*</span></label>
-                        <input id="date_of_birth" name="date_of_birth" placeholder="Create your date_of_birth" required
-                            class="form-control" type="date" />
-                    </div>
-                    <div class="col-md-4">
-                        <label for="civil_status">Civil Status <span class="required-sign">*</span></label>
-                        <input type="text" id="civil_status" name="civil_status" placeholder="Create your civil_status"
-                            required>
-                    </div>
-
-                    <div class="col-md-12 mb-2">
+                    <div class="col-md-6">
                         <label for="image" class="image-label">Profile Image <span
                                 class="required-sign">*</span></label>
                         <div class="input-group">
@@ -257,11 +222,17 @@
                 </div>
             </form>
             <p>I have an account! <a href="/login">Sign in</a></p>
+            <button type="button" onclick="goBack()">Back</button>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+        <script>
+function goBack() {
+    window.history.back();
+}
+</script>
 </body>
 
 </html>

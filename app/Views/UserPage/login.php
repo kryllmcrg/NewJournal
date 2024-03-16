@@ -120,9 +120,6 @@
     </style>
 </head>
 <body>
-    <a href="/" class="back-button">
-        <span style="font-size: 24px;">&lt;</span> <!-- Left arrow icon -->
-    </a>
     <div class="form-container">
         <h2>Login</h2>
         <form action="/loginAuth" method="post">
