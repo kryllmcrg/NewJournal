@@ -6,13 +6,13 @@ use CodeIgniter\Model;
 
 class UsersModel extends Model
 {
-    protected $table            = 'user_accounts';
-    protected $primaryKey       = 'id';
+    protected $table            = 'users';
+    protected $primaryKey       = 'user_id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['user_id', 'firstname', 'middlename','lastname','address','username', 'email','password', 'contact_number','image', 'role','gender','date_of_birth','civil_status','login_status','last_login_status'];
+    protected $allowedFields    = ['firstname','lastname','address','email','password', 'contact_number','image','gender','login_status','last_login_status'];
 
     // Dates
     protected $useTimestamps = false;

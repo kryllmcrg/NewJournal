@@ -16,7 +16,7 @@ $routes->get('/login', 'LogRegController::login');
 $routes->post('loginAuth', 'LogRegController::loginAuth');
 $routes->get('logout', 'LogRegController::logout');
 $routes->get('/register', 'LogRegController::register');
-$routes->post('/store', 'LogRegController::store');
+$routes->post('/save', 'LogRegController::save');
 
 
 $routes->get('/dashboard', 'AdminController::dashboard');

@@ -157,65 +157,76 @@
 
 <body>
     <div class="container d-flex justify-content-center p-4">
-       
         <div class="form-container">
             <h2>Register Now</h2>
-            <form method="post" action="/store" enctype="multipart/form-data" class="form-grid">
+            <form method="post" action="<?= base_url('/save');?>" enctype="multipart/form-data" class="form-grid">
+                <?= csrf_field();?>
+                <?php if (!empty(session()->getFlashdata('fail'))) :?>
+                    <div class="alert alert-danger"><?= session()->getFlashdata('fail'); ?></div>
+                <?php endif ?>
 
+                <?php if (!empty(session()->getFlashdata('success'))) :?>
+                    <div class="alert alert-success"><?= session()->getFlashdata('success'); ?></div>
+                <?php endif ?>
                 <div class="row gx-3">
                     <div class="col-md-6">
-                        <label for="firstname">First Name <span class="required-sign">*</span></label>
-                        <input type="text" id="firstname" name="firstname" placeholder="Insert your firstname" required>
+                        <label for="firstname">First Name</label>
+                        <input type="text" id="firstname" name="firstname" placeholder="Insert your firstname" value="<?= set_value('firstname'); ?>">
+                        <span class="text-danger"><?= isset($validation) ? display_error($validation, 'firstname'): ''?></span>
                     </div>
 
                     <div class="col-md-6">
-                        <label for="lastname">Last Name <span class="required-sign">*</span></label>
-                        <input type="text" id="lastname" name="lastname" placeholder="Insert your lastname" required>
+                        <label for="lastname">Last Name</label>
+                        <input type="text" id="lastname" name="lastname" placeholder="Insert your lastname" value="<?= set_value('lastname'); ?>">
+                        <span class="text-danger"><?= isset($validation) ? display_error($validation, 'lastname'): ''?></span>
                     </div>
 
                     <div class="col-md-6">
-                        <label for="address">Address <span class="required-sign">*</span></label>
-                        <input type="text" id="address" name="address" placeholder="Create your address" required>
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" placeholder="Create your address" value="<?= set_value('address'); ?>">
+                        <span class="text-danger"><?= isset($validation) ? display_error($validation, 'address'): ''?></span>
                     </div>
 
                     <div class="col-md-6">
-                        <label for="email">E-mail Address <span class="required-sign">*</span></label>
-                        <input type="email" id="email" name="email" placeholder="Insert your e-mail address" required>
+                        <label for="email">E-mail Address</label>
+                        <input type="email" id="email" name="email" placeholder="Insert your e-mail address" value="<?= set_value('email'); ?>">
+                        <span class="text-danger"><?= isset($validation) ? display_error($validation, 'email'): ''?></span>
                     </div>
 
                     <div class="col-md-6">
-                        <label for="password">Password <span class="required-sign">*</span></label>
-                        <input type="password" id="password" name="password" placeholder="Create your password"
-                            required>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Create your password" value="<?= set_value('password'); ?>">
+                        <span class="text-danger"><?= isset($validation) ? display_error($validation, 'password'): ''?></span>
                     </div>
 
                     <div class="col-md-6">
-                        <label for="gender">Gender <span class="required-sign">*</span></label>
-                        <select id="gender" name="gender" required>
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender">
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                             <option value="Rather not say">Rather not say</option>
                         </select>
+                        <span class="text-danger"><?= isset($validation) ? display_error($validation, 'gender'): ''?></span>
                     </div>
                     <div class="col-md-6">
-                        <label for="contact_number">Contact Number <span class="required-sign">*</span></label>
-                        <input type="text" id="contact_number" name="contact_number"
-                            placeholder="Create your contact_number" required>
+                        <label for="contact_number">Contact Number</label>
+                        <input type="text" id="contact_number" name="contact_number" placeholder="Create your contact_number" value="<?= set_value('contact_number'); ?>">
+                        <span class="text-danger"><?= isset($validation) ? display_error($validation, 'contact_number'): ''?></span>
                     </div>
 
                     <div class="col-md-6">
-                        <label for="image" class="image-label">Profile Image <span
-                                class="required-sign">*</span></label>
+                        <label for="image" class="image-label">Profile Image</label>
                         <div class="input-group">
                             <input type="file" class="form-control" id="image" name="image" accept="image/*"
-                                aria-describedby="inputFileAddon" aria-label="Upload">
+                                aria-describedby="inputFileAddon" aria-label="Upload" value="<?= set_value('image'); ?>">
                         </div>
+                        <span class="text-danger"><?= isset($validation) ? display_error($validation, 'image'): ''?></span>
                     </div>
 
                     <div class="col-md-12">
                         <button type="submit">Sign Up</button>
                         <label for="terms">
-                            <input type="checkbox" id="terms" name="terms" required>
+                            <input type="checkbox" id="terms" name="terms">
                             I have read the Terms & Conditions
                         </label>
                     </div>
