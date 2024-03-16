@@ -85,21 +85,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <?php foreach ($userData as $userItem): ?>
-                              <tr>
-                                  <td><?php echo $userItem['firstname']; ?></td>
-                                  <td><?php echo $userItem['lastname']; ?></td>
-                                  <td><?php echo $userItem['email']; ?></td>
-                                  <td><?php echo $userItem['username']; ?></td>
-                                  <td><?php echo $userItem['address']; ?></td>
-                                  <td><?php echo $userItem['gender']; ?></td>
-                                  <td><?php echo $userItem['mobilePhone']; ?></td>
-                                  <td> <img src="/uploads/<?php echo $userItem['profile_image']; ?>" alt="image"></td>
-                                  <td><?php echo $userItem['role']; ?></td>
-                                  <td>
-                                  </td>
-                              </tr>
-                          <?php endforeach; ?>
+                         
                           <!-- <tr>
                             <td colspan="7" class="text-center">No information available</td>
                           </tr> -->

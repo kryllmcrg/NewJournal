@@ -41,15 +41,15 @@ class LogRegController extends BaseController
     //         if (!password_verify($password, $user['password'])) {
     //             return redirect()->to(previous_url())->withInput()->with('error', 'Invalid email or password.');
     //         }
-    //         $ses_user= [
-    //             'id' => $user['id'],
-    //             'email' => $user['email'],
-    //             'role' => $user['role'],
-    //             'image' => $user['image'],
-    //             'fullname' => $user['firstname'].' '. $user['lastname']
-    //         ];
-    //         $session->set($ses_user);
-    //         return redirect()->to('/dashboard');
+            // $ses_user= [
+            //     'id' => $user['id'],
+            //     'email' => $user['email'],
+            //     'role' => $user['role'],
+            //     'image' => $user['image'],
+            //     'fullname' => $user['firstname'].' '. $user['lastname']
+            // ];
+            // $session->set($ses_user);
+            // return redirect()->to('/dashboard');
 
     //     } catch (\Throwable $th) {
     //         // Handle any unexpected errors
@@ -61,73 +61,6 @@ class LogRegController extends BaseController
     {
         return view('UserPage/register');
     }
-
-    // public function store()
-    // {
-    //     try {
-    //         // Load the validation library
-    //     helper(['form', 'url']);
-    //     $validation = \Config\Services::validation();
-
-    //     // Set validation rules with custom error messages
-    //     $validation->setRules([
-
-    //         'firstname' => 'required',
-    //         'middlename' => 'required',
-    //         'lastname' => 'required',
-    //         'address' => 'required',
-    //         'username' => 'required|is_unique[users.username]',
-    //         'email' => 'required|valid_email',
-    //         'password' => 'required|min_length[6]',
-    //         'contact_number' => 'required',
-    //         'image' => 'uploaded[image]|is_image[image]|max_size[image,4096]',
-    //         'gender' => 'required',
-    //         'role' => 'required',
-    //         'date_of_birth' => 'required',
-    //         'civil_status' => 'required'
-    //     ]);
-        
-
-    //     // Check if validation passes
-    //     if (!$validation->withRequest($this->request)->run()) {
-    //         // If validation fails, return back to the registration form with errors
-    //         return redirect()->back()->withInput()->with('errors', $validation->getErrors());
-    //     }
-
-    //     // Handle file upload
-        // $profileImage = $this->request->getFile('image');
-        // $newName = $profileImage->getRandomName();
-
-        // // Check if a profile image was uploaded
-        // if ($profileImage->isValid() && !$profileImage->hasMoved()) {
-        //     // Move the uploaded file to the desired directory
-        //     $profileImage->move(ROOTPATH . 'public/uploads'.$newName);
-
-    //         // Create a new user record in the database
-            // $userModel = new UserAccountsModel();
-    //         $userModel->save([
-    //             'firstname' => $this->request->getPost('firstname'),
-    //             'middlename' => $this->request->getPost('middlename'),
-    //             'lastname' => $this->request->getPost('lastname'),
-    //             'address' => $this->request->getPost('address'),
-    //             'username'   => $this->request->getPost('username'),
-    //             'email'      => $this->request->getPost('email'),
-    //             'password'   => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-    //             'contact_number' => $this->request->getPost('contact_number'),
-    //             'image' => $newName,
-    //             'role' => $this->request->getPost('role'),
-    //             'gender' => $this->request->getPost('gender'),
-    //             'date_of_birth' => $this->request->getPost('date_of_birth'),
-    //             'civil_status' => $this->request->getPost('civil_status'),
-    //         ]);
-    //     } else {
-    //         // If file upload fails, return back to the registration form with an error
-    //         return redirect()->to('login')->with('error', 'Failed to upload profile image.');
-    //     }
-    //     } catch (\Throwable $th) {
-    //         return redirect()->to('dashboard')->with('error', 'Failed to upload profile image.');
-    //     }
-    // } 
 
     public function __construct(){
         helper(['url', '']);
@@ -227,61 +160,79 @@ class LogRegController extends BaseController
                 $query = $usersModel->insert($values);
         
                 if (!$query) {
-                    session()->setFlashdata('fail', 'Something went wrong');
-                    return redirect()->back()->withInput();
+                    return redirect()->back()->with('fail', 'Something went wrong');
                 } else {
                     return redirect()->back()->with('fail', $profileImage->getErrorString());
                 }
             } else {
-                session()->setFlashdata('success', 'You are now registered successfully');
-                    return redirect()->to('register')->withInput();
+                return redirect()->to('register')->with('success', 'You are now registered successfully');
             }
         }
     }
     function check()
-        {
-            $validation = $this->validate([
-                'email' =>[
-                    'rules'=>'required|valid_email|is_not_unique[users.email]',
-                    'errors'=>[
-                        'required' => 'Your email is required',
-                        'valid_email' => 'You must enter a valid email address',
-                        'is_not_unique' => 'This email is not registered on our service'
-                    ]
-                    ],
-                'password' => [
-                    'rules' => 'required|min_length[6]|max_length[12]',
-                    'errors' => [
-                        'required' => 'Your password is required',
-                        'min_length' => 'Password must have at least 6 characters in length',
-                        'max_length' => 'Password must not have characters more than 12 in length',
-                    ]
-                    ],
-            ]);
-            if(!$validation){
-                return view('UserPage/login',['validation'=>$this->validator]);
-            }else{
+    {
+        $validation = $this->validate([
+            'email' => [
+                'rules' => 'required|valid_email|is_not_unique[users.email]',
+                'errors' => [
+                    'required' => 'Your email is required',
+                    'valid_email' => 'You must enter a valid email address',
+                    'is_not_unique' => 'This email is not registered on our service'
+                ]
+            ],
+            'password' => [
+                'rules' => 'required|min_length[6]|max_length[12]',
+                'errors' => [
+                    'required' => 'Your password is required',
+                    'min_length' => 'Password must have at least 6 characters in length',
+                    'max_length' => 'Password must not have characters more than 12 in length',
+                ]
+            ],
+        ]);
+        
+        if (!$validation) {
+            return view('UserPage/login', ['validation' => $this->validator]);
+        } else {
+            $email = $this->request->getPost('email');
+            $password = $this->request->getPost('password');
+            $usersModel = new UsersModel();
+            $user_info = $usersModel->where('email', $email)->first();
+            
+            if ($user_info === null) {
+                session()->setFlashdata('fail', 'User not found');
+                return redirect()->to('login')->withInput();
+            }
+        
+            $check_password = Hash::check($password, $user_info['password']);
+            
+            if (!$check_password) {
+                session()->setFlashdata('fail', 'Incorrect password');
+                return redirect()->to('login')->withInput();
+            } else {
+                $user_id = $user_info['user_id'];
+                $role = $user_info['role'];
+                session()->set('loggedUser', $user_id);
                 
-                $email = $this->request->getPost('email');
-                $password = $this->request->getPost('password');
-                $usersModel = new UsersModel();
-                $user_info = $usersModel->where('email', $email)->first();
-                $check_password = Hash::check($password, $user_info['password']);
+                switch ($role) {
+                    case 'User':
+                        return redirect()->to('/');
+                    case 'Admin':
+                        return redirect()->to('dashboard');
+                    case 'Staff':
+                        return redirect()->to('dashboard');
+                    default:
+                        return redirect()->to('login')->withInput()->with('fail', 'Invalid user role');
+                }                
+            }
+        }
+    }        
 
-                if(!$check_password){
-                    session()->setFlashdata('fail', 'Incorrect password');
-                    return redirect()->to('login')->withInput();
-                }else{
-                    $user_id = $user_info['user_id'];
-                    session()->set('loggedUser',$user_id);
-                    return redirect()->to('/');
-                }
-            }
+    function logout(){
+        if(session()->has('loggedUser')){
+            session()->remove('loggedUser');
+            return redirect()->to('login')->with('fail', 'You are logged out!');
+        } else {
+            return redirect()->to('login')->with('fail', 'You are not logged in!');
         }
-        function logout(){
-            if(session()->has('loggedUser')){
-                session()->remove('loggedUser');
-                return redirect()->to('login?/access=out')->with('fail', 'You are logged out!');
-            }
-        }
+    }
 }

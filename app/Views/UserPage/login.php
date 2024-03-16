@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Oswald:400,300,700" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-sr9OO8F4UAxJLT8KgGr9Vj2ZhaorSzBfFz/Tq2JHZIzB0IuMvqQFcFUpI6InZIlB" crossorigin="anonymous">
-    <title>Welcome Calapan City Website!</title>
+    <title>Login</title>
     <link rel="shortcut icon" href="assets/images/ciologo.png" />
     <style>
         body {
@@ -114,6 +114,7 @@
 
             <button type="submit">Sign In</button>
             <p>Don't have an account? <a href="/register">Sign up</a></p> 
+            <p>I don't want to have an account. <a href="/">Not Now</a></p> 
         </form>
     </div>
 </body>
