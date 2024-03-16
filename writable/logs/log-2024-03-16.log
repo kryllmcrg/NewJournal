@@ -936,3 +936,22 @@ INFO - 2024-03-16 15:32:28 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2024-03-16 15:35:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-03-16 15:35:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-03-16 15:36:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-16 15:39:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-16 15:41:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-16 15:41:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-16 15:41:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-16 15:42:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-03-16 15:42:31 --> ErrorException: Undefined variable $newsData
+in APPPATH\Views\StaffPage\managenewstaff.php on line 91.
+ 1 APPPATH\Views\StaffPage\managenewstaff.php(91): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $newsData', 'C:\\laragon\\www\\NewJournal\\app\\Views\\StaffPage\\managenewstaff.php', 91)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\NewJournal\\app\\Views\\StaffPage\\managenewstaff.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('StaffPage/managenewstaff', [], true)
+ 5 APPPATH\Controllers\NewsStaffController.php(124): view('StaffPage/managenewstaff')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\NewsStaffController->managenewstaff()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\NewsStaffController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-03-16 15:42:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-03-16 15:44:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
