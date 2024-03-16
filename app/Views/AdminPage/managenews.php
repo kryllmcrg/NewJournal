@@ -101,11 +101,11 @@
                                                             <div class="d-flex align-items-center">
                                                                 <span id="newsStatusText<?= $newsItem['news_id']; ?>"><?php echo $newsItem['news_status']; ?></span>
                                                                 <div class="dropdown ml-auto">
-                                                                    <i class="fas fa-ellipsis-h dropdown-toggle" id="dropdownMenuButton<?= $newsItem['news_id']; ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                                                    <i class="fas fa-ellipsis-h" id="dropdownMenuButton<?= $newsItem['news_id']; ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton<?= $newsItem['news_id']; ?>">
-                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['news_id']; ?>','Approved', document.querySelector('#newsStatusText<?= $newsItem['news_id']; ?>'))"><i class="fas fa-check-circle text-success mr-1"></i>Approved</a>
-                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['news_id']; ?>','Decline', document.querySelector('#newsStatusText<?= $newsItem['news_id']; ?>'))"><i class="fas fa-times-circle text-danger mr-1"></i>Decline</a>
-                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['news_id']; ?>','Reject', document.querySelector('#newsStatusText<?= $newsItem['news_id']; ?>'))"><i class="fas fa-ban text-danger mr-1"></i>Reject</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changeNewStatus('<?= $newsItem['news_id']; ?>','Approved', document.querySelector('#newsStatusText<?= $newsItem['news_id']; ?>'))"><i class="fas fa-check-circle text-success mr-1"></i>Approved</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changeNewStatus('<?= $newsItem['news_id']; ?>','Decline', document.querySelector('#newsStatusText<?= $newsItem['news_id']; ?>'))"><i class="fas fa-times-circle text-danger mr-1"></i>Decline</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changeNewStatus('<?= $newsItem['news_id']; ?>','Reject', document.querySelector('#newsStatusText<?= $newsItem['news_id']; ?>'))"><i class="fas fa-ban text-danger mr-1"></i>Reject</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -114,11 +114,11 @@
                                                             <div class="d-flex align-items-center">
                                                                 <span id="publicationStatusText<?= $newsItem['news_id']; ?>"><?php echo ucfirst(strtolower($newsItem['publication_status'])); ?></span>
                                                                 <div class="dropdown ml-auto">
-                                                                    <i class="fas fa-ellipsis-h dropdown-toggle" id="dropdownMenuButton<?= $newsItem['news_id']; ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                                                    <i class="fas fa-ellipsis-h" id="dropdownMenuButton<?= $newsItem['news_id']; ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton<?= $newsItem['news_id']; ?>">
-                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['news_id']; ?>','Published', document.querySelector('#publicationStatusText<?= $newsItem['news_id']; ?>'), true)"><i class="fas fa-check-circle text-success mr-1"></i>Published</a>
-                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['news_id']; ?>','Unpublished', document.querySelector('#publicationStatusText<?= $newsItem['news_id']; ?>'), true)"><i class="fas fa-times-circle text-danger mr-1"></i>Unpublished</a>
-                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['news_id']; ?>','Draft', document.querySelector('#publicationStatusText<?= $newsItem['news_id']; ?>'), true)"><i class="fas fa-pencil-alt text-info mr-1"></i>Draft</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changePubStatus('<?= $newsItem['news_id']; ?>','Published', document.querySelector('#publicationStatusText<?= $newsItem['news_id']; ?>'))"><i class="fas fa-check-circle text-success mr-1"></i>Published</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changePubStatus('<?= $newsItem['news_id']; ?>','Unpublished', document.querySelector('#publicationStatusText<?= $newsItem['news_id']; ?>'))"><i class="fas fa-times-circle text-danger mr-1"></i>Unpublished</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changePubStatus('<?= $newsItem['news_id']; ?>','Draft', document.querySelector('#publicationStatusText<?= $newsItem['news_id']; ?>'))"><i class="fas fa-pencil-alt text-info mr-1"></i>Draft</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -159,59 +159,86 @@
     </div>
 
     <script>
-    function formatAdvisoryDetails(content) {
-        // Define the maximum width percentage or retrieve it from an appropriate source
-        var maxWidthPercentage = 80; // Adjust this according to your needs
+        function formatAdvisoryDetails(content) {
+            // Define the maximum width percentage or retrieve it from an appropriate source
+            var maxWidthPercentage = 80; // Adjust this according to your needs
 
-        // Calculate the maximum width based on the window width and maximum width percentage
-        var maxWidth = (window.innerWidth * maxWidthPercentage) / 100;
+            // Calculate the maximum width based on the window width and maximum width percentage
+            var maxWidth = (window.innerWidth * maxWidthPercentage) / 180;
 
-        // Calculate the maximum length for the combined subject and content
-        var maxLength = Math.floor(maxWidth / 8);
+            // Calculate the maximum length for the combined subject and content
+            var maxLength = Math.floor(maxWidth / 8);
 
-        // Check if content length exceeds the maximum length
-        if (content.length > maxLength) {
-            // If combined length exceeds maxLength, truncate and add ellipsis
-            content = content.substring(0, maxLength - 3) + "...";
+            // Check if content length exceeds the maximum length
+            if (content.length > maxLength) {
+                // If combined length exceeds maxLength, truncate and add ellipsis
+                content = content.substring(0, maxLength - 3) + "...";
+            }
+
+            return content;
         }
 
-        return content;
-    }
-
-    // Call the function to truncate content after page load
-    window.onload = function() {
-        var advisoryContents = document.getElementsByClassName("advisoryContent");
-        for (var i = 0; i < advisoryContents.length; i++) {
-            advisoryContents[i].innerText = formatAdvisoryDetails(advisoryContents[i].innerText);
-        }
-    };
-</script>
-
+        // Call the function to truncate content after page load
+        window.onload = function() {
+            var advisoryContents = document.getElementsByClassName("advisoryContent");
+            for (var i = 0; i < advisoryContents.length; i++) {
+                advisoryContents[i].innerText = formatAdvisoryDetails(advisoryContents[i].innerText);
+            }
+        };
+    </script>
 
     <!-- change status -->
     <script>
-    function changeStatus(id, status, statusTextElement) {
-        $.ajax({
-            url: "<?php echo base_url('changeStatus');?>",
-            type: "POST",
-            data: {
-                news_id: id,
-                status: status
-            },
-            success: function(data) {
-                statusTextElement.innerText = status;
-            },
-            error: function(error) {
-                console.log(error);
-                alert("Failed to update status. Please try again.");
-            }
-        })
-    }
+        function changeNewStatus(id, status, statusTextElement) {
+            $.ajax({
+                url: "<?php echo base_url('changeNewStatus');?>",
+                type: "POST",
+                data: {
+                    news_id: id,
+                    news_status: status // Pass status as news_status
+                },
+                success: function(response) {
+                    if (response.success) {
+                        statusTextElement.innerText = status;
+                        alert("Status updated successfully."); // Optional success message
+                    } else {
+                        console.error("Failed to update status: " + response.message);
+                        alert("Failed to update status. Please try again.");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX error:", error);
+                    alert("Failed to update status. Please try again.");
+                }
+            });
+        }
+    </script>
 
-    function viewNews(newsId) {
-        window.location.href = '<?php echo base_url('viewnews/')?>' + newsId; // Change the URL as needed
-    }
-</script>
+    <script>
+        function changePubStatus(id, status, statusTextElement) {
+            $.ajax({
+                url: "<?php echo base_url('changePubStatus');?>",
+                type: "POST",
+                data: {
+                    news_id: id,
+                    publication_status: status // Pass status as publication_status
+                },
+                success: function(response) {
+                    if (response.success) {
+                        statusTextElement.innerText = status;
+                        alert("Publication status updated successfully."); // Optional success message
+                    } else {
+                        console.error("Failed to update publication status: " + response.message);
+                        alert("Failed to update publication status. Please try again.");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("AJAX error:", error);
+                    alert("Failed to update publication status. Please try again.");
+                }
+            });
+        }
+    </script>
 
     <script>
       // JavaScript to handle the click event of the "Edit" button

@@ -154,33 +154,53 @@ class NewsController extends BaseController
 
     }
 
-    public function changeStatus()
-{
-    try {
-        $newsID = $this->request->getVar('news_id');
-        $publicationStatus = $this->request->getVar('publication_status');
-        $newsStatus = $this->request->getVar('news_status');
+    public function changeNewStatus()
+    {
+        try {
+            $newsID = $this->request->getVar('news_id');
+            $newsStatus = $this->request->getVar('news_status');
 
-        $data = [];
-        if ($publicationStatus !== null) {
-            $data['publication_status'] = $publicationStatus;
+            $data = [];
+            if ($newsStatus !== null) {
+                $data['news_status'] = $newsStatus;
+            }
+
+            if (empty($data)) {
+                throw new \Exception('No status to update.');
+            }
+
+            $model = new NewsModel();
+            $model->where('news_id', $newsID)->set($data)->update();
+
+            return $this->response->setJSON(['success' => true, 'message' => 'Status updated successfully.']);
+        } catch (\Throwable $th) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $th->getMessage()]);
         }
-        if ($newsStatus !== null) {
-            $data['news_status'] = $newsStatus;
-        }
-
-        if (empty($data)) {
-            throw new \Exception('No status to update.');
-        }
-
-        $model = new NewsModel();
-        $model->where('news_id', $newsID)->set($data)->update();
-
-        return $this->response->setJSON([$data, $newsID]);
-    } catch (\Throwable $th) {
-        return $this->response->setJSON(['message' => 'Error: ' . $th->getMessage()]);
     }
-}
+
+    public function changePubStatus()
+    {
+        try {
+            $newsID = $this->request->getVar('news_id');
+            $publicationStatus = $this->request->getVar('publication_status'); // Get publication_status from request
+
+            $data = [];
+            if ($publicationStatus !== null) {
+                $data['publication_status'] = $publicationStatus;
+            }
+
+            if (empty($data)) {
+                throw new \Exception('No status to update.');
+            }
+
+            $model = new NewsModel();
+            $model->where('news_id', $newsID)->set($data)->update();
+
+            return $this->response->setJSON(['success' => true, 'message' => 'Publication status updated successfully.']);
+        } catch (\Throwable $th) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $th->getMessage()]);
+        }
+    }
 
     public function archive()
     {
