@@ -37,7 +37,7 @@ class NewsController extends BaseController
     public function addNewsSubmit()
     {
     try {
-        $userId = session()->get('staffId');
+        $userId = session()->get('userId');
         $title = $this->request->getPost('title');
         $content = $this->request->getPost('content');
         $category_id = $this->request->getPost('category_id');

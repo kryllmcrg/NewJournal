@@ -84,6 +84,7 @@
         </li>
         <?php endif;?>
 
+        <?php if(session()->get('role') == "Staff"):?>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#comments" aria-expanded="false" aria-controls="comments">
                 <span class="menu-title">Comments</span>
@@ -96,6 +97,22 @@
                 </ul>
             </div>
         </li>
+        <?php endif;?>
+        
+        <?php if(session()->get('role') == "Staff"):?>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#comments" aria-expanded="false" aria-controls="comments">
+                <span class="menu-title">Comments</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-comment menu-icon"></i>
+            </a>
+            <div class="collapse" id="comments">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('managecomments')?>">Manage Comments</a></li>
+                </ul>
+            </div>
+        </li>
+        <?php endif;?>
 
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#collaboration" aria-expanded="false" aria-controls="collaboration">

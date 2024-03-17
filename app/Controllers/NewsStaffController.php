@@ -23,60 +23,48 @@ class NewsStaffController extends BaseController
     public function createNewsSubmit()
     {
         try {
-            $newsStaffModel = new NewsModel();
-            $images = $this->request->getFiles();
-            
-            // Check if files were uploaded
-            if (empty($images)) {
-                return $this->response->setStatusCode(400)->setJSON(["error" => "Error: No file uploaded."]);
-            }
-            
-            $imageNames = [];
-            foreach ($images['images'] as $image) {
-                // Check if the file is valid and hasn't already been moved
-                if ($image->isValid() && !$image->hasMoved()) {
-                    $newName = $image->getRandomName();
-                    $image->move('public/uploads/', $newName);
-                    $imageNames[] = $newName;
+            $staffId = session()->get('staff_id');
+            $title = $this->request->getPost('title');
+            $content = $this->request->getPost('content');
+            $category_id = $this->request->getPost('category_id');
+            $author = $this->request->getPost('author');
+            $images = $this->request->getFiles('files');
+            $uploadedImages = [];
+            foreach ($images as $file) {
+                foreach ($file as $uploadedFile) {
+                    if ($uploadedFile->isValid() && !$uploadedFile->hasMoved()) {
+                        $newName = $uploadedFile->getRandomName();
+                        $uploadedFile->move('./uploads/', $newName);
+                        $imageUrl = base_url('uploads/' . $newName);
+                        $uploadedImages[] = $imageUrl;
                 } else {
-                    // Handle error conditions
-                    return $this->response->setStatusCode(400)->setJSON(["error" => "Error uploading file(s)."]);
+                    $uploadedImages[] = ['error' => 'Invalid file'];
                 }
             }
-            
-            $data = [
-                'title' => $this->request->getVar('title'),
-                'subTitle' => $this->request->getVar('subTitle'),
-                'author' => $this->request->getVar('author'),
-                'category' => $this->request->getVar('category'),
-                'images' => implode(',', $imageNames),
-                'content' => strip_tags($this->request->getVar('content')),
-                'comment' => $this->request->getVar('comment'),
-            ];
-            
-            // Validate data
-            foreach ($data as $key => $value) {
-                if (empty($value)) {
-                    return $this->response->setStatusCode(400)->setJSON(["error" => "Error: Required data '$key' is missing."]);
-                }
-            }
-            
-            // Insert data into the database
-            if (!$newsStaffModel->insert($data)) {
-                return $this->response->setStatusCode(500)->setJSON(["error" => "Error: Unable to insert data."]);
-            }
-            
-            $response = [
-                'message' => 'News created successfully',
-                'data' => $data
-            ];
-            
-            // Redirect to 'addnews' page with success message
-            return redirect()->to('createnews')->with('success', 'News created successfully');
-        } catch (\Throwable $th) {
-            return $this->response->setStatusCode(500)->setJSON(["error" => "Error: " . $th->getMessage()]);
         }
-    }
+        $data = [
+            'title' => $title,
+            'content' => $content,
+            'category_id' => $category_id,
+            'author' => $author,
+            'images' => json_encode($uploadedImages),
+            'staff_id' => $staffId,
+            'news_status' => 'Pending',
+            'publication_status' => 'Draft'
+        ];
+        // Validate data
+        foreach ($data as $key => $value) {
+            if (empty($value)) {
+                return $this->response->setStatusCode(400)->setJSON(["error" =>"Error: Required data '$key' is missing."]);
+            }
+        }
+        $newsModel = new NewsModel();
+        $result = $newsModel->insert($data);
+        return $this->response->setJSON($result);
+        } catch (\Throwable $th) {
+            return $this->response->setJSON(['error' => $th->getMessage()]);
+        }  
+    }  
 
     public function managenewstaff()
     {
