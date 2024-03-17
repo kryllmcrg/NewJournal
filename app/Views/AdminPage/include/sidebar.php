@@ -84,7 +84,7 @@
         </li>
         <?php endif;?>
 
-        <?php if(session()->get('role') == "Staff"):?>
+        <?php if(session()->get('role') == "Admin"):?>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#comments" aria-expanded="false" aria-controls="comments">
                 <span class="menu-title">Comments</span>
