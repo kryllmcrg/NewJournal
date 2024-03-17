@@ -11,54 +11,13 @@ class NewsStaffController extends BaseController
 {
     public function createnews()
     {
-        try {
-            $categoryModel = new CategoryModel();
-            $categories = $categoryModel->findAll();
+        $categories = new CategoryModel();
 
-            $data['categories'] = $categories;
+        $data = [
+            'categories' => $categories->select('category_id,category_name')->findAll(),
+        ];
 
-            if ($this->request->getMethod() === 'post') {
-                $newsStaffModel = new NewsModel();
-
-                // Validate form data
-                $validation =  \Config\Services::validation();
-                $validation->setRules([
-                    'title' => 'required',
-                    'subtitle' => 'required',
-                    'author' => 'required',
-                    'category' => 'required',
-                    'publication_date' => 'required',
-                    // Add validation rules for other fields as needed
-                ]);
-
-                if (!$validation->withRequest($this->request)->run()) {
-                    // Validation failed, reload the view with validation errors
-                    return view('StaffPage/createnews', ['validation' => $validation, 'categories' => $categories]);
-                }
-
-                // Get the submitted form data
-                $newsData = [
-                    'title' => $this->request->getPost('title'),
-                    'subTitle' => $this->request->getPost('subtitle'),
-                    'author' => $this->request->getPost('author'),
-                    'category' => $this->request->getPost('category'), // Store category name
-                    'publication_date' => $this->request->getPost('publication_date'),
-                    // Add other fields as needed
-                ];
-
-                // Save the news item
-                $newsStaffModel->insert($newsData);
-
-                // Redirect to the news list page with a success message
-                return redirect()->to('/newslist')->with('success', 'News item created successfully');
-            }
-
-            // Load the view with the categories data
-            return view('StaffPage/createnews', $data);
-        } catch (\Exception $e) {
-            // Handle any exceptions that occur
-            return $this->response->setStatusCode(500)->setJSON(["error" => "An error occurred: " . $e->getMessage()]);
-        }
+        return view('StaffPage/createnews',$data);
     }
 
     public function createNewsSubmit()

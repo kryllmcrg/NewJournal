@@ -193,8 +193,8 @@ class LogRegController extends BaseController
         if (!$validation) {
             return view('UserPage/login', ['validation' => $this->validator]);
         } else {
-            $email = $this->request->getPost('email');
-            $password = $this->request->getPost('password');
+            $email = $this->request->getVar('email');
+            $password = $this->request->getVar('password');
             $usersModel = new UsersModel();
             $user_info = $usersModel->where('email', $email)->first();
             
@@ -202,30 +202,35 @@ class LogRegController extends BaseController
                 session()->setFlashdata('fail', 'User not found');
                 return redirect()->to('login')->withInput();
             }
+            echo json_encode($user_info);
         
-            $check_password = Hash::check($password, $user_info['password']);
-            
-            if (!$check_password) {
+            // Direct comparison of raw password with the password from the database
+            if (password_verify($password, $user_info['password'])) {
                 session()->setFlashdata('fail', 'Incorrect password');
                 return redirect()->to('login')->withInput();
             } else {
                 $user_id = $user_info['user_id'];
                 $role = $user_info['role'];
+                $fullname = $user_info['firstname'] . ' ' . $user_info['lastname'];
+                $image = $user_info['image'];
                 session()->set('loggedUser', $user_id);
-                
+                session()->set('role', $role);
+                session()->set('fullname', $fullname);
+                session()->set('image', $image);
+
                 switch ($role) {
                     case 'User':
                         return redirect()->to('/');
                     case 'Admin':
                         return redirect()->to('dashboard');
                     case 'Staff':
-                        return redirect()->to('dashboard');
+                        return redirect()->to('/dashboard');
                     default:
                         return redirect()->to('login')->withInput()->with('fail', 'Invalid user role');
                 }                
             }
         }
-    }        
+    }       
 
     function logout(){
         if(session()->has('loggedUser')){

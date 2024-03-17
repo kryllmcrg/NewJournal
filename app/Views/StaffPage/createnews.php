@@ -43,7 +43,7 @@
             <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Create News</h4>
-                <form method="post" action="<?= base_url('/addNewsSubmit'); ?>" enctype="multipart/form-data" class="forms-sample" id="newsForm">
+                <form method="post" action="<?= base_url('/createNewsSubmit'); ?>" enctype="multipart/form-data" class="forms-sample" id="newsForm">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -73,7 +73,6 @@
                             </select>
                           </div>
                         </div>
-
 
                       <!-- WYSIWYG Editor -->
                       <div class="row">
@@ -177,7 +176,7 @@
         formData.append('content', $('#mySummernote').summernote('code'));
         formData.append('comment', $('#comment').val());
         $.ajax({
-            url: '<?= base_url('addNewsSubmit')?>',
+            url: '<?= base_url('createNewsSubmit')?>',
             method: 'POST',
             data: formData,
             contentType: false,
