@@ -14,7 +14,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
     
-    <link rel="stylesheet" href="<?= base_url('assets/css/style.css')?>">
+    <link rel="stylesheet" href="<?= base_url('assets2/css/style.css')?>">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="<?= base_url('assets/images/ciologo.png')?>" />
 </head>
@@ -69,21 +69,23 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Manage News Staff</h4>
+                                    <h4 class="card-title">Manage News</h4>
                                       <div class="table-responsive">
                                         <table class="table table-striped">
                                         <thead>
                                           <tr>
                                               <th>Title</th>
-                                              <th>SubTitle</th>
-                                              <th>Author</th>
-                                              <th>Category</th>
                                               <th>Content</th>
-                                              <th>Images</th>
-                                              <th>Comment</th>
-                                              <th>Created Date</th>
-                                              <th>Update Date</th>
-                                              <th>Status</th>
+                                              <th>Category</th>
+                                              <th>Author</th>
+                                              <th>Image</th>
+                                              <th>News Status</th>
+                                              <th>Publication Status</th>
+                                              <th>Created At</th>
+                                              <th>Updated At</th>
+                                              <th>Date Approved</th> 
+                                              <th>Date Submitted</th> 
+                                              <th>Publication Date</th> 
                                               <th>Actions</th> 
                                           </tr>
                                           </thead>
@@ -91,39 +93,46 @@
                                                 <?php foreach ($newsData as $newsItem): ?>
                                                     <tr>
                                                         <td><?php echo $newsItem['title']; ?></td>
-                                                        <td><?php echo $newsItem['subTitle']; ?></td>
+                                                        <td class="advisoryContent"><?php echo $newsItem['content']; ?></td>
+                                                        <td><?php echo $newsItem['category_id']; ?></td>
                                                         <td><?php echo $newsItem['author']; ?></td>
-                                                        <td><?php echo $newsItem['category']; ?></td>
-                                                        <td><?php echo $newsItem['content']; ?></td>
-                                                        <td>
-                                                            <?php 
-                                                            $images = explode(',', $newsItem['images']);
-                                                            foreach ($images as $image): ?>
-                                                                <img src="<?php echo base_url('public/uploads/' . $image); ?>" alt="Image">
-                                                            <?php endforeach; ?>
-                                                        </td>
-                                                        <td><?php echo $newsItem['comment']; ?></td>
-                                                        <td><?php echo $newsItem['created_at']; ?></td>
-                                                        <td><?php echo $newsItem['updated_at']; ?></td>
+                                                        <td><?php echo $newsItem['images']; ?></td>
                                                         <td>
                                                             <div class="d-flex align-items-center">
-                                                                <span id="statusText"><?php echo $newsItem['status']; ?></span>
+                                                                <span id="newsStatusText<?= $newsItem['news_id']; ?>"><?php echo $newsItem['news_status']; ?></span>
                                                                 <div class="dropdown ml-auto">
-                                                                    <i class="fas fa-ellipsis-h" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-                                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['id_news']; ?>','Approved')"><i class="fas fa-check-circle text-success mr-1"></i>Approved</a>
-                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['id_news']; ?>','Pending')"><i class="fas fa-hourglass-half text-warning mr-1"></i>Pending</a>
-                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['id_news']; ?>','Decline')"><i class="fas fa-times-circle text-danger mr-1"></i>Decline</a>
-                                                                        <a class="dropdown-item" href="#" onclick="changeStatus('<?= $newsItem['id_news']; ?>','Reject')"><i class="fas fa-ban text-danger mr-1"></i>Reject</a>
+                                                                    <i id="dropdownMenuButton<?= $newsItem['news_id']; ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton<?= $newsItem['news_id']; ?>">
+                                                                        <a class="dropdown-item" href="#" onclick="changeNewStatus('<?= $newsItem['news_id']; ?>','Approved', document.querySelector('#newsStatusText<?= $newsItem['news_id']; ?>'))"><i class="fas fa-check-circle text-success mr-1"></i>Approved</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changeNewStatus('<?= $newsItem['news_id']; ?>','Decline', document.querySelector('#newsStatusText<?= $newsItem['news_id']; ?>'))"><i class="fas fa-times-circle text-danger mr-1"></i>Decline</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changeNewStatus('<?= $newsItem['news_id']; ?>','Reject', document.querySelector('#newsStatusText<?= $newsItem['news_id']; ?>'))"><i class="fas fa-ban text-danger mr-1"></i>Reject</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </td>
                                                         <td>
-                                                            <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" data-placement="top" title="View News" onclick="viewNews(<?php echo $newsItem['id_news']; ?>)">
+                                                            <div class="d-flex align-items-center">
+                                                                <span id="publicationStatusText<?= $newsItem['news_id']; ?>"><?php echo ucfirst(strtolower($newsItem['publication_status'])); ?></span>
+                                                                <div class="dropdown ml-auto">
+                                                                    <i id="dropdownMenuButton<?= $newsItem['news_id']; ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton<?= $newsItem['news_id']; ?>">
+                                                                        <a class="dropdown-item" href="#" onclick="changePubStatus('<?= $newsItem['news_id']; ?>','Published', document.querySelector('#publicationStatusText<?= $newsItem['news_id']; ?>'))"><i class="fas fa-check-circle text-success mr-1"></i>Published</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changePubStatus('<?= $newsItem['news_id']; ?>','Unpublished', document.querySelector('#publicationStatusText<?= $newsItem['news_id']; ?>'))"><i class="fas fa-times-circle text-danger mr-1"></i>Unpublished</a>
+                                                                        <a class="dropdown-item" href="#" onclick="changePubStatus('<?= $newsItem['news_id']; ?>','Draft', document.querySelector('#publicationStatusText<?= $newsItem['news_id']; ?>'))"><i class="fas fa-pencil-alt text-info mr-1"></i>Draft</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td><?php echo $newsItem['created_at']; ?></td>
+                                                        <td><?php echo $newsItem['updated_at']; ?></td>
+                                                        <td><?php echo $newsItem['date_approved']; ?></td>
+                                                        <td><?php echo $newsItem['date_submitted']; ?></td>
+                                                        <td><?php echo $newsItem['publication_date']; ?></td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" data-placement="top" title="View News" onclick="viewNews(<?php echo $newsItem['news_id']; ?>)">
                                                                 <i class="fas fa-eye"></i> View
                                                             </button>
-                                                            <a href="<?php echo base_url('/deleteNews/'.$newsItem['id_news']); ?>" class="btn btn-sm btn-danger delete-news-btn">Delete</a>
+                                                            <a href="<?php echo base_url('/deleteNews/'.$newsItem['news_id']); ?>" class="btn btn-sm btn-danger delete-news-btn">Delete</a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>
@@ -149,6 +158,34 @@
         <!-- page-body-wrapper ends -->
     </div>
 
+    <script>
+        function formatAdvisoryDetails(content) {
+            // Define the maximum width percentage or retrieve it from an appropriate source
+            var maxWidthPercentage = 80; // Adjust this according to your needs
+
+            // Calculate the maximum width based on the window width and maximum width percentage
+            var maxWidth = (window.innerWidth * maxWidthPercentage) / 180;
+
+            // Calculate the maximum length for the combined subject and content
+            var maxLength = Math.floor(maxWidth / 8);
+
+            // Check if content length exceeds the maximum length
+            if (content.length > maxLength) {
+                // If combined length exceeds maxLength, truncate and add ellipsis
+                content = content.substring(0, maxLength - 3) + "...";
+            }
+
+            return content;
+        }
+
+        // Call the function to truncate content after page load
+        window.onload = function() {
+            var advisoryContents = document.getElementsByClassName("advisoryContent");
+            for (var i = 0; i < advisoryContents.length; i++) {
+                advisoryContents[i].innerText = formatAdvisoryDetails(advisoryContents[i].innerText);
+            }
+        };
+    </script>
     <!-- change status -->
     <script>
     function changeStatus(id,status) {

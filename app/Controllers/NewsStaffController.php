@@ -121,7 +121,14 @@ class NewsStaffController extends BaseController
 
     public function managenewstaff()
     {
-        return view('StaffPage/managenewstaff');
+        // Load the NewsModel
+        $newsModel = new NewsModel();
+
+        // Fetch news data from the database
+        $data['newsData'] = $newsModel->findAll(); // Assuming findAll() fetches all news items
+
+        // Load the view file and pass the news data to it
+        return view('StaffPage/managenewstaff', $data); // Pass the $data array to the view
     }
 
     public function dashboard()

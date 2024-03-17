@@ -7,7 +7,7 @@
     
     <link rel="stylesheet" href="<?= base_url('assets/vendors/mdi/css/materialdesignicons.min.css')?>">
     <link rel="stylesheet" href="<?= base_url('assets/vendors/css/vendor.bundle.base.css')?>">
-    <link rel="stylesheet" href="<?= base_url('assets/css/style.css')?>">
+    <link rel="stylesheet" href="<?= base_url('assets2/css/style.css')?>">
     <link rel="shortcut icon" href="<?= base_url('assets/images/ciologo.png')?>" />
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
@@ -27,7 +27,7 @@
           <h3 class="page-title">
             <span class="page-title-icon bg-gradient-primary text-white me-2">
               <i class="mdi mdi-plus"></i>
-            </span> Add News
+            </span> Create News
           </h3>
           <nav aria-label="breadcrumb">
             <ul class="breadcrumb">
@@ -42,7 +42,7 @@
           <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
               <div class="card-body">
-                <h4 class="card-title">Add News</h4>
+                <h4 class="card-title">Create News</h4>
                 <form method="post" action="<?= base_url('/addNewsSubmit'); ?>" enctype="multipart/form-data" class="forms-sample" id="newsForm">
                     <div class="row">
                         <div class="col-md-12">
