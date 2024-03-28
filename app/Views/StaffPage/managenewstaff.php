@@ -44,7 +44,7 @@
         <div class="container-fluid page-body-wrapper">
             <!-- partial:partials/_sidebar.html -->
             <div class="container-fluid page-body-wrapper">
-            <?php include('include\sidebar.php'); ?>
+            <?php include('include\sidebars.php'); ?>
             
             <!-- partial -->
             <div class="main-panel">

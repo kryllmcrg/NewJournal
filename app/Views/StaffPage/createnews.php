@@ -18,7 +18,7 @@
       <?php include('include\header.php'); ?>
       </nav>
       <div class="container-fluid page-body-wrapper">
-        <?php include('include\sidebar.php'); ?>
+        <?php include('include\sidebars.php'); ?>
       
       <!-- MAIN CONTENTS -->
       <div class="main-panel">

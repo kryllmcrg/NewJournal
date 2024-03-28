@@ -37,7 +37,7 @@
         </li>
         <?php endif;?>
 
-        <?php if(session()->get('role') == "STAFF"):?>
+        <?php if(session()->get('role') == "Staff"):?>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#news" aria-expanded="false" aria-controls="news">
                 <span class="menu-title">News Staff</span>
@@ -68,7 +68,7 @@
         </li>
         <?php endif;?>
 
-        <?php if(session()->get('role') == "STAFF"):?>
+        <?php if(session()->get('role') == "Staff"):?>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#announce" aria-expanded="false" aria-controls="announce">
                 <span class="menu-title">Announcements Staff</span>
