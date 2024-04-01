@@ -13,6 +13,20 @@ class ProfileController extends BaseController
         return view('AdminPage/dashboard');
     }
 
+    public function manageusers()
+    {
+        // Load the UserModel
+        $usersModel = new UsersModel();
+        
+        // Select specific fields from the database, including 'user_id', and filter by role 'User'
+        $userData = $usersModel->select('user_id, firstname, lastname, address, email, contact_number, image, role, gender, login_status, last_login_status')
+                                ->where('role', 'User') // Filter by role 'User'
+                                ->findAll();
+
+        // Pass $userData to your view
+        return view('AdminPage/manageusers', ['userData' => $userData]);
+    }
+
    // In your controller
    public function manageProfile()
     {

@@ -23,7 +23,9 @@ $routes->get('/dashboard', 'AdminController::dashboard');
 
 $routes->get('/addemployee', 'ProfileController::addemployee');
 $routes->get('/manageprofile', 'ProfileController::manageprofile');
+$routes->get('/manageusers', 'ProfileController::manageusers');
 $routes->post('update', 'ProfileController::update');
+
 
 
 $routes->get('/addnews', 'NewsController::addnews');
