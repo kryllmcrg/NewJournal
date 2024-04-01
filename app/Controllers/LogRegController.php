@@ -213,4 +213,17 @@ class LogRegController extends BaseController
             echo view('login', $data);
         }
     }
+
+    public function filtercheck()
+    {
+        $session = session();
+        $role = $session->get('role');
+        // Only allow admin and staff to access the dashboard
+        if ($role !== 'Admin' && $role !== 'Staff') {
+            return redirect()->to('/login');
+        }
+
+        // Proceed with displaying the dashboard
+        return view('dashboard');
+    }
 }

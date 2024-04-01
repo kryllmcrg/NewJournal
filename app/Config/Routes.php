@@ -17,6 +17,7 @@ $routes->post('check', 'LogRegController::check');
 $routes->get('logout', 'LogRegController::logout');
 $routes->get('/register', 'LogRegController::register');
 $routes->post('/save', 'LogRegController::save');
+$routes->get('/filtercheck', 'LogRegController::filtercheck', ['filter' => 'rolecheck']);
 
 $routes->get('/dashboard', 'AdminController::dashboard');
 
@@ -24,20 +25,15 @@ $routes->get('/addemployee', 'ProfileController::addemployee');
 $routes->get('/manageprofile', 'ProfileController::manageprofile');
 
 $routes->get('/addnews', 'NewsController::addnews');
-
 $routes->post('addNewsSubmit', 'NewsController::addNewsSubmit');
 $routes->post('upload_image', 'NewsController::uploadImage');
-
-
 $routes->get('/managenews', 'NewsController::managenews');
 $routes->get('/deleteNews/(:any)', 'NewsController::deleteNews/$1');
 $routes->post('/editNews', 'NewsController::updateNews');
 $routes->post('changeNewStatus', 'NewsController::changeNewStatus');
 $routes->post('changePubStatus', 'NewsController::changePubStatus');
-
 $routes->get('/viewnews/(:any)', 'NewsController::viewnews/$1');
 $routes->get('/editNews', 'NewsController::editNews');
-
 $routes->get('/archive', 'NewsController::archive');
 $routes->get('displaynews', 'NewsController::userdisplaynews');
 

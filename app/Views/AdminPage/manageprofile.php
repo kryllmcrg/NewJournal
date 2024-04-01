@@ -63,6 +63,93 @@
                 </ul>
               </nav>
             </div>
+
+            <!-- Modal for Editing User Details -->
+              <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="editUserModalLabel">Edit User</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                          <form id="editUserForm" action="<?= base_url('update') ?>" method="post">
+                              <!-- Hidden input field for user_id -->
+                              <input type="hidden" name="user_id" id="editUserId">
+                              
+                              <!-- First column -->
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <div class="mb-3">
+                                          <label for="editStaffId" class="form-label">Staff ID</label>
+                                          <input type="text" class="form-control" id="editStaffId" name="staff_id">
+                                      </div>
+                                      <div class="mb-3">
+                                          <label for="editFirstName" class="form-label">First Name</label>
+                                          <input type="text" class="form-control" id="editFirstName" name="firstname">
+                                      </div>
+                                      <div class="mb-3">
+                                          <label for="editLastName" class="form-label">Last Name</label>
+                                          <input type="text" class="form-control" id="editLastName" name="lastname">
+                                      </div>
+                                      <div class="mb-3">
+                                          <label for="editAddress" class="form-label">Address</label>
+                                          <input type="text" class="form-control" id="editAddress" name="address">
+                                      </div>
+                                      <div class="mb-3">
+                                          <label for="editEmail" class="form-label">Email</label>
+                                          <input type="email" class="form-control" id="editEmail" name="email">
+                                      </div>
+                                      <div class="mb-3">
+                                          <label for="editPassword" class="form-label">Password</label>
+                                          <input type="password" class="form-control" id="editPassword" name="password">
+                                      </div>
+                                  </div>
+                                  <!-- Second column -->
+                                  <div class="col-md-6">
+                                      <div class="mb-3">
+                                          <label for="editContact" class="form-label">Contact Number</label>
+                                          <input type="text" class="form-control" id="editContact" name="contact_number">
+                                      </div>
+                                      <div class="mb-3">
+                                          <label for="editImage" class="form-label">Image</label>
+                                          <input type="file" class="form-control" id="editImage" name="image">
+                                      </div>
+                                      <div class="mb-3">
+                                          <label for="editRole" class="form-label">Role</label>
+                                          <select class="form-select" id="editRole" name="role">
+                                              <option value="Admin">Admin</option>
+                                              <option value="Staff">Staff</option>
+                                              <!-- Add more options if needed -->
+                                          </select>
+                                      </div>
+                                      <div class="mb-3">
+                                          <label for="editGender" class="form-label">Gender</label>
+                                          <select class="form-select" id="editGender" name="gender">
+                                              <option value="Male">Male</option>
+                                              <option value="Female">Female</option>
+                                              <!-- Add more options if needed -->
+                                          </select>
+                                      </div>
+                                      <div class="mb-3">
+                                          <label for="editLoginStatus" class="form-label">Login Status</label>
+                                          <input type="text" class="form-control" id="editLoginStatus" name="login_status">
+                                      </div>
+                                      <div class="mb-3">
+                                          <label for="editLastLoginStatus" class="form-label">Last Login Status</label>
+                                          <input type="text" class="form-control" id="editLastLoginStatus" name="last_login_status">
+                                      </div>
+                                  </div>
+                              </div>
+                          </form>
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="submit" form="editUserForm" class="btn btn-primary">Save changes</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
             <!-- Table -->
             <div class="row">
               <div class="col-12">
@@ -70,27 +157,62 @@
                   <div class="card-body">
                     <h4 class="card-title">Staff Information</h4>
                     <div class="table-responsive">
-                      <table class="table table-hover">
-                        <thead>
+                    <table class="table table-hover">
+                      <thead>
                           <tr>
-                            <th>Firstname</th>
-                            <th>Lastname</th>
-                            <th>Email</th>
-                            <th>Username</th>
-                            <th>Address</th>
-                            <th>Gender</th>
-                            <th>Mobile Phone</th>
-                            <th>Image</th>
-                            <th>Role</th>
+                              <th>User Id</th>
+                              <th>Staff Id</th>
+                              <th>Firstname</th>
+                              <th>Lastname</th>
+                              <th>Address</th>
+                              <th>Email</th>
+                              <th>Contact</th>
+                              <th>Image</th>
+                              <th>Role</th>
+                              <th>Gender</th>
+                              <th>Login Status</th>
+                              <th>Last Login Status</th>
+                              <th>Action</th>
                           </tr>
-                        </thead>
-                        <tbody>
-                         
-                          <!-- <tr>
-                            <td colspan="7" class="text-center">No information available</td>
-                          </tr> -->
-                        </tbody>
-                      </table>
+                      </thead>
+                      <tbody>
+                          <?php foreach ($userData as $user) : ?>
+                              <tr>
+                                  <td><?= $user['user_id'] ?></td>
+                                  <td><?= $user['staff_id'] ?></td>
+                                  <td><?= $user['firstname'] ?></td>
+                                  <td><?= $user['lastname'] ?></td>
+                                  <td><?= $user['address'] ?></td>
+                                  <td><?= $user['email'] ?></td>
+                                  <td><?= $user['contact_number'] ?></td>
+                                  <td><img src="<?= base_url('uploads/' . $user['image']) ?>" alt="User Image" width="50"></td>
+                                  <td><?= $user['role'] ?></td>
+                                  <td><?= $user['gender'] ?></td>
+                                  <td><?= $user['login_status'] ?></td>
+                                  <td><?= $user['last_login_status'] ?></td>
+                                  <td>
+                                      <!-- Edit button -->
+                                      <button type="button" class="btn btn-primary btn-sm editBtn" data-bs-toggle="modal" data-bs-target="#editUserModal" 
+                                              data-userid="<?= $user['user_id'] ?>" data-staffid="<?= $user['staff_id'] ?>" data-firstname="<?= $user['firstname'] ?>" data-lastname="<?= $user['lastname'] ?>" data-address="<?= $user['address'] ?>" data-email="<?= $user['email'] ?>" data-contact="<?= $user['contact_number'] ?>" data-role="<?= $user['role'] ?>" data-gender="<?= $user['gender'] ?>" data-loginstatus="<?= $user['login_status'] ?>" data-lastloginstatus="<?= $user['last_login_status'] ?>">Edit
+                                      </button>
+                                      
+                                      <!-- Delete button -->
+                                      <form action="<?= base_url('delete/' . $user['user_id']) ?>" method="post" style="display: inline;">
+                                          <?= csrf_field() ?>
+                                          <input type="hidden" name="_method" value="DELETE">
+                                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+                                      </form>
+                                  </td>
+                              </tr>
+                          <?php endforeach; ?>
+                          <!-- Show message if no data available -->
+                          <?php if (empty($userData)) : ?>
+                              <tr>
+                                  <td colspan="13" class="text-center">No information available</td>
+                              </tr>
+                          <?php endif; ?>
+                      </tbody>
+                  </table>
                     </div>
                   </div>
                 </div>
