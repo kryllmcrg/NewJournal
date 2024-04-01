@@ -27,5 +27,34 @@ class ProfileController extends BaseController
         return view('AdminPage/manageprofile', ['userData' => $userData]);
     }
 
+    public function update()
+    {
+        // Load the UserModel
+        $usersModel = new UsersModel();
+        
+        // Get the user_id from the form
+        $userId = $this->request->getPost('user_id');
+        
+        // Prepare the data to update
+        $data = [
+            'staff_id' => $this->request->getPost('staff_id'),
+            'firstname' => $this->request->getPost('firstname'),
+            'lastname' => $this->request->getPost('lastname'),
+            'address' => $this->request->getPost('address'),
+            'email' => $this->request->getPost('email'),
+            'contact_number' => $this->request->getPost('contact_number'),
+            'role' => $this->request->getPost('role'),
+            'gender' => $this->request->getPost('gender'),
+            'login_status' => $this->request->getPost('login_status'),
+            'last_login_status' => $this->request->getPost('last_login_status')
+            // Add more fields as needed
+        ];
+        
+        // Update the user record
+        $usersModel->update($userId, $data);
+        
+        // Redirect to the manageProfile method or any other appropriate route
+        return redirect()->to('/manageprofile');
+    }
 
 }

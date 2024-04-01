@@ -100,20 +100,12 @@
                                           <label for="editEmail" class="form-label">Email</label>
                                           <input type="email" class="form-control" id="editEmail" name="email">
                                       </div>
-                                      <div class="mb-3">
-                                          <label for="editPassword" class="form-label">Password</label>
-                                          <input type="password" class="form-control" id="editPassword" name="password">
-                                      </div>
                                   </div>
                                   <!-- Second column -->
                                   <div class="col-md-6">
                                       <div class="mb-3">
                                           <label for="editContact" class="form-label">Contact Number</label>
                                           <input type="text" class="form-control" id="editContact" name="contact_number">
-                                      </div>
-                                      <div class="mb-3">
-                                          <label for="editImage" class="form-label">Image</label>
-                                          <input type="file" class="form-control" id="editImage" name="image">
                                       </div>
                                       <div class="mb-3">
                                           <label for="editRole" class="form-label">Role</label>
@@ -140,6 +132,10 @@
                                           <input type="text" class="form-control" id="editLastLoginStatus" name="last_login_status">
                                       </div>
                                   </div>
+                                  <div class="mb-3">
+                                          <label for="editImage" class="form-label">Image</label>
+                                          <input type="file" class="form-control" id="editImage" name="image">
+                                      </div>
                               </div>
                           </form>
                           </div>
@@ -158,61 +154,62 @@
                     <h4 class="card-title">Staff Information</h4>
                     <div class="table-responsive">
                     <table class="table table-hover">
-                      <thead>
-                          <tr>
-                              <th>User Id</th>
-                              <th>Staff Id</th>
-                              <th>Firstname</th>
-                              <th>Lastname</th>
-                              <th>Address</th>
-                              <th>Email</th>
-                              <th>Contact</th>
-                              <th>Image</th>
-                              <th>Role</th>
-                              <th>Gender</th>
-                              <th>Login Status</th>
-                              <th>Last Login Status</th>
-                              <th>Action</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <?php foreach ($userData as $user) : ?>
-                              <tr>
-                                  <td><?= $user['user_id'] ?></td>
-                                  <td><?= $user['staff_id'] ?></td>
-                                  <td><?= $user['firstname'] ?></td>
-                                  <td><?= $user['lastname'] ?></td>
-                                  <td><?= $user['address'] ?></td>
-                                  <td><?= $user['email'] ?></td>
-                                  <td><?= $user['contact_number'] ?></td>
-                                  <td><img src="<?= base_url('uploads/' . $user['image']) ?>" alt="User Image" width="50"></td>
-                                  <td><?= $user['role'] ?></td>
-                                  <td><?= $user['gender'] ?></td>
-                                  <td><?= $user['login_status'] ?></td>
-                                  <td><?= $user['last_login_status'] ?></td>
-                                  <td>
-                                      <!-- Edit button -->
-                                      <button type="button" class="btn btn-primary btn-sm editBtn" data-bs-toggle="modal" data-bs-target="#editUserModal" 
-                                              data-userid="<?= $user['user_id'] ?>" data-staffid="<?= $user['staff_id'] ?>" data-firstname="<?= $user['firstname'] ?>" data-lastname="<?= $user['lastname'] ?>" data-address="<?= $user['address'] ?>" data-email="<?= $user['email'] ?>" data-contact="<?= $user['contact_number'] ?>" data-role="<?= $user['role'] ?>" data-gender="<?= $user['gender'] ?>" data-loginstatus="<?= $user['login_status'] ?>" data-lastloginstatus="<?= $user['last_login_status'] ?>">Edit
-                                      </button>
-                                      
-                                      <!-- Delete button -->
-                                      <form action="<?= base_url('delete/' . $user['user_id']) ?>" method="post" style="display: inline;">
-                                          <?= csrf_field() ?>
-                                          <input type="hidden" name="_method" value="DELETE">
-                                          <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
-                                      </form>
-                                  </td>
-                              </tr>
-                          <?php endforeach; ?>
-                          <!-- Show message if no data available -->
-                          <?php if (empty($userData)) : ?>
-                              <tr>
-                                  <td colspan="13" class="text-center">No information available</td>
-                              </tr>
-                          <?php endif; ?>
-                      </tbody>
-                  </table>
+    <thead>
+        <tr>
+            <!-- Remove the <th> for User Id -->
+            <th>Staff Id</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th>Image</th>
+            <th>Role</th>
+            <th>Gender</th>
+            <th>Login Status</th>
+            <th>Last Login Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($userData as $user) : ?>
+            <tr>
+                <!-- Remove the <td> for User Id -->
+                <td><?= $user['staff_id'] ?></td>
+                <td><?= $user['firstname'] ?></td>
+                <td><?= $user['lastname'] ?></td>
+                <td><?= $user['address'] ?></td>
+                <td><?= $user['email'] ?></td>
+                <td><?= $user['contact_number'] ?></td>
+                <td><img src="<?= base_url('uploads/' . $user['image']) ?>" alt="User Image" width="50"></td>
+                <td><?= $user['role'] ?></td>
+                <td><?= $user['gender'] ?></td>
+                <td><?= $user['login_status'] ?></td>
+                <td><?= $user['last_login_status'] ?></td>
+                <td>
+                    <!-- Edit button -->
+                    <button type="button" class="btn btn-primary btn-sm editBtn" data-bs-toggle="modal" data-bs-target="#editUserModal" 
+                            data-userid="<?= $user['user_id'] ?>" data-staffid="<?= $user['staff_id'] ?>" data-firstname="<?= $user['firstname'] ?>" data-lastname="<?= $user['lastname'] ?>" data-address="<?= $user['address'] ?>" data-email="<?= $user['email'] ?>" data-contact="<?= $user['contact_number'] ?>" data-role="<?= $user['role'] ?>" data-gender="<?= $user['gender'] ?>" data-loginstatus="<?= $user['login_status'] ?>" data-lastloginstatus="<?= $user['last_login_status'] ?>">Edit
+                    </button>
+                    
+                    <!-- Delete button -->
+                    <form action="<?= base_url('delete/' . $user['user_id']) ?>" method="post" style="display: inline;">
+                        <?= csrf_field() ?>
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        <!-- Show message if no data available -->
+        <?php if (empty($userData)) : ?>
+            <tr>
+                <td colspan="12" class="text-center">No information available</td>
+            </tr>
+        <?php endif; ?>
+    </tbody>
+</table>
+
                     </div>
                   </div>
                 </div>
@@ -235,6 +232,48 @@
       <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
+
+    <!-- Add this JavaScript code after your modal HTML -->
+<script>
+    // Add a click event listener to each row
+    document.querySelectorAll('tbody tr').forEach(row => {
+        row.addEventListener('click', function() {
+            // Extract the data from the clicked row
+            const userId = row.querySelector('td:nth-child(1)').textContent;
+            const staffId = row.querySelector('td:nth-child(2)').textContent;
+            const firstName = row.querySelector('td:nth-child(3)').textContent;
+            const lastName = row.querySelector('td:nth-child(4)').textContent;
+            const address = row.querySelector('td:nth-child(5)').textContent;
+            const email = row.querySelector('td:nth-child(6)').textContent;
+            const contactNumber = row.querySelector('td:nth-child(7)').textContent;
+            const image = row.querySelector('td:nth-child(8) img').src;
+            const role = row.querySelector('td:nth-child(9)').textContent;
+            const gender = row.querySelector('td:nth-child(10)').textContent;
+            const loginStatus = row.querySelector('td:nth-child(11)').textContent;
+            const lastLoginStatus = row.querySelector('td:nth-child(12)').textContent;
+
+            // Populate the input fields in the modal with the extracted data
+            document.getElementById('editUserId').value = userId;
+            document.getElementById('editStaffId').value = staffId;
+            document.getElementById('editFirstName').value = firstName;
+            document.getElementById('editLastName').value = lastName;
+            document.getElementById('editAddress').value = address;
+            document.getElementById('editEmail').value = email;
+            document.getElementById('editContact').value = contactNumber;
+            document.getElementById('editImage').src = image;
+            document.getElementById('editRole').value = role;
+            document.getElementById('editGender').value = gender;
+            document.getElementById('editLoginStatus').value = loginStatus;
+            document.getElementById('editLastLoginStatus').value = lastLoginStatus;
+
+            // Open the modal
+            const modal = new bootstrap.Modal(document.getElementById('editUserModal'));
+            modal.show();
+        });
+    });
+</script>
+
+
     <script src="<?= base_url('assets2/vendors/js/vendor.bundle.base.js')?>"></script>
     <script src="<?= base_url('assets2/vendors/chart.js/Chart.min.js')?>"></script>
     <script src="<?= base_url('assets2/js/jquery.cookie.js" type="text/javascript')?>"></script>
