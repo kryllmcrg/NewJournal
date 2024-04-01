@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 use App\Models\UsersModel;
-use App\Models\UserAccountsModel;
 use App\Libraries\Hash;
 
 class LogRegController extends BaseController
@@ -42,11 +41,11 @@ class LogRegController extends BaseController
     //             return redirect()->to(previous_url())->withInput()->with('error', 'Invalid email or password.');
     //         }
             // $ses_user= [
-            //     'id' => $user['id'],
-            //     'email' => $user['email'],
-            //     'role' => $user['role'],
-            //     'image' => $user['image'],
-            //     'fullname' => $user['firstname'].' '. $user['lastname']
+                // 'id' => $user['id'],
+                // 'email' => $user['email'],
+                // 'role' => $user['role'],
+                // 'image' => $user['image'],
+                // 'fullname' => $user['firstname'].' '. $user['lastname']
             // ];
             // $session->set($ses_user);
             // return redirect()->to('/dashboard');
@@ -62,182 +61,156 @@ class LogRegController extends BaseController
         return view('UserPage/register');
     }
 
-    public function __construct(){
-        helper(['url', '']);
-    }
-
     public function save()
     {
-        $validation = $this->validate([
-            'firstname' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Your first name is required'
-                ]
-            ],
-            'lastname' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Your last name is required'
-                ]
-            ],
-            'address' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Your address is required'
-                ]
-            ],
-            'email' => [
-                'rules' => 'required|valid_email|is_unique[users.email]',
-                'errors' => [
-                    'required' => 'Your email is required',
-                    'valid_email' => 'You must enter a valid email address',
-                    'is_unique' => 'Email already taken'
-                ]
-            ],
-            'password' => [
-                'rules' => 'required|min_length[6]|max_length[12]',
-                'errors' => [
-                    'required' => 'Your password is required',
-                    'min_length' => 'Password must have at least 6 characters in length',
-                    'max_length' => 'Password must not have characters more than 12 in length',
-                ]
-            ],
-            'gender' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Your gender is required'
-                ]
-            ],
-            'contact_number' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Your contact number is required'
-                ]
-            ],
-            'image' => [
-                'rules' => 'uploaded[image]|is_image[image]|max_size[image,4096]',
-                'errors' => [
-                    'uploaded' => 'Please select an image to upload.',
-                    'is_image' => 'The selected file is not a valid image.',
-                    'max_size' => 'The selected image exceeds the maximum allowed size of 4MB.'
-                ]
-            ]
-        ]);
-        
-        if (!$validation) {
-            return view('UserPage/register', ['validation' => $this->validator]);
-        } else {
-            $profileImage = $this->request->getFile('image');
-        
-            if ($profileImage->isValid() && !$profileImage->hasMoved()) {
-                $newName = $profileImage->getRandomName();
-                $profileImage->move(ROOTPATH . 'public/uploads', $newName);
-        
-                $firstname = $this->request->getPost('firstname');
-                $lastname = $this->request->getPost('lastname');
-                $address = $this->request->getPost('address');
-                $email = $this->request->getPost('email');
-                $password = password_hash($this->request->getPost('password'), PASSWORD_DEFAULT);
-                $contact_number = $this->request->getPost('contact_number');
-                $image = $newName;
-                $role = $this->request->getPost('role');
-                $gender = $this->request->getPost('gender');
-        
-                $values = [
-                    'firstname' => $firstname,
-                    'lastname' => $lastname,
-                    'address' => $address,
-                    'email' => $email,
-                    'password' => Hash::make($password),
-                    'contact_number' => $contact_number,
-                    'image' => $image,
-                    'role' => $role,
-                    'gender' => $gender
-                ];
-        
-                $usersModel = new UsersModel();
-                $query = $usersModel->insert($values);
-        
-                if (!$query) {
-                    return redirect()->back()->with('fail', 'Something went wrong');
-                } else {
-                    return redirect()->back()->with('fail', $profileImage->getErrorString());
-                }
-            } else {
-                return redirect()->to('register')->with('success', 'You are now registered successfully');
-            }
-        }
-    }
-    function check()
-    {
-        $validation = $this->validate([
-            'email' => [
-                'rules' => 'required|valid_email|is_not_unique[users.email]',
-                'errors' => [
-                    'required' => 'Your email is required',
-                    'valid_email' => 'You must enter a valid email address',
-                    'is_not_unique' => 'This email is not registered on our service'
-                ]
-            ],
-            'password' => [
-                'rules' => 'required|min_length[6]|max_length[12]',
-                'errors' => [
-                    'required' => 'Your password is required',
-                    'min_length' => 'Password must have at least 6 characters in length',
-                    'max_length' => 'Password must not have characters more than 12 in length',
-                ]
-            ],
-        ]);
-        
-        if (!$validation) {
-            return view('UserPage/login', ['validation' => $this->validator]);
-        } else {
+        // Include form helper
+        helper(['form']);
+
+        // Set rules for form validation
+        $rules = [
+            'firstname'      => 'required|min_length[2]|max_length[50]',
+            'lastname'       => 'required|min_length[2]|max_length[50]',
+            'email'          => 'required|valid_email|is_unique[users.email]',
+            'password'       => 'required|min_length[6]|max_length[255]',
+            'gender'         => 'required|in_list[Male,Female,Rather not say]',
+            'contact_number' => 'required|min_length[10]|max_length[15]',
+            'image'          => 'uploaded[image]|max_size[image,2048]|is_image[image]'
+        ];
+
+        if ($this->validate($rules)) {
+            // Retrieve form input
+            $firstname = $this->request->getVar('firstname');
+            $lastname = $this->request->getVar('lastname');
             $email = $this->request->getVar('email');
             $password = $this->request->getVar('password');
-            $usersModel = new UsersModel();
-            $user_info = $usersModel->where('email', $email)->first();
-            
-            if ($user_info === null) {
-                session()->setFlashdata('fail', 'User not found');
-                return redirect()->to('login')->withInput();
-            }
-            echo json_encode($user_info);
-        
-            // Direct comparison of raw password with the password from the database
-            if (password_verify($password, $user_info['password'])) {
-                session()->setFlashdata('fail', 'Incorrect password');
-                return redirect()->to('login')->withInput();
+            $address = $this->request->getVar('address');
+            $gender = $this->request->getVar('gender');
+            $contact_number = $this->request->getVar('contact_number');
+            $image = $this->request->getFile('image');
+
+            // Handle image upload
+            if ($image->isValid() && !$image->hasMoved()) {
+                $newName = $image->getRandomName();
+                $image->move('uploads', $newName);
             } else {
-                $user_id = $user_info['user_id'];
-                $role = $user_info['role'];
-                $fullname = $user_info['firstname'] . ' ' . $user_info['lastname'];
-                $image = $user_info['image'];
-                session()->set('loggedUser', $user_id);
-                session()->set('role', $role);
-                session()->set('fullname', $fullname);
-                session()->set('image', $image);
-
-                switch ($role) {
-                    case 'User':
-                        return redirect()->to('/');
-                    case 'Admin':
-                        return redirect()->to('dashboard');
-                    case 'Staff':
-                        return redirect()->to('/dashboard');
-                    default:
-                        return redirect()->to('login')->withInput()->with('fail', 'Invalid user role');
-                }                
+                session()->setFlashdata('fail', 'Failed to upload image.');
+                return redirect()->to(base_url('register'))->withInput();
             }
-        }
-    }       
 
-    function logout(){
-        if(session()->has('loggedUser')){
-            session()->remove('loggedUser');
-            return redirect()->to('login')->with('fail', 'You are logged out!');
+            // Hash password
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+            // Prepare data for insertion
+            $data = [
+                'firstname' => $firstname,
+                'lastname' => $lastname,
+                'email' => $email,
+                'password' => $hashedPassword,
+                'address' => $address,
+                'gender' => $gender,
+                'contact_number' => $contact_number,
+                'image' => $image->getName(),
+                'role' => 'User' // Assuming all users registering through this form are regular users
+            ];
+
+            // Insert data into database
+            $usersModel = new UsersModel();
+            $usersModel->insert($data);
+
+            session()->setFlashdata('success', 'Registration successful. You can now login.');
+            return redirect()->to(base_url('login'));
         } else {
-            return redirect()->to('login')->with('fail', 'You are not logged in!');
+            // Validation failed, show validation errors
+            $data['validation'] = $this->validator;
+            return view('UserPage/register', $data);
+        }
+    }
+
+    public function auth()
+    {
+        $session = session();
+        $model = new UsersModel();
+        $email = $this->request->getVar('email');
+        $password = $this->request->getVar('password');
+        $data = $model->where('email', $email)->first();
+        if ($data) {
+            $pass = $data['password'];
+            $verify_pass = password_verify($password, $pass);
+            if ($verify_pass) {
+                // Set user data in session
+                $session->set([
+                    'user_id' => $data['user_id'],
+                    'email' => $data['email'],
+                    'role' => $data['role'],
+                    'image' => $data['image'],
+                    'fullname' => $data['firstname'].' '. $data['lastname'],
+                    'logged_in' => true
+                ]);
+                // Redirect based on user's role
+                if ($data['role'] == 'Admin' || $data['role'] == 'Staff') {
+                    return redirect()->to('/dashboard');
+                } else {
+                    // Redirect to another page for users with different roles
+                    return redirect()->to('/other_page');
+                }
+            } else {
+                $session->setFlashdata('msg', 'Incorrect password');
+                return redirect()->to('/login');
+            }
+        } else {
+            $session->setFlashdata('msg', 'Email not found');
+            return redirect()->to('/login');
+        }
+    }
+
+    public function check()
+    {
+        // Include form helper
+        helper(['form']);
+
+        // Set rules for form validation
+        $rules = [
+            'email' => 'required|valid_email',
+            'password' => 'required|min_length[6]|max_length[255]'
+        ];
+
+        if ($this->validate($rules)) {
+            $model = new UsersModel();
+            $email = $this->request->getVar('email');
+            $password = $this->request->getVar('password');
+            $data = $model->where('email', $email)->first();
+            if ($data) {
+                $pass = $data['password'];
+                $verify_pass = password_verify($password, $pass);
+                if ($verify_pass) {
+                    $session = session();
+                    $session->set([
+                        'user_id' => $data['user_id'],
+                        'email' => $data['email'],
+                        'role' => $data['role'],
+                        'image' => $data['image'],
+                        'fullname' => $data['firstname'].' '. $data['lastname'],
+                        'logged_in' => true
+                    ]);
+                    if ($data['role'] == 'Admin' || $data['role'] == 'Staff') {
+                        return redirect()->to('/dashboard');
+                    } else {
+                        return redirect()->to('/');
+                    }
+                } else {
+                    $session = session();
+                    $session->setFlashdata('fail', 'Incorrect password');
+                    return redirect()->to('/login')->withInput();
+                }
+            } else {
+                $session = session();
+                $session->setFlashdata('fail', 'Email not found');
+                return redirect()->to('/login')->withInput();
+            }
+        } else {
+            // Validation failed, show validation errors
+            $data['validation'] = $this->validator;
+            echo view('login', $data);
         }
     }
 }

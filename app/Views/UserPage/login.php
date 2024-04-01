@@ -98,23 +98,24 @@
 <body>
     <div class="form-container">
         <h2>Login</h2>
-        <form action="<?= base_url('/check') ?>" method="post" autocomplete="off">
         <?= csrf_field(); ?>
 
-        <?php if (!empty(session()->getFlashdata('fail'))) :?>
-                <div class="alert alert-danger"><?= session()->getFlashdata('fail'); ?></div>
+        <?php if (!empty(session()->getFlashdata('fail'))) : ?>
+            <div class="alert alert-danger"><?= session()->getFlashdata('fail'); ?></div>
         <?php endif ?>
+
+        <form action="<?= base_url('/check') ?>" method="post" autocomplete="off">
             <label for="email">Email</label>
             <input type="email" id="email" name="email" placeholder="Enter your email" value="<?= set_value('email'); ?>">
-            <span class="text-danger"><?= isset($validation) ? display_error($validation, 'email'): ''?></span>
+            <span class="text-danger"><?= isset($validation) ? $validation->getError('email') : ''; ?></span>
 
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Enter your password" value="<?= set_value('password'); ?>">
-            <span class="text-danger"><?= isset($validation) ? display_error($validation, 'password'): ''?></span>
+            <span class="text-danger"><?= isset($validation) ? $validation->getError('password') : ''; ?></span>
 
             <button type="submit">Sign In</button>
-            <p>Don't have an account? <a href="/register">Sign up</a></p> 
-            <p>I don't want to have an account. <a href="/">Not Now</a></p> 
+            <p>Don't have an account? <a href="/register">Sign up</a></p>
+            <p>I don't want to have an account. <a href="/">Not Now</a></p>
         </form>
     </div>
 </body>
