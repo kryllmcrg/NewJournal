@@ -27,7 +27,6 @@ $routes->get('/manageusers', 'ProfileController::manageusers');
 $routes->post('update', 'ProfileController::update');
 
 
-
 $routes->get('/addnews', 'NewsController::addnews');
 $routes->post('addNewsSubmit', 'NewsController::addNewsSubmit');
 $routes->post('upload_image', 'NewsController::uploadImage');
@@ -60,6 +59,6 @@ $routes->post('addAnnounceSubmit', 'AnnounceController::addAnnounceSubmit');
 
 //staff//
 $routes->get('/createnews', 'NewsStaffController::createnews');
+$routes->post('/createNewsSubmit', 'NewsStaffController::createNewsSubmit');
 $routes->get('/managenewstaff', 'NewsStaffController::managenewstaff');
 $routes->get('/dashboard', 'NewsStaffController::dashboard');
-$routes->post('/createNewsSubmit', 'NewsController::createNewsSubmit');

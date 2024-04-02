@@ -37,7 +37,7 @@ class NewsController extends BaseController
     public function addNewsSubmit()
     {
     try {
-        $userId = session()->get('userId');
+        $staffId = session()->get('staff_id');
         $title = $this->request->getPost('title');
         $content = $this->request->getPost('content');
         $category_id = $this->request->getPost('category_id');
@@ -62,7 +62,7 @@ class NewsController extends BaseController
         'category_id' => $category_id,
         'author' => $author,
         'images' => json_encode($uploadedImages),
-        'user_id' => $userId,
+        'staff_id' => $staffId,
         'news_status' => 'Pending',
         'publication_status' => 'Draft'
     ];
