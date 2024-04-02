@@ -64,6 +64,15 @@
               </nav>
             </div>
 
+            <!-- Button for adding data -->
+              <div class="row">
+                <div class="col-md-12">
+                  <button class="btn btn-gradient-primary" onclick="window.location.href='/add-data-page'">Add Data</button>
+                </div>
+              </div>
+
+              <div class="mb-4"></div>
+
             <!-- Modal for Editing User Details -->
               <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
@@ -154,62 +163,61 @@
                     <h4 class="card-title">Staff Information</h4>
                     <div class="table-responsive">
                     <table class="table table-hover">
-    <thead>
-        <tr>
-            <!-- Remove the <th> for User Id -->
-            <th>Staff Id</th>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Address</th>
-            <th>Email</th>
-            <th>Contact</th>
-            <th>Image</th>
-            <th>Role</th>
-            <th>Gender</th>
-            <th>Login Status</th>
-            <th>Last Login Status</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($userData as $user) : ?>
-            <tr>
-                <!-- Remove the <td> for User Id -->
-                <td><?= $user['staff_id'] ?></td>
-                <td><?= $user['firstname'] ?></td>
-                <td><?= $user['lastname'] ?></td>
-                <td><?= $user['address'] ?></td>
-                <td><?= $user['email'] ?></td>
-                <td><?= $user['contact_number'] ?></td>
-                <td><img src="<?= base_url('uploads/' . $user['image']) ?>" alt="User Image" width="50"></td>
-                <td><?= $user['role'] ?></td>
-                <td><?= $user['gender'] ?></td>
-                <td><?= $user['login_status'] ?></td>
-                <td><?= $user['last_login_status'] ?></td>
-                <td>
-                    <!-- Edit button -->
-                    <button type="button" class="btn btn-primary btn-sm editBtn" data-bs-toggle="modal" data-bs-target="#editUserModal" 
-                            data-userid="<?= $user['user_id'] ?>" data-staffid="<?= $user['staff_id'] ?>" data-firstname="<?= $user['firstname'] ?>" data-lastname="<?= $user['lastname'] ?>" data-address="<?= $user['address'] ?>" data-email="<?= $user['email'] ?>" data-contact="<?= $user['contact_number'] ?>" data-role="<?= $user['role'] ?>" data-gender="<?= $user['gender'] ?>" data-loginstatus="<?= $user['login_status'] ?>" data-lastloginstatus="<?= $user['last_login_status'] ?>">Edit
-                    </button>
-                    
-                    <!-- Delete button -->
-                    <form action="<?= base_url('delete/' . $user['user_id']) ?>" method="post" style="display: inline;">
-                        <?= csrf_field() ?>
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
-                    </form>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-        <!-- Show message if no data available -->
-        <?php if (empty($userData)) : ?>
-            <tr>
-                <td colspan="12" class="text-center">No information available</td>
-            </tr>
-        <?php endif; ?>
-    </tbody>
-</table>
-
+                          <thead>
+                              <tr>
+                                  <!-- Remove the <th> for User Id -->
+                                  <th>Staff Id</th>
+                                  <th>Firstname</th>
+                                  <th>Lastname</th>
+                                  <th>Address</th>
+                                  <th>Email</th>
+                                  <th>Contact</th>
+                                  <th>Image</th>
+                                  <th>Role</th>
+                                  <th>Gender</th>
+                                  <th>Login Status</th>
+                                  <th>Last Login Status</th>
+                                  <th>Action</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <?php foreach ($userData as $user) : ?>
+                                  <tr>
+                                      <!-- Remove the <td> for User Id -->
+                                      <td><?= $user['staff_id'] ?></td>
+                                      <td><?= $user['firstname'] ?></td>
+                                      <td><?= $user['lastname'] ?></td>
+                                      <td><?= $user['address'] ?></td>
+                                      <td><?= $user['email'] ?></td>
+                                      <td><?= $user['contact_number'] ?></td>
+                                      <td><img src="<?= base_url('uploads/' . $user['image']) ?>" alt="User Image" width="50"></td>
+                                      <td><?= $user['role'] ?></td>
+                                      <td><?= $user['gender'] ?></td>
+                                      <td><?= $user['login_status'] ?></td>
+                                      <td><?= $user['last_login_status'] ?></td>
+                                      <td>
+                                          <!-- Edit button -->
+                                          <button type="button" class="btn btn-primary btn-sm editBtn" data-bs-toggle="modal" data-bs-target="#editUserModal" 
+                                                  data-userid="<?= $user['user_id'] ?>" data-staffid="<?= $user['staff_id'] ?>" data-firstname="<?= $user['firstname'] ?>" data-lastname="<?= $user['lastname'] ?>" data-address="<?= $user['address'] ?>" data-email="<?= $user['email'] ?>" data-contact="<?= $user['contact_number'] ?>" data-role="<?= $user['role'] ?>" data-gender="<?= $user['gender'] ?>" data-loginstatus="<?= $user['login_status'] ?>" data-lastloginstatus="<?= $user['last_login_status'] ?>">Edit
+                                          </button>
+                                          
+                                          <!-- Delete button -->
+                                          <form action="<?= base_url('delete/' . $user['user_id']) ?>" method="post" style="display: inline;">
+                                              <?= csrf_field() ?>
+                                              <input type="hidden" name="_method" value="DELETE">
+                                              <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+                                          </form>
+                                      </td>
+                                  </tr>
+                              <?php endforeach; ?>
+                              <!-- Show message if no data available -->
+                              <?php if (empty($userData)) : ?>
+                                  <tr>
+                                      <td colspan="12" class="text-center">No information available</td>
+                                  </tr>
+                              <?php endif; ?>
+                          </tbody>
+                      </table>
                     </div>
                   </div>
                 </div>

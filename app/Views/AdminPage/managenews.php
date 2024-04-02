@@ -74,6 +74,7 @@
                                         <table class="table table-striped">
                                         <thead>
                                           <tr>
+                                              <th>Staff ID</th>
                                               <th>Title</th>
                                               <th>Content</th>
                                               <th>Category</th>
@@ -92,6 +93,7 @@
                                             <tbody>
                                                 <?php foreach ($newsData as $newsItem): ?>
                                                     <tr>
+                                                        <td><?php echo $newsItem['staff_id']; ?></td>
                                                         <td><?php echo $newsItem['title']; ?></td>
                                                         <td class="advisoryContent"><?php echo $newsItem['content']; ?></td>
                                                         <td><?php echo $newsItem['category_id']; ?></td>
@@ -132,6 +134,7 @@
                                                             <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" data-placement="top" title="View News" onclick="viewNews(<?php echo $newsItem['news_id']; ?>)">
                                                                 <i class="fas fa-eye"></i> View
                                                             </button>
+                                                            <a href="<?php echo base_url('/editNews/'.$newsItem['news_id']); ?>" class="btn btn-sm btn-info">Edit</a>
                                                             <a href="<?php echo base_url('/deleteNews/'.$newsItem['news_id']); ?>" class="btn btn-sm btn-danger delete-news-btn">Delete</a>
                                                         </td>
                                                     </tr>
