@@ -1,1 +1,0 @@
-__ci_last_regenerate|i:1708571944;_ci_previous_url|s:33:"http://localhost:8080/addannounce";_ci_old_input|a:2:{s:3:"get";a:0:{}s:4:"post";a:2:{s:5:"title";s:4:"ikaw";s:11:"description";s:18:"<p>ikaw ay tao</p>";}}__ci_vars|a:2:{s:13:"_ci_old_input";s:3:"old";s:5:"error";s:3:"old";}error|s:77:"Error: Allowed fields must be specified for model: "App\Models\AnnounceModel"";

@@ -17,11 +17,12 @@
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="<?= base_url('manageprofile')?>">Manage Profile</a></li>
                 </ul>
-            </div>
-            <div class="collapse" id="staff">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="<?= base_url('manageusers')?>">Manage Users</a></li>
                 </ul>
+            </div>
+            <div class="collapse" id="staff">
+                
             </div>
         </li>
         <?php endif;?>

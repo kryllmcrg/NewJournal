@@ -29,17 +29,17 @@ class ProfileController extends BaseController
 
    // In your controller
    public function manageProfile()
-    {
-        // Load the UserModel
+   {
         $usersModel = new UsersModel();
-        
-        // Select specific fields from the database, including 'user_id'
-        $userData = $usersModel->select('user_id, staff_id, firstname, lastname, address, email, contact_number, image, role, gender, login_status, last_login_status')
-                            ->findAll();
-
-        // Pass $userData to your view
-        return view('AdminPage/manageprofile', ['userData' => $userData]);
-    }
+       // Select specific fields from the database, including 'user_id'
+       $userData = $usersModel->select('user_id, staff_id, firstname, lastname, address, email, contact_number, image, role, gender, login_status, last_login_status')
+                              ->whereIn('role', ['Admin', 'Staff'])
+                              ->findAll();
+   
+       // Pass $userData to your view
+       return view('AdminPage/manageprofile', ['userData' => $userData]);
+   }
+   
 
     public function update()
     {
