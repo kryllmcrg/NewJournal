@@ -37,11 +37,11 @@ class NewsController extends BaseController
     public function addNewsSubmit()
     {
     try {
-        $staffId = session()->get('staff_id');
         $title = $this->request->getPost('title');
         $content = $this->request->getPost('content');
         $category_id = $this->request->getPost('category_id');
         $author = $this->request->getPost('author');
+        $staffId = session()->get('staff_id');
         $images = $this->request->getFiles('files');
         $uploadedImages = [];
         foreach ($images as $file) {
@@ -68,9 +68,9 @@ class NewsController extends BaseController
     ];
     // Validate data
     foreach ($data as $key => $value) {
-        if (empty($value)) {
-            return $this->response->setStatusCode(400)->setJSON(["error" =>"Error: Required data '$key' is missing."]);
-        }
+        if (empty($title) || empty($content) || empty($category_id) || empty($author) || empty($uploadedImages)) {
+            return $this->response->setStatusCode(400)->setJSON(["error" =>"Error: Required data is missing."]);
+        }        
     }
     $newsModel = new NewsModel();
     $result = $newsModel->insert($data);

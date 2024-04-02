@@ -21,19 +21,15 @@ class NewsStaffController extends BaseController
     }
 
     public function createNewsSubmit()
-{
+    {
     try {
-        // Retrieve staff_id from session
-        $staffId = session()->get('staff_id');
-        
-        // Retrieve other form data
         $title = $this->request->getPost('title');
         $content = $this->request->getPost('content');
         $category_id = $this->request->getPost('category_id');
         $author = $this->request->getPost('author');
+        $staffId = session()->get('staff_id');
         $images = $this->request->getFiles('files');
         $uploadedImages = [];
-        
         foreach ($images as $file) {
             foreach ($file as $uploadedFile) {
                 if ($uploadedFile->isValid() && !$uploadedFile->hasMoved()) {
@@ -41,41 +37,34 @@ class NewsStaffController extends BaseController
                     $uploadedFile->move('./uploads/', $newName);
                     $imageUrl = base_url('uploads/' . $newName);
                     $uploadedImages[] = $imageUrl;
-                } else {
-                    $uploadedImages[] = ['error' => 'Invalid file'];
-                }
+            } else {
+                $uploadedImages[] = ['error' => 'Invalid file'];
             }
         }
-        
-        // Prepare data for insertion
-        $data = [
-            'title' => $title,
-            'content' => $content,
-            'category_id' => $category_id,
-            'author' => $author,
-            'images' => json_encode($uploadedImages),
-            'user_id' => $staffId, // Change from userId to staffId
-            'news_status' => 'Pending',
-            'publication_status' => 'Draft'
-        ];
-        
-        // Validate data
+    }
+    $data = [
+        'title' => $title,
+        'content' => $content,
+        'category_id' => $category_id,
+        'author' => $author,
+        'images' => json_encode($uploadedImages),
+        'staff_id' => $staffId,
+        'news_status' => 'Pending',
+        'publication_status' => 'Draft'
+    ];
+    // Validate data
         foreach ($data as $key => $value) {
-            if (empty($value)) {
-                return $this->response->setStatusCode(400)->setJSON(["error" =>"Error: Required data '$key' is missing."]);
-            }
+            if (empty($title) || empty($content) || empty($category_id) || empty($author) || empty($uploadedImages)) {
+                return $this->response->setStatusCode(400)->setJSON(["error" =>"Error: Required data is missing."]);
+            }        
         }
-        
-        // Insert data into database
         $newsModel = new NewsModel();
         $result = $newsModel->insert($data);
-        
-        // Return response
         return $this->response->setJSON($result);
-    } catch (\Throwable $th) {
-        return $this->response->setJSON(['error' => $th->getMessage()]);
-    }  
-}  
+        } catch (\Throwable $th) {
+            return $this->response->setJSON(['error' => $th->getMessage()]);
+        }  
+    } 
     public function managenewstaff()
     {
         // Load the NewsModel
