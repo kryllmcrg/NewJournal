@@ -210,9 +210,6 @@ class NewsController extends BaseController
             // Fetch only approved news articles
             $approvedNews = $newsModel->where('news_status', 'Approved')->findAll();
             
-            // Dump the contents of $approvedNews for debugging
-            var_dump($approvedNews);
-            
             // Pass the approved news data to the view
             return view('UserPage/home', ['news' => $approvedNews]);
         } catch (\Throwable $th) {
@@ -220,8 +217,6 @@ class NewsController extends BaseController
             return $this->response->setJSON(['error' => $th->getMessage()]);
         }
     }
-
-
 
     public function archive()
     {

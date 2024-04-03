@@ -94,11 +94,11 @@
                                                 <?php foreach ($newsData as $newsItem): ?>
                                                     <tr>
                                                         <td><?php echo $newsItem['staff_id']; ?></td>
-                                                        <td><?php echo $newsItem['title']; ?></td>
+                                                        <td class="advisoryContent"><?php echo $newsItem['title']; ?></td>
                                                         <td class="advisoryContent"><?php echo $newsItem['content']; ?></td>
                                                         <td><?php echo $newsItem['category_id']; ?></td>
                                                         <td><?php echo $newsItem['author']; ?></td>
-                                                        <td><?php echo $newsItem['images']; ?></td>
+                                                        <td class="advisoryContent">><?php echo $newsItem['images']; ?></td>
                                                         <td>
                                                             <div class="d-flex align-items-center">
                                                                 <span id="newsStatusText<?= $newsItem['news_id']; ?>"><?php echo $newsItem['news_status']; ?></span>
@@ -167,7 +167,7 @@
             var maxWidthPercentage = 80; // Adjust this according to your needs
 
             // Calculate the maximum width based on the window width and maximum width percentage
-            var maxWidth = (window.innerWidth * maxWidthPercentage) / 180;
+            var maxWidth = (window.innerWidth * maxWidthPercentage) / 300;
 
             // Calculate the maximum length for the combined subject and content
             var maxLength = Math.floor(maxWidth / 8);

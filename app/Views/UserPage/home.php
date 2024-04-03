@@ -74,67 +74,66 @@
   </div>
 </div>
 
-
 <section id="ts-features" class="ts-features pb-2">
-<div class="container">
-    <div class="row">
-      <div class="col-12">
-        <div class="shuffle-btn-group">
-          <label class="active" for="all">
-            <input type="radio" name="shuffle-filter" id="all" value="all" checked="checked">Show All
-          </label>
-          <label for="commercial">
-            <input type="radio" name="shuffle-filter" id="commercial" value="commercial">Commercial
-          </label>
-          <label for="education">
-            <input type="radio" name="shuffle-filter" id="education" value="education">Education
-          </label>
-          <label for="government">
-            <input type="radio" name="shuffle-filter" id="government" value="government">Government
-          </label>
-          <label for="infrastructure">
-            <input type="radio" name="shuffle-filter" id="infrastructure" value="infrastructure">Infrastructure
-          </label>
-          <label for="residential">
-            <input type="radio" name="shuffle-filter" id="residential" value="residential">Residential
-          </label>
-          <label for="healthcare">
-            <input type="radio" name="shuffle-filter" id="healthcare" value="healthcare">Healthcare
-          </label>
-        </div><!-- project filter end -->
-        
-        <div class="container">
-            <div class="row">
-                <?php foreach ($news as $article): ?>
-                    <div class="col-lg-4 col-md-6 mb-5">
-                        <div class="ts-service-box">
-                            <div class="ts-service-image-wrapper">
-                                <!-- Assuming 'images' column contains JSON data with image URLs -->
-                                <img loading="lazy" class="w-100" src="<?= json_decode($article['images'])[0] ?>" alt="news-image">
+    <div class="container">
+        <div class="row">
+            <?php foreach ($news as $article): ?>
+                <div class="col-lg-4 col-md-6 mb-5">
+                    <div class="ts-service-box">
+                        <div class="ts-service-image-wrapper">
+                            <!-- Assuming 'images' column contains JSON data with image URLs -->
+                            <img loading="lazy" class="w-100" src="<?= json_decode($article['images'])[0] ?>" alt="news-image">
+                        </div>
+                        <div class="d-flex">
+                            <div class="ts-news-info">
+                                <h3 class="news-box-title"><a href="<?= base_url('news_read' . $article['news_id']) ?>"><?= $article['title'] ?></a></h3>
+                                <p class="advisoryContent"><?= $article['content'] ?></p>
+                                <!-- Assuming 'category_id' needs to be fetched from another table -->
+                                <!-- You may need to join 'news' table with 'categories' table in your model -->
+                                <!-- Adjust accordingly -->
+                                <p><strong>Category:</strong> <?= $article['category_id'] ?></p>
+                                <p><strong>Author:</strong> <?= $article['author'] ?></p>
+                                <p><strong>Publication Date:</strong> <?= date('F j, Y', strtotime($article['publication_date'])) ?></p>
+                                <a class="learn-more d-inline-block" href="<?= base_url('news/read/' . $article['news_id']) ?>" aria-label="news-details"><i class="fa fa-caret-right"></i> Read more</a>
                             </div>
-                            <div class="d-flex">
-                                <div class="ts-news-info">
-                                    <h3 class="news-box-title"><a href="<?= base_url('news/read/' . $article['news_id']) ?>"><?= $article['title'] ?></a></h3>
-                                    <p><?= $article['content'] ?></p>
-                                    <!-- Assuming 'category_id' needs to be fetched from another table -->
-                                    <!-- You may need to join 'news' table with 'categories' table in your model -->
-                                    <!-- Adjust accordingly -->
-                                    <p><strong>Category:</strong> <?= $article['category_id'] ?></p>
-                                    <p><strong>Author:</strong> <?= $article['author'] ?></p>
-                                    <p><strong>Publication Date:</strong> <?= date('F j, Y', strtotime($article['publication_date'])) ?></p>
-                                    <a class="learn-more d-inline-block" href="<?= base_url('news/read/' . $article['news_id']) ?>" aria-label="news-details"><i class="fa fa-caret-right"></i> Read more</a>
-                                </div>
-                            </div>
-                        </div><!-- Service box end -->
-                    </div><!-- Col end -->
-                <?php endforeach; ?>
-            </div><!-- Content row end -->
-        </div><!-- Container end -->
-  </section><!-- Feature are end -->
+                        </div>
+                    </div><!-- Service box end -->
+                </div><!-- Col end -->
+            <?php endforeach; ?>
+        </div><!-- Content row end -->
+    </div><!-- Container end -->
+</section><!-- Feature are end -->
 
   <?php include('include\footer.php'); ?>
    <!-- Javascript Files
   ================================================== -->
+
+  <script>
+    function formatAdvisoryDetails(content) {
+        // Define the maximum width percentage or retrieve it from an appropriate source
+        var maxWidthPercentage = 80; // Adjust this according to your needs
+
+        // Calculate the maximum width based on the window width and maximum width percentage
+        var maxWidth = (window.innerWidth * maxWidthPercentage) / 300;
+
+        // Calculate the maximum length for the combined subject and content
+        var maxLength = Math.floor(maxWidth / 8);
+
+        // Check if content length exceeds the maximum length
+        if (content.length > maxLength) {
+            // If combined length exceeds maxLength, truncate and add ellipsis
+            content = content.substring(0, maxLength - 3) + "...";
+        }
+
+        return content;
+    }
+
+    // Call the function to truncate content
+    var advisoryContents = document.getElementsByClassName("advisoryContent");
+    for (var i = 0; i < advisoryContents.length; i++) {
+        advisoryContents[i].innerText = formatAdvisoryDetails(advisoryContents[i].innerText);
+    }
+</script>
 
   <!-- initialize jQuery Library -->
   <script src="assets/plugins/jQuery/jquery.min.js"></script>
