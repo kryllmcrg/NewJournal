@@ -38,7 +38,6 @@ $routes->post('changePubStatus', 'NewsController::changePubStatus');
 $routes->get('/viewnews/(:any)', 'NewsController::viewnews/$1');
 $routes->get('/editNews', 'NewsController::editNews');
 $routes->get('/archive', 'NewsController::archive');
-$routes->get('/displaynews', 'NewsController::displaynews');
 
 $routes->get('/managecomments', 'CommentsController::managecomments');
 

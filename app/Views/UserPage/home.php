@@ -77,7 +77,7 @@
 <section id="ts-features" class="ts-features pb-2">
     <div class="container">
         <div class="row">
-            <?php foreach ($news as $article): ?>
+            <?php foreach ($newsData as $article): ?>
                 <div class="col-lg-4 col-md-6 mb-5">
                     <div class="ts-service-box">
                         <div class="ts-service-image-wrapper">
