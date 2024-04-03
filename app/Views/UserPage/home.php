@@ -103,55 +103,34 @@
           </label>
         </div><!-- project filter end -->
         
-<div class="container">
-    <div class="row">
-        <div class="col-lg-4 col-md-6 mb-5">
-          <div class="ts-service-box">
-              <div class="ts-service-image-wrapper">
-                <img loading="lazy" class="w-100" src="assets/images/pic6.png" alt="service-image">
-              </div>
-              <div class="d-flex">
-                <div class="ts-service-info">
-                    <h3 class="service-box-title"><a href="service-single.html">Zero Harm Everyday</a></h3>
-                    <p>You have ideas, goals, and dreams. We have a culturally diverse, forward thinking team looking for talent like. Lorem ipsum dolor suscipit.</p>
-                    <a class="learn-more d-inline-block" href="service-single.html" aria-label="service-details"><i class="fa fa-caret-right"></i> Read more</a>
-                </div>
-              </div>
-          </div><!-- Service1 end -->
-        </div><!-- Col 1 end -->
-
-        <div class="col-lg-4 col-md-6 mb-5">
-          <div class="ts-service-box">
-              <div class="ts-service-image-wrapper">
-                <img loading="lazy" class="w-100" src="assets/images/pic6.png" alt="service-image">
-              </div>
-              <div class="d-flex">
-                <div class="ts-service-info">
-                    <h3 class="service-box-title"><a href="service-single.html">Virtual Construction</a></h3>
-                    <p>You have ideas, goals, and dreams. We have a culturally diverse, forward thinking team looking for talent like. Lorem ipsum dolor suscipit.</p>
-                    <a class="learn-more d-inline-block" href="service-single.html" aria-label="service-details"><i class="fa fa-caret-right"></i> Read more</a>
-                </div>
-              </div>
-          </div><!-- Service2 end -->
-        </div><!-- Col 2 end -->
-
-        <div class="col-lg-4 col-md-6 mb-5">
-          <div class="ts-service-box">
-              <div class="ts-service-image-wrapper">
-                <img loading="lazy" class="w-100" src="assets/images/pic6.png" alt="service-image">
-              </div>
-              <div class="d-flex">
-                <div class="ts-service-info">
-                    <h3 class="service-box-title"><a href="">Build To Last</a></h3>
-                    <p>You have ideas, goals, and dreams. We have a culturally diverse, forward thinking team looking for talent like. Lorem ipsum dolor suscipit.</p>
-                    <a class="learn-more d-inline-block" href="" aria-label="service-details"><i class="fa fa-caret-right"></i> Read more</a>
-                </div>
-              </div>
-          </div><!-- Service3 end -->
-        </div><!-- Col 3 end -->
-    </div><!-- Content row end -->
-  </div><!-- Container end -->
-</section><!-- Feature are end -->
+        <div class="container">
+            <div class="row">
+                <?php foreach ($news as $article): ?>
+                    <div class="col-lg-4 col-md-6 mb-5">
+                        <div class="ts-service-box">
+                            <div class="ts-service-image-wrapper">
+                                <!-- Assuming 'images' column contains JSON data with image URLs -->
+                                <img loading="lazy" class="w-100" src="<?= json_decode($article['images'])[0] ?>" alt="news-image">
+                            </div>
+                            <div class="d-flex">
+                                <div class="ts-news-info">
+                                    <h3 class="news-box-title"><a href="<?= base_url('news/read/' . $article['news_id']) ?>"><?= $article['title'] ?></a></h3>
+                                    <p><?= $article['content'] ?></p>
+                                    <!-- Assuming 'category_id' needs to be fetched from another table -->
+                                    <!-- You may need to join 'news' table with 'categories' table in your model -->
+                                    <!-- Adjust accordingly -->
+                                    <p><strong>Category:</strong> <?= $article['category_id'] ?></p>
+                                    <p><strong>Author:</strong> <?= $article['author'] ?></p>
+                                    <p><strong>Publication Date:</strong> <?= date('F j, Y', strtotime($article['publication_date'])) ?></p>
+                                    <a class="learn-more d-inline-block" href="<?= base_url('news/read/' . $article['news_id']) ?>" aria-label="news-details"><i class="fa fa-caret-right"></i> Read more</a>
+                                </div>
+                            </div>
+                        </div><!-- Service box end -->
+                    </div><!-- Col end -->
+                <?php endforeach; ?>
+            </div><!-- Content row end -->
+        </div><!-- Container end -->
+  </section><!-- Feature are end -->
 
   <?php include('include\footer.php'); ?>
    <!-- Javascript Files

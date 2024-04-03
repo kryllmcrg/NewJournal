@@ -151,7 +151,6 @@ class NewsController extends BaseController
 
         // Load the view file and pass the news data to it
         return view('AdminPage/managenews', $data); // Pass the $data array to the view
-
     }
 
     public function changeNewStatus()
@@ -201,6 +200,28 @@ class NewsController extends BaseController
             return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $th->getMessage()]);
         }
     }
+
+    public function displaynews()
+    {
+        try {
+            // Load the news model
+            $newsModel = new NewsModel();
+            
+            // Fetch only approved news articles
+            $approvedNews = $newsModel->where('news_status', 'Approved')->findAll();
+            
+            // Dump the contents of $approvedNews for debugging
+            var_dump($approvedNews);
+            
+            // Pass the approved news data to the view
+            return view('UserPage/home', ['news' => $approvedNews]);
+        } catch (\Throwable $th) {
+            // Handle any errors
+            return $this->response->setJSON(['error' => $th->getMessage()]);
+        }
+    }
+
+
 
     public function archive()
     {
