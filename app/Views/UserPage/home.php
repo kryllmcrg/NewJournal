@@ -90,8 +90,7 @@
                 <div class="col-lg-4 col-md-6 mb-5">
                     <div class="ts-service-box">
                         <div class="ts-service-image-wrapper">
-                            <!-- Assuming 'images' column contains JSON data with image URLs -->
-                            <img loading="lazy" class="w-100" src="<?= json_decode($article['images'])[0] ?>" alt="news-image">
+                            <img loading="lazy" class="w-100 h-100" src="<?= json_decode($article['images'])[0] ?>" alt="news-image" style="object-fit: cover; width: 100%; height: 100%;" />
                         </div>
                         <div class="d-flex">
                             <div class="ts-news-info">
