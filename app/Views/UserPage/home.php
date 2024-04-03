@@ -38,43 +38,51 @@
     .nav {
         color: black;
     }
+    
+    .content-container {
+        max-height: 100px; /* Adjust this value as needed */
+        overflow: hidden;
+    }
+
+    .read-more {
+        margin-top: 10px;
+    }
 </style>
 <body>
   
   <?php include('include\header.php'); ?>
   <div class="banner-carousel banner-carousel-2 mb-0">
-  <div class="banner-carousel-item" style="background-image:url(assets/images/slider-main/kalap.png)">
-    <div class="container">
-        <div class="box-slider-content">
-          <div class="box-slider-text">
-              <h2 class="box-slide-title">Celebrate Kalap Festival</h2>
-              <h3 class="box-slide-sub-title">Experience the Vibrancy of Calapan City</h3>
-              <p class="box-slide-description">Join us in commemorating the colorful Kalap Festival, a celebration of culture, tradition, and unity in Calapan City, Oriental Mindoro. Immerse yourself in the rich heritage of the region, witness dazzling performances, indulge in local delicacies, and create lasting memories with your loved ones.</p>
-              <p>
-                <a href="#" class="slider btn btn-primary">Read more</a>
-              </p>
-          </div>
-        </div>
-    </div>
-  </div>
-
-  <div class="banner-carousel-item" style="background-image:url(assets/images/slider-main/dokting.jpg)">
-    <div class="slider-content text-left">
+      <div class="banner-carousel-item" style="background-image:url(assets/images/slider-main/kalap.png)">
         <div class="container">
-          <div class="box-slider-content">
-            <div class="box-slider-text">
-                <h2 class="box-slide-title">Remembering Dentist Doc Ting</h2>
-                <h3 class="box-slide-sub-title">A Loss to the Community</h3>
-                <p class="box-slide-description">In the wake of the tragic loss of Dentist Doc Ting, a pillar of our community and dedicated public servant, we mourn the untimely passing of a beloved figure. His contributions to the betterment of Calapan City, Oriental Mindoro, will forever be remembered. Let us honor his memory by cherishing the values he stood for and continuing his legacy of service and compassion.</p>
-                <p><a href="#" class="slider btn btn-primary" aria-label="about-us">Read more</a></p>
+            <div class="box-slider-content">
+              <div class="box-slider-text">
+                  <h2 class="box-slide-title">Celebrate Kalap Festival</h2>
+                  <h3 class="box-slide-sub-title">Experience the Vibrancy of Calapan City</h3>
+                  <p class="box-slide-description">Join us in commemorating the colorful Kalap Festival, a celebration of culture, tradition, and unity in Calapan City, Oriental Mindoro. Immerse yourself in the rich heritage of the region, witness dazzling performances, indulge in local delicacies, and create lasting memories with your loved ones.</p>
+                  <p>
+                    <a href="#" class="slider btn btn-primary">Read more</a>
+                  </p>
               </div>
-          </div>
+            </div>
         </div>
-    </div>
-  </div>
+      </div>
+
+      <div class="banner-carousel-item" style="background-image:url(assets/images/slider-main/dokting.jpg)">
+        <div class="slider-content text-left">
+            <div class="container">
+              <div class="box-slider-content">
+                <div class="box-slider-text">
+                    <h2 class="box-slide-title">Remembering Dentist Doc Ting</h2>
+                    <h3 class="box-slide-sub-title">A Loss to the Community</h3>
+                    <p class="box-slide-description">In the wake of the tragic loss of Dentist Doc Ting, a pillar of our community and dedicated public servant, we mourn the untimely passing of a beloved figure. His contributions to the betterment of Calapan City, Oriental Mindoro, will forever be remembered. Let us honor his memory by cherishing the values he stood for and continuing his legacy of service and compassion.</p>
+                    <p><a href="#" class="slider btn btn-primary" aria-label="about-us">Read more</a></p>
+                  </div>
+              </div>
+            </div>
+        </div>
+      </div>
 </div>
 
-<<<<<<< Updated upstream
 <section id="ts-features" class="ts-features pb-2">
     <div class="container">
         <div class="row">
@@ -88,14 +96,13 @@
                         <div class="d-flex">
                             <div class="ts-news-info">
                                 <h3 class="news-box-title"><a href="<?= base_url('news_read' . $article['news_id']) ?>"><?= $article['title'] ?></a></h3>
-                                <p class="advisoryContent"><?= $article['content'] ?></p>
-                                <!-- Assuming 'category_id' needs to be fetched from another table -->
-                                <!-- You may need to join 'news' table with 'categories' table in your model -->
-                                <!-- Adjust accordingly -->
+                                <div class="content-container">
+                                    <p class="advisoryContent"><?= $article['content'] ?></p>
+                                </div>
                                 <p><strong>Category:</strong> <?= $article['category_id'] ?></p>
                                 <p><strong>Author:</strong> <?= $article['author'] ?></p>
                                 <p><strong>Publication Date:</strong> <?= date('F j, Y', strtotime($article['publication_date'])) ?></p>
-                                <a class="learn-more d-inline-block" href="<?= base_url('news/read/' . $article['news_id']) ?>" aria-label="news-details"><i class="fa fa-caret-right"></i> Read more</a>
+                                <a class="learn-more d-inline-block" href="<?= base_url('news_read' . $article['news_id']) ?>" aria-label="news-details"><i class="fa fa-caret-right"></i> Read more</a>
                             </div>
                         </div>
                     </div><!-- Service box end -->
@@ -104,46 +111,18 @@
         </div><!-- Content row end -->
     </div><!-- Container end -->
 </section><!-- Feature are end -->
-=======
-  <section id="ts-features" class="ts-features pb-2">
-      <div class="container">
-          <div class="row">
-              <?php foreach ($news as $article): ?>
-                  <div class="col-lg-4 col-md-6 mb-5">
-                      <div class="ts-service-box">
-                          <div class="ts-service-image-wrapper">
-                              <!-- Assuming 'images' column contains JSON data with image URLs -->
-                              <img loading="lazy" class="w-100" src="<?= json_decode($article['images'])[0] ?>" alt="news-image">
-                          </div>
-                          <div class="d-flex">
-                              <div class="ts-news-info">
-                                  <h3 class="news-box-title"><a href="<?= base_url('news_read' . $article['news_id']) ?>"><?= $article['title'] ?></a></h3>
-                                  <p class="advisoryContent"><?= $article['content'] ?></p>
-                                  <!-- Assuming 'category_id' needs to be fetched from another table -->
-                                  <!-- You may need to join 'news' table with 'categories' table in your model -->
-                                  <!-- Adjust accordingly -->
-                                  <p><strong>Category:</strong> <?= $article['category_id'] ?></p>
-                                  <p><strong>Author:</strong> <?= $article['author'] ?></p>
-                                  <p><strong>Publication Date:</strong> <?= date('F j, Y', strtotime($article['publication_date'])) ?></p>
-                                  <a class="learn-more d-inline-block" href="<?= base_url('news/read/' . $article['news_id']) ?>" aria-label="news-details"><i class="fa fa-caret-right"></i> Read more</a>
-                              </div>
-                          </div>
-                      </div><!-- Service box end -->
-                  </div><!-- Col end -->
-              <?php endforeach; ?>
-          </div><!-- Content row end -->
-      </div><!-- Container end -->
-  </section><!-- Feature are end -->
->>>>>>> Stashed changes
 
   <?php include('include\footer.php'); ?>
    <!-- Javascript Files
   ================================================== -->
 
   <script>
-    function formatAdvisoryDetails(content, maxWidthPercentage) {
+    function formatAdvisoryDetails(content) {
+        // Define the maximum width percentage or retrieve it from an appropriate source
+        var maxWidthPercentage = 80; // Adjust this according to your needs
+
         // Calculate the maximum width based on the window width and maximum width percentage
-        var maxWidth = (window.innerWidth * maxWidthPercentage) / 100;
+        var maxWidth = (window.innerWidth * maxWidthPercentage) / 50;
 
         // Calculate the maximum length for the combined subject and content
         var maxLength = Math.floor(maxWidth / 8);
@@ -151,20 +130,21 @@
         // Check if content length exceeds the maximum length
         if (content.length > maxLength) {
             // If combined length exceeds maxLength, truncate and add ellipsis
-            return content.substring(0, maxLength - 3) + "...";
+            content = content.substring(0, maxLength - 3) + "...";
         }
 
         return content;
     }
 
-    // Call the function to truncate content
-    var advisoryContents = document.querySelectorAll(".advisoryContent");
-    advisoryContents.forEach(function(advisoryContent) {
-        advisoryContent.innerText = formatAdvisoryDetails(advisoryContent.innerText, 80); // Adjust maxWidthPercentage here
-    });
+    // Call the function to truncate content after page load
+    window.onload = function() {
+        var advisoryContents = document.getElementsByClassName("advisoryContent");
+        for (var i = 0; i < advisoryContents.length; i++) {
+            var content = advisoryContents[i].innerText;
+            var truncatedContent = formatAdvisoryDetails(content);
+        }
+    };
 </script>
-
-
 
   <!-- initialize jQuery Library -->
   <script src="assets/plugins/jQuery/jquery.min.js"></script>

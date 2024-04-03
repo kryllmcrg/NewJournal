@@ -21,16 +21,6 @@ class UserController extends BaseController
 
     public function home()
     {
-        $categoryModel = new CategoryModel();
-        $categories = $categoryModel->findAll();
-
-        $data['categories'] = $categories;
-
-        $newsModel = new NewsModel();
-        $data['newsData'] = $newsModel->findAll();
-
-        return view('UserPage/home', $data);
-
         try {
             // Load the news model
             $newsModel = new NewsModel();
@@ -38,13 +28,17 @@ class UserController extends BaseController
             // Fetch only approved news articles
             $approvedNews = $newsModel->where('news_status', 'Approved')->findAll();
             
-            // Pass the approved news data to the view
-            return view('UserPage/home', ['newsData' => $approvedNews]);
+            // Pass the approved news data to the view along with categories
+            $categoryModel = new CategoryModel();
+            $categories = $categoryModel->findAll();
+
+            return view('UserPage/home', ['newsData' => $approvedNews, 'categories' => $categories]);
         } catch (\Throwable $th) {
             // Handle any errors
             return $this->response->setJSON(['error' => $th->getMessage()]);
         }
     }
+
 
     
     public function about()

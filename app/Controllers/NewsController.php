@@ -201,23 +201,6 @@ class NewsController extends BaseController
         }
     }
 
-    public function displaynews()
-    {
-        try {
-            // Load the news model
-            $newsModel = new NewsModel();
-            
-            // Fetch only approved news articles
-            $approvedNews = $newsModel->where('news_status', 'Approved')->findAll();
-            
-            // Pass the approved news data to the view
-            return view('UserPage/home', ['news' => $approvedNews]);
-        } catch (\Throwable $th) {
-            // Handle any errors
-            return $this->response->setJSON(['error' => $th->getMessage()]);
-        }
-    }
-
     public function archive()
     {
         // Load the NewsModel
