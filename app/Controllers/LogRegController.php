@@ -185,6 +185,7 @@ class LogRegController extends BaseController
                 if ($verify_pass) {
                     $session = session();
                     $session->set([
+                        'staff_id' => $data['staff_id'],
                         'user_id' => $data['user_id'],
                         'email' => $data['email'],
                         'role' => $data['role'],
