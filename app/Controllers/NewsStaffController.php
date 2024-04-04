@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\CategoryModel;
 use App\Models\NewsModel;
+use App\Models\UsersModel;
 
 class NewsStaffController extends BaseController
 {
@@ -65,17 +66,27 @@ class NewsStaffController extends BaseController
             return $this->response->setJSON(['error' => $th->getMessage()]);
         }  
     } 
+    
     public function managenewstaff()
     {
-        // Load the NewsModel
+        // Load the required models
         $newsModel = new NewsModel();
-
-        // Fetch news data from the database
-        $data['newsData'] = $newsModel->findAll(); // Assuming findAll() fetches all news items
-
+        $userModel = new UsersModel();
+    
+        // Fetch news data from the database, joining with the users table to filter by role "Staff"
+        $staffNewsData = $newsModel->select('news.*')
+                                    ->join('users', 'users.staff_id = news.staff_id')
+                                    ->where('users.role', 'Staff')
+                                    ->findAll();
+    
+        // Pass the filtered news data to the view
+        $data['newsData'] = $staffNewsData;
+    
         // Load the view file and pass the news data to it
-        return view('StaffPage/managenewstaff', $data); // Pass the $data array to the view
+        return view('StaffPage/managenewstaff', $data);
     }
+    
+    
 
     public function dashboard()
     {

@@ -18,7 +18,6 @@ class UserController extends BaseController
         return view('UserPage/news_read');
     }
 
-
     public function home()
     {
         try {
@@ -28,16 +27,26 @@ class UserController extends BaseController
             // Fetch only approved news articles
             $approvedNews = $newsModel->where('news_status', 'Approved')->findAll();
             
-            // Pass the approved news data to the view along with categories
+            // Load the category model
             $categoryModel = new CategoryModel();
+            
+            // Fetch all categories
             $categories = $categoryModel->findAll();
-
-            return view('UserPage/home', ['newsData' => $approvedNews, 'categories' => $categories]);
+            
+            // Map category IDs to category names for easy retrieval
+            $categoryNames = [];
+            foreach ($categories as $category) {
+                $categoryNames[$category['category_id']] = $category['category_name'];
+            }
+            
+            // Pass the approved news data to the view along with categories
+            return view('UserPage/home', ['newsData' => $approvedNews, 'categoryNames' => $categoryNames]);
         } catch (\Throwable $th) {
             // Handle any errors
             return $this->response->setJSON(['error' => $th->getMessage()]);
         }
     }
+    
 
 
     

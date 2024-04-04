@@ -98,7 +98,7 @@
                                 <div class="content-container">
                                     <p class="advisoryContent"><?= $article['content'] ?></p>
                                 </div>
-                                <p><strong>Category:</strong> <?= $article['category_id'] ?></p>
+                                <p><strong>Category:</strong> <?= isset($categoryNames[$article['category_id']]) ? $categoryNames[$article['category_id']] : 'Unknown' ?></p>
                                 <p><strong>Author:</strong> <?= $article['author'] ?></p>
                                 <p><strong>Publication Date:</strong> <?= date('F j, Y', strtotime($article['publication_date'])) ?></p>
                                 <a class="learn-more d-inline-block" href="<?= base_url('news_read' . $article['news_id']) ?>" aria-label="news-details"><i class="fa fa-caret-right"></i> Read more</a>

@@ -204,6 +204,7 @@
                     if (response.success) {
                         statusTextElement.innerText = status;
                         alert("Status updated successfully."); // Optional success message
+                        location.reload();
                     } else {
                         console.error("Failed to update status: " + response.message);
                         alert("Failed to update status. Please try again.");
@@ -230,6 +231,7 @@
                     if (response.success) {
                         statusTextElement.innerText = status;
                         alert("Publication status updated successfully."); // Optional success message
+                        location.reload();
                     } else {
                         console.error("Failed to update publication status: " + response.message);
                         alert("Failed to update publication status. Please try again.");
