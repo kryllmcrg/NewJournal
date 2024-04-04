@@ -66,7 +66,7 @@ class NewsStaffController extends BaseController
             return $this->response->setJSON(['error' => $th->getMessage()]);
         }  
     } 
-    
+
     public function managenewstaff()
     {
         // Load the required models
@@ -85,8 +85,6 @@ class NewsStaffController extends BaseController
         // Load the view file and pass the news data to it
         return view('StaffPage/managenewstaff', $data);
     }
-    
-    
 
     public function dashboard()
     {
