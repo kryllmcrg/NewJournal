@@ -153,14 +153,16 @@ class NewsController extends BaseController
         return view('AdminPage/managenews', $data); // Pass the $data array to the view
     }
 
-    public function changeNewStatus()
+        public function changeNewStatus()
     {
         try {
             $newsID = $this->request->getVar('news_id');
             $newsStatus = $this->request->getVar('news_status');
 
             // Prepare data to update news status
-            $data = ['news_status' => $newsStatus];
+            $data = [
+                'news_status' => $newsStatus
+            ];
 
             // Update news status in the database
             $model = new NewsModel();
@@ -172,6 +174,8 @@ class NewsController extends BaseController
             switch ($newsStatus) {
                 case 'Approved':
                     $publicationStatus = 'Published';
+                    // Update publication date to current date and time if the news is approved
+                    $model->where('news_id', $newsID)->set(['date_approved' => date('Y-m-d H:i:s')])->update();
                     break;
                 case 'Decline':
                     $publicationStatus = 'Unpublished';
@@ -195,32 +199,32 @@ class NewsController extends BaseController
     }
 
     public function changePubStatus()
-    {
-        try {
-            $newsID = $this->request->getVar('news_id');
-            $publicationStatus = $this->request->getVar('publication_status'); // Get publication_status from request
+{
+    try {
+        $newsID = $this->request->getVar('news_id');
+        $publicationStatus = $this->request->getVar('publication_status'); // Get publication_status from request
 
-            $data = [];
-            if ($publicationStatus !== null) {
-                $data['publication_status'] = $publicationStatus;
-                if ($publicationStatus === 'Published') {
-                    // Update publication date to current date and time if publication status is "Published"
-                    $data['publication_date'] = date('Y-m-d H:i:s');
-                }
+        $data = [];
+        if ($publicationStatus !== null) {
+            $data['publication_status'] = $publicationStatus;
+            if ($publicationStatus === 'Published') {
+                // Update publication date to current date and time if publication status is "Published"
+                $data['publication_date'] = date('Y-m-d H:i:s');
             }
-
-            if (empty($data)) {
-                throw new \Exception('No status to update.');
-            }
-
-            $model = new NewsModel();
-            $model->where('news_id', $newsID)->set($data)->update();
-
-            return $this->response->setJSON(['success' => true, 'message' => 'Publication status updated successfully.']);
-        } catch (\Throwable $th) {
-            return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $th->getMessage()]);
         }
+
+        if (empty($data)) {
+            throw new \Exception('No status to update.');
+        }
+
+        $model = new NewsModel();
+        $model->where('news_id', $newsID)->set($data)->update();
+
+        return $this->response->setJSON(['success' => true, 'message' => 'Publication status updated successfully.']);
+    } catch (\Throwable $th) {
+        return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $th->getMessage()]);
     }
+}
 
     public function archive()
     {

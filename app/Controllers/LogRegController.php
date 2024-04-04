@@ -110,9 +110,8 @@ class LogRegController extends BaseController
                 'gender' => $gender,
                 'contact_number' => $contact_number,
                 'image' => $image->getName(),
-                'role' => 'User' // Assuming all users registering through this form are regular users
+                'role' => 'User' 
             ];
-
             // Insert data into database
             $usersModel = new UsersModel();
             $usersModel->insert($data);

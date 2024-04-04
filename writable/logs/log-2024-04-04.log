@@ -820,3 +820,315 @@ WARNING - 2024-04-04 07:02:09 --> [DEPRECATED] strtotime(): Passing null to para
  8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-04-04 07:05:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:05:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:06:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:07:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:08:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:08:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:12:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:12:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:14:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:14:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:14:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:17:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:17:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:17:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:20:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:21:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:22:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:22:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-04-04 07:23:26 --> mysqli_sql_exception: Duplicate entry '' for key 'users.staff_id' in C:\laragon\www\NewJournal\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\NewJournal\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\laragon\www\NewJournal\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\laragon\www\NewJournal\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\laragon\www\NewJournal\system\Database\BaseBuilder.php(2302): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\laragon\www\NewJournal\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\NewJournal\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\NewJournal\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\NewJournal\app\Controllers\LogRegController.php(118): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\NewJournal\system\CodeIgniter.php(941): App\Controllers\LogRegController->save()
+#9 C:\laragon\www\NewJournal\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogRegController))
+#10 C:\laragon\www\NewJournal\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\NewJournal\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\NewJournal\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2024-04-04 07:23:26 --> CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '' for key 'users.staff_id'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2302): CodeIgniter\Database\BaseConnection->query('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (:firstname:, :lastname:, :email:, :password:, :address:, :gender:, :contact_number:, :image:, :role:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\LogRegController.php(118): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LogRegController->save()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogRegController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-04-04 07:23:26 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '' for key 'users.staff_id'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (\'Navy Jane\', \'Cleofe\', \'navyjane@gmail.com\', \'$2y$10$sVT25cq11eMDy6gBmadwpu5uGN1A2Fo5BSShEb0Hfb4vM4fuQ5omS\', \'Socorro\', \'Female\', \'09786453251\', \'1712215405_fcbddebc46f0f1cce3a9.jpg\', \'User\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (\'Navy Jane\', \'Cleofe\', \'navyjane@gmail.com\', \'$2y$10$sVT25cq11eMDy6gBmadwpu5uGN1A2Fo5BSShEb0Hfb4vM4fuQ5omS\', \'Socorro\', \'Female\', \'09786453251\', \'1712215405_fcbddebc46f0f1cce3a9.jpg\', \'User\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2302): CodeIgniter\Database\BaseConnection->query('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (:firstname:, :lastname:, :email:, :password:, :address:, :gender:, :contact_number:, :image:, :role:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\LogRegController.php(118): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LogRegController->save()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogRegController))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-04-04 07:23:26 --> [Caused by] mysqli_sql_exception: Duplicate entry '' for key 'users.staff_id'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (\'Navy Jane\', \'Cleofe\', \'navyjane@gmail.com\', \'$2y$10$sVT25cq11eMDy6gBmadwpu5uGN1A2Fo5BSShEb0Hfb4vM4fuQ5omS\', \'Socorro\', \'Female\', \'09786453251\', \'1712215405_fcbddebc46f0f1cce3a9.jpg\', \'User\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (\'Navy Jane\', \'Cleofe\', \'navyjane@gmail.com\', \'$2y$10$sVT25cq11eMDy6gBmadwpu5uGN1A2Fo5BSShEb0Hfb4vM4fuQ5omS\', \'Socorro\', \'Female\', \'09786453251\', \'1712215405_fcbddebc46f0f1cce3a9.jpg\', \'User\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (\'Navy Jane\', \'Cleofe\', \'navyjane@gmail.com\', \'$2y$10$sVT25cq11eMDy6gBmadwpu5uGN1A2Fo5BSShEb0Hfb4vM4fuQ5omS\', \'Socorro\', \'Female\', \'09786453251\', \'1712215405_fcbddebc46f0f1cce3a9.jpg\', \'User\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2302): CodeIgniter\Database\BaseConnection->query('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (:firstname:, :lastname:, :email:, :password:, :address:, :gender:, :contact_number:, :image:, :role:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\LogRegController.php(118): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LogRegController->save()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogRegController))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-04-04 07:23:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-04-04 07:24:45 --> mysqli_sql_exception: Duplicate entry '' for key 'users.staff_id' in C:\laragon\www\NewJournal\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\NewJournal\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\laragon\www\NewJournal\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\laragon\www\NewJournal\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\laragon\www\NewJournal\system\Database\BaseBuilder.php(2302): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\laragon\www\NewJournal\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\NewJournal\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\NewJournal\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\NewJournal\app\Controllers\LogRegController.php(118): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\NewJournal\system\CodeIgniter.php(941): App\Controllers\LogRegController->save()
+#9 C:\laragon\www\NewJournal\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogRegController))
+#10 C:\laragon\www\NewJournal\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\NewJournal\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\NewJournal\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2024-04-04 07:24:45 --> CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '' for key 'users.staff_id'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2302): CodeIgniter\Database\BaseConnection->query('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (:firstname:, :lastname:, :email:, :password:, :address:, :gender:, :contact_number:, :image:, :role:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\LogRegController.php(118): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LogRegController->save()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogRegController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-04-04 07:24:45 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '' for key 'users.staff_id'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (\'Navy Jane\', \'Cleofe\', \'navyjane@gmail.com\', \'$2y$10$.IiPEiWqK/fUO4AfXpqgUO4gBTjVr5Gpus8ByW4Ch127kYlmAX6Ri\', \'Socorro\', \'Female\', \'09736463883\', \'1712215485_781cf43e7c7b92631d87.jpg\', \'User\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (\'Navy Jane\', \'Cleofe\', \'navyjane@gmail.com\', \'$2y$10$.IiPEiWqK/fUO4AfXpqgUO4gBTjVr5Gpus8ByW4Ch127kYlmAX6Ri\', \'Socorro\', \'Female\', \'09736463883\', \'1712215485_781cf43e7c7b92631d87.jpg\', \'User\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2302): CodeIgniter\Database\BaseConnection->query('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (:firstname:, :lastname:, :email:, :password:, :address:, :gender:, :contact_number:, :image:, :role:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\LogRegController.php(118): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LogRegController->save()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogRegController))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-04-04 07:24:45 --> [Caused by] mysqli_sql_exception: Duplicate entry '' for key 'users.staff_id'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (\'Navy Jane\', \'Cleofe\', \'navyjane@gmail.com\', \'$2y$10$.IiPEiWqK/fUO4AfXpqgUO4gBTjVr5Gpus8ByW4Ch127kYlmAX6Ri\', \'Socorro\', \'Female\', \'09736463883\', \'1712215485_781cf43e7c7b92631d87.jpg\', \'User\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (\'Navy Jane\', \'Cleofe\', \'navyjane@gmail.com\', \'$2y$10$.IiPEiWqK/fUO4AfXpqgUO4gBTjVr5Gpus8ByW4Ch127kYlmAX6Ri\', \'Socorro\', \'Female\', \'09736463883\', \'1712215485_781cf43e7c7b92631d87.jpg\', \'User\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (\'Navy Jane\', \'Cleofe\', \'navyjane@gmail.com\', \'$2y$10$.IiPEiWqK/fUO4AfXpqgUO4gBTjVr5Gpus8ByW4Ch127kYlmAX6Ri\', \'Socorro\', \'Female\', \'09736463883\', \'1712215485_781cf43e7c7b92631d87.jpg\', \'User\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2302): CodeIgniter\Database\BaseConnection->query('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (:firstname:, :lastname:, :email:, :password:, :address:, :gender:, :contact_number:, :image:, :role:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\LogRegController.php(118): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LogRegController->save()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogRegController))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-04-04 07:26:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:27:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-04-04 07:27:54 --> mysqli_sql_exception: Duplicate entry '' for key 'users.staff_id' in C:\laragon\www\NewJournal\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\NewJournal\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\laragon\www\NewJournal\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\laragon\www\NewJournal\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\laragon\www\NewJournal\system\Database\BaseBuilder.php(2302): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\laragon\www\NewJournal\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\NewJournal\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\NewJournal\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\NewJournal\app\Controllers\LogRegController.php(117): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\NewJournal\system\CodeIgniter.php(941): App\Controllers\LogRegController->save()
+#9 C:\laragon\www\NewJournal\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogRegController))
+#10 C:\laragon\www\NewJournal\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\NewJournal\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\NewJournal\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+CRITICAL - 2024-04-04 07:27:54 --> CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '' for key 'users.staff_id'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2302): CodeIgniter\Database\BaseConnection->query('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (:firstname:, :lastname:, :email:, :password:, :address:, :gender:, :contact_number:, :image:, :role:)', [...], false)
+ 2 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\LogRegController.php(117): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LogRegController->save()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogRegController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-04-04 07:27:54 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Duplicate entry '' for key 'users.staff_id'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (\'Navy Jane\', \'Cleofe\', \'navyjane@gmail.com\', \'$2y$10$vcbYETeD4RGR3DE/887/u.TYkKxQKhz23VJ/toFfnDC/ygPlBZKZu\', \'Socorro\', \'Female\', \'09768546321\', \'1712215674_fc13767325bbe750ff45.jpg\', \'User\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (\'Navy Jane\', \'Cleofe\', \'navyjane@gmail.com\', \'$2y$10$vcbYETeD4RGR3DE/887/u.TYkKxQKhz23VJ/toFfnDC/ygPlBZKZu\', \'Socorro\', \'Female\', \'09768546321\', \'1712215674_fc13767325bbe750ff45.jpg\', \'User\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2302): CodeIgniter\Database\BaseConnection->query('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (:firstname:, :lastname:, :email:, :password:, :address:, :gender:, :contact_number:, :image:, :role:)', [...], false)
+ 4 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\LogRegController.php(117): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LogRegController->save()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogRegController))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-04-04 07:27:54 --> [Caused by] mysqli_sql_exception: Duplicate entry '' for key 'users.staff_id'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (\'Navy Jane\', \'Cleofe\', \'navyjane@gmail.com\', \'$2y$10$vcbYETeD4RGR3DE/887/u.TYkKxQKhz23VJ/toFfnDC/ygPlBZKZu\', \'Socorro\', \'Female\', \'09768546321\', \'1712215674_fc13767325bbe750ff45.jpg\', \'User\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (\'Navy Jane\', \'Cleofe\', \'navyjane@gmail.com\', \'$2y$10$vcbYETeD4RGR3DE/887/u.TYkKxQKhz23VJ/toFfnDC/ygPlBZKZu\', \'Socorro\', \'Female\', \'09768546321\', \'1712215674_fc13767325bbe750ff45.jpg\', \'User\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (\'Navy Jane\', \'Cleofe\', \'navyjane@gmail.com\', \'$2y$10$vcbYETeD4RGR3DE/887/u.TYkKxQKhz23VJ/toFfnDC/ygPlBZKZu\', \'Socorro\', \'Female\', \'09768546321\', \'1712215674_fc13767325bbe750ff45.jpg\', \'User\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2302): CodeIgniter\Database\BaseConnection->query('INSERT INTO `users` (`firstname`, `lastname`, `email`, `password`, `address`, `gender`, `contact_number`, `image`, `role`) VALUES (:firstname:, :lastname:, :email:, :password:, :address:, :gender:, :contact_number:, :image:, :role:)', [...], false)
+ 5 SYSTEMPATH\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(802): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(744): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\LogRegController.php(117): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LogRegController->save()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogRegController))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-04-04 07:29:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:30:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:30:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:31:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-04-04 07:31:23 --> [DEPRECATED] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated in APPPATH\Views\UserPage\home.php on line 103.
+ 1 APPPATH\Views\UserPage\home.php(103): strtotime(null)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\NewJournal\\app\\Views\\UserPage\\home.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('UserPage/home', [], true)
+ 5 APPPATH\Controllers\UserController.php(43): view('UserPage/home', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->home()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-04-04 07:31:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:31:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:31:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:31:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:32:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:32:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-04-04 07:32:50 --> mysqli_sql_exception: Duplicate entry 'STCIO-0111' for key 'news.staff_id' in C:\laragon\www\NewJournal\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\NewJournal\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ne...', 0)
+#1 C:\laragon\www\NewJournal\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ne...')
+#2 C:\laragon\www\NewJournal\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ne...')
+#3 C:\laragon\www\NewJournal\system\Database\BaseBuilder.php(2302): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ne...', Array, false)
+#4 C:\laragon\www\NewJournal\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\NewJournal\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\NewJournal\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\NewJournal\app\Controllers\NewsStaffController.php(63): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\NewJournal\system\CodeIgniter.php(941): App\Controllers\NewsStaffController->createNewsSubmit()
+#9 C:\laragon\www\NewJournal\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\NewsStaffController))
+#10 C:\laragon\www\NewJournal\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\NewJournal\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\NewJournal\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+INFO - 2024-04-04 07:33:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:35:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:35:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:36:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-04-04 07:36:23 --> [DEPRECATED] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated in APPPATH\Views\UserPage\home.php on line 103.
+ 1 APPPATH\Views\UserPage\home.php(103): strtotime(null)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\NewJournal\\app\\Views\\UserPage\\home.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('UserPage/home', [], true)
+ 5 APPPATH\Controllers\UserController.php(43): view('UserPage/home', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->home()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+WARNING - 2024-04-04 07:36:23 --> [DEPRECATED] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated in APPPATH\Views\UserPage\home.php on line 103.
+ 1 APPPATH\Views\UserPage\home.php(103): strtotime(null)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\NewJournal\\app\\Views\\UserPage\\home.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('UserPage/home', [], true)
+ 5 APPPATH\Controllers\UserController.php(43): view('UserPage/home', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->home()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-04-04 07:37:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:37:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:43:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:43:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:46:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:46:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:47:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:47:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:47:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-04-04 07:47:39 --> [DEPRECATED] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated in APPPATH\Views\UserPage\home.php on line 103.
+ 1 APPPATH\Views\UserPage\home.php(103): strtotime(null)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\NewJournal\\app\\Views\\UserPage\\home.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('UserPage/home', [], true)
+ 5 APPPATH\Controllers\UserController.php(43): view('UserPage/home', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->home()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+WARNING - 2024-04-04 07:47:39 --> [DEPRECATED] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated in APPPATH\Views\UserPage\home.php on line 103.
+ 1 APPPATH\Views\UserPage\home.php(103): strtotime(null)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\NewJournal\\app\\Views\\UserPage\\home.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('UserPage/home', [], true)
+ 5 APPPATH\Controllers\UserController.php(43): view('UserPage/home', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->home()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-04-04 07:48:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:48:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:49:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-04 07:49:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-04-04 07:49:38 --> [DEPRECATED] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated in APPPATH\Views\UserPage\home.php on line 103.
+ 1 APPPATH\Views\UserPage\home.php(103): strtotime(null)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\NewJournal\\app\\Views\\UserPage\\home.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('UserPage/home', [], true)
+ 5 APPPATH\Controllers\UserController.php(43): view('UserPage/home', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->home()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+WARNING - 2024-04-04 07:49:38 --> [DEPRECATED] strtotime(): Passing null to parameter #1 ($datetime) of type string is deprecated in APPPATH\Views\UserPage\home.php on line 103.
+ 1 APPPATH\Views\UserPage\home.php(103): strtotime(null)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\NewJournal\\app\\Views\\UserPage\\home.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('UserPage/home', [], true)
+ 5 APPPATH\Controllers\UserController.php(43): view('UserPage/home', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->home()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
