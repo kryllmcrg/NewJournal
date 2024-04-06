@@ -125,7 +125,7 @@ class LogRegController extends BaseController
         }
     }
 
-    public function auth()
+        public function auth()
     {
         $session = session();
         $model = new UsersModel();
@@ -145,12 +145,19 @@ class LogRegController extends BaseController
                     'fullname' => $data['firstname'].' '. $data['lastname'],
                     'logged_in' => true
                 ]);
+
+                // Update login status to 'Logged In'
+                $loginData = [
+                    'log_status' => 'Logged In'
+                ];
+                $model->update($data['user_id'], $loginData);
+
                 // Redirect based on user's role
                 if ($data['role'] == 'Admin' || $data['role'] == 'Staff') {
                     return redirect()->to('/dashboard');
                 } else {
                     // Redirect to another page for users with different roles
-                    return redirect()->to('/other_page');
+                    return redirect()->to('/');
                 }
             } else {
                 $session->setFlashdata('msg', 'Incorrect password');
@@ -162,7 +169,7 @@ class LogRegController extends BaseController
         }
     }
 
-    public function check()
+        public function check()
     {
         // Include form helper
         helper(['form']);
@@ -192,6 +199,13 @@ class LogRegController extends BaseController
                         'fullname' => $data['firstname'].' '. $data['lastname'],
                         'logged_in' => true
                     ]);
+
+                    // Update login status to 'Logged In'
+                    $loginData = [
+                        'log_status' => 'Logged In'
+                    ];
+                    $model->update($data['user_id'], $loginData);
+
                     if ($data['role'] == 'Admin' || $data['role'] == 'Staff') {
                         return redirect()->to('/dashboard');
                     } else {
@@ -213,6 +227,28 @@ class LogRegController extends BaseController
             echo view('login', $data);
         }
     }
+
+    public function logout()
+    {
+        $session = session();
+        $model = new UsersModel();
+
+        // Get user id from session
+        $userId = $session->get('user_id');
+
+        // Update login status to 'Logged Out'
+        $logoutData = [
+            'log_status' => 'Logged Out'
+        ];
+        $model->update($userId, $logoutData);
+
+        // Destroy session
+        $session->destroy();
+
+        // Redirect to login page
+        return redirect()->to('/login');
+    }
+
 
     public function filtercheck()
     {

@@ -161,8 +161,7 @@
                                     <th>Image</th>
                                     <th>Role</th>
                                     <th>Gender</th>
-                                    <th>Login Status</th>
-                                    <th>Last Login Status</th>
+                                    <th>Log Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -178,8 +177,7 @@
                                         <td><img src="<?= base_url('uploads/' . $user['image']) ?>" alt="User Image" width="50"></td>
                                         <td><?= $user['role'] ?></td>
                                         <td><?= $user['gender'] ?></td>
-                                        <td><?= $user['login_status'] ?></td>
-                                        <td><?= $user['last_login_status'] ?></td>
+                                        <td><?= $user['log_status'] ?></td>
                                         <td>
                                             <!-- Edit button -->
                                             <button type="button" class="btn btn-primary btn-sm editBtn" data-bs-toggle="modal" data-bs-target="#editUserModal" 

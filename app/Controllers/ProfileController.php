@@ -19,7 +19,7 @@ class ProfileController extends BaseController
         $usersModel = new UsersModel();
         
         // Select specific fields from the database, including 'user_id', and filter by role 'User'
-        $userData = $usersModel->select('user_id, firstname, lastname, address, email, contact_number, image, role, gender, login_status, last_login_status')
+        $userData = $usersModel->select('user_id, firstname, lastname, address, email, contact_number, image, role, gender, log_status')
                                 ->where('role', 'User') // Filter by role 'User'
                                 ->findAll();
 
@@ -32,7 +32,7 @@ class ProfileController extends BaseController
    {
         $usersModel = new UsersModel();
        // Select specific fields from the database, including 'user_id'
-       $userData = $usersModel->select('user_id, staff_id, firstname, lastname, address, email, contact_number, image, role, gender, login_status, last_login_status')
+       $userData = $usersModel->select('user_id, staff_id, firstname, lastname, address, email, contact_number, image, role, gender, log_status')
                               ->whereIn('role', ['Admin', 'Staff'])
                               ->findAll();
    
@@ -59,8 +59,7 @@ class ProfileController extends BaseController
             'contact_number' => $this->request->getPost('contact_number'),
             'role' => $this->request->getPost('role'),
             'gender' => $this->request->getPost('gender'),
-            'login_status' => $this->request->getPost('login_status'),
-            'last_login_status' => $this->request->getPost('last_login_status')
+            'log_status' => $this->request->getPost('log_status'),
             // Add more fields as needed
         ];
         

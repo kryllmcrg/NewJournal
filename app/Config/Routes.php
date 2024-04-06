@@ -18,6 +18,7 @@ $routes->get('logout', 'LogRegController::logout');
 $routes->get('/register', 'LogRegController::register');
 $routes->post('/save', 'LogRegController::save');
 $routes->get('/filtercheck', 'LogRegController::filtercheck', ['filter' => 'rolecheck']);
+$routes->get('/logout', 'LogRegController::logout');
 
 $routes->get('/dashboard', 'AdminController::dashboard');
 
