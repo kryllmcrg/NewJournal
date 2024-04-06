@@ -45,7 +45,7 @@
                 <h4 class="card-title">Add News</h4>
                 <form method="post" action="<?= base_url('/addNewsSubmit'); ?>" enctype="multipart/form-data" class="forms-sample" id="newsForm">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="title">Title</label>
                                 <input type="text" class="form-control" id="title" name="title" placeholder="Enter news title">
