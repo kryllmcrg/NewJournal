@@ -59,7 +59,6 @@ class ProfileController extends BaseController
             'contact_number' => $this->request->getPost('contact_number'),
             'role' => $this->request->getPost('role'),
             'gender' => $this->request->getPost('gender'),
-            'log_status' => $this->request->getPost('log_status'),
             // Add more fields as needed
         ];
         

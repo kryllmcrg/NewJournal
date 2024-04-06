@@ -120,14 +120,6 @@
                                           </select>
                                       </div>
                                       <div class="mb-3">
-                                          <label for="editLoginStatus" class="form-label">Login Status</label>
-                                          <input type="text" class="form-control" id="editLoginStatus" name="login_status">
-                                      </div>
-                                      <div class="mb-3">
-                                          <label for="editLastLoginStatus" class="form-label">Last Login Status</label>
-                                          <input type="text" class="form-control" id="editLastLoginStatus" name="last_login_status">
-                                      </div>
-                                      <div class="mb-3">
                                           <label for="editImage" class="form-label">Image</label>
                                           <input type="file" class="form-control" id="editImage" name="image">
                                       </div>
@@ -179,9 +171,12 @@
                                         <td><?= $user['gender'] ?></td>
                                         <td><?= $user['log_status'] ?></td>
                                         <td>
-                                            <!-- Edit button -->
                                             <button type="button" class="btn btn-primary btn-sm editBtn" data-bs-toggle="modal" data-bs-target="#editUserModal" 
-                                                    data-userid="<?= $user['user_id'] ?>" data-firstname="<?= $user['firstname'] ?>" data-lastname="<?= $user['lastname'] ?>" data-address="<?= $user['address'] ?>" data-email="<?= $user['email'] ?>" data-contact="<?= $user['contact_number'] ?>" data-role="<?= $user['role'] ?>" data-gender="<?= $user['gender'] ?>" data-loginstatus="<?= $user['login_status'] ?>" data-lastloginstatus="<?= $user['last_login_status'] ?>">Edit
+                                                data-userid="<?= $user['user_id'] ?>" data-staffid="<?= $user['staff_id'] ?? '' ?>" 
+                                                data-firstname="<?= $user['firstname'] ?>" data-lastname="<?= $user['lastname'] ?>" 
+                                                data-address="<?= $user['address'] ?>" data-email="<?= $user['email'] ?>" 
+                                                data-contact="<?= $user['contact_number'] ?>" data-role="<?= $user['role'] ?>" 
+                                                data-gender="<?= $user['gender'] ?>" data-logstatus="<?= $user['log_status'] ?>">Edit
                                             </button>
                                             
                                             <!-- Delete button -->
@@ -226,35 +221,33 @@
     <!-- container-scroller -->
 
     <!-- Add this JavaScript code after your modal HTML -->
-<script>
-    // Add a click event listener to each row
-    document.querySelectorAll('tbody tr').forEach(row => {
-        row.addEventListener('click', function() {
-            // Extract the data from the clicked row
-            const userId = row.querySelector('td:nth-child(1)').textContent;
-            const firstName = row.querySelector('td:nth-child(3)').textContent;
-            const lastName = row.querySelector('td:nth-child(4)').textContent;
-            const address = row.querySelector('td:nth-child(5)').textContent;
-            const email = row.querySelector('td:nth-child(6)').textContent;
-            const contactNumber = row.querySelector('td:nth-child(7)').textContent;
-            const image = row.querySelector('td:nth-child(8) img').src;
-            const role = row.querySelector('td:nth-child(9)').textContent;
-            const gender = row.querySelector('td:nth-child(10)').textContent;
-            const loginStatus = row.querySelector('td:nth-child(11)').textContent;
-            const lastLoginStatus = row.querySelector('td:nth-child(12)').textContent;
+    <script>
+    // Add a click event listener to each edit button
+    document.querySelectorAll('.editBtn').forEach(button => {
+        button.addEventListener('click', function() {
+            // Extract the data from the clicked button's data attributes
+            const userId = this.dataset.userid;
+            const staffId = this.dataset.staffid;
+            const firstName = this.dataset.firstname;
+            const lastName = this.dataset.lastname;
+            const address = this.dataset.address;
+            const email = this.dataset.email;
+            const contactNumber = this.dataset.contact;
+            const role = this.dataset.role;
+            const gender = this.dataset.gender;
 
             // Populate the input fields in the modal with the extracted data
             document.getElementById('editUserId').value = userId;
+            document.getElementById('editStaffId').value = staffId;
             document.getElementById('editFirstName').value = firstName;
             document.getElementById('editLastName').value = lastName;
             document.getElementById('editAddress').value = address;
             document.getElementById('editEmail').value = email;
             document.getElementById('editContact').value = contactNumber;
-            document.getElementById('editImage').src = image;
             document.getElementById('editRole').value = role;
-            document.getElementById('editGender').value = gender;
-            document.getElementById('editLoginStatus').value = loginStatus;
-            document.getElementById('editLastLoginStatus').value = lastLoginStatus;
+            
+            // Set log status separately
+            document.getElementById('editLogStatus').value = logStatus;
 
             // Open the modal
             const modal = new bootstrap.Modal(document.getElementById('editUserModal'));
@@ -262,7 +255,6 @@
         });
     });
 </script>
-
 
     <script src="<?= base_url('assets2/vendors/js/vendor.bundle.base.js')?>"></script>
     <script src="<?= base_url('assets2/vendors/chart.js/Chart.min.js')?>"></script>
