@@ -94,7 +94,18 @@
                                                 <tr>
                                                     <td><?php echo $newsItem['title']; ?></td>
                                                     <td class="advisoryContent"><?php echo $newsItem['content']; ?></td>
-                                                    <td><?php echo $newsItem['category_id']; ?></td>
+                                                    <td>
+                                                        <?php
+                                                        // Fetch category name based on category_id
+                                                        $categoryModel = new \App\Models\CategoryModel();
+                                                        $category = $categoryModel->find($newsItem['category_id']);
+                                                        if ($category) {
+                                                            echo $category['category_name'];
+                                                        } else {
+                                                            echo 'Category not found';
+                                                        }
+                                                        ?>
+                                                    </td>
                                                     <td><?php echo $newsItem['author']; ?></td>
                                                     <td><?php echo $newsItem['images']; ?></td>
                                                     <td><?php echo $newsItem['news_status']; ?></td>
