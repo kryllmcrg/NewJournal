@@ -31,6 +31,40 @@
   <link rel="stylesheet" href="<?= base_url('assets/css/style.css')?>">
 
 </head>
+<style>
+  .post-media.post-image {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.post-media.post-image img {
+    object-fit: cover;
+    width: 100%;
+}
+
+/* Set specific dimensions for different screen sizes */
+@media (min-width: 576px) {
+    .post-media.post-image {
+        max-width: 540px; /* Adjust width for medium devices (tablets) */
+        height: 300px; /* Adjust height for medium devices (tablets) */
+    }
+}
+
+@media (min-width: 768px) {
+    .post-media.post-image {
+        max-width: 720px; /* Adjust width for large devices (desktops) */
+        height: 400px; /* Adjust height for large devices (desktops) */
+    }
+}
+
+@media (min-width: 992px) {
+    .post-media.post-image {
+        max-width: 960px; /* Adjust width for extra-large devices (large desktops) */
+        height: 500px; /* Adjust height for extra-large devices (large desktops) */
+    }
+}
+</style>
 <body>
 <?php include('include\header.php'); ?>
 
@@ -39,8 +73,8 @@
     <div class="row">
     <div class="col-lg-8 mb-5 mb-lg-0">
         <div class="post-content post-single">
-            <div class="post-media post-image" style="width: 720px; height: 400px; overflow: hidden;">
-                <img loading="lazy" class="w-100 h-100" src="<?= json_decode($article['images'])[0] ?>" alt="news-image" style="object-fit: cover; width: 100%; height: 100%;" />
+            <div class="post-media post-image">
+                <img loading="lazy" class="w-100" src="<?= json_decode($article['images'])[0] ?>" alt="news-image" />
             </div>
             <div class="post-body">
           <div class="entry-header">
