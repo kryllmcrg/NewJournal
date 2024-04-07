@@ -65,7 +65,7 @@
 
                         <div class="col-md-6">
                             <label for="category">Category</label>
-                            <select class="form-control" id="categories" name="categories">
+                            <select class="form-control" id="categories" name="category_id">
                                 <option value="">Select News Category</option>
                                 <?php foreach ($categories as $category): ?>
                                     <option value="<?= $category['category_id'] ?>" <?= $category['category_id'] == $news['category_id'] ? 'selected' : '' ?>>

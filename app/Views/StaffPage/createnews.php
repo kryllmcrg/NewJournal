@@ -187,6 +187,7 @@
             success: function(response) {
                 console.log(response);
                 // Handle response from the server
+                location.reload();
             }
         });
     });

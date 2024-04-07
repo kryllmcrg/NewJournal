@@ -33,6 +33,49 @@ class NewsController extends BaseController
     
         return view('AdminPage/editnews', ['categories' => $categories, 'news' => $news]);
     }
+    public function updateNews()
+    {
+        // Retrieve the submitted form data
+        $newsId = $this->request->getPost('news_id');
+        $title = $this->request->getPost('title');
+        $author = $this->request->getPost('author');
+        $categoryId = $this->request->getPost('category_id');
+        $content = $this->request->getPost('content');
+
+        // Load the NewsModel
+        $newsModel = new NewsModel();
+
+        // Check if the news with the given ID exists
+        $news = $newsModel->find($newsId);
+        if (!$news) {
+            return "News not found"; // Handle error appropriately
+        }
+
+        // Check if the provided category ID exists
+        $categoryModel = new CategoryModel();
+        $category = $categoryModel->find($categoryId);
+        if (!$category) {
+            return "Category not found"; // Handle error appropriately
+        }
+
+        // Update the news data
+        $data = [
+            'title' => $title,
+            'author' => $author,
+            'category_id' => $categoryId,
+            'content' => $content,
+        ];
+
+        // Perform the update operation
+        $updated = $newsModel->update($newsId, $data);
+
+        // Check if the update was successful
+        if ($updated) {
+            return "News updated successfully";
+        } else {
+            return "Failed to update news"; // Handle error appropriately
+        }
+    }
 
     public function addnews()
     {
