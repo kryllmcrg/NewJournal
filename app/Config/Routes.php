@@ -12,7 +12,8 @@ $routes->get('/contact', 'UserController::contact');
 $routes->get('/news', 'UserController::news');
 $routes->get('/news_read/(:any)', 'UserController::news_read/$1');
 $routes->post('/like/(:num)', 'UserController::like/$1');
-
+$routes->get('/categories', 'UserController::getCategoryData');
+$routes->get('filter-news/(:segment)', 'UserController::filterNews/$1');
 
 $routes->get('/login', 'LogRegController::login');
 $routes->post('check', 'LogRegController::check');

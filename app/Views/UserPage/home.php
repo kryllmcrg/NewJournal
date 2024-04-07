@@ -87,71 +87,127 @@
       </div>
 </div>
 
-<section id="ts-features" class="ts-features pb-2">
+<section id="ts-features" class="ts-features pb-2">  
     <div class="container">
         <div class="row">
-            <?php foreach ($newsData as $article): ?>
-                <div class="col-lg-4 col-md-6 mb-5">
-                    <div class="ts-service-box d-flex flex-column align-items-center">
-                        <div class="ts-service-image-wrapper" style="width: 350px; height: 250px; overflow: hidden;">
-                            <img loading="lazy" class="w-100 h-100" src="<?= json_decode($article['images'])[0] ?>" alt="news-image" style="object-fit: cover; width: 100%; height: 100%;" />
-                        </div>
-                        <div class="d-flex flex-column align-items-start mt-3 w-100">
-                            <div class="ts-news-info">
-                                <h3 class="news-box-title"><?= $article['title'] ?></h3>
-                                <div class="content-container">
-                                    <p class="advisoryContent"><?= $article['content'] ?></p>
+            <div class="shuffle-btn-group">
+                <label class="active" for="all">
+                    <input type="radio" name="shuffle-filter" id="all" value="all" checked="checked" onclick="filterNews('all')">Show All
+                </label>
+                <?php foreach ($categories as $category): ?>
+                    <label for="<?= $category['category_name'] ?>">
+                        <input type="radio" name="shuffle-filter" id="<?= $category['category_name'] ?>" value="<?= $category['category_name'] ?>" onclick="filterNews('<?= $category['category_name'] ?>')">
+                        <?= $category['category_name'] ?>
+                    </label>
+                <?php endforeach; ?>
+            </div>
+            <div id="news-container" class="row"><!-- News container start -->
+                <?php foreach ($newsData as $article): ?>
+                    <div class="col-lg-4 col-md-6 mb-5">
+                        <div class="ts-service-box d-flex flex-column align-items-center">
+                            <div class="ts-service-image-wrapper" style="width: 350px; height: 250px; overflow: hidden;">
+                                <img loading="lazy" class="w-100 h-100" src="<?= json_decode($article['images'])[0] ?>" alt="news-image" style="object-fit: cover; width: 100%; height: 100%;" />
+                            </div>
+                            <div class="d-flex flex-column align-items-start mt-3 w-100">
+                                <div class="ts-news-info">
+                                    <h3 class="news-box-title"><?= $article['title'] ?></h3>
+                                    <div class="content-container">
+                                        <p class="advisoryContent"><?= $article['content'] ?></p>
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-3 w-100">
+                                    <!-- Read More Link -->
+                                    <a class="learn-more d-inline-block" href="<?= base_url('news_read/' . $article['news_id']) ?>" aria-label="news-details"><i class="fa fa-caret-right"></i> Read more</a>
+                                    <!-- Like Icon -->
+                                    <a class="like-icon me-3" href="#" data-news-id="<?= $article['news_id'] ?>" onclick="toggleLike(this)"><i class="far fa-thumbs-up"></i></a>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-between align-items-center mt-3 w-100">
-                                <!-- Read More Link -->
-                                <a class="learn-more d-inline-block" href="<?= base_url('news_read/' . $article['news_id']) ?>" aria-label="news-details"><i class="fa fa-caret-right"></i> Read more</a>
-                                <!-- Like Icon -->
-                                <a class="like-icon me-3" href="#" data-news-id="<?= $article['news_id'] ?>" onclick="toggleLike(this)"><i class="far fa-thumbs-up"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- Service box end -->
-                </div><!-- Col end -->
-            <?php endforeach; ?>
+                        </div><!-- Service box end -->
+                    </div><!-- Col end -->
+                <?php endforeach; ?>
+            </div><!-- News container end -->
         </div><!-- Content row end -->
     </div><!-- Container end -->
 </section><!-- Feature are end -->
 
 
+
   <?php include('include\footer.php'); ?>
    <!-- Javascript Files
   ================================================== -->
+  <script>
+    // Define filterNews and displayNews functions in the same scope
+    function filterNews(category) {
+        // Make an AJAX request to the filterNews method in the controller
+        fetch(`/filter-news/${category}`)
+            .then(response => response.json())
+            .then(data => {
+                // Handle the filtered news data
+                displayNews(data.newsData);
+            })
+            .catch(error => console.error('Error filtering news:', error));
+    }
+
+    function displayNews(newsData) {
+    const newsContainer = document.getElementById('news-container');
+    // Check if the target element exists
+    if (newsContainer) {
+        // Clear previous news articles
+        newsContainer.innerHTML = '';
+
+        // Display each news article
+        newsData.forEach(article => {
+            const articleElement = document.createElement('div');
+            articleElement.classList.add('col-lg-4', 'col-md-6', 'mb-5');
+            articleElement.innerHTML = `
+            <div class="ts-service-box d-flex flex-column align-items-center">
+                            <div class="ts-service-image-wrapper" style="width: 350px; height: 250px; overflow: hidden;">
+                                <img loading="lazy" class="w-100 h-100" src="<?= json_decode($article['images'])[0] ?>" alt="news-image" style="object-fit: cover; width: 100%; height: 100%;" />
+                            </div>
+                            <div class="d-flex flex-column align-items-start mt-3 w-100">
+                        <div class="ts-news-info">
+                            <h3 class="news-box-title">${article.title}</h3>
+                            <div class="content-container">
+                                <p class="advisoryContent">${article.content}</p>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-3 w-100">
+                            <!-- Read More Link -->
+                            <a class="learn-more d-inline-block" href="/news_read/${article.news_id}" aria-label="news-details"><i class="fa fa-caret-right"></i> Read more</a>
+                            <!-- Like Icon -->
+                            <a class="like-icon me-3" href="#" data-news-id="${article.news_id}" onclick="toggleLike(this)"><i class="far fa-thumbs-up"></i></a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            newsContainer.appendChild(articleElement);
+        });
+    } else {
+        console.error('News container element not found.');
+    }
+}
+
+
+</script>
+
 
   <script>
     function toggleLike(element) {
-        // Prevent the default link behavior
-        event.preventDefault();
+        // Get the news ID from data attribute
+        let newsId = element.dataset.newsId;
 
-        // Get the news ID from the data attribute
-        const newsId = element.dataset.newsId;
-
-        // Make an AJAX POST request to the server to save the like
+        // Send AJAX request to like endpoint
         fetch(`/like/${newsId}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            method: 'POST'
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
-            // Handle the response from the server
-            console.log(data); // For testing
-            // Optionally, update the UI based on the response
+            if (data.message === 'Like saved successfully') {
+                // Change like icon color
+                element.classList.add('liked');
+            }
         })
-        .catch(error => {
-            console.error('Error recording like:', error);
-            // Optionally, show an error message to the user
-        });
+        .catch(error => console.error('Error:', error));
     }
 </script>
 
