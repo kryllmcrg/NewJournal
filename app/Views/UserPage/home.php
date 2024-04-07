@@ -160,11 +160,11 @@
             const articleElement = document.createElement('div');
             articleElement.classList.add('col-lg-4', 'col-md-6', 'mb-5');
             articleElement.innerHTML = `
-            <div class="ts-service-box d-flex flex-column align-items-center">
-                            <div class="ts-service-image-wrapper" style="width: 350px; height: 250px; overflow: hidden;">
-                                <img loading="lazy" class="w-100 h-100" src="<?= json_decode($article['images'])[0] ?>" alt="news-image" style="object-fit: cover; width: 100%; height: 100%;" />
-                            </div>
-                            <div class="d-flex flex-column align-items-start mt-3 w-100">
+                <div class="ts-service-box d-flex flex-column align-items-center">
+                    <div class="ts-service-image-wrapper" style="width: 350px; height: 250px; overflow: hidden;">
+                        <img loading="lazy" class="w-100 h-100" src="${article.images[0]}" alt="news-image" style="object-fit: cover; width: 100%; height: 100%;" />
+                    </div>
+                    <div class="d-flex flex-column align-items-start mt-3 w-100">
                         <div class="ts-news-info">
                             <h3 class="news-box-title">${article.title}</h3>
                             <div class="content-container">
@@ -186,8 +186,6 @@
         console.error('News container element not found.');
     }
 }
-
-
 </script>
 
 
