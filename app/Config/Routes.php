@@ -33,11 +33,11 @@ $routes->post('addNewsSubmit', 'NewsController::addNewsSubmit');
 $routes->post('upload_image', 'NewsController::uploadImage');
 $routes->get('/managenews', 'NewsController::managenews');
 $routes->get('/deleteNews/(:any)', 'NewsController::deleteNews/$1');
-$routes->post('/editNews', 'NewsController::updateNews');
+$routes->post('/updateNews', 'NewsController::updateNews');
+$routes->get('/editNews/(:num)', 'NewsController::editNews/$1');
 $routes->post('changeNewStatus', 'NewsController::changeNewStatus');
 $routes->post('changePubStatus', 'NewsController::changePubStatus');
 $routes->get('/viewnews/(:any)', 'NewsController::viewnews/$1');
-$routes->get('/editNews', 'NewsController::editNews');
 $routes->get('/archive', 'NewsController::archive');
 
 $routes->get('/managecomments', 'CommentsController::managecomments');
