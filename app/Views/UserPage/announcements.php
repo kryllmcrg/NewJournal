@@ -1,20 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="author" content="templatemo">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-  <title>Announcements</title>
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/fontawesome.css">
-  <link rel="stylesheet" href="assets/css/style2.css">
-  <link rel="stylesheet" href="assets/css/announce.css">
-  <link rel="stylesheet" href="assets/css/owl.css">
-  <link rel="stylesheet" href="assets/css/animate.css">
-  <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
 
-  <link rel="shortcut icon" href="assets/images/ciologo.png" />
+  <!-- Basic Page Needs
+================================================== -->
+  <meta charset="utf-8">
+  <title>CIO Offcial Website</title>
+  <!-- Mobile Specific Metas
+================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Construction Html5 Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <!-- Favicon
+================================================== -->
+  <link rel="icon" type="assets/image/png" href="<?= base_url('assets/images/cio.png')?>">
+  <!-- CSS
+================================================== -->
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="<?= base_url('assets/plugins/bootstrap/bootstrap.min.css')?>">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="<?= base_url('assets/plugins/fontawesome/css/all.min.css')?>">
+  <!-- Animation -->
+  <link rel="stylesheet" href="<?= base_url('assets/plugins/animate-css/animate.css')?>">
+  <!-- slick Carousel -->
+  <link rel="stylesheet" href="<?= base_url('assets/plugins/slick/slick.css')?>">
+  <link rel="stylesheet" href="<?= base_url('assets/plugins/slick/slick-theme.css')?>">
+  <!-- Colorbox -->
+  <link rel="stylesheet" href="<?= base_url('assets/plugins/colorbox/colorbox.css')?>">
+  <!-- Template styles-->
+  <link rel="stylesheet" href="<?= base_url('assets/css/style.css')?>">
+
 </head>
 <body>
   <div id="js-preloader" class="js-preloader">
@@ -251,13 +266,29 @@
 
   </div>
   <?php include('include\footer.php'); ?>
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/tabs.js"></script>
-  <script src="assets/js/popup.js"></script>
-  <script src="assets/js/custom.js"></script>
+   <!-- Javascript Files
+  ================================================== -->
+
+  <!-- initialize jQuery Library -->
+  <script src="<?= base_url('assets/plugins/jQuery/jquery.min.js')?>"></script>
+  <!-- Bootstrap jQuery -->
+  <script src="<?= base_url('assets/plugins/bootstrap/bootstrap.min.js')?>"defer></script>
+  <!-- Slick Carousel -->
+  <script src="<?= base_url('assets/plugins/slick/slick.min.js')?>"></script>
+  <script src="<?= base_url('assets/plugins/slick/slick-animation.min.js')?>"></script>
+  <!-- Color box -->
+  <script src="<?= base_url('assets/plugins/colorbox/jquery.colorbox.js')?>"></script>
+  <!-- shuffle -->
+  <script src="<?= base_url('assets/plugins/shuffle/shuffle.min.js')?>"defer></script>
+
+
+  <!-- Google Map API Key-->
+  <script src="<?= base_url('https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU')?>" defer></script>
+  <!-- Google Map Plugin-->
+  <script src="<?= base_url('assets/plugins/google-map/map.js')?>"defer></script>
+
+  <!-- Template custom -->
+  <script src="<?= base_url('assets/js/script.js')?>"></script>  
 
   <script>
     // Function to dynamically populate the dropdown menu with categories

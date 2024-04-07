@@ -6,32 +6,29 @@
 ================================================== -->
   <meta charset="utf-8">
   <title>CIO Offcial Website</title>
-
   <!-- Mobile Specific Metas
 ================================================== -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="Construction Html5 Template">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-
   <!-- Favicon
 ================================================== -->
-  <link rel="icon" type="assets/image/png" href="assets/images/cio.png">
-
+  <link rel="icon" type="assets/image/png" href="<?= base_url('assets/images/cio.png')?>">
   <!-- CSS
 ================================================== -->
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="assets/plugins/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="<?= base_url('assets/plugins/bootstrap/bootstrap.min.css')?>">
   <!-- FontAwesome -->
-  <link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="<?= base_url('assets/plugins/fontawesome/css/all.min.css')?>">
   <!-- Animation -->
-  <link rel="stylesheet" href="assets/plugins/animate-css/animate.css">
+  <link rel="stylesheet" href="<?= base_url('assets/plugins/animate-css/animate.css')?>">
   <!-- slick Carousel -->
-  <link rel="stylesheet" href="assets/plugins/slick/slick.css">
-  <link rel="stylesheet" href="assets/plugins/slick/slick-theme.css">
+  <link rel="stylesheet" href="<?= base_url('assets/plugins/slick/slick.css')?>">
+  <link rel="stylesheet" href="<?= base_url('assets/plugins/slick/slick-theme.css')?>">
   <!-- Colorbox -->
-  <link rel="stylesheet" href="assets/plugins/colorbox/colorbox.css">
+  <link rel="stylesheet" href="<?= base_url('assets/plugins/colorbox/colorbox.css')?>">
   <!-- Template styles-->
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="<?= base_url('assets/css/style.css')?>">
 
 </head>
 <style>
@@ -256,28 +253,28 @@
 
 
   <?php include('include\footer.php'); ?>
-   <!-- Javascript Files
+    <!-- Javascript Files
   ================================================== -->
 
   <!-- initialize jQuery Library -->
-  <script src="assets/plugins/jQuery/jquery.min.js"></script>
+  <script src="<?= base_url('assets/plugins/jQuery/jquery.min.js')?>"></script>
   <!-- Bootstrap jQuery -->
-  <script src="assets/plugins/bootstrap/bootstrap.min.js" defer></script>
+  <script src="<?= base_url('assets/plugins/bootstrap/bootstrap.min.js')?>"defer></script>
   <!-- Slick Carousel -->
-  <script src="assets/plugins/slick/slick.min.js"></script>
-  <script src="assets/plugins/slick/slick-animation.min.js"></script>
+  <script src="<?= base_url('assets/plugins/slick/slick.min.js')?>"></script>
+  <script src="<?= base_url('assets/plugins/slick/slick-animation.min.js')?>"></script>
   <!-- Color box -->
-  <script src="assets/plugins/colorbox/jquery.colorbox.js"></script>
+  <script src="<?= base_url('assets/plugins/colorbox/jquery.colorbox.js')?>"></script>
   <!-- shuffle -->
-  <script src="assets/plugins/shuffle/shuffle.min.js" defer></script>
+  <script src="<?= base_url('assets/plugins/shuffle/shuffle.min.js')?>"defer></script>
 
 
   <!-- Google Map API Key-->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU" defer></script>
+  <script src="<?= base_url('https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU')?>" defer></script>
   <!-- Google Map Plugin-->
-  <script src="assets/plugins/google-map/map.js" defer></script>
+  <script src="<?= base_url('assets/plugins/google-map/map.js')?>"defer></script>
 
   <!-- Template custom -->
-  <script src="assets/js/script.js"></script>  
+  <script src="<?= base_url('assets/js/script.js')?>"></script>  
 </body>
 </html>
