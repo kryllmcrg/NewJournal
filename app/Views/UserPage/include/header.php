@@ -137,19 +137,15 @@
                 
                 <div id="navbar-collapse" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-
-                    <li class="nav-item"><a class="nav-link" href="about">About</a></li>
-              
-                      <li class="nav-item"><a class="nav-link" href="announcement">Announcement</a></li>
-              
-                      <li class="nav-item"><a class="nav-link" href="news">News</a></li>
-              
-                      <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
-
-                      <li class="nav-item"><a class="nav-link" href="login">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/announcement">Announcement</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/news">News</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
                     </ul>
                 </div>
+
               </nav>
           </div>
           <!--/ Col end -->
