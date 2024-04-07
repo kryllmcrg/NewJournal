@@ -201,87 +201,86 @@ class NewsController extends BaseController
     }
 
     public function changeNewStatus()
-{
-    try {
-        // Set the default time zone to Philippines time
-        date_default_timezone_set('Asia/Manila');
+    {
+        try {
+            // Set the default time zone to Philippines time
+            date_default_timezone_set('Asia/Manila');
 
-        $newsID = $this->request->getVar('news_id');
-        $newsStatus = $this->request->getVar('news_status');
+            $newsID = $this->request->getVar('news_id');
+            $newsStatus = $this->request->getVar('news_status');
 
-        // Prepare data to update news status
-        $data = [
-            'news_status' => $newsStatus
-        ];
+            // Prepare data to update news status
+            $data = [
+                'news_status' => $newsStatus
+            ];
 
-        // Update news status in the database
-        $model = new NewsModel();
-        $model->where('news_id', $newsID)->set($data)->update();
-
-        // Update publication status based on news status
-        $publicationStatus = '';
-
-        switch ($newsStatus) {
-            case 'Approved':
-                $publicationStatus = 'Published';
-                // Update publication date and time to current date and time if the news is approved and published
-                $currentDateTime = date('Y-m-d H:i:s');
-                $data['date_approved'] = $currentDateTime;
-                $data['publication_date'] = $currentDateTime;
-                break;
-            case 'Decline':
-                $publicationStatus = 'Unpublished';
-                break;
-            case 'Reject':
-                $publicationStatus = 'Draft';
-                break;
-            default:
-                break;
-        }
-
-        // If publication status is determined, update the publication status in the database
-        if ($publicationStatus !== '') {
-            $data['publication_status'] = $publicationStatus;
+            // Update news status in the database
+            $model = new NewsModel();
             $model->where('news_id', $newsID)->set($data)->update();
-        }
 
-        return $this->response->setJSON(['success' => true, 'message' => 'Status updated successfully.']);
-    } catch (\Throwable $th) {
-        return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $th->getMessage()]);
-    }
-}
+            // Update publication status based on news status
+            $publicationStatus = '';
 
-public function changePubStatus()
-{
-    try {
-        // Set the default time zone to Philippines time
-        date_default_timezone_set('Asia/Manila');
-
-        $newsID = $this->request->getVar('news_id');
-        $publicationStatus = $this->request->getVar('publication_status'); // Get publication_status from request
-
-        $data = [];
-        if ($publicationStatus !== null) {
-            $data['publication_status'] = $publicationStatus;
-            if ($publicationStatus === 'Published') {
-                // Update publication date and time to current date and time if publication status is "Published"
-                $data['publication_date'] = date('Y-m-d H:i:s');
+            switch ($newsStatus) {
+                case 'Approved':
+                    $publicationStatus = 'Published';
+                    // Update publication date and time to current date and time if the news is approved and published
+                    $currentDateTime = date('Y-m-d H:i:s');
+                    $data['date_approved'] = $currentDateTime;
+                    $data['publication_date'] = $currentDateTime;
+                    break;
+                case 'Decline':
+                    $publicationStatus = 'Unpublished';
+                    break;
+                case 'Reject':
+                    $publicationStatus = 'Draft';
+                    break;
+                default:
+                    break;
             }
+
+            // If publication status is determined, update the publication status in the database
+            if ($publicationStatus !== '') {
+                $data['publication_status'] = $publicationStatus;
+                $model->where('news_id', $newsID)->set($data)->update();
+            }
+
+            return $this->response->setJSON(['success' => true, 'message' => 'Status updated successfully.']);
+        } catch (\Throwable $th) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $th->getMessage()]);
         }
-
-        if (empty($data)) {
-            throw new \Exception('No status to update.');
-        }
-
-        $model = new NewsModel();
-        $model->where('news_id', $newsID)->set($data)->update();
-
-        return $this->response->setJSON(['success' => true, 'message' => 'Publication status updated successfully.']);
-    } catch (\Throwable $th) {
-        return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $th->getMessage()]);
     }
-}
-   
+
+    public function changePubStatus()
+    {
+        try {
+            // Set the default time zone to Philippines time
+            date_default_timezone_set('Asia/Manila');
+
+            $newsID = $this->request->getVar('news_id');
+            $publicationStatus = $this->request->getVar('publication_status'); // Get publication_status from request
+
+            $data = [];
+            if ($publicationStatus !== null) {
+                $data['publication_status'] = $publicationStatus;
+                if ($publicationStatus === 'Published') {
+                    // Update publication date and time to current date and time if publication status is "Published"
+                    $data['publication_date'] = date('Y-m-d H:i:s');
+                }
+            }
+
+            if (empty($data)) {
+                throw new \Exception('No status to update.');
+            }
+
+            $model = new NewsModel();
+            $model->where('news_id', $newsID)->set($data)->update();
+
+            return $this->response->setJSON(['success' => true, 'message' => 'Publication status updated successfully.']);
+        } catch (\Throwable $th) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $th->getMessage()]);
+        }
+    }
 
     public function archive()
     {
