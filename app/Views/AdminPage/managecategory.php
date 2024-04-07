@@ -18,7 +18,31 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="<?= base_url('assets2/images/ciologo.png')?>" />
   </head>
+<style>
+  .edit-category-form .form-group {
+    margin-bottom: 20px;
+}
 
+.edit-category-form .form-label {
+    font-weight: bold;
+}
+
+.edit-category-form .form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.edit-category-form .form-control:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+</style>
   <body>
   <div class="container-scroller">
     <div class="row p-0 m-0 proBanner" id="proBanner">
@@ -59,14 +83,13 @@
                   </div>
                   <div class="modal-body">
                       <!-- Add your form elements for editing here -->
-                      <form action="/saveCategoryChanges" method="post">
+                      <form action="/saveCategoryChanges" method="post" class="edit-category-form">
                           <div class="row">
                               <!-- First Column -->
-                              <div class="col-md-6">
-
-                                  <div class="mb-3">
+                              <div class="col-md-12">
+                                  <div class="form-group">
                                       <label for="editCategory" class="form-label">Category Name</label>
-                                      <input type="text" name="editCategory" id="editCategory" placeholder="Enter category">
+                                      <input type="text" name="editCategory" id="editCategory" class="form-control" placeholder="Enter category">
                                   </div>
                               </div>
                           </div>
@@ -140,66 +163,74 @@
   </div>
   <!-- container-scroller -->
 
-  <script>
-      document.querySelectorAll('.edit-category-btn').forEach(item => {
-        item.addEventListener('click', event => {
-            const categoryId = event.currentTarget.dataset.categoryId;
-            console.log('Edit button clicked for category ID:', categoryId);
+  <!-- JavaScript code -->
+  <!-- Add this script after the modal HTML -->
+<script>
+  document.querySelectorAll('.edit-category-btn').forEach(item => {
+      item.addEventListener('click', event => {
+          const categoryId = event.currentTarget.dataset.categoryId;
+          console.log('Edit button clicked for category ID:', categoryId);
 
-            fetch(`/get-category-data/${categoryId}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log('Response from server:', data); // Log the response
-                    document.getElementById('editCategory').value = data.id_categories;
-                })
-                .catch(error => {
-                    console.error('Error fetching category data:', error);
-                });
+          // Fetch category data using its ID
+          fetch(`/get-category-data/${categoryId}`)
+              .then(response => {
+                  if (!response.ok) {
+                      throw new Error('Network response was not ok');
+                  }
+                  return response.json();
+              })
+              .then(data => {
+                  console.log('Response from server:', data); // Log the response
+                  // Populate the modal fields with category data
+                  document.getElementById('editCategoryId').value = data.category_id; // Assuming there's an input field with id editCategoryId
+                  document.getElementById('editCategory').value = data.category_name;
+              })
+              .catch(error => {
+                  console.error('Error fetching category data:', error);
+              });
 
-            $('#editNewsModal').modal('show');
-        });
-    });
-    // Event handler for the "Save changes" button
-    document.querySelector('.save-changes-btn').addEventListener('click', function() {
-        // Here you can add the logic to save changes
-        console.log('Save changes button clicked');
-    });
-
-      // Event handler for Close button
-      document.querySelector('#editNewsModal .btn-secondary').addEventListener('click', function() {
-          $('#editNewsModal').modal('hide');
+          // Show the modal
+          $('#editNewsModal').modal('show');
       });
+  });
 
-    document.querySelectorAll('.delete-category-btn').forEach(item => {
-        item.addEventListener('click', event => {
-            // Fetch category ID
-            const categoryId = event.currentTarget.dataset.categoryId;
-            console.log('Delete button clicked for category ID:', categoryId);
-            // Show confirmation dialog
-            if (confirm('Are you sure you want to delete this category?')) {
-                // Proceed with deletion logic
-                console.log('Category deleted.');
-                // You may want to perform AJAX call to delete the category from server
-                // and then remove the corresponding row from the table
-            }
-        });
-    });
+  // Event handler for the "Save changes" button
+  document.querySelector('.save-changes-btn').addEventListener('click', function() {
+      // Here you can add the logic to save changes
+      console.log('Save changes button clicked');
+  });
+
+  // Event handler for Close button
+  document.querySelector('#editNewsModal .btn-secondary').addEventListener('click', function() {
+      $('#editNewsModal').modal('hide');
+  });
+
+  document.querySelectorAll('.delete-category-btn').forEach(item => {
+      item.addEventListener('click', event => {
+          // Fetch category ID
+          const categoryId = event.currentTarget.dataset.categoryId;
+          console.log('Delete button clicked for category ID:', categoryId);
+          // Show confirmation dialog
+          if (confirm('Are you sure you want to delete this category?')) {
+              // Proceed with deletion logic
+              console.log('Category deleted.');
+              // You may want to perform AJAX call to delete the category from server
+              // and then remove the corresponding row from the table
+          }
+      });
+  });
 </script>
+
   <!-- plugins:js -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="<?= base_url('assets2/vendors/js/vendor.bundle.base.js')?>"></script>
-    <script src="<?= base_url('assets2/vendors/chart.js/Chart.min.js')?>"></script>
-    <script src="<?= base_url('assets2/js/jquery.cookie.js" type="text/javascript')?>"></script>
-    <script src="<?= base_url('assets2/js/off-canvas.js')?>"></script>
-    <script src="<?= base_url('assets2/js/hoverable-collapse.js')?>"></script>
-    <script src="<?= base_url('assets2/js/misc.js')?>"></script>
-    <script src="<?= base_url('assets2/js/dashboard.js')?>"></script>
-    <script src="<?= base_url('assets2/js/todolist.js')?>"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="<?= base_url('assets2/vendors/js/vendor.bundle.base.js')?>"></script>
+  <script src="<?= base_url('assets2/vendors/chart.js/Chart.min.js')?>"></script>
+  <script src="<?= base_url('assets2/js/jquery.cookie.js" type="text/javascript')?>"></script>
+  <script src="<?= base_url('assets2/js/off-canvas.js')?>"></script>
+  <script src="<?= base_url('assets2/js/hoverable-collapse.js')?>"></script>
+  <script src="<?= base_url('assets2/js/misc.js')?>"></script>
+  <script src="<?= base_url('assets2/js/dashboard.js')?>"></script>
+  <script src="<?= base_url('assets2/js/todolist.js')?>"></script>
 </body>
 </html>

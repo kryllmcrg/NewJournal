@@ -162,32 +162,6 @@ class NewsController extends BaseController
         }
     }
 
-    // public function updateNews()
-    // {
-    //     try {
-    //         $id_news = $this->request->getVar('id_news');
-
-    //         $data = [
-    //             'title' => $this->request->getVar('editNewsTitle'),
-    //             'subTitle' => $this->request->getVar('editNewsSubTitle'),
-    //             'author' => $this->request->getVar('editNewsAuthor'),
-    //             'category' => $this->request->getVar('editCategory'),
-    //             'content' => strip_tags($this->request->getVar('editNewsContent')),
-    //             'publicationDate' => $this->request->getVar('editNewsPublicationDate')
-    //         ];
-
-    //         // Assuming $this->news is a model instance (e.g., NewsModel)
-    //         $newsModel = new NewsModel();
-    //         $updated = $newsModel->where('id_news', $id_news)->set($data)->update();
-
-    //         return redirect()->to('managenews');
-    //     } catch (\Throwable $th) {
-    //         return $this->respond(["error" => "Error: " . $th->getMessage()]);
-    //     }
-    // }
-
-
-
     public function managenews()
     {
         // Load the NewsModel

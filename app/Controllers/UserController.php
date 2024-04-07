@@ -50,10 +50,7 @@ class UserController extends BaseController
             return $this->response->setJSON(['error' => $th->getMessage()]);
         }
     }
-    
 
-
-    
     public function about()
     {
         $categoryModel = new CategoryModel();
@@ -80,7 +77,6 @@ class UserController extends BaseController
             $data['categories'] = $categories;
 
         return view('UserPage/about', $data);
-            return view('UserPage/about', $data);
         } catch (\Throwable $th) {
             // Handle any errors
             return $this->response->setJSON(['error' => $th->getMessage()]);

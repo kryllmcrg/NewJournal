@@ -88,20 +88,22 @@
         <div class="row">
             <?php foreach ($newsData as $article): ?>
                 <div class="col-lg-4 col-md-6 mb-5">
-                    <div class="ts-service-box">
-                    <div class="ts-service-image-wrapper" style="width: 300px; height: 200px; overflow: hidden;">
-                        <img loading="lazy" class="w-100 h-100" src="<?= json_decode($article['images'])[0] ?>" alt="news-image" style="object-fit: cover; width: 100%; height: 100%;" />
-                    </div>
-                        <div class="d-flex">
+                    <div class="ts-service-box d-flex flex-column align-items-center">
+                        <div class="ts-service-image-wrapper" style="width: 350px; height: 250px; overflow: hidden;">
+                            <img loading="lazy" class="w-100 h-100" src="<?= json_decode($article['images'])[0] ?>" alt="news-image" style="object-fit: cover; width: 100%; height: 100%;" />
+                        </div>
+                        <div class="d-flex flex-column align-items-start mt-3 w-100">
                             <div class="ts-news-info">
-                                <h3 class="news-box-title"><a href="<?= base_url('news_read' . $article['news_id']) ?>"><?= $article['title'] ?></a></h3>
+                                <h3 class="news-box-title"><?= $article['title'] ?></h3>
                                 <div class="content-container">
                                     <p class="advisoryContent"><?= $article['content'] ?></p>
                                 </div>
-                                <p><strong>Category:</strong> <?= isset($categoryNames[$article['category_id']]) ? $categoryNames[$article['category_id']] : 'Unknown' ?></p>
-                                <p><strong>Author:</strong> <?= $article['author'] ?></p>
-                                <p><strong>Publication Date:</strong> <?= date('F j, Y', strtotime($article['publication_date'])) ?></p>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mt-3 w-100">
+                                <!-- Read More Link -->
                                 <a class="learn-more d-inline-block" href="<?= base_url('news_read/' . $article['news_id']) ?>" aria-label="news-details"><i class="fa fa-caret-right"></i> Read more</a>
+                                <!-- Like Icon -->
+                                <a href="#" class="like-icon me-3"><i class="far fa-thumbs-up"></i></a>
                             </div>
                         </div>
                     </div><!-- Service box end -->
