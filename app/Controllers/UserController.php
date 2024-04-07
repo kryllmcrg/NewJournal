@@ -13,21 +13,27 @@ class UserController extends BaseController
     {
         return view('welcome_message');
     }
-
     public function news_read($news_id)
-    {
-        $newsModel = new NewsModel();
+{
+    $newsModel = new NewsModel();
 
-        // Fetch article details by news_id
-        $article = $newsModel->find($news_id);
+    // Fetch article details by news_id
+    $article = $newsModel->find($news_id);
 
-        // Pass data to view
-        $data = [
-            'article' => $article,
-        ];
+    // Fetch category name using the category_id
+    $categoryModel = new CategoryModel();
+    $category = $categoryModel->find($article['category_id']);
+    $category_name = $category ? $category['category_name'] : '';
 
-        return view('UserPage/news_read', $data);
-    }
+    // Pass data to view
+    $data = [
+        'article' => $article,
+        'category_name' => $category_name,
+    ];
+
+    return view('UserPage/news_read', $data);
+}
+
 
     public function home()
     {

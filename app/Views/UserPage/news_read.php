@@ -49,7 +49,7 @@
                       <i class="far fa-user"></i> <?= $article['author'] ?>
                   </span>
                   <span class="post-cat">
-                      <i class="far fa-folder-open"></i> <?= $article['category_id'] ?>
+                      <i class="far fa-folder-open"></i> <?= $category_name ?>
                   </span>
                   <span class="post-meta-date">
                       <i class="far fa-calendar"></i> <?= $article['publication_date'] ?>

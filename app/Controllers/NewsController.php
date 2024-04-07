@@ -9,6 +9,7 @@ use App\Models\CategoryModel;
 
 class NewsController extends BaseController
 {
+    
     public function dashboard()
     {
         return view('AdminPage/dashboard');
