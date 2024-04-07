@@ -52,75 +52,74 @@ class UserController extends BaseController
         }
     }
     public function filterNews($categoryName = null)
-{
-    try {
-        // Load the news model
-        $newsModel = new NewsModel();
-        
-        // If no specific category is selected, fetch all news articles
-        if ($categoryName === null || $categoryName === 'all') {
-            $newsData = $newsModel->findAll();
-        } else {
-            // Fetch news articles filtered by the selected category name
-            $newsData = $newsModel->select('news.*, images')
-                                ->join('category', 'category.category_id = news.category_id')
-                                ->where('category.category_name', $categoryName)
-                                ->findAll();
-        }
-
-        // Decode the JSON string in the images column
-        foreach ($newsData as &$article) {
-            $article['images'] = json_decode($article['images'], true);
-        }
-        
-        // Pass the news data to the view
-        return $this->response->setJSON(['newsData' => $newsData]);
-    } catch (\Throwable $th) {
-        // Handle any errors
-        return $this->response->setJSON(['error' => $th->getMessage()]);
-    }
-}
-
-        public function getCategoryData()
-        {
-            // Create an instance of the CategoryModel
-            $categoryModel = new CategoryModel();
-
-            // Retrieve all categories from the database
-            $categories = $categoryModel->findAll();
-
-            // Pass the categories data to the view
-            return view('UserPage/home', ['categories' => $categories]);
-        }
-
-
-        public function like($newsId)
-        {
-            // For demonstration, assuming the user ID is 1
-            $userId = 1;
-        
-            // Create an instance of the LikeModel
-            $likeModel = new LikeModel();
-        
-            // Check if the user has already liked the news
-            $existingLike = $likeModel->where('news_id', $newsId)
-                                    ->where('user_id', $userId)
-                                    ->first();
-        
-            if ($existingLike) {
-                return json_encode(['message' => 'You have already liked this news']);
+    {
+        try {
+            // Load the news model
+            $newsModel = new NewsModel();
+            
+            // If no specific category is selected, fetch all news articles
+            if ($categoryName === null || $categoryName === 'all') {
+                $newsData = $newsModel->findAll();
+            } else {
+                // Fetch news articles filtered by the selected category name
+                $newsData = $newsModel->select('news.*, images')
+                                    ->join('category', 'category.category_id = news.category_id')
+                                    ->where('category.category_name', $categoryName)
+                                    ->findAll();
             }
-        
-            // If the user hasn't liked the news yet, insert the like into the database
-            $likeModel->insert([
-                'news_id' => $newsId,
-                'user_id' => $userId,
-                'likes_status' => 'Like', // Assuming 'Like' represents a like
-                'likes_count' => 1        // Initial like count
-            ]);
-        
-            return json_encode(['message' => 'Like saved successfully']);
-        }    
+
+            // Decode the JSON string in the images column
+            foreach ($newsData as &$article) {
+                $article['images'] = json_decode($article['images'], true);
+            }
+            
+            // Pass the news data to the view
+            return $this->response->setJSON(['newsData' => $newsData]);
+        } catch (\Throwable $th) {
+            // Handle any errors
+            return $this->response->setJSON(['error' => $th->getMessage()]);
+        }
+    }
+
+    public function getCategoryData()
+    {
+        // Create an instance of the CategoryModel
+        $categoryModel = new CategoryModel();
+
+        // Retrieve all categories from the database
+        $categories = $categoryModel->findAll();
+
+        // Pass the categories data to the view
+        return view('UserPage/home', ['categories' => $categories]);
+    }
+
+    public function like($newsId)
+    {
+        // For demonstration, assuming the user ID is 1
+        $userId = 1;
+    
+        // Create an instance of the LikeModel
+        $likeModel = new LikeModel();
+    
+        // Check if the user has already liked the news
+        $existingLike = $likeModel->where('news_id', $newsId)
+                                ->where('user_id', $userId)
+                                ->first();
+    
+        if ($existingLike) {
+            return json_encode(['message' => 'You have already liked this news']);
+        }
+    
+        // If the user hasn't liked the news yet, insert the like into the database
+        $likeModel->insert([
+            'news_id' => $newsId,
+            'user_id' => $userId,
+            'likes_status' => 'Like', // Assuming 'Like' represents a like
+            'likes_count' => 1        // Initial like count
+        ]);
+    
+        return json_encode(['message' => 'Like saved successfully']);
+    }    
         
     public function about()
     {

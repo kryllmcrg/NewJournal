@@ -39,6 +39,9 @@
       <div class="row">
         <div class="col-lg-8 mb-5 mb-lg-0">
         <div class="post-content post-single">
+        <div class="post-media post-image">
+        <img loading="lazy" class="w-100 h-100" src="<?= json_decode($article['images'])[0] ?>" alt="news-image" style="object-fit: cover; width: 100%; height: 100%;" />
+          </div>
       <div class="post-body">
           <div class="entry-header">
               <div class="post-meta">
