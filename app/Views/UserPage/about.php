@@ -115,14 +115,14 @@
 
 
 <section id="ts-team" class="ts-team">
-<div class="container">
-    <div class="row text-center">
-        <div class="col-lg-12">
-          <h2 class="section-title">Quality Service</h2>
-          <h3 class="section-sub-title">Professional Team</h3>
-        </div>
-    </div><!--/ Title row end -->
-<div class="container">
+  <div class="container">
+      <div class="row text-center">
+          <div class="col-lg-12">
+            <h2 class="section-title">Quality Service</h2>
+            <h3 class="section-sub-title">Professional Team</h3>
+          </div>
+      </div><!--/ Title row end -->
+  <div class="container">
             <div class="row text-center">
                 <!-- Loop through $users array -->
                 <?php foreach ($users as $user): ?>
