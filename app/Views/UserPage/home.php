@@ -101,7 +101,7 @@
                                 <p><strong>Category:</strong> <?= isset($categoryNames[$article['category_id']]) ? $categoryNames[$article['category_id']] : 'Unknown' ?></p>
                                 <p><strong>Author:</strong> <?= $article['author'] ?></p>
                                 <p><strong>Publication Date:</strong> <?= date('F j, Y', strtotime($article['publication_date'])) ?></p>
-                                <a class="learn-more d-inline-block" href="<?= base_url('news_read' . $article['news_id']) ?>" aria-label="news-details"><i class="fa fa-caret-right"></i> Read more</a>
+                                <a class="learn-more d-inline-block" href="<?= base_url('news_read/' . $article['news_id']) ?>" aria-label="news-details"><i class="fa fa-caret-right"></i> Read more</a>
                             </div>
                         </div>
                     </div><!-- Service box end -->

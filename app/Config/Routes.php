@@ -10,7 +10,7 @@ $routes->get('/', 'UserController::home');
 $routes->get('/about', 'UserController::about');
 $routes->get('/contact', 'UserController::contact');
 $routes->get('/news', 'UserController::news');
-$routes->get('/news_read', 'UserController::news_read');
+$routes->get('/news_read/(:any)', 'UserController::news_read/$1');
 
 $routes->get('/login', 'LogRegController::login');
 $routes->post('check', 'LogRegController::check');

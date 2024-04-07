@@ -15,7 +15,11 @@ class UserController extends BaseController
 
     public function news_read()
     {
-        return view('UserPage/news_read');
+        $newsModel = new NewsModel();
+        $readmore = $newsModel->findAll();
+        $readmoreko['readall'] = $readmore;
+
+        return view('UserPage/news_read', $readmoreko);
     }
 
     public function home()
@@ -56,8 +60,31 @@ class UserController extends BaseController
         $categories = $categoryModel->findAll();
     
         $data['categories'] = $categories;
+        try {
+            // Load the users model
+            $usersModel = new UsersModel();
+            
+            // Fetch all users
+            $users = $usersModel->findAll();
+
+            // Filter users with roles "Admin" and "Staff"
+            $filteredUsers = array_filter($users, function($user) {
+                return in_array($user['role'], ['Admin', 'Staff']);
+            });
+
+            // Load the category model
+            $categoryModel = new CategoryModel();
+            $categories = $categoryModel->findAll();
+            
+            $data['users'] = $filteredUsers; // Use filtered users
+            $data['categories'] = $categories;
 
         return view('UserPage/about', $data);
+            return view('UserPage/about', $data);
+        } catch (\Throwable $th) {
+            // Handle any errors
+            return $this->response->setJSON(['error' => $th->getMessage()]);
+        }
     }
 
     public function contact()
