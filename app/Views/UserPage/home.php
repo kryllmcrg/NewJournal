@@ -89,9 +89,9 @@
             <?php foreach ($newsData as $article): ?>
                 <div class="col-lg-4 col-md-6 mb-5">
                     <div class="ts-service-box">
-                        <div class="ts-service-image-wrapper">
-                            <img loading="lazy" class="w-100 h-100" src="<?= json_decode($article['images'])[0] ?>" alt="news-image" style="object-fit: cover; width: 100%; height: 100%;" />
-                        </div>
+                    <div class="ts-service-image-wrapper" style="width: 300px; height: 200px; overflow: hidden;">
+                        <img loading="lazy" class="w-100 h-100" src="<?= json_decode($article['images'])[0] ?>" alt="news-image" style="object-fit: cover; width: 100%; height: 100%;" />
+                    </div>
                         <div class="d-flex">
                             <div class="ts-news-info">
                                 <h3 class="news-box-title"><a href="<?= base_url('news_read' . $article['news_id']) ?>"><?= $article['title'] ?></a></h3>

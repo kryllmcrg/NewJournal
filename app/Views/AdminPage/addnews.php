@@ -168,7 +168,11 @@
         });
     });
 
-    $('#btn-submit').click(function(e) {
+    $(document).ready(function() {
+    // Your existing code
+
+    // Register click event for the submit button
+    $('#btn-submit').on('click', function(e) {
         e.preventDefault();
         formData.append('title', $('#title').val());
         formData.append('author', $('#author').val());
@@ -184,9 +188,12 @@
             success: function(response) {
                 console.log(response);
                 // Handle response from the server
+                location.reload();
             }
         });
     });
+});
+
 </script>
 
   </body>

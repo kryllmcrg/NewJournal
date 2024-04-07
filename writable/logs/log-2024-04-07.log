@@ -1,0 +1,61 @@
+INFO - 2024-04-07 00:02:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:02:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:03:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:05:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:05:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:07:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:07:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:08:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:08:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:17:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-04-07 00:17:07 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`cio_db`.`news`, CONSTRAINT `news_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`)) in C:\laragon\www\NewJournal\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\NewJournal\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ne...', 0)
+#1 C:\laragon\www\NewJournal\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ne...')
+#2 C:\laragon\www\NewJournal\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ne...')
+#3 C:\laragon\www\NewJournal\system\Database\BaseBuilder.php(2302): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ne...', Array, false)
+#4 C:\laragon\www\NewJournal\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\NewJournal\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\NewJournal\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\NewJournal\app\Controllers\NewsController.php(78): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\NewJournal\system\CodeIgniter.php(941): App\Controllers\NewsController->addNewsSubmit()
+#9 C:\laragon\www\NewJournal\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\NewsController))
+#10 C:\laragon\www\NewJournal\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\NewJournal\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\NewJournal\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+INFO - 2024-04-07 00:17:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-04-07 00:17:24 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`cio_db`.`news`, CONSTRAINT `news_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`)) in C:\laragon\www\NewJournal\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\NewJournal\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ne...', 0)
+#1 C:\laragon\www\NewJournal\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ne...')
+#2 C:\laragon\www\NewJournal\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ne...')
+#3 C:\laragon\www\NewJournal\system\Database\BaseBuilder.php(2302): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ne...', Array, false)
+#4 C:\laragon\www\NewJournal\system\Model.php(326): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\NewJournal\system\BaseModel.php(802): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\NewJournal\system\Model.php(744): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\NewJournal\app\Controllers\NewsController.php(78): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\NewJournal\system\CodeIgniter.php(941): App\Controllers\NewsController->addNewsSubmit()
+#9 C:\laragon\www\NewJournal\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\NewsController))
+#10 C:\laragon\www\NewJournal\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\NewJournal\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 C:\laragon\www\NewJournal\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#13 {main}
+INFO - 2024-04-07 00:17:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:18:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:18:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:18:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:18:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:23:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:23:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:23:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:24:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:24:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:24:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:26:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:26:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:26:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:27:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:28:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:28:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-04-07 00:28:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
