@@ -47,6 +47,10 @@
     .read-more {
         margin-top: 10px;
     }
+    .liked i.fa-thumbs-up {
+    color: violet;
+}
+
 </style>
 <body>
   
@@ -103,7 +107,7 @@
                                 <!-- Read More Link -->
                                 <a class="learn-more d-inline-block" href="<?= base_url('news_read/' . $article['news_id']) ?>" aria-label="news-details"><i class="fa fa-caret-right"></i> Read more</a>
                                 <!-- Like Icon -->
-                                <a href="#" class="like-icon me-3"><i class="far fa-thumbs-up"></i></a>
+                                <a class="like-icon me-3" href="#" data-news-id="<?= $article['news_id'] ?>" onclick="toggleLike(this)"><i class="far fa-thumbs-up"></i></a>
                             </div>
                         </div>
                     </div><!-- Service box end -->
@@ -113,9 +117,43 @@
     </div><!-- Container end -->
 </section><!-- Feature are end -->
 
+
   <?php include('include\footer.php'); ?>
    <!-- Javascript Files
   ================================================== -->
+
+  <script>
+    function toggleLike(element) {
+        // Prevent the default link behavior
+        event.preventDefault();
+
+        // Get the news ID from the data attribute
+        const newsId = element.dataset.newsId;
+
+        // Make an AJAX POST request to the server to save the like
+        fetch(`/like/${newsId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Handle the response from the server
+            console.log(data); // For testing
+            // Optionally, update the UI based on the response
+        })
+        .catch(error => {
+            console.error('Error recording like:', error);
+            // Optionally, show an error message to the user
+        });
+    }
+</script>
 
   <script>
     function formatAdvisoryDetails(content) {
