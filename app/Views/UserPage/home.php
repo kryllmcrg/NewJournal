@@ -130,8 +130,6 @@
     </div><!-- Container end -->
 </section><!-- Feature are end -->
 
-
-
   <?php include('include\footer.php'); ?>
    <!-- Javascript Files
   ================================================== -->
