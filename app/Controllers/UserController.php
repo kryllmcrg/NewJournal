@@ -14,13 +14,19 @@ class UserController extends BaseController
         return view('welcome_message');
     }
 
-    public function news_read()
+    public function news_read($news_id)
     {
         $newsModel = new NewsModel();
-        $readmore = $newsModel->findAll();
-        $readmoreko['readall'] = $readmore;
 
-        return view('UserPage/news_read', $readmoreko);
+        // Fetch article details by news_id
+        $article = $newsModel->find($news_id);
+
+        // Pass data to view
+        $data = [
+            'article' => $article,
+        ];
+
+        return view('UserPage/news_read', $data);
     }
 
     public function home()
