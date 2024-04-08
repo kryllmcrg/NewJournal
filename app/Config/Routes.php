@@ -42,11 +42,12 @@ $routes->post('changeNewStatus', 'NewsController::changeNewStatus');
 $routes->post('changePubStatus', 'NewsController::changePubStatus');
 $routes->get('/viewnews/(:any)', 'NewsController::viewnews/$1');
 $routes->get('/archive', 'NewsController::archive');
-$routes->get('managecomments/(:num)', 'NewsController::managecomments/$1');
 
-$routes->get('/managecomments', 'CommentsController::managecomments');
 $routes->get('displayComments/(:num)', 'CommentsController::displayComments/$1');
 $routes->post('addComment', 'CommentsController::addComment');
+$routes->post('commentStatus', 'CommentsController::commentStatus');
+$routes->get('managecomments/(:num)', 'CommentsController::managecomments/$1');
+$routes->get('managecomments', 'CommentsController::showManageCommentsPage');
 
 $routes->get('/chats', 'ChatController::chats');
 
