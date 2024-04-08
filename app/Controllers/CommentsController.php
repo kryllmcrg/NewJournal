@@ -17,27 +17,27 @@ class CommentsController extends BaseController
     }
 
     public function addComment()
-{
-    // Load necessary models and libraries
-    $commentModel = new CommentModel();
-    $session = session();
+    {
+        // Load necessary models and libraries
+        $commentModel = new CommentModel();
+        $session = session();
 
-    // Retrieve form data
-    $data = [
-        'news_id' => $this->request->getPost('news_id'), // Using getPost for security
-        'parent_comment_id' => null, // Assuming no nested comments for now
-        'comment' => $this->request->getPost('message'), // Assuming textarea has name 'message'
-        'comment_author' => $this->request->getPost('name'),
-        'comment_date' => date('Y-m-d H:i:s'), // Current timestamp
-        'user_id' => $this->request->getPost('user_id') // Retrieve user_id from form data
-    ];
+        // Retrieve form data
+        $data = [
+            'news_id' => $this->request->getPost('news_id'), // Using getPost for security
+            'parent_comment_id' => null, // Assuming no nested comments for now
+            'comment' => $this->request->getPost('message'), // Assuming textarea has name 'message'
+            'comment_author' => $this->request->getPost('name'),
+            'comment_date' => date('Y-m-d H:i:s'), // Current timestamp
+            'user_id' => $this->request->getPost('user_id') // Retrieve user_id from form data
+        ];
 
-    // Insert data into the database
-    $commentModel->insert($data);
+        // Insert data into the database
+        $commentModel->insert($data);
 
-    // Redirect back to the news page
-    return redirect()->to(base_url('/news_read/' . $data['news_id'])); // Redirect to the news page
-}
+        // Redirect back to the news page
+        return redirect()->to(base_url('/news_read/' . $data['news_id'])); // Redirect to the news page
+    }
 
 
 public function managecomments($news_id = null)
@@ -65,33 +65,44 @@ public function managecomments($news_id = null)
         return view('AdminPage/managecomments', $data);
     }
     public function commentStatus()
-{
-    try {
-        // Check if the request is AJAX
-        if (!$this->request->isAJAX()) {
-            return $this->response->setStatusCode(400)->setBody('Invalid request');
+    {
+        try {
+            // Check if the request is AJAX
+            if (!$this->request->isAJAX()) {
+                return $this->response->setStatusCode(400)->setBody('Invalid request');
+            }
+
+            // Get comment ID and status from POST data
+            $commentId = $this->request->getVar('comment_id');
+            $commentStatus = $this->request->getVar('comment_status');
+
+            // Update comment status
+            $commentModel = new CommentModel();
+            $updated = $commentModel->updateCommentStatus($commentId, $commentStatus);
+
+            // Prepare response
+            $response = [
+                'success' => $updated,
+                'message' => $updated ? 'Comment status updated successfully' : 'Failed to update comment status',
+            ];
+
+            // Send response
+            return $this->response->setJSON($response);
+        } catch (\Throwable $th) {
+            // Handle exceptions
+            return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $th->getMessage()]);
         }
-
-        // Get comment ID and status from POST data
-        $commentId = $this->request->getVar('comment_id');
-        $commentStatus = $this->request->getVar('comment_status');
-
-        // Update comment status
-        $commentModel = new CommentModel();
-        $updated = $commentModel->updateCommentStatus($commentId, $commentStatus);
-
-        // Prepare response
-        $response = [
-            'success' => $updated,
-            'message' => $updated ? 'Comment status updated successfully' : 'Failed to update comment status',
-        ];
-
-        // Send response
-        return $this->response->setJSON($response);
-    } catch (\Throwable $th) {
-        // Handle exceptions
-        return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $th->getMessage()]);
     }
-}
 
+    public function showComments()
+    {
+        // Load the CommentModel
+        $commentModel = new CommentModel();
+
+        // Fetch specific fields from the database
+        $comments = $commentModel->select('comment, comment_author, comment_date')->findAll(); 
+
+        // Pass the comments data to the view
+        return view('comments_view', ['comments' => $comments]);
+    }
 }

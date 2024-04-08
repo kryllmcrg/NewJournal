@@ -101,26 +101,34 @@
         </div><!-- post-body end -->
     </div><!-- post content end -->
 
-        <!-- POST COMMENTS -->
-        <div id="comments" class="comments-area">
-          <h3 class="comments-heading">07 Comments</h3>
-          <ul class="comments-list">
-            <li>
-              <div class="comment d-flex">
-                <img loading="lazy" class="comment-avatar" alt="author" src="images/news/avator1.png">
-                <div class="comment-body">
-                  <div class="meta-data">
-                    <span class="comment-author mr-3"></span>
-                    <span class="comment-date float-right"></span>
-                  </div>
-                  <div class="comment-content">
-                    <p></p>
-                  </div>
-                  <div class="text-left">
-                    <a class="comment-reply font-weight-bold" href="#">Reply</a>
-                  </div>
-                </div>
-              </div><!-- Comments end -->
+          <<div id="comments" class="comments-area">
+    <?php if (!empty($comments)): ?>
+        <h3 class="comments-heading"><?= count($comments) ?> Comments</h3>
+        <ul class="comments-list">
+            <?php foreach ($comments as $comment): ?>
+                <li>
+                    <div class="comment d-flex">
+                        <img loading="lazy" class="comment-avatar" alt="author" src="images/news/avator1.png">
+                        <div class="comment-body">
+                            <div class="meta-data">
+                                <span class="comment-author mr-3"><?= $comment['comment_author'] ?></span>
+                                <span class="comment-date float-right"><?= $comment['comment_date'] ?></span>
+                            </div>
+                            <div class="comment-content">
+                                <p><?= $comment['comment'] ?></p>
+                            </div>
+                            <div class="text-left">
+                                <a class="comment-reply font-weight-bold" href="#">Reply</a>
+                            </div>
+                        </div>
+                    </div><!-- Comments end -->
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php else: ?>
+        <h3 class="comments-heading">No Comments</h3>
+    <?php endif; ?>
+</div>
 
               <!-- REPLY COMMENTS -->
               <ul class="comments-reply">

@@ -79,7 +79,7 @@
                                 <tbody>
                                     <?php foreach ($commentData as $comment) : ?>
                                         <tr>
-                                            <td><?= $comment['comment_id'] ?></td>
+                                            <td><?= $comment['news_id'] ?></td>
                                             <td><?= $comment['comment'] ?></td>
                                             <td><?= $comment['comment_author'] ?></td>
                                             <td><?= $comment['comment_date'] ?></td>
