@@ -34,7 +34,7 @@ class CommentsController extends BaseController
         'comment' => $this->request->getPost('message'), // Assuming textarea has name 'message'
         'comment_author' => $this->request->getPost('name'),
         'comment_date' => date('Y-m-d H:i:s'), // Current timestamp
-        'user_id' => $session->get('user_id') // Assuming 'user_id' is stored in the session
+        'user_id' => $this->request->getPost('user_id') // Retrieve user_id from form data
     ];
 
     // Insert data into the database
@@ -43,5 +43,4 @@ class CommentsController extends BaseController
     // Redirect back to the news page
     return redirect()->to(base_url('/news_read/' . $data['news_id'])); // Redirect to the news page
 }
-    
 }

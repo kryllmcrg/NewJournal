@@ -126,48 +126,48 @@ class LogRegController extends BaseController
     }
 
         public function auth()
-    {
-        $session = session();
-        $model = new UsersModel();
-        $email = $this->request->getVar('email');
-        $password = $this->request->getVar('password');
-        $data = $model->where('email', $email)->first();
-        if ($data) {
-            $pass = $data['password'];
-            $verify_pass = password_verify($password, $pass);
-            if ($verify_pass) {
-                // Set user data in session
-                $session->set([
-                    'user_id' => $data['user_id'],
-                    'email' => $data['email'],
-                    'role' => $data['role'],
-                    'image' => $data['image'],
-                    'fullname' => $data['firstname'].' '. $data['lastname'],
-                    'logged_in' => true
-                ]);
+        {
+            $session = session();
+            $model = new UsersModel();
+            $email = $this->request->getVar('email');
+            $password = $this->request->getVar('password');
+            $data = $model->where('email', $email)->first();
+            if ($data) {
+                $pass = $data['password'];
+                $verify_pass = password_verify($password, $pass);
+                if ($verify_pass) {
+                    // Set user data in session
+                    $session->set([
+                        'user_id' => $data['user_id'],
+                        'email' => $data['email'],
+                        'role' => $data['role'],
+                        'image' => $data['image'],
+                        'fullname' => $data['firstname'].' '. $data['lastname'],
+                        'logged_in' => true
+                    ]);
 
-                // Update login status to 'Logged In'
-                $loginData = [
-                    'log_status' => 'Logged In'
-                ];
-                $model->update($data['user_id'], $loginData);
+                    // Update login status to 'Logged In'
+                    $loginData = [
+                        'log_status' => 'Logged In'
+                    ];
+                    $model->update($data['user_id'], $loginData);
 
-                // Redirect based on user's role
-                if ($data['role'] == 'Admin' || $data['role'] == 'Staff') {
-                    return redirect()->to('/dashboard');
+                    // Redirect based on user's role
+                    if ($data['role'] == 'Admin' || $data['role'] == 'Staff') {
+                        return redirect()->to('/dashboard');
+                    } else {
+                        // Redirect to another page for users with different roles
+                        return redirect()->to('/');
+                    }
                 } else {
-                    // Redirect to another page for users with different roles
-                    return redirect()->to('/');
+                    $session->setFlashdata('msg', 'Incorrect password');
+                    return redirect()->to('/login');
                 }
             } else {
-                $session->setFlashdata('msg', 'Incorrect password');
+                $session->setFlashdata('msg', 'Email not found');
                 return redirect()->to('/login');
             }
-        } else {
-            $session->setFlashdata('msg', 'Email not found');
-            return redirect()->to('/login');
         }
-    }
 
         public function check()
     {
@@ -190,6 +190,8 @@ class LogRegController extends BaseController
                 $verify_pass = password_verify($password, $pass);
                 if ($verify_pass) {
                     $session = session();
+                    var_dump($session->get('user_id'));
+
                     $session->set([
                         'staff_id' => $data['staff_id'],
                         'user_id' => $data['user_id'],

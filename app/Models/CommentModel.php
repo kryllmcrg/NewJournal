@@ -12,7 +12,7 @@ class CommentModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['news_id','parent_comment_id','comment','comment_author','comment_date'];
+    protected $allowedFields    = ['news_id','parent_comment_id','comment','comment_author','comment_date','user_id'];
 
     // Dates
     protected $useTimestamps = false;

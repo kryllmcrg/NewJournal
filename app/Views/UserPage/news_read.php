@@ -166,6 +166,7 @@
           <h3 class="title-normal">Add a comment</h3>
           <form action="<?= base_url('addComment') ?>" method="post" role="form">
               <input type="hidden" name="news_id" value="<?= $article['news_id'] ?>">
+              <input type="hidden" name="user_id" value="<?= session()->get('user_id') ?>">
               <div class="row">
                   <div class="col-md-12">
                       <div class="form-group">
