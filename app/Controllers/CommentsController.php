@@ -93,5 +93,6 @@ public function managecomments($news_id = null)
             return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $th->getMessage()]);
         }
     }
+    
 
 }

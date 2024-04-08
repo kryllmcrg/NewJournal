@@ -30,7 +30,7 @@ class CommentModel extends Model
             // Comment not found
             return false;
         }
-    }    
+    } 
     // Dates
     protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';
