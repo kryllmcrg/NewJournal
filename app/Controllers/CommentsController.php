@@ -65,33 +65,33 @@ public function managecomments($news_id = null)
         return view('AdminPage/managecomments', $data);
     }
     public function commentStatus()
-    {
-        try {
-            // Check if the request is AJAX
-            if (!$this->request->isAJAX()) {
-                return $this->response->setStatusCode(400)->setBody('Invalid request');
-            }
-
-            // Get comment ID and status from POST data
-            $commentId = $this->request->getVar('comment_id');
-            $commentStatus = $this->request->getVar('comment_status');
-
-            // Update comment status
-            $commentModel = new CommentModel();
-            $updated = $commentModel->updateCommentStatus($commentId, $commentStatus);
-
-            // Prepare response
-            $response = [
-                'success' => $updated,
-                'message' => $updated ? 'Comment status updated successfully' : 'Failed to update comment status',
-            ];
-
-            // Send response
-            return $this->response->setJSON($response);
-        } catch (\Throwable $th) {
-            // Handle exceptions
-            return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $th->getMessage()]);
+{
+    try {
+        // Check if the request is AJAX
+        if (!$this->request->isAJAX()) {
+            return $this->response->setStatusCode(400)->setBody('Invalid request');
         }
+
+        // Get comment ID and status from POST data
+        $commentId = $this->request->getVar('comment_id');
+        $commentStatus = $this->request->getVar('comment_status');
+
+        // Update comment status
+        $commentModel = new CommentModel();
+        $updated = $commentModel->updateCommentStatus($commentId, $commentStatus);
+
+        // Prepare response
+        $response = [
+            'success' => $updated,
+            'message' => $updated ? 'Comment status updated successfully' : 'Failed to update comment status',
+        ];
+
+        // Send response
+        return $this->response->setJSON($response);
+    } catch (\Throwable $th) {
+        // Handle exceptions
+        return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $th->getMessage()]);
     }
+}
 
 }

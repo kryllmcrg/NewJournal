@@ -14,6 +14,23 @@ class CommentModel extends Model
     protected $protectFields    = true;
     protected $allowedFields = ['news_id', 'parent_comment_id', 'comment', 'comment_author', 'comment_date', 'comment_status', 'user_id'];
 
+    public function updateCommentStatus($commentId, $status)
+    {
+        // Find the comment by its ID
+        $comment = $this->find($commentId);
+    
+        // If the comment is found
+        if ($comment) {
+            // Update only the comment_status field
+            $comment['comment_status'] = $status;
+    
+            // Save the changes
+            return $this->save($comment);
+        } else {
+            // Comment not found
+            return false;
+        }
+    }    
     // Dates
     protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';

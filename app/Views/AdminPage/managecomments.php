@@ -77,34 +77,34 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                  <?php foreach ($commentData as $comment) : ?>
-                                      <tr>
-                                          <td><?= $comment['comment_id'] ?></td>
-                                          <td><?= $comment['comment'] ?></td>
-                                          <td><?= $comment['comment_author'] ?></td>
-                                          <td><?= $comment['comment_date'] ?></td>
-                                          <td>
-                                              <div class="d-flex align-items-center">
-                                                  <span id="commentStatus<?= $comment['comment_id']; ?>"><?= $comment['comment_status'] ?></span>
-                                                  <div class="dropdown ml-auto">
-                                                      <i class="fas fa-ellipsis-h" id="dropdownMenuButton<?= $comment['comment_id']; ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-                                                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton<?= $comment['comment_id']; ?>">
-                                                          <a class="dropdown-item" href="#" onclick="updateCommentStatus('<?= $comment['comment_id']; ?>', 'Approved')">Approved</a>
-                                                          <a class="dropdown-item" href="#" onclick="updateCommentStatus('<?= $comment['comment_id']; ?>', 'Reject')">Reject</a>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          </td>
-                                          <td><?= $comment['user_id'] ?></td>
-                                      </tr>
-                                  <?php endforeach; ?>
-                                  <!-- Show message if no data available -->
-                                  <?php if (empty($commentData)) : ?>
-                                      <tr>
-                                          <td colspan="6" class="text-center">No information available</td>
-                                      </tr>
-                                  <?php endif; ?>
-                              </tbody>
+                                    <?php foreach ($commentData as $comment) : ?>
+                                        <tr>
+                                            <td><?= $comment['comment_id'] ?></td>
+                                            <td><?= $comment['comment'] ?></td>
+                                            <td><?= $comment['comment_author'] ?></td>
+                                            <td><?= $comment['comment_date'] ?></td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <span id="commentStatus<?= $comment['comment_id']; ?>"><?= $comment['comment_status'] ?></span>
+                                                    <div class="dropdown ml-auto">
+                                                        <i class="fas fa-ellipsis-h" id="dropdownMenuButton<?= $comment['comment_id']; ?>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton<?= $comment['comment_id']; ?>">
+                                                            <a class="dropdown-item" href="#" onclick="updateCommentStatus('<?= $comment['comment_id']; ?>', 'Approved')">Approved</a>
+                                                            <a class="dropdown-item" href="#" onclick="updateCommentStatus('<?= $comment['comment_id']; ?>', 'Reject')">Reject</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td><?= $comment['user_id'] ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                    <!-- Show message if no data available -->
+                                    <?php if (empty($commentData)) : ?>
+                                        <tr>
+                                            <td colspan="6" class="text-center">No information available</td>
+                                        </tr>
+                                    <?php endif; ?>
+                                </tbody>
                             </table>
                               </div>
                             </div>
@@ -143,7 +143,7 @@
                     $('#commentStatus' + commentId).text(status);
                     alert("Comment status updated successfully.");
                 } else {
-                    alert("Failed to update comment status.");
+                    alert("Failed to update comment status: " + response.message);
                 }
             },
             error: function(xhr, status, error) {
@@ -153,6 +153,7 @@
         });
     }
 </script>
+
 
     <script src="<?= base_url('assets2/vendors/js/vendor.bundle.base.js')?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
