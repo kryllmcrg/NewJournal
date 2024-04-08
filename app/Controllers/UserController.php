@@ -31,11 +31,16 @@ class UserController extends BaseController
             'article' => $article,
             'category_name' => $category_name,
         ];
+        
+        // Fetch comments with status 'approved'
         $commentModel = new CommentModel();
-        $data['comments'] = $commentModel->where('news_id', $news_id)->findAll();
+        $data['comments'] = $commentModel->where('news_id', $news_id)
+                                        ->where('comment_status', 'approved')
+                                        ->findAll();
         
         return view('UserPage/news_read', $data);
     }
+
     public function home()
     {
         try {

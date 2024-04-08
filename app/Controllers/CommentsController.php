@@ -94,31 +94,4 @@ public function managecomments($news_id = null)
         }
     }
 
-    public function showComments($news_id = null)
-    {
-        // Load the necessary model
-        $commentModel = new CommentModel();
-        
-        // Fetch comments based on news_id if provided, otherwise fetch all comments
-        if ($news_id !== null) {
-            $data['comments'] = $commentModel->where('news_id', $news_id)
-                                              ->select('comment, comment_author, comment_date')
-                                              ->findAll(); 
-            
-            // Set the news_id for redirection
-            $data['news_id'] = $news_id;
-        } else {
-            $data['comments'] = $commentModel->select('comment, comment_author, comment_date')->findAll();
-        }
-        
-        // Check if comments are fetched
-        var_dump($data['comments']);
-        
-        // Load the view and pass the $data variable
-        return view('news_read', $data);
-    }
-    
-
-    
-
 }
