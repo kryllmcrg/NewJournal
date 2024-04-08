@@ -6,13 +6,13 @@ use CodeIgniter\Model;
 
 class CommentModel extends Model
 {
-    protected $table            = 'comments';
+    protected $table            = 'comment';
     protected $primaryKey       = 'comment_id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['comment_id','news_id','comment','comment_author'];
+    protected $allowedFields    = ['news_id','parent_comment_id','comment','comment_author','comment_date'];
 
     // Dates
     protected $useTimestamps = false;

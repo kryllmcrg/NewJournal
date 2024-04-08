@@ -44,6 +44,7 @@ $routes->get('/viewnews/(:any)', 'NewsController::viewnews/$1');
 $routes->get('/archive', 'NewsController::archive');
 
 $routes->get('/managecomments', 'CommentsController::managecomments');
+$routes->post('addComment', 'CommentsController::addComment');
 
 $routes->get('/chats', 'ChatController::chats');
 

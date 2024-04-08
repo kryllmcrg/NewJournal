@@ -32,74 +32,74 @@
 
 </head>
 <style>
-  .post-media.post-image {
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-}
+        .post-media.post-image {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+        }
 
-.post-media.post-image img {
-    object-fit: cover;
-    width: 100%;
-}
+        .post-media.post-image img {
+            object-fit: cover;
+            width: 100%;
+        }
 
-/* Set specific dimensions for different screen sizes */
-@media (min-width: 576px) {
-    .post-media.post-image {
-        max-width: 540px; /* Adjust width for medium devices (tablets) */
-        height: 300px; /* Adjust height for medium devices (tablets) */
-    }
-}
+        /* Set specific dimensions for different screen sizes */
+        @media (min-width: 576px) {
+            .post-media.post-image {
+                max-width: 540px; /* Adjust width for medium devices (tablets) */
+                height: 300px; /* Adjust height for medium devices (tablets) */
+            }
+        }
 
-@media (min-width: 768px) {
-    .post-media.post-image {
-        max-width: 720px; /* Adjust width for large devices (desktops) */
-        height: 400px; /* Adjust height for large devices (desktops) */
-    }
-}
+        @media (min-width: 768px) {
+            .post-media.post-image {
+                max-width: 720px; /* Adjust width for large devices (desktops) */
+                height: 400px; /* Adjust height for large devices (desktops) */
+            }
+        }
 
-@media (min-width: 992px) {
-    .post-media.post-image {
-        max-width: 960px; /* Adjust width for extra-large devices (large desktops) */
-        height: 500px; /* Adjust height for extra-large devices (large desktops) */
-    }
-}
-</style>
+        @media (min-width: 992px) {
+            .post-media.post-image {
+                max-width: 960px; /* Adjust width for extra-large devices (large desktops) */
+                height: 500px; /* Adjust height for extra-large devices (large desktops) */
+            }
+        }
+    </style>
 <body>
 <?php include('include\header.php'); ?>
 
   <section id="main-container" class="main-container">
     <div class="container">
-    <div class="row">
-    <div class="col-lg-8 mb-5 mb-lg-0">
-        <div class="post-content post-single">
-            <div class="post-media post-image">
-                <img loading="lazy" class="w-100" src="<?= json_decode($article['images'])[0] ?>" alt="news-image" />
-            </div>
-            <div class="post-body">
-          <div class="entry-header">
-              <div class="post-meta">
-                  <span class="post-author">
-                      <i class="far fa-user"></i> <?= $article['author'] ?>
-                  </span>
-                  <span class="post-cat">
-                      <i class="far fa-folder-open"></i> <?= $category_name ?>
-                  </span>
-                  <span class="post-meta-date">
-                      <i class="far fa-calendar"></i> <?= $article['publication_date'] ?>
-                  </span>
-                  <span class="post-comment"><i class="far fa-comment"></i> 03<a href="#"
-                      class="comments-link">Comments</a></span>
+      <div class="row">
+      <div div class="col-lg-8 mb-5 mb-lg-0">
+          <div class="post-content post-single">
+              <div class="post-media post-image">
+                  <img loading="lazy" class="w-100" src="<?= json_decode($article['images'])[0] ?>" alt="news-image" />
               </div>
-              <h2 class="entry-title"><?= $article['title'] ?></h2>
-          </div><!-- header end -->
+              <div class="post-body">
+            <div class="entry-header">
+                <div class="post-meta">
+                    <span class="post-author">
+                        <i class="far fa-user"></i> <?= $article['author'] ?>
+                    </span>
+                    <span class="post-cat">
+                        <i class="far fa-folder-open"></i> <?= $category_name ?>
+                    </span>
+                    <span class="post-meta-date">
+                        <i class="far fa-calendar"></i> <?= $article['publication_date'] ?>
+                    </span>
+                    <span class="post-comment"><i class="far fa-comment"></i> 03<a href="#"
+                        class="comments-link">Comments</a></span>
+                </div>
+                <h2 class="entry-title"><?= $article['title'] ?></h2>
+            </div><!-- header end -->
 
-          <div class="entry-content">
-              <?= $article['content'] ?>
-          </div>
+            <div class="entry-content">
+                <?= $article['content'] ?>
+            </div>
 
-      </div><!-- post-body end -->
-  </div><!-- post content end -->
+        </div><!-- post-body end -->
+    </div><!-- post content end -->
 
         <!-- POST COMMENTS -->
         <div id="comments" class="comments-area">
@@ -110,13 +110,11 @@
                 <img loading="lazy" class="comment-avatar" alt="author" src="images/news/avator1.png">
                 <div class="comment-body">
                   <div class="meta-data">
-                    <span class="comment-author mr-3">Michelle Aimber</span>
-                    <span class="comment-date float-right">January 17, 2016 at 1:38 pm</span>
+                    <span class="comment-author mr-3"></span>
+                    <span class="comment-date float-right"></span>
                   </div>
                   <div class="comment-content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                      nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehen.</p>
+                    <p></p>
                   </div>
                   <div class="text-left">
                     <a class="comment-reply font-weight-bold" href="#">Reply</a>
@@ -131,16 +129,14 @@
                     <img loading="lazy" class="comment-avatar" alt="author" src="images/news/avator2.png">
                     <div class="comment-body">
                       <div class="meta-data">
-                        <span class="comment-author mr-3">Tom Harnandez</span>
-                        <span class="comment-date float-right">January 17, 2016 at 1:38 pm</span>
+                        <span class="comment-author mr-3"></span>
+                        <span class="comment-date float-right"></span>
                       </div>
                       <div class="comment-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                          laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehen.</p>
+                        <p></p>
                       </div>
                       <div class="text-left">
-                        <a class="comment-reply font-weight-bold" href="#">Reply</a>
+                        <a class="comment-reply font-weight-bold" href="#"></a>
                       </div>
                     </div>
                   </div><!-- Comments end -->
@@ -150,13 +146,11 @@
                 <img loading="lazy" class="comment-avatar" alt="author" src="images/news/avator3.png">
                 <div class="comment-body">
                   <div class="meta-data">
-                    <span class="comment-author mr-3">Genelia Dusteen</span>
-                    <span class="comment-date float-right">January 17, 2016 at 1:38 pm</span>
+                    <span class="comment-author mr-3"></span>
+                    <span class="comment-date float-right"></span>
                   </div>
                   <div class="comment-content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                      nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehen.</p>
+                    <p></p>
                   </div>
                   <div class="text-left">
                     <a class="comment-reply font-weight-bold" href="#">Reply</a>
@@ -168,37 +162,37 @@
         </div><!-- Post comment end -->
 
         <!-- ADD COMMENTS -->
-        <div class="comments-form border-box">
+      <div class="comments-form border-box">
           <h3 class="title-normal">Add a comment</h3>
-          <form role="form">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="message"><textarea class="form-control required-field" id="message" placeholder="Your Comment" rows="10" required></textarea></label>
-                </div>
-              </div><!-- Col 12 end -->
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="name"><input class="form-control" name="name" id="name" placeholder="Your Name" type="text" required></label>
-                </div>
-              </div><!-- Col 4 end -->
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="email"><input class="form-control" name="email" id="email" placeholder="Your Email" type="email" required></label>
-                </div>
+          <form action="<?= base_url('addComment') ?>" method="post" role="form">
+              <input type="hidden" name="news_id" value="<?= $article['news_id'] ?>">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="form-group">
+                          <label for="message"><textarea class="form-control required-field" id="message" name="message" placeholder="Your Comment" rows="10" required></textarea></label>
+                      </div>
+                  </div><!-- Col 12 end -->
+                  <div class="col-md-4">
+                      <div class="form-group">
+                          <label for="name"><input class="form-control" name="name" id="name" placeholder="Your Name" type="text" required></label>
+                      </div>
+                  </div><!-- Col 4 end -->
+                  <div class="col-md-4">
+                      <div class="form-group">
+                          <label for="email"><input class="form-control" name="email" id="email" placeholder="Your Email" type="email" required></label>
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="form-group">
+                          <label for="website"><input class="form-control" id="website" name="website" placeholder="Your Website" type="text"></label>
+                      </div>
+                  </div>
+              </div><!-- Form row end -->
+              <div class="clearfix">
+                  <button class="btn btn-primary" type="submit" aria-label="post-comment">Post Comment</button>
               </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="website"><input class="form-control" id="website" placeholder="Your Website" type="text" required></label>
-                </div>
-              </div>
-            </div><!-- Form row end -->
-            <div class="clearfix">
-              <button class="btn btn-primary" type="submit" aria-label="post-comment">Post Comment</button>
-            </div>
           </form><!-- Form end -->
-        </div><!-- Comments form end -->
-      </div><!-- Content Col end -->
+      </div><!-- Comments form end -->
 
       <!-- RECENT POSTS -->
       <div class="col-lg-4">
