@@ -38,7 +38,7 @@
         <div class="row justify-content-between">
           <div class="col-lg-4 col-md-6 footer-widget footer-about">
           <h3 class="widget-title">About Calapan City Information Office</h3>
-            <img loading="lazy" class="footer-logo" src="assets/images/footer-logo.png" alt="Calapan City Information Office">
+          <img loading="lazy" class="footer-logo" src="<?= base_url('assets/images/footer-logo.png') ?>" alt="Calapan City Information Office">
             <p>The Calapan City Information Office serves as the primary source of official information for residents and visitors alike. 
               Our mission is to provide accurate and timely updates on city initiatives, events, and services. From announcements to community engagement, 
               we strive to foster transparency and connectivity within the community.</p>

@@ -94,15 +94,15 @@ public function managecomments($news_id = null)
         }
     }
 
-    public function showComments()
+    public function showComments($news_id = null)
     {
-        // Load the CommentModel
+        // Load the necessary model
         $commentModel = new CommentModel();
-
-        // Fetch specific fields from the database
-        $comments = $commentModel->select('comment, comment_author, comment_date')->findAll(); 
-
-        // Pass the comments data to the view
-        return view('comments_view', ['comments' => $comments]);
+        
+        // Fetch comment data from the database
+        $data['comments'] = $commentModel->findAll();
+        
+        // Load the view and pass the comment data to it
+        return view('UserPage/news_read', $data);
     }
 }
