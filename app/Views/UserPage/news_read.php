@@ -101,36 +101,34 @@
         </div><!-- post-body end -->
     </div><!-- post content end -->
 
+    <!-- POST COMMENTS -->
     <div id="comments" class="comments-area">
         <h3 class="comments-heading">Comments</h3>
-          <ul class="comments-list">
-              <?php foreach ($comments as $comment): ?>
-              <li>
-                  <div class="comment d-flex">
-                      <img loading="lazy" class="comment-avatar" alt="author" src="images/news/avator1.png">
-                      <div class="comment-body">
-                          <div class="meta-data">
-                              <!-- Display the comment author -->
-                              <span class="comment-author mr-3"><?= $comment['comment_author'] ?></span>
-                              <!-- Display the comment date -->
-                              <span class="comment-date float-right"><?= $comment['comment_date'] ?></span>
-                          </div>
-                          <div class="comment-content">
-                              <!-- Display the comment content -->
-                              <p><?= $comment['comment'] ?></p>
-                          </div>
-                          <div class="text-left">
-                              <a class="comment-reply font-weight-bold" href="#">Reply</a>
-                          </div>
-                      </div>
-                  </div><!-- Comments end -->
-              </li>
-              <?php endforeach; ?>
-          </ul>
+        <ul class="comments-list">
+            <?php foreach ($comments as $comment): ?>
+            <li>
+                <div class="comment d-flex">
+                    <img loading="lazy" class="comment-avatar" alt="author" src="images/news/avator1.png">
+                    <div class="comment-body">
+                        <div class="meta-data">
+                            <!-- Display the comment author -->
+                            <span class="comment-author mr-3"><?= $comment['comment_author'] ?></span>
+                            <!-- Display the comment date -->
+                            <span class="comment-date float-right"><?= $comment['comment_date'] ?></span>
+                        </div>
+                        <div class="comment-content">
+                            <!-- Display the comment content -->
+                            <p><?= $comment['comment'] ?></p>
+                        </div>
+                        <div class="text-left">
+                            <a class="comment-reply font-weight-bold" href="#">Reply</a>
+                        </div>
+                    </div>
+                </div><!-- Comments end -->
+            </li>
+            <?php endforeach; ?>
+        </ul>
     </div><!-- Comments area end -->
-
-
-
 
               <!-- REPLY COMMENTS -->
               <ul class="comments-reply">

@@ -48,13 +48,14 @@ public function displayComments($news_id)
 {
     // Load the necessary model
     $commentModel = new CommentModel();
-    
-    // Fetch comments for the given news ID
-    $data['comments'] = $commentModel->where('news_id', $news_id)->findAll();
+
+    // Fetch all comments
+    $data['comments'] = $commentModel->findAll();
     
     // Load the view with comments data
-    return redirect()->to(base_url('/news_read/' . $data['news_id']));
+    return view('news_read', $data);
 }
+
 
 
 

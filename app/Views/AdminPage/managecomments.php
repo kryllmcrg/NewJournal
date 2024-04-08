@@ -64,6 +64,42 @@
             </div>
           </div>
 
+        <!-- Comments table -->
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-12">
+                      <h2>Comments</h2>
+                      <table class="table">
+                          <thead>
+                              <tr>
+                                  <th>News ID</th>
+                                  <th>Comment</th>
+                                  <th>Comment Author</th>
+                                  <th>Comment Date</th>
+                                  <th>User ID</th>
+                                  <th>Action</th> <!-- Added Action column -->
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <?php foreach ($comments as $comment): ?>
+                              <tr>
+                                  <td><?= $comment['news_id'] ?></td>
+                                  <td><?= $comment['comment'] ?></td>
+                                  <td><?= $comment['comment_author'] ?></td>
+                                  <td><?= $comment['comment_date'] ?></td>
+                                  <td><?= $comment['user_id'] ?></td>
+                                  <td>
+                                      <a href="#" class="btn btn-success"><i class="fas fa-check"></i></a> <!-- Check icon -->
+                                      <a href="#" class="btn btn-danger"><i class="fas fa-times"></i></a> <!-- X icon -->
+                                  </td>
+                              </tr>
+                              <?php endforeach; ?>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <?php include('include\footer.php'); ?>
