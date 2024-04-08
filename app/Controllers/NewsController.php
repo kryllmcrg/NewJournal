@@ -182,10 +182,17 @@ class NewsController extends BaseController
         
         // Fetch comments for the specified news_id
         $data['comments'] = $commentModel->where('news_id', $news_id)->findAll();
+    
+        // Debugging: Output the fetched comments
+        echo "<pre>";
+        print_r($data['comments']);
+        echo "</pre>";
         
         // Load the view with comments data
-        return view('UserPage/managecomments', $data);
+        return view('AdminPage/managecomments', $data);
     }
+    
+    
 
     public function changeNewStatus()
     {
