@@ -175,21 +175,17 @@ class NewsController extends BaseController
         // Load the view file and pass the news data to it
         return view('AdminPage/managenews', $data); // Pass the $data array to the view
     }
-
     public function managecomments($news_id)
     {
         // Load the necessary model
         $commentModel = new CommentModel();
-    
+        
         // Fetch comments for the specified news_id
         $data['comments'] = $commentModel->where('news_id', $news_id)->findAll();
         
         // Load the view with comments data
         return view('UserPage/managecomments', $data);
     }
-    
-    
-
 
     public function changeNewStatus()
     {

@@ -44,17 +44,17 @@ class CommentsController extends BaseController
     return redirect()->to(base_url('/news_read/' . $data['news_id'])); // Redirect to the news page
 }
 
-public function displayComments($news_id)
-{
-    // Load the necessary model
-    $commentModel = new CommentModel();
+// public function displayComments($news_id)
+// {
+//     // Load the necessary model
+//     $commentModel = new CommentModel();
 
-    // Fetch all comments
-    $data['comments'] = $commentModel->findAll();
+//     // Fetch all comments
+//     $data['comments'] = $commentModel->findAll();
     
-    // Load the view with comments data
-    return view('news_read', $data);
-}
+//     // Load the view with comments data
+//     return view('news_read', $data);
+// }
 
 
 

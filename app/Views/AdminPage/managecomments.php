@@ -64,7 +64,7 @@
             </div>
           </div>
 
-        <!-- Comments table -->
+      <!-- Comments table -->
           <div class="container">
               <div class="row">
                   <div class="col-md-12">
@@ -81,25 +81,24 @@
                               </tr>
                           </thead>
                           <tbody>
-                              <?php foreach ($comments as $comment): ?>
-                              <tr>
-                                  <td><?= $comment['news_id'] ?></td>
-                                  <td><?= $comment['comment'] ?></td>
-                                  <td><?= $comment['comment_author'] ?></td>
-                                  <td><?= $comment['comment_date'] ?></td>
-                                  <td><?= $comment['user_id'] ?></td>
-                                  <td>
-                                      <a href="#" class="btn btn-success"><i class="fas fa-check"></i></a> <!-- Check icon -->
-                                      <a href="#" class="btn btn-danger"><i class="fas fa-times"></i></a> <!-- X icon -->
-                                  </td>
-                              </tr>
-                              <?php endforeach; ?>
+                          <?php foreach ($comments as $commented): ?> <!-- Loop through $comments variable -->
+                            <tr>
+                                <td><?= $commented['news_id'] ?></td>
+                                <td><?= $commented['comment'] ?></td>
+                                <td><?= $commented['comment_author'] ?></td>
+                                <td><?= $commented['comment_date'] ?></td>
+                                <td><?= $commented['user_id'] ?></td>
+                                <td>
+                                    <a href="#" class="btn btn-success"><i class="fas fa-check"></i></a> <!-- Check icon -->
+                                    <a href="#" class="btn btn-danger"><i class="fas fa-times"></i></a> <!-- X icon -->
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
                           </tbody>
                       </table>
                   </div>
               </div>
           </div>
-
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <?php include('include\footer.php'); ?>
