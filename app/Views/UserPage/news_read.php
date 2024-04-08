@@ -106,7 +106,6 @@
                   <?php if (!empty($comments)): ?>
                       <h3 class="comments-heading"><?= count($comments) ?> Comments</h3>
                       <ul class="comments-list">
-                      var_dump($comments)
                           <?php foreach ($comments as $comment): ?>
                               <li>
                                   <div class="comment d-flex">

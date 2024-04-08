@@ -6,6 +6,7 @@ use App\Models\UsersModel;
 use App\Models\CategoryModel;
 use App\Models\NewsModel;
 use App\Models\LikeModel;
+use App\Models\CommentModel;
 
 class UserController extends BaseController
 {
@@ -30,7 +31,9 @@ class UserController extends BaseController
             'article' => $article,
             'category_name' => $category_name,
         ];
-
+        $commentModel = new CommentModel();
+        $data['comments'] = $commentModel->where('news_id', $news_id)->findAll();
+        
         return view('UserPage/news_read', $data);
     }
     public function home()
