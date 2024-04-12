@@ -46,7 +46,8 @@
     }
     .liked i.fa-thumbs-up {
     color: violet;
-    }.news-link:visited {
+    }
+    .news-link:visited {
     color: purple; /* Color for visited links */
     text-decoration: underline; /* Underline for visited links */
     }
@@ -114,8 +115,8 @@
                             </div>
                             <div class="d-flex flex-column align-items-start mt-3 w-100">
                                 <div class="ts-news-info">
-                                <a href="<?= base_url('news_read/' . $article['news_id']) ?>" class="news-link">
-                                    <h3 class="news-box-title" style="font-weight: bold; font-size: larger; text-transform: capitalize;">
+                                <a href="<?= base_url('news_read/' . $article['news_id']) ?>" class="news-link" id="newsLink">
+                                    <h3 class="news-box-title" style="font-weight: bold; font-size: larger; text-transform: capitalize; font-size: 20px; text-align: justify;">
                                         <?= $article['title'] ?>
                                     </h3>
                                 </a>
@@ -141,6 +142,15 @@
   <?php include('include\footer.php'); ?>
    <!-- Javascript Files
   ================================================== -->
+
+  <script>
+document.getElementById('newsLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent default link behavior
+    var title = this.querySelector('.news-box-title');
+    title.style.color = 'purple'; // Change text color to purple
+});
+  </script>
+
   <script>
     // Define filterNews and displayNews functions in the same scope
     function filterNews(category) {
@@ -213,6 +223,7 @@
         })
         .catch(error => console.error('Error:', error));
     }
+    
 </script>
 
   <script>
