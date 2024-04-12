@@ -46,8 +46,15 @@
     }
     .liked i.fa-thumbs-up {
     color: violet;
-}
+    }.news-link:visited {
+    color: purple; /* Color for visited links */
+    text-decoration: underline; /* Underline for visited links */
+    }
 
+    .news-link:hover {
+        color: green; /* Color on hover */
+        text-decoration: underline; /* Underline on hover */
+    }
 </style>
 <body>
   
@@ -107,7 +114,11 @@
                             </div>
                             <div class="d-flex flex-column align-items-start mt-3 w-100">
                                 <div class="ts-news-info">
-                                    <h3 class="news-box-title"><?= $article['title'] ?></h3>
+                                <a href="<?= base_url('news_read/' . $article['news_id']) ?>" class="news-link">
+                                    <h3 class="news-box-title" style="font-weight: bold; font-size: larger; text-transform: capitalize;">
+                                        <?= $article['title'] ?>
+                                    </h3>
+                                </a>
                                     <div class="content-container">
                                         <p class="advisoryContent"><?= $article['content'] ?></p>
                                     </div>
