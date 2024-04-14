@@ -56,6 +56,13 @@
         color: green; /* Color on hover */
         text-decoration: underline; /* Underline on hover */
     }
+    .news-box-title {
+    font-weight: bold;
+    font-size: larger;
+    /* Remove text-transform property */
+    text-align: justify;
+}
+
 </style>
 <body>
   
@@ -116,7 +123,7 @@
                             <div class="d-flex flex-column align-items-start mt-3 w-100">
                                 <div class="ts-news-info">
                                 <a href="<?= base_url('news_read/' . $article['news_id']) ?>" class="news-link" id="newsLink">
-                                    <h3 class="news-box-title" style="font-weight: bold; font-size: larger; text-transform: capitalize; font-size: 20px; text-align: justify;">
+                                    <h3 class="news-box-title" style="font-weight: bold; font-size: larger; font-size: 20px; text-align: justify;">
                                         <?= $article['title'] ?>
                                     </h3>
                                 </a>

@@ -175,24 +175,28 @@
     // Your existing code
 
     // Register click event for the submit button
-    $('#btn-submit').on('click', function(e) {
-        e.preventDefault();
-        formData.append('title', $('#title').val());
-        formData.append('author', $('#author').val());
-        formData.append('category_id', selectedCategory);
-        formData.append('content', $('#mySummernote').summernote('code'));
-        formData.append('comment', $('#comment').val());
-        $.ajax({
-            url: '<?= base_url('addNewsSubmit')?>',
-            method: 'POST',
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function(response) {
-                console.log(response);
-                // Handle response from the server
-                location.reload();
-            }
+    $('#btn-update').on('click', function(e) {
+    e.preventDefault();
+    formData = new FormData();
+    formData.append('news_id', $('#news_id').val()); // Add this line to include the news_id in the form data
+    formData.append('title', $('#title').val());
+    formData.append('author', $('#author').val());
+    formData.append('category_id', $('#categories').val());
+    formData.append('content', $('#mySummernote').val()); // Use .val() instead of .summernote('code') to get the content
+    $.ajax({
+        url: '<?= base_url('updateNews')?>',
+        method: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+            console.log(response);
+            // Reload the page after successful update
+            location.reload();
+        }
+    });
+});
+
         });
     });
 });
