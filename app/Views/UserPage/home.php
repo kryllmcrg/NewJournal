@@ -144,11 +144,11 @@
   ================================================== -->
 
   <script>
-document.getElementById('newsLink').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent default link behavior
-    var title = this.querySelector('.news-box-title');
-    title.style.color = 'purple'; // Change text color to purple
-});
+    document.getElementById('newsLink').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        var title = this.querySelector('.news-box-title');
+        title.style.color = 'purple'; // Change text color to purple
+    });
   </script>
 
   <script>
