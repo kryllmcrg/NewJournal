@@ -92,8 +92,6 @@ class UserController extends BaseController
         return $this->response->setJSON(['error' => $th->getMessage()]);
     }
 }
-
-
     public function getCategoryData()
     {
         // Create an instance of the CategoryModel

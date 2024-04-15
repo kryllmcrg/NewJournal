@@ -77,9 +77,9 @@
                         <img class="profile-image" src="/uploads/<?= session()->get('image')?>" alt="image">
                         <span class="availability-status online"></span>
                     </div>
-                    <div class="nav-profile-text">
+                    <!-- <div class="nav-profile-text">
                       <p class="mb-1 text-black"><?= session()->get('fullname') ?></p>
-                    </div>
+                    </div> -->
                 </li>
             </ul>
         </div>

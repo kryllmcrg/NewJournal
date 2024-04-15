@@ -68,18 +68,18 @@
                               <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th>News Id</th>
+                                        <!-- <th>News Id</th> -->
                                         <th>Comment</th>
                                         <th>Comment Author</th>
                                         <th>Comment Date</th>
-                                        <th>Comment Status</th>
-                                        <th>User Id</th>
+                                        <th>Comment Status</th>`
+                                        <!-- <th>User Id</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach ($commentData as $comment) : ?>
                                         <tr>
-                                            <td><?= $comment['news_id'] ?></td>
+                                            <!-- <td><?= $comment['news_id'] ?></td> -->
                                             <td><?= $comment['comment'] ?></td>
                                             <td><?= $comment['comment_author'] ?></td>
                                             <td><?= $comment['comment_date'] ?></td>
@@ -95,7 +95,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td><?= $comment['user_id'] ?></td>
+                                            <!-- <td><?= $comment['user_id'] ?></td> -->
                                         </tr>
                                     <?php endforeach; ?>
                                     <!-- Show message if no data available -->
