@@ -45,7 +45,7 @@
               </div>
             </li>
                 <li class="nav-item nav-profile dropdown">
-                  <a class="nav-link dropdsown-toggle" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                  <a class="nav-link dropdsown-toggle" id="profileDropdown" href="logout" data-bs-toggle="dropdown" aria-expanded="false">
                     <div class="nav-profile-text">
                       <p class="mb-1 text-black"><?= session()->get('fullname') ?></p>
                     </div>
@@ -58,7 +58,7 @@
                     <a class="dropdown-item" href="#">
                       <i class="mdi mdi-cached me-2 text-success"></i> Setting </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="logout">
                       <i class="mdi mdi-logout me-2 text-primary"></i> Signout </a>
                   </div>
                 </li>
