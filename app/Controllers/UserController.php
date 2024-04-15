@@ -79,7 +79,7 @@ class UserController extends BaseController
                                     ->where('category.category_name', $categoryName)
                                     ->findAll();
             }
-
+    
             // Decode the JSON string in the images column
             foreach ($newsData as &$article) {
                 $article['images'] = json_decode($article['images'], true);
@@ -92,7 +92,7 @@ class UserController extends BaseController
             return $this->response->setJSON(['error' => $th->getMessage()]);
         }
     }
-    public function getCategoryData()
+        public function getCategoryData()
     {
         // Create an instance of the CategoryModel
         $categoryModel = new CategoryModel();

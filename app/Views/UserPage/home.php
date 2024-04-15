@@ -95,13 +95,13 @@
 <section id="ts-features" class="ts-features pb-2">  
     <div class="container">
         <div class="row">
-            <div class="shuffle-btn-group">
+        <div class="shuffle-btn-group">
                 <label class="active" for="all">
-                    <input type="radio" name="shuffle-filter" id="all" value="all" checked="checked">Show All
+                    <input type="radio" name="shuffle-filter" id="all" value="all" checked="checked" onclick="filterNews('all')">Show All
                 </label>
                 <?php foreach ($categories as $category): ?>
                     <label for="<?= $category['category_name'] ?>">
-                        <input type="radio" name="shuffle-filter" id="<?= $category['category_name'] ?>" value="<?= $category['category_name'] ?>">
+                        <input type="radio" name="shuffle-filter" id="<?= $category['category_name'] ?>" value="<?= $category['category_name'] ?>" onclick="filterNews('<?= $category['category_name'] ?>')">
                         <?= $category['category_name'] ?>
                     </label>
                 <?php endforeach; ?>
@@ -144,92 +144,68 @@
   ================================================== -->
 
   <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const filterRadios = document.querySelectorAll('input[name="shuffle-filter"]');
-    
-    filterRadios.forEach(function(radio) {
-        radio.addEventListener('change', function() {
-            console.log("Selected category: " + this.value);
-            filterNews(this.value);
-        });
+    document.getElementById('newsLink').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        var title = this.querySelector('.news-box-title');
+        title.style.color = 'purple'; // Change text color to purple
     });
+  </script>
 
+  <script>
+    // Define filterNews and displayNews functions in the same scope
     function filterNews(category) {
-        const xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    const responseData = JSON.parse(xhr.responseText);
-                    const newsData = responseData.newsData;
-                    displayNews(newsData);
-                } else {
-                    console.error('Failed to fetch news data.');
-                }
-            }
-        };
-
-        // Adjust the URL to match your route
-        const url = '/your_controller/filterNews/' + encodeURIComponent(category);
-        xhr.open('GET', url, true);
-        xhr.send();
+        // Make an AJAX request to the filterNews method in the controller
+        fetch(`/filter-news/${category}`)
+            .then(response => response.json())
+            .then(data => {
+                // Handle the filtered news data
+                displayNews(data.newsData);
+            })
+            .catch(error => console.error('Error filtering news:', error));
     }
 
     function displayNews(newsData) {
-        const newsContainer = document.getElementById('news-container');
+    const newsContainer = document.getElementById('news-container');
+    // Check if the target element exists
+    if (newsContainer) {
+        // Clear previous news articles
         newsContainer.innerHTML = '';
 
+        // Display each news article
         newsData.forEach(article => {
-            if (article.status === 'approved') {
-                const articleElement = document.createElement('div');
-                articleElement.classList.add('col-lg-4', 'col-md-6', 'mb-5');
-                articleElement.innerHTML = `
-                    <div class="ts-service-box d-flex flex-column align-items-center">
-                        <div class="ts-service-image-wrapper" style="width: 350px; height: 250px; overflow: hidden;">
-                            <img loading="lazy" class="w-100 h-100" src="${article.images[0]}" alt="news-image" style="object-fit: cover; width: 100%; height: 100%;" />
-                        </div>
-                        <div class="d-flex flex-column align-items-start mt-3 w-100">
-                            <div class="ts-news-info">
-                                <a href="/news_read/${article.news_id}" class="news-link" aria-label="news-details">
-                                    <h3 class="news-box-title">${article.title}</h3>
+            const articleElement = document.createElement('div');
+            articleElement.classList.add('col-lg-4', 'col-md-6', 'mb-5');
+            articleElement.innerHTML = `
+                <div class="ts-service-box d-flex flex-column align-items-center">
+                    <div class="ts-service-image-wrapper" style="width: 350px; height: 250px; overflow: hidden;">
+                        <img loading="lazy" class="w-100 h-100" src="${article.images[0]}" alt="news-image" style="object-fit: cover; width: 100%; height: 100%;" />
+                    </div>
+                    <div class="d-flex flex-column align-items-start mt-3 w-100">
+                        <div class="ts-news-info">
+                        <a href="<?= base_url('news_read/' . $article['news_id']) ?>" class="news-link" id="newsLink">
+                                    <h3 class="news-box-title" style="font-weight: bold; font-size: larger; text-transform: capitalize; font-size: 20px; text-align: justify;">
+                                        <?= $article['title'] ?>
+                                    </h3>
                                 </a>
-                                <div class="content-container">
-                                    <p class="advisoryContent">${article.content}</p>
-                                </div>
+                            <div class="content-container">
+                                <p class="advisoryContent">${article.content}</p>
                             </div>
-                            <div class="d-flex justify-content-between align-items-center mt-3 w-100">
-                                <a class="learn-more d-inline-block" href="/news_read/${article.news_id}" aria-label="news-details"><i class="fa fa-caret-right"></i> Read more</a>
-                                <a class="like-icon me-3" href="#" data-news-id="${article.news_id}" onclick="toggleLike(this)"><i class="far fa-thumbs-up"></i></a>
-                            </div>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-3 w-100">
+                            <!-- Read More Link -->
+                            <a class="learn-more d-inline-block" href="/news_read/${article.news_id}" aria-label="news-details"><i class="fa fa-caret-right"></i> Read more</a>
+                            <!-- Like Icon -->
+                            <a class="like-icon me-3" href="#" data-news-id="${article.news_id}" onclick="toggleLike(this)"><i class="far fa-thumbs-up"></i></a>
                         </div>
                     </div>
-                `;
-                newsContainer.appendChild(articleElement);
-            }
+                </div>
+            `;
+            newsContainer.appendChild(articleElement);
         });
+    } else {
+        console.error('News container element not found.');
     }
-});
-</script>
-
-
-  <script>
-    function toggleLike(element) {
-        // Get the news ID from data attribute
-        let newsId = element.dataset.newsId;
-
-        // Send AJAX request to like endpoint
-        fetch(`/like/${newsId}`, {
-            method: 'POST'
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.message === 'Like saved successfully') {
-                // Change like icon color
-                element.classList.add('liked');
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }
-    
+}
 </script>
 
   <script>
