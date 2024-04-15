@@ -149,6 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     filterRadios.forEach(function(radio) {
         radio.addEventListener('change', function() {
+            console.log("Selected category: " + this.value);
             filterNews(this.value);
         });
     });
@@ -167,6 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
 
+        // Adjust the URL to match your route
         const url = '/your_controller/filterNews/' + encodeURIComponent(category);
         xhr.open('GET', url, true);
         xhr.send();
@@ -206,7 +208,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-
 </script>
 
 
