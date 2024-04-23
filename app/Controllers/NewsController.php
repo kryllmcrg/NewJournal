@@ -98,62 +98,76 @@ class NewsController extends BaseController
             $category_id = $this->request->getPost('category_id');
             $author = $this->request->getPost('author');
             $staffId = session()->get('staff_id');
+            
+            // Retrieve uploaded images
             $images = $this->request->getFiles('files');
             $uploadedImages = [];
-            
+    
+            // Handle uploaded images
             foreach ($images as $file) {
-                foreach ($file as $uploadedFile) {
-                    if ($uploadedFile->isValid() && !$uploadedFile->hasMoved()) {
-                        $newName = $uploadedFile->getRandomName();
-                        $uploadedFile->move('./uploads/', $newName);
-                        $imageUrl = base_url('uploads/' . $newName);
-                        $uploadedImages[] = $imageUrl;
-                    } else {
-                        $uploadedImages[] = ['error' => 'Invalid file'];
-                    }
+                if ($file->isValid() && !$file->hasMoved()) {
+                    $newName = $file->getRandomName();
+                    $file->move('./uploads/', $newName);
+                    $imageUrl = base_url('uploads/' . $newName);
+                    $uploadedImages[] = $imageUrl;
+                } else {
+                    $uploadedImages[] = ['error' => 'Invalid image file'];
                 }
             }
-            
+    
+            // Prepare data array
             $data = [
                 'title' => $title,
                 'content' => $content,
                 'category_id' => $category_id,
                 'author' => $author,
                 'images' => json_encode($uploadedImages),
-                'staff_id' => $staffId, // Use the retrieved staff_id
+                'staff_id' => $staffId,
                 'news_status' => 'Pending',
                 'publication_status' => 'Draft'
             ];
+    
+            // Retrieve and handle uploaded video
             $uploadedVideo = [];
             if ($this->request->getFile('video')) {
-                // The file has been uploaded and can be accessed here
                 $videoFile = $this->request->getFile('video');
+                $videoFileName = $videoFile->getClientName(); // Get the original file name
+                echo "Uploaded Video Name: $videoFileName";
+    
                 if ($videoFile->isValid() && !$videoFile->hasMoved()) {
-                    $newName = $videoFile->getRandomName();
-                    $videoFile->move('./uploads/', $newName);
-                    $videoUrl = base_url('uploads/' . $newName);
-                    $uploadedVideo[] = $videoUrl;
+                    // Debug: Log the destination path
+                    $destinationPath = './uploads/' . $videoFileName;
+                    echo "Destination Path: $destinationPath";
+    
+                    // Attempt to move the video file
+                    if ($videoFile->move('./uploads/', $videoFileName)) {
+                        $videoUrl = base_url('uploads/' . $videoFileName);
+                        $uploadedVideo[] = $videoUrl;
+                    } else {
+                        // Log any errors during the move operation
+                        $uploadedVideo[] = ['error' => 'Error moving video file'];
+                    }
                 } else {
-                    $uploadedVideo[] = ['error' => 'Invalid file'];
+                    $uploadedVideo[] = ['error' => 'Invalid video file'];
                 }
-                // Perform operations with the uploaded file
-                // For example, you can check the file type, size, or move the file to a desired location
                 $data['videos'] = json_encode($uploadedVideo);
             }
-            
+    
             // Validate data
             if (empty($title) || empty($content) || empty($category_id) || empty($author)) {
                 return $this->response->setStatusCode(400)->setJSON(["error" => "Error: Required data is missing."]);
             }
-            
+    
+            // Insert data into the database
             $newsModel = new NewsModel();
             $result = $newsModel->insert($data);
-            
+    
             return $this->response->setJSON($result);
         } catch (\Throwable $th) {
             return $this->response->setJSON(['error' => $th->getMessage()]);
-        }  
-    }
+        }
+    }    
+    
     public function __construct()
     {
         $this->NewsModel = new NewsModel();

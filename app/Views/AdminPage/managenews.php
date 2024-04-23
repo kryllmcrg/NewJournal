@@ -80,6 +80,7 @@
                                                     <th>Category</th>
                                                     <th>Author</th>
                                                     <th>Image</th>
+                                                    <th>Videos</th>
                                                     <th>News Status</th>
                                                     <th>Publication Status</th>
                                                     <th>Created At</th>
@@ -110,6 +111,7 @@
                                                         </td>
                                                         <td><?php echo $newsItem['author']; ?></td>
                                                         <td class="advisoryContent"><?php echo $newsItem['images']; ?></td>
+                                                        <td class="advisoryContent"><?php echo $newsItem['videos']; ?></td>
                                                         <td>
                                                             <div class="d-flex align-items-center">
                                                                 <span id="newsStatusText<?= $newsItem['news_id']; ?>"><?php echo $newsItem['news_status']; ?></span>
