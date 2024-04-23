@@ -62,20 +62,31 @@
                         </div>
 
                         <div class="col-md-6">
-                          <label for="category">Category</label>
-                            <select class="form-control" id="categories" name="categories">
-                              <option value="">Select News Category</option>
-                                <?php foreach ($categories as $categories): ?>
-                              <option value="<?php echo $categories['category_id']; ?>">
-                                  <?php echo $categories['category_name']; ?>
-                              </option>
-                                <?php endforeach; ?>
-                            </select>
-                          </div>
+                            <div class="form-group">
+                                <label for="categories">Category</label>
+                                <select class="form-control" id="categories" name="categories">
+                                    <option value="">Select News Category</option>
+                                    <?php foreach ($categories as $category): ?>
+                                        <option value="<?php echo $category['category_id']; ?>">
+                                            <?php echo $category['category_name']; ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
                         </div>
+                    </div>
 
-                      <!-- WYSIWYG Editor -->
-                      <div class="row">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="video" class="form-label">Video</label>
+                                <input class="form-control" type="file" id="video" name="video">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- WYSIWYG Editor -->
+                    <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="content">Content</label>
@@ -179,6 +190,7 @@
         formData.append('category_id', selectedCategory);
         formData.append('content', $('#mySummernote').summernote('code'));
         formData.append('comment', $('#comment').val());
+        formData.append('video', $('#video')[0].files[0]);
         $.ajax({
             url: '<?= base_url('addNewsSubmit')?>',
             method: 'POST',

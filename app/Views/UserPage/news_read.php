@@ -25,6 +25,22 @@
     <!-- Template styles-->
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css')?>">
 </head>
+<style>
+.rating-stars {
+    color: #8a2be2; /* Violet color */
+    font-size: 20px;
+}
+
+.rating-stars i {
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.rating-stars i:hover,
+.rating-stars i.active {
+    color: #800080; /* Purple color */
+}
+</style>
 <body>
 <?php include('include\header.php'); ?>
 
@@ -34,28 +50,43 @@
             <div class="col-lg-8 mb-5 mb-lg-0">
                 <div class="post-content post-single">
                     <div class="post-media post-image">
-                        <img loading="lazy" class="w-100" src="<?= json_decode($article['images'])[0] ?>" alt="news-image" />
+                    <?php if(isset($article['videos'])){
+                            echo '<iframe src="' . json_decode($article['videos'])[0] . '" width="640" height="360" frameborder="0" allowfullscreen></iframe>';
+                        }else{
+                            echo "<img loading='lazy' class='w-100' src=". json_decode($article['images'])[0] ." alt='news-image' />";
+                        }?>
                     </div>
                     <div class="post-body">
                         <div class="entry-header">
                             <div class="post-meta">
                                 <span class="post-author">
-                                  <i class="far fa-user"></i> <?= $article['author'] ?>
+                                    <i class="far fa-user"></i> <?= $article['author'] ?>
                                 </span>
                                 <span class="post-cat">
-                                  <i class="far fa-folder-open"></i> <?= $category_name ?>
+                                    <i class="far fa-folder-open"></i> <?= $category_name ?>
                                 </span>
                                 <span class="post-meta-date">
-                                  <i class="far fa-calendar"></i> <?= $article['publication_date'] ?>
+                                    <i class="far fa-calendar"></i> <?= $article['publication_date'] ?>
                                 </span>
                                 <span class="post-comment">
-                                  <i class="far fa-comment"></i> 03<a href="#" class="comments-link">Comments</a>
+                                    <i class="far fa-comment"></i> <?= count($comments) ?><a href="#" class="comments-link"><?= (count($comments) == 1) ? 'Comment' : 'Comments' ?></a>
+                                </span>
+                                <span class="post-pdf">
+                                    <i class="far fa-file-pdf"></i> <a href="path_to_your_pdf_file.pdf" download>Download PDF</a>
                                 </span>
                             </div>
                             <h2 class="entry-title"><?= $article['title'] ?></h2>
                         </div><!-- header end -->
                         <div class="entry-content">
                             <?= $article['content'] ?>
+                        </div>
+                        <!-- Rating stars -->
+                        <div class="rating-stars">
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
                         </div>
                     </div><!-- post-body end -->
                 </div><!-- post content end -->
@@ -90,7 +121,7 @@
                         <ul class="comments-list">
                             <?php foreach ($comments as $comment): ?>
                                 <li>
-                                    <div class="comment d-flex">
+                                <div class="comment d-flex">
                                         <img loading="lazy" class="comment-avatar" alt="author" src="images/news/avator1.png">
                                         <div class="comment-body">
                                             <div class="meta-data">
@@ -99,6 +130,14 @@
                                             </div>
                                             <div class="comment-content">
                                                 <p><?= $comment['comment'] ?></p>
+                                            </div>
+                                            <!-- Rating stars -->
+                                            <div class="rating-stars">
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <i class="far fa-star"></i>
                                             </div>
                                             <div class="text-left">
                                                 <a class="comment-reply font-weight-bold" href="#">Reply</a>
@@ -210,6 +249,15 @@
 </section><!-- Main container end -->
 
 <?php include('include\footer.php'); ?>
+
+<script>
+    $('.rating-stars i').on('click', function() {
+    $(this).addClass('active');
+    $(this).prevAll().addClass('active');
+    $(this).nextAll().removeClass('active');
+});
+
+</script>
 
 <!-- Javascript Files -->
 <!-- initialize jQuery Library -->

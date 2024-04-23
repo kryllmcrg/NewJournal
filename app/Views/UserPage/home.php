@@ -32,30 +32,72 @@
 
 </head>
 <style>
-    .nav {
-        color: black;
-    }
-    
-    .content-container {
-        max-height: 100px; /* Adjust this value as needed */
-        overflow: hidden;
-    }
+    .ts-service-box {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
 
-    .read-more {
-        margin-top: 10px;
-    }
-    .liked i.fa-thumbs-up {
-    color: violet;
-    }
-    .news-link:visited {
-    color: purple; /* Color for visited links */
-    text-decoration: underline; /* Underline for visited links */
-    }
+.ts-service-box:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-    .news-link:hover {
-        color: green; /* Color on hover */
-        text-decoration: underline; /* Underline on hover */
-    }
+.ts-service-image-wrapper {
+    height: 250px;
+    overflow: hidden;
+}
+
+.ts-service-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ts-service-content {
+    padding: 20px;
+}
+
+.news-box-title {
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+
+.content-container {
+    max-height: 80px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.learn-more {
+    color: #007bff;
+}
+
+.like-icons {
+    display: flex;
+}
+
+.like-icon {
+    margin-right: 10px;
+    color: #777;
+    transition: color 0.3s ease-in-out;
+}
+
+.like-icon:hover {
+    color: #007bff;
+}
+
+.shuffle-btn-group label {
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.shuffle-btn-group label.active {
+    font-weight: bold;
+}
+
 </style>
 <body>
   
@@ -92,10 +134,10 @@
       </div>
 </div>
 
-<section id="ts-features" class="ts-features pb-2">  
+<section id="ts-features" class="ts-features pb-4">
     <div class="container">
         <div class="row">
-        <div class="shuffle-btn-group">
+            <div class="shuffle-btn-group mb-4">
                 <label class="active" for="all">
                     <input type="radio" name="shuffle-filter" id="all" value="all" checked="checked" onclick="filterNews('all')">Show All
                 </label>
@@ -108,36 +150,33 @@
             </div>
             <div id="news-container" class="row"><!-- News container start -->
                 <?php foreach ($newsData as $article): ?>
-                    <div class="col-lg-4 col-md-6 mb-5">
-                        <div class="ts-service-box d-flex flex-column align-items-center">
-                            <div class="ts-service-image-wrapper" style="width: 350px; height: 250px; overflow: hidden;">
-                                <img loading="lazy" class="w-100 h-100" src="<?= json_decode($article['images'])[0] ?>" alt="news-image" style="object-fit: cover; width: 100%; height: 100%;" />
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="ts-service-box">
+                            <div class="ts-service-image-wrapper">
+                                <img loading="lazy" class="w-100" src="<?= json_decode($article['images'])[0] ?>" alt="news-image">
                             </div>
-                            <div class="d-flex flex-column align-items-start mt-3 w-100">
-                                <div class="ts-news-info">
+                            <div class="ts-service-content">
                                 <a href="<?= base_url('news_read/' . $article['news_id']) ?>" class="news-link" id="newsLink">
-                                    <h3 class="news-box-title" style="font-weight: bold; font-size: larger; text-transform: capitalize; font-size: 20px; text-align: justify;">
-                                        <?= $article['title'] ?>
-                                    </h3>
+                                    <h3 class="news-box-title"><?= $article['title'] ?></h3>
                                 </a>
-                                    <div class="content-container">
-                                        <p class="advisoryContent"><?= $article['content'] ?></p>
-                                    </div>
+                                <div class="content-container">
+                                    <p class="advisoryContent"><?= $article['content'] ?></p>
                                 </div>
-                                <div class="d-flex justify-content-between align-items-center mt-3 w-100">
-                                    <!-- Read More Link -->
-                                    <a class="learn-more d-inline-block" href="<?= base_url('news_read/' . $article['news_id']) ?>" aria-label="news-details"><i class="fa fa-caret-right"></i> Read more</a>
-                                    <!-- Like Icon -->
-                                    <a class="like-icon me-3" href="#" data-news-id="<?= $article['news_id'] ?>" onclick="toggleLike(this)"><i class="far fa-thumbs-up"></i></a>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <a class="learn-more" href="<?= base_url('news_read/' . $article['news_id']) ?>" aria-label="news-details"><i class="fa fa-caret-right"></i> Read more</a>
+                                    <div class="like-icons">
+                                        <a class="like-icon" href="#" data-news-id="<?= $article['news_id'] ?>" onclick="toggleLike(this)"><i class="far fa-thumbs-up"></i></a>
+                                        <a class="like-icon" href="#" data-news-id="<?= $article['news_id'] ?>" onclick="toggleLike(this)"><i class="far fa-thumbs-down"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div><!-- Service box end -->
                     </div><!-- Col end -->
                 <?php endforeach; ?>
             </div><!-- News container end -->
-        </div><!-- Content row end -->
+        </div><!-- Row end -->
     </div><!-- Container end -->
-</section><!-- Feature are end -->
+</section><!-- Feature area end -->
 
   <?php include('include\footer.php'); ?>
    <!-- Javascript Files

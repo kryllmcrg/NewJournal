@@ -79,8 +79,6 @@ class NewsController extends BaseController
             return "Failed to update news"; // Handle error appropriately
         }
     }
-    
-
     public function addnews()
     {
         $categories = new CategoryModel();
@@ -126,6 +124,22 @@ class NewsController extends BaseController
                 'news_status' => 'Pending',
                 'publication_status' => 'Draft'
             ];
+            $uploadedVideo = [];
+            if ($this->request->getFile('video')) {
+                // The file has been uploaded and can be accessed here
+                $videoFile = $this->request->getFile('video');
+                if ($videoFile->isValid() && !$videoFile->hasMoved()) {
+                    $newName = $videoFile->getRandomName();
+                    $videoFile->move('./uploads/', $newName);
+                    $videoUrl = base_url('uploads/' . $newName);
+                    $uploadedVideo[] = $videoUrl;
+                } else {
+                    $uploadedVideo[] = ['error' => 'Invalid file'];
+                }
+                // Perform operations with the uploaded file
+                // For example, you can check the file type, size, or move the file to a desired location
+                $data['videos'] = json_encode($uploadedVideo);
+            }
             
             // Validate data
             if (empty($title) || empty($content) || empty($category_id) || empty($author) || empty($uploadedImages)) {
