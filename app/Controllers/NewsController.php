@@ -142,7 +142,7 @@ class NewsController extends BaseController
             }
             
             // Validate data
-            if (empty($title) || empty($content) || empty($category_id) || empty($author) || empty($uploadedImages)) {
+            if (empty($title) || empty($content) || empty($category_id) || empty($author)) {
                 return $this->response->setStatusCode(400)->setJSON(["error" => "Error: Required data is missing."]);
             }
             
