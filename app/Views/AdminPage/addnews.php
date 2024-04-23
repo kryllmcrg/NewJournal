@@ -62,21 +62,18 @@
                         </div>
 
                         <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="categories">Category</label>
-                                <select class="form-control" id="categories" name="categories">
-                                    <option value="">Select News Category</option>
-                                    <?php foreach ($categories as $category): ?>
-                                        <option value="<?php echo $category['category_id']; ?>">
-                                            <?php echo $category['category_name']; ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
+                          <label for="category">Category</label>
+                            <select class="form-control" id="categories" name="categories">
+                              <option value="">Select News Category</option>
+                                <?php foreach ($categories as $categories): ?>
+                              <option value="<?php echo $categories['category_id']; ?>">
+                                  <?php echo $categories['category_name']; ?>
+                              </option>
+                                <?php endforeach; ?>
+                            </select>
+                          </div>
 
-                    <div class="row">
+                        <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="video" class="form-label">Video</label>
@@ -85,8 +82,8 @@
                         </div>
                     </div>
 
-                    <!-- WYSIWYG Editor -->
-                    <div class="row">
+                      <!-- WYSIWYG Editor -->
+                      <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="content">Content</label>
