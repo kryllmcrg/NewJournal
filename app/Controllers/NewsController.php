@@ -93,53 +93,53 @@ class NewsController extends BaseController
     }
     
     public function addNewsSubmit()
-{
-    try {
-        $title = $this->request->getPost('title');
-        $content = $this->request->getPost('content');
-        $category_id = $this->request->getPost('category_id');
-        $author = $this->request->getPost('author');
-        $staffId = session()->get('staff_id'); // Retrieve staff_id directly from session
-        $images = $this->request->getFiles('files');
-        $uploadedImages = [];
-        
-        foreach ($images as $file) {
-            foreach ($file as $uploadedFile) {
-                if ($uploadedFile->isValid() && !$uploadedFile->hasMoved()) {
-                    $newName = $uploadedFile->getRandomName();
-                    $uploadedFile->move('./uploads/', $newName);
-                    $imageUrl = base_url('uploads/' . $newName);
-                    $uploadedImages[] = $imageUrl;
-                } else {
-                    $uploadedImages[] = ['error' => 'Invalid file'];
+    {
+        try {
+            $title = $this->request->getPost('title');
+            $content = $this->request->getPost('content');
+            $category_id = $this->request->getPost('category_id');
+            $author = $this->request->getPost('author');
+            $staffId = session()->get('staff_id');
+            $images = $this->request->getFiles('files');
+            $uploadedImages = [];
+            
+            foreach ($images as $file) {
+                foreach ($file as $uploadedFile) {
+                    if ($uploadedFile->isValid() && !$uploadedFile->hasMoved()) {
+                        $newName = $uploadedFile->getRandomName();
+                        $uploadedFile->move('./uploads/', $newName);
+                        $imageUrl = base_url('uploads/' . $newName);
+                        $uploadedImages[] = $imageUrl;
+                    } else {
+                        $uploadedImages[] = ['error' => 'Invalid file'];
+                    }
                 }
             }
-        }
-        
-        $data = [
-            'title' => $title,
-            'content' => $content,
-            'category_id' => $category_id,
-            'author' => $author,
-            'images' => json_encode($uploadedImages),
-            'staff_id' => $staffId, // Use the retrieved staff_id
-            'news_status' => 'Pending',
-            'publication_status' => 'Draft'
-        ];
-        
-        // Validate data
-        if (empty($title) || empty($content) || empty($category_id) || empty($author) || empty($uploadedImages)) {
-            return $this->response->setStatusCode(400)->setJSON(["error" => "Error: Required data is missing."]);
-        }
-        
-        $newsModel = new NewsModel();
-        $result = $newsModel->insert($data);
-        
-        return $this->response->setJSON($result);
-    } catch (\Throwable $th) {
-        return $this->response->setJSON(['error' => $th->getMessage()]);
-    }  
-}
+            
+            $data = [
+                'title' => $title,
+                'content' => $content,
+                'category_id' => $category_id,
+                'author' => $author,
+                'images' => json_encode($uploadedImages),
+                'staff_id' => $staffId, // Use the retrieved staff_id
+                'news_status' => 'Pending',
+                'publication_status' => 'Draft'
+            ];
+            
+            // Validate data
+            if (empty($title) || empty($content) || empty($category_id) || empty($author) || empty($uploadedImages)) {
+                return $this->response->setStatusCode(400)->setJSON(["error" => "Error: Required data is missing."]);
+            }
+            
+            $newsModel = new NewsModel();
+            $result = $newsModel->insert($data);
+            
+            return $this->response->setJSON($result);
+        } catch (\Throwable $th) {
+            return $this->response->setJSON(['error' => $th->getMessage()]);
+        }  
+    }
     public function __construct()
     {
         $this->NewsModel = new NewsModel();
