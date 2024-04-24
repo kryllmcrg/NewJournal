@@ -122,61 +122,92 @@
     
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $('#mySummernote').summernote({
-                placeholder: 'Enter your content',
-                height: 300,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']]
-                ]
-            });
-        });
+      $(document).ready(function () {
+        // $(".mySummernote").summernote();
+        $('.dropdown-toggle').dropdown();
+      });
     </script>
 
     <script>
-        const form = document.querySelector('#newsForm');
-        var formData = new FormData();
-        var selectedCategory;
+      const form = document.querySelector('#newsForm');
+      var formData = new FormData();
+      var selectedCategory;
 
-        $(document).ready(function() {
-            $('#categories').change(function () {
-                selectedCategory = $(this).val();
-                console.log("Selected Category: " + selectedCategory);
-            });
-
-            $('#btn-submit').on('click', function(e) {
-                e.preventDefault();
-                formData.append('title', $('#title').val());
-                formData.append('author', $('#author').val());
-                formData.append('category_id', selectedCategory);
-                formData.append('content', $('#mySummernote').summernote('code'));
-                formData.append('comment', $('#comment').val());
-                formData.append('video', $('#video')[0].files[0]);
-                $.ajax({
-                    url: '<?= base_url('addNewsSubmit')?>',
-                    method: 'POST',
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    enctype: 'multipart/form-data',
-                    success: function(response) {
-                        console.log(response);
-                        // Handle response from the server
-                        // location.reload();
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        console.error('File upload failed', textStatus, errorThrown);
-                        console.log('Error details', jqXHR.responseText);
-                    }
-                });
-            });
+      $(document).ready(function () {
+        $('#categories').change(function () {
+          // Get the selected value
+          selectedCategory = $(this).val();
+          // Log the selected category to the console
+          console.log("Selected Category: " + selectedCategory);
         });
+
+        $('#mySummernote').summernote({
+          placeholder: 'Enter your content',
+          height: 300,
+          toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+          ],
+          callbacks: {
+            onImageUpload: function (files, editor, welEditable) {
+              for (var i = 0; i < files.length; i++) {
+                formData.append('files[]', files[i]);
+              }
+
+              var imagesArray = [];
+              for (var i = 0; i < files.length; i++) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                  var imgData = e.target.result;
+                  imagesArray.push(imgData);
+                  var imgNode = document.createElement('img');
+                  imgNode.src = imgData;
+                  $('#mySummernote').summernote('insertNode', imgNode);
+                }
+                reader.readAsDataURL(files[i]);
+              }
+              // You can now use the imagesArray to send the images to the database
+            }
+          }
+        });
+      });   
+      $(document).ready(function () {
+        // Your existing code
+
+        // Register click event for the submit button
+        $('#btn-submit').on('click', function (e) {
+          e.preventDefault();
+          formData.append('title', $('#title').val());
+          formData.append('author', $('#author').val());
+          formData.append('category_id', selectedCategory);
+          formData.append('content', $('#mySummernote').summernote('code'));
+          formData.append('comment', $('#comment').val());
+          formData.append('video', $('#video')[0].files[0]);
+          $.ajax({
+            url: '<?= base_url('addNewsSubmit') ?>',
+            method: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            enctype: 'multipart/form-data',
+            success: function (response) {
+              console.log(response);
+              // Handle response from the server
+            //   location.reload();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+              console.error('File upload failed:', textStatus, errorThrown);
+              console.log('Error details:', jqXHR.responseText);
+            }
+          });
+        });
+      });
+
     </script>
 
 </body>

@@ -10,7 +10,7 @@ use App\Models\CategoryModel;
 
 class NewsController extends BaseController
 {
-    
+
     public function dashboard()
     {
         return view('AdminPage/dashboard');
@@ -30,9 +30,9 @@ class NewsController extends BaseController
         $newsModel = new NewsModel();
         $categoryModel = new CategoryModel();
         $categories = $categoryModel->findAll();
-    
+
         $news = $newsModel->find($id);
-    
+
         return view('AdminPage/editnews', ['categories' => $categories, 'news' => $news]);
     }
     public function updateNews()
@@ -43,23 +43,23 @@ class NewsController extends BaseController
         $author = $this->request->getPost('author');
         $categoryId = $this->request->getPost('category_id');
         $content = $this->request->getPost('content');
-    
+
         // Load the NewsModel
         $newsModel = new NewsModel();
-    
+
         // Check if the news with the given ID exists
         $news = $newsModel->find($newsId);
         if (!$news) {
             return "News not found"; // Handle error appropriately
         }
-    
+
         // Check if the provided category ID exists
         $categoryModel = new CategoryModel();
         $category = $categoryModel->find($categoryId);
         if (!$category) {
             return "Category not found"; // Handle error appropriately
         }
-    
+
         // Update the news data
         $data = [
             'title' => $title,
@@ -67,10 +67,10 @@ class NewsController extends BaseController
             'category_id' => $categoryId,
             'content' => $content,
         ];
-    
+
         // Perform the update operation
         $updated = $newsModel->update($newsId, $data);
-    
+
         // Check if the update was successful
         if ($updated) {
             // Redirect back to the editnews page with the news ID
@@ -87,9 +87,9 @@ class NewsController extends BaseController
             'categories' => $categories->select('category_id,category_name')->findAll(),
         ];
 
-        return view('AdminPage/addnews',$data);
+        return view('AdminPage/addnews', $data);
     }
-    
+
     public function addNewsSubmit()
     {
         try {
@@ -98,76 +98,64 @@ class NewsController extends BaseController
             $category_id = $this->request->getPost('category_id');
             $author = $this->request->getPost('author');
             $staffId = session()->get('staff_id');
-            
-            // Retrieve uploaded images
-            $images = $this->request->getFiles('files');
             $uploadedImages = [];
-    
-            // Handle uploaded images
-            foreach ($images as $file) {
-                if ($file->isValid() && !$file->hasMoved()) {
-                    $newName = $file->getRandomName();
-                    $file->move('./uploads/', $newName);
-                    $imageUrl = base_url('uploads/' . $newName);
-                    $uploadedImages[] = $imageUrl;
-                } else {
-                    $uploadedImages[] = ['error' => 'Invalid image file'];
+            if ($this->request->getFiles('files')) {
+                $images = $this->request->getFiles('files');
+                foreach ($images as $file) {
+                    foreach ($file as $uploadedFile) {
+                        if ($uploadedFile->isValid() && !$uploadedFile->hasMoved()) {
+                            $newName = $uploadedFile->getRandomName();
+                            $uploadedFile->move('./uploads/', $newName);
+                            $imageUrl = base_url('uploads/' . $newName);
+                            $uploadedImages[] = $imageUrl;
+                        } else {
+                            $uploadedImages[] = ['error' => 'Invalid file'];
+                        }
+                    }
                 }
             }
-    
-            // Prepare data array
             $data = [
                 'title' => $title,
                 'content' => $content,
                 'category_id' => $category_id,
                 'author' => $author,
                 'images' => json_encode($uploadedImages),
-                'staff_id' => $staffId,
+                'staff_id' => $staffId, // Use the retrieved staff_id
                 'news_status' => 'Pending',
                 'publication_status' => 'Draft'
             ];
-    
-            // Retrieve and handle uploaded video
+
             $uploadedVideo = [];
             if ($this->request->getFile('video')) {
+                // The file has been uploaded and can be accessed here
                 $videoFile = $this->request->getFile('video');
-                $videoFileName = $videoFile->getClientName(); // Get the original file name
-                echo "Uploaded Video Name: $videoFileName";
-    
                 if ($videoFile->isValid() && !$videoFile->hasMoved()) {
-                    // Debug: Log the destination path
-                    $destinationPath = './uploads/' . $videoFileName;
-                    echo "Destination Path: $destinationPath";
-    
-                    // Attempt to move the video file
-                    if ($videoFile->move('./uploads/', $videoFileName)) {
-                        $videoUrl = base_url('uploads/' . $videoFileName);
-                        $uploadedVideo[] = $videoUrl;
-                    } else {
-                        // Log any errors during the move operation
-                        $uploadedVideo[] = ['error' => 'Error moving video file'];
-                    }
+                    $newName = $videoFile->getRandomName();
+                    $videoFile->move('./uploads/', $newName);
+                    $videoUrl = base_url('uploads/' . $newName);
+                    $uploadedVideo[] = $videoUrl;
                 } else {
-                    $uploadedVideo[] = ['error' => 'Invalid video file'];
+                    $uploadedVideo[] = ['error' => 'Invalid file'];
                 }
+                // Perform operations with the uploaded file
+                // For example, you can check the file type, size, or move the file to a desired location
                 $data['videos'] = json_encode($uploadedVideo);
             }
-    
+
             // Validate data
-            if (empty($title) || empty($content) || empty($category_id) || empty($author)) {
-                return $this->response->setStatusCode(400)->setJSON(["error" => "Error: Required data is missing."]);
+            if (empty($title) || empty($content) || empty($category_id) || empty($author) || empty($uploadedImages)) {
+                return $this->response->setStatusCode(400)->setJSON(["error" => "Error: Required data is missing.", "data" => $data]);
             }
-    
-            // Insert data into the database
+
             $newsModel = new NewsModel();
             $result = $newsModel->insert($data);
-    
+
             return $this->response->setJSON($result);
         } catch (\Throwable $th) {
             return $this->response->setJSON(['error' => $th->getMessage()]);
         }
-    }    
-    
+    }
+
     public function __construct()
     {
         $this->NewsModel = new NewsModel();
