@@ -198,7 +198,7 @@
             success: function (response) {
               console.log(response);
               // Handle response from the server
-            //   location.reload();
+             location.reload();
             },
             error: function (jqXHR, textStatus, errorThrown) {
               console.error('File upload failed:', textStatus, errorThrown);

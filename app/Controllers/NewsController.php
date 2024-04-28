@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\LikeModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\NewsModel;
 use App\Models\CommentModel;
