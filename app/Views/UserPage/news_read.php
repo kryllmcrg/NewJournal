@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/plugins/colorbox/colorbox.css') ?>">
     <!-- Template styles-->
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
+    
 </head>
 <style>
     .reply-form {
@@ -52,6 +53,14 @@
     .submit-reply:hover {
         background-color: #0056b3; /* Darker color on hover */
     }
+    .star {
+    color: darkorchid; /* Set the color of the star to violet */
+    }
+
+    .star:hover {
+        color: purple; /* Change color to purple on hover */
+    }
+
 </style>
 
 <body>
@@ -126,6 +135,19 @@
                                         </div>
                                     </div><!-- Col 12 end -->
                                 </div><!-- Form row end -->
+                                <!-- Star rating -->
+                                <div class="form-group">
+                                    <label for="rating">Rating:</label><br>
+                                    <div class="rating">
+                                        <input type="hidden" name="rating" id="rating" value="0"> <!-- Hidden input to store the selected rating -->
+                                        <i class="far fa-star star" data-rating="1"></i> <!-- Star icon for rating 1 -->
+                                        <i class="far fa-star star" data-rating="2"></i> <!-- Star icon for rating 2 -->
+                                        <i class="far fa-star star" data-rating="3"></i> <!-- Star icon for rating 3 -->
+                                        <i class="far fa-star star" data-rating="4"></i> <!-- Star icon for rating 4 -->
+                                        <i class="far fa-star star" data-rating="5"></i> <!-- Star icon for rating 5 -->
+                                    </div>
+                                    <p>Average Rating: <span id="average-rating">0.0</span></p>
+                                </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form><!-- Form end -->
                         </div><!-- Comments form end -->
@@ -305,7 +327,6 @@
     });
 </script>
 
-
     <script>
 
         window.onload = function () {
@@ -324,7 +345,30 @@
                 html2pdf().from(element).set(opt).save();
             });
         }
+    </script>
 
+    <script>
+$(document).ready(function() {
+    $('.star').click(function() {
+        var rating = parseInt($(this).data('rating')); // Get the selected rating
+        $('#rating').val(rating); // Update the hidden input field with the selected rating
+        
+        // Update star colors
+        $('.star').removeClass('fas star').addClass('far star'); // Reset all stars to empty
+        $(this).prevAll('.star').andSelf().removeClass('far star').addClass('fas star'); // Fill clicked star and previous stars
+
+        // Calculate average rating
+        var totalStars = $('.star').length;
+        var totalRating = 0;
+        $('.star.fas').each(function() {
+            totalRating += parseInt($(this).data('rating'));
+        });
+        var averageRating = totalRating / totalStars;
+
+        // Update average rating display
+        $('#average-rating').text(averageRating.toFixed(1)); // Display average rating with one decimal place
+    });
+});
 
     </script>
 </body>
