@@ -60,7 +60,6 @@
     .star:hover {
         color: purple; /* Change color to purple on hover */
     }
-
 </style>
 
 <body>
@@ -109,7 +108,45 @@
                             
                         </div><!-- post-body end -->
                     </div><!-- post content end -->
-
+                    <div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="progress rounded-0" style="height: 30px; background-color: #BC7FCD;">
+                <div class="progress-bar rounded-0" role="progressbar" style="width: 94%; background-color: #BC7FCD;" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100">4.7</div>
+            </div>
+            <ul class="list-group mt-3 rounded-0 d-flex flex-row">
+                <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
+                    5 Star
+                    <span class="badge badge-primary badge-pill" style="background-color: #BC7FCD;">1.4K</span>
+                </li>
+                <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
+                    4 Star
+                    <span class="badge badge-primary badge-pill" style="background-color: #BC7FCD;">178</span>
+                </li>
+                <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
+                    3 Star
+                    <span class="badge badge-primary badge-pill" style="background-color: #BC7FCD;">84</span>
+                </li>
+                <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
+                    2 Star
+                    <span class="badge badge-primary badge-pill" style="background-color: #BC7FCD;">30</span>
+                </li>
+                <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
+                    1 Star
+                    <span class="badge badge-primary badge-pill" style="background-color: #BC7FCD;">44</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <div class="btn-group rounded-0" role="group">
+                <button type="button" class="btn btn-secondary rounded-0" style="background-color: #86469C;">With Comments (506)</button>
+                <button type="button" class="btn btn-secondary rounded-0" style="background-color: #86469C;">With Media (270)</button>
+            </div>
+        </div>
+    </div>
+</div>
                     <!-- POST COMMENTS -->
                     <div id="comments" class="comments-area">
                         <!-- ADD COMMENTS -->
