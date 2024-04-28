@@ -104,49 +104,53 @@ class UserController extends BaseController
         // Pass the categories data to the view
         return view('UserPage/home', ['categories' => $categories]);
     }
-
     public function like()
-{
-    // Check if the user is logged in
-    if (!session()->has('user_id')) {
-        // Redirect the user to the login page
-        return redirect()->to(base_url('login'));
-    }
-
-    // Get the news ID and action from the POST data
-    $newsId = $this->request->getPost('newsId');
-    $action = $this->request->getPost('action');
-
-    // Get the user ID from the session
-    $userId = session()->get('user_id');
-    
-    // Create an instance of the LikeModel
-    $likeModel = new LikeModel();
-    
-    // Check if the user has already liked or disliked the news
-    $existingLike = $likeModel->where('news_id', $newsId)
-                              ->where('user_id', $userId)
-                              ->first();
-    
-    if ($existingLike) {
-        return json_encode(['message' => 'You have already interacted with this news']);
-    }
-    
-    // If the user hasn't interacted with the news yet, insert the like/dislike into the database
-    $likeModel->insert([
-        'news_id' => $newsId,
-        'user_id' => $userId,
-        'likes_status' => $action, // Set the action (like or dislike)
-        'likes_count' => ($action === 'like') ? 1 : 0 // Increment like count if action is like
-    ]);
-
-    // Return the updated like and dislike counts
-    $likesCount = $likeModel->where('news_id', $newsId)->where('likes_status', 'like')->countAllResults();
-    $dislikesCount = $likeModel->where('news_id', $newsId)->where('likes_status', 'dislike')->countAllResults();
-
-    return json_encode(['likes' => $likesCount, 'dislikes' => $dislikesCount]);
-}
+    {
+        // Check if the user is logged in
+        if (!session()->has('user_id')) {
+            // Redirect the user to the login page
+            return redirect()->to(base_url('login'));
+        }
         
+        // Get the news ID and action from the POST data
+        $newsId = $this->request->getPost('newsId');
+        $action = $this->request->getPost('action');
+        
+        // Get the user ID from the session
+        $userId = session()->get('user_id');
+        
+        // Create an instance of the LikeModel
+        $likeModel = new LikeModel();
+        
+        // Check if the user has already liked or disliked the news
+        $existingLike = $likeModel->where('news_id', $newsId)
+                                  ->where('user_id', $userId)
+                                  ->first();
+        
+        if ($existingLike) {
+            return json_encode(['message' => 'You have already interacted with this news']);
+        }
+        
+        // If the user hasn't interacted with the news yet, insert the like/dislike into the database
+        $likeModel->insert([
+            'news_id' => $newsId,
+            'user_id' => $userId,
+            'like_status' => $action, // Set the action (like or dislike)
+        ]);
+        
+        // Update the like and dislike counts in the NewsModel
+        $newsModel = new NewsModel();
+        $news = $newsModel->find($newsId);
+        $likesCount = $likeModel->where('news_id', $newsId)->where('like_status', 'like')->countAllResults();
+        $dislikesCount = $likeModel->where('news_id', $newsId)->where('like_status', 'dislike')->countAllResults();
+        $newsModel->update($newsId, [
+            'likes_count' => $likesCount,
+            'dislikes_count' => $dislikesCount
+        ]);
+        
+        return json_encode(['likes' => $likesCount, 'dislikes' => $dislikesCount]);
+    }
+       
     public function about()
     {
         $categoryModel = new CategoryModel();

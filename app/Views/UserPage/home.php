@@ -208,22 +208,22 @@
   <script>
     // JavaScript function to handle like and dislike actions
     function toggleLike(element, action) {
-    var newsId = element.getAttribute('data-news-id');
-    $.ajax({
-        type: 'POST',
-        url: '/like/' + newsId, // Replace with your server-side endpoint URL
-        data: { newsId: newsId, action: action },
-        success: function(response) {
-            // Update the UI with the new like and dislike counts
-            $('#like-count-' + newsId).text(response.likes);
-            $('#dislike-count-' + newsId).text(response.dislikes);
-        },
-        error: function(xhr, status, error) {
-            console.error(error);
-        }
-    });
-}
-  </script>
+        var newsId = element.getAttribute('data-news-id');
+        $.ajax({
+            type: 'POST',
+            url: '/like/' + newsId, // Replace with your server-side endpoint URL
+            data: { newsId: newsId, action: action },
+            success: function(response) {
+                // Update the UI with the new like and dislike counts
+                $('#like-count-' + newsId).text(response.likes);
+                $('#dislike-count-' + newsId).text(response.dislikes);
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
+</script>
 
 <script>
 function displayNews(newsData) {

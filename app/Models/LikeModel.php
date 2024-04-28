@@ -12,7 +12,7 @@ class LikeModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['news_id','user_id','likes_count','dislikes_count'];
+    protected $allowedFields    = ['news_id','user_id','likes_count','dislikes_count','like_status'];
 
     // Dates
     protected $useTimestamps = false;
