@@ -27,25 +27,31 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
 </head>
 <style>
-    .rating-stars {
-        color: #8a2be2;
-        /* Violet color */
-        font-size: 20px;
-    }
-
-    .rating-stars i {
-        cursor: pointer;
-        transition: color 0.3s;
-    }
-
-    .rating-stars i:hover,
-    .rating-stars i.active {
-        color: #800080;
-        /* Purple color */
-    }
     .reply-form {
-    display: none;
-}
+        display: none;
+        margin-top: 10px;
+    }
+
+    .reply-form input[type="text"] {
+        width: calc(100% - 110px); /* Adjust the width of the input field */
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+
+    .submit-reply {
+        display: inline-block;
+        vertical-align: middle;
+        cursor: pointer;
+        background-color: #007bff;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 3px;
+    }
+
+    .submit-reply:hover {
+        background-color: #0056b3; /* Darker color on hover */
+    }
 </style>
 
 <body>
@@ -140,11 +146,13 @@
                                                         <p><?= $comment['comment'] ?></p>
                                                     </div>
                                                    <!-- Reply link -->
-                                                    <div class="text-left">
+                                                   <div class="text-left">
                                                         <a class="comment-reply font-weight-bold" href="#" data-comment-id="<?= $comment['comment_id'] ?>">Reply</a>
                                                         <div class="reply-form">
-                                                            <input type="text" class="form-control reply-input" placeholder="Your Reply" />
-                                                            <button class="btn btn-primary submit-reply" data-comment-id="<?= $comment['comment_id'] ?>">Submit Reply</button>
+                                                            <input type="text" class="form-control required-field" id="message" name="message" placeholder="Your Comment" required>
+                                                            <span class="submit-reply" data-comment-id="<?= $comment['comment_id'] ?>">
+                                                                <i class="far fa-folder-open"></i> Submit Reply
+                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -258,31 +266,9 @@
 
     <?php include ('include\footer.php'); ?>
 
-    <script>
-        $('.rating-stars i').on('click', function () {
-            $(this).addClass('active');
-            $(this).prevAll().addClass('active');
-            $(this).nextAll().removeClass('active');
-        });
-
-    </script>
-    <script>
-   $(document).ready(function() {
-    $(".comment-reply").click(function(e) {
-        e.preventDefault();
-        var commentId = $(this).data("comment-id");
-        $(".reply-form").hide(); // Hide all reply boxes
-        $(this).next(".reply-form").show(); // Show the reply box for the clicked comment
-    });
-});
-    </script>
-
-
-
     <!-- Javascript Files -->
     <!-- initialize jQuery Library -->
     <script src="<?= base_url('assets/plugins/jQuery/jquery.min.js') ?>"></script>
-    <script src="<?= base_url('https://code.jquery.com/jquery-3.6.0.min.js') ?>"></script>
     <!-- Bootstrap jQuery -->
     <script src="<?= base_url('assets/plugins/bootstrap/bootstrap.min.js') ?>" defer></script>
     <!-- Slick Carousel -->
@@ -302,6 +288,20 @@
     <!-- Template custom -->
     <script src="<?= base_url('assets/js/script.js') ?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        $(".comment-reply").click(function(e) {
+            e.preventDefault();
+            var commentId = $(this).data("comment-id");
+            console.log("Comment ID:", commentId); // Log comment ID to check if it's correct
+            // Find the closest parent comment and then find the reply form within it
+            $(this).closest('.text-left').find(".reply-form").toggle(); // Toggle the visibility of the reply form for the clicked comment
+        });
+    });
+</script>
+
+
     <script>
 
         window.onload = function () {
