@@ -127,29 +127,32 @@ class UserController extends BaseController
                                   ->where('user_id', $userId)
                                   ->first();
         
+        // If the user has already interacted with the news, update the like_status
         if ($existingLike) {
-            return json_encode(['message' => 'You have already interacted with this news']);
+            $existingLike->like_status = $action;
+            $likeModel->update($existingLike['like_id'], $existingLike);
+        } else {
+            // If the user hasn't interacted with the news yet, insert the like/dislike into the database
+            $likeModel->insert([
+                'news_id' => $newsId,
+                'user_id' => $userId,
+                'like_status' => $action, // Set the action (like or dislike)
+            ]);
         }
         
-        // If the user hasn't interacted with the news yet, insert the like/dislike into the database
-        $likeModel->insert([
-            'news_id' => $newsId,
-            'user_id' => $userId,
-            'like_status' => $action, // Set the action (like or dislike)
-        ]);
-        
-        // Update the like and dislike counts in the NewsModel
-        $newsModel = new NewsModel();
-        $news = $newsModel->find($newsId);
+        // Update the counts in the NewsModel based on the current state of likes and dislikes
         $likesCount = $likeModel->where('news_id', $newsId)->where('like_status', 'like')->countAllResults();
         $dislikesCount = $likeModel->where('news_id', $newsId)->where('like_status', 'dislike')->countAllResults();
+        
+        // Update the NewsModel with the new counts
+        $newsModel = new NewsModel();
         $newsModel->update($newsId, [
             'likes_count' => $likesCount,
             'dislikes_count' => $dislikesCount
         ]);
         
         return json_encode(['likes' => $likesCount, 'dislikes' => $dislikesCount]);
-    }
+    }       
        
     public function about()
     {
