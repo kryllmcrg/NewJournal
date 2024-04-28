@@ -10,6 +10,7 @@ $routes->get('/', 'UserController::home');
 $routes->get('/about', 'UserController::about');
 $routes->get('/news_read/(:num)', 'UserController::news_read/$1');
 $routes->get('/contact', 'UserController::contact');
+$routes->get('/announce', 'UserController::announce');
 $routes->get('/news', 'UserController::news');
 $routes->post('/like/(:any)', 'UserController::like/$1');
 $routes->get('/categories', 'UserController::getCategoryData');

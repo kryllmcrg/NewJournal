@@ -230,4 +230,9 @@ class UserController extends BaseController
     {
         return view('UserPage/news');
     }
+    
+    public function announce()
+    {
+        return view('UserPage/announce');
+    }
 }
