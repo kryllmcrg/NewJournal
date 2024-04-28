@@ -45,6 +45,7 @@ $routes->get('/archive', 'NewsController::archive');
 
 $routes->post('addComment', 'CommentsController::addComment');
 $routes->post('commentStatus', 'CommentsController::commentStatus');
+$routes->post('replyComment', 'CommentsController::replyComment'); // Adjust 'YourController' with the actual controller name
 $routes->get('managecomments/(:num)', 'CommentsController::managecomments/$1');
 $routes->get('managecomments', 'CommentsController::showManageCommentsPage');
 

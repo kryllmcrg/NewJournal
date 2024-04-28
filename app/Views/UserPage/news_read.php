@@ -43,6 +43,9 @@
         color: #800080;
         /* Purple color */
     }
+    .reply-form {
+    display: none;
+}
 </style>
 
 <body>
@@ -88,14 +91,7 @@
                             <div class="entry-content">
                                 <?= $article['content'] ?>
                             </div>
-                            <!-- Rating stars -->
-                            <div class="rating-stars">
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
+                            
                         </div><!-- post-body end -->
                     </div><!-- post content end -->
 
@@ -107,61 +103,55 @@
                             <form action="<?= base_url('addComment') ?>" method="post" role="form">
                                 <input type="hidden" name="news_id" value="<?= $article['news_id'] ?>">
                                 <input type="hidden" name="user_id" value="<?= session()->get('user_id') ?>">
+                                <input type="hidden" name="parent_comment_id" id="parent_comment_id" value="">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="name"><input class="form-control" name="name" id="name"
-                                                    placeholder="Your Name" type="text" required></label>
+                                            <label for="name">
+                                                <input class="form-control" name="name" id="name" placeholder="Your Name" type="text" required>
+                                            </label>
                                         </div>
                                     </div><!-- Col 4 end -->
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="message"><textarea class="form-control required-field"
-                                                    id="message" name="message" placeholder="Your Comment" rows="10"
-                                                    required></textarea></label>
+                                            <label for="message">
+                                                <textarea class="form-control required-field" id="message" name="message" placeholder="Your Comment" rows="10" required></textarea>
+                                            </label>
                                         </div>
                                     </div><!-- Col 12 end -->
                                 </div><!-- Form row end -->
-                                <div class="clearfix">
-                                    <button class="btn btn-primary" type="submit" aria-label="post-comment">Post
-                                        Comment</button>
-                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </form><!-- Form end -->
                         </div><!-- Comments form end -->
+
                         <?php if (!empty($comments)): ?>
                             <h3 class="comments-heading"><?= count($comments) ?> Comments</h3>
                             <ul class="comments-list">
-                                <?php foreach ($comments as $comment): ?>
-                                    <li>
-                                        <div class="comment d-flex">
-                                            <img loading="lazy" class="comment-avatar" alt="author"
-                                                src="images/news/avator1.png">
-                                            <div class="comment-body">
-                                                <div class="meta-data">
-                                                    <span class="comment-author mr-3"><?= $comment['comment_author'] ?></span>
-                                                    <span
-                                                        class="comment-date float-right"><?= $comment['comment_date'] ?></span>
+                            <?php foreach ($comments as $comment): ?>
+                                        <li>
+                                            <div class="comment d-flex">
+                                                <img loading="lazy" class="comment-avatar" alt="author" src="images/news/avator1.png">
+                                                <div class="comment-body">
+                                                    <div class="meta-data">
+                                                        <span class="comment-author mr-3"><?= $comment['comment_author'] ?></span>
+                                                        <span class="comment-date float-right"><?= $comment['comment_date'] ?></span>
+                                                    </div>
+                                                    <div class="comment-content">
+                                                        <p><?= $comment['comment'] ?></p>
+                                                    </div>
+                                                   <!-- Reply link -->
+                                                    <div class="text-left">
+                                                        <a class="comment-reply font-weight-bold" href="#" data-comment-id="<?= $comment['comment_id'] ?>">Reply</a>
+                                                        <div class="reply-form">
+                                                            <input type="text" class="form-control reply-input" placeholder="Your Reply" />
+                                                            <button class="btn btn-primary submit-reply" data-comment-id="<?= $comment['comment_id'] ?>">Submit Reply</button>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="comment-content">
-                                                    <p><?= $comment['comment'] ?></p>
-                                                </div>
-                                                <!-- Rating stars -->
-                                                <div class="rating-stars">
-                                                    <i class="far fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                </div>
-                                                <div class="text-left">
-                                                    <a class="comment-reply font-weight-bold" href="#">Reply</a>
-                                                </div>
-                                            </div>
-                                        </div><!-- Comments end -->
-                                    </li>
-                                    <!-- Reply form end -->
-                                <?php endforeach; ?>
-                            </ul>
+                                            </div><!-- Comments end -->
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
                         <?php else: ?>
                             <h3 class="comments-heading">No Comments</h3>
                         <?php endif; ?>
@@ -276,10 +266,23 @@
         });
 
     </script>
+    <script>
+   $(document).ready(function() {
+    $(".comment-reply").click(function(e) {
+        e.preventDefault();
+        var commentId = $(this).data("comment-id");
+        $(".reply-form").hide(); // Hide all reply boxes
+        $(this).next(".reply-form").show(); // Show the reply box for the clicked comment
+    });
+});
+    </script>
+
+
 
     <!-- Javascript Files -->
     <!-- initialize jQuery Library -->
     <script src="<?= base_url('assets/plugins/jQuery/jquery.min.js') ?>"></script>
+    <script src="<?= base_url('https://code.jquery.com/jquery-3.6.0.min.js') ?>"></script>
     <!-- Bootstrap jQuery -->
     <script src="<?= base_url('assets/plugins/bootstrap/bootstrap.min.js') ?>" defer></script>
     <!-- Slick Carousel -->

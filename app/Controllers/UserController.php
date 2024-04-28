@@ -14,6 +14,7 @@ class UserController extends BaseController
     {
         return view('welcome_message');
     }
+   // In your controller file (e.g., News.php)
     public function news_read($news_id)
     {
         $newsModel = new NewsModel();

@@ -17,28 +17,70 @@ class CommentsController extends BaseController
     }
 
     public function addComment()
-    {
-        // Load necessary models and libraries
-        $commentModel = new CommentModel();
-        $session = session();
+{
+    // Load necessary models and libraries
+    $commentModel = new CommentModel();
+    $session = session();
 
-        // Retrieve form data
-        $data = [
-            'news_id' => $this->request->getPost('news_id'), // Using getPost for security
-            'parent_comment_id' => null, // Assuming no nested comments for now
-            'comment' => $this->request->getPost('message'), // Assuming textarea has name 'message'
-            'comment_author' => $this->request->getPost('name'),
-            'comment_date' => date('Y-m-d H:i:s'), // Current timestamp
-            'user_id' => $this->request->getPost('user_id') // Retrieve user_id from form data
-        ];
+    // Retrieve form data
+    $news_id = $this->request->getPost('news_id');
+    $message = $this->request->getPost('message');
+    $name = $this->request->getPost('name');
+    $user_id = $this->request->getPost('user_id');
 
-        // Insert data into the database
-        $commentModel->insert($data);
-
-        // Redirect back to the news page
-        return redirect()->to(base_url('/news_read/' . $data['news_id'])); // Redirect to the news page
+    // Validate form data
+    if (!$news_id || !$message || !$name || !$user_id) {
+        return redirect()->to(base_url('/error')); // Redirect to an error page or handle appropriately
     }
 
+    // Insert data into the database
+    $data = [
+        'news_id' => $news_id,
+        'parent_comment_id' => null,
+        'comment' => $message,
+        'comment_author' => $name,
+        'comment_date' => date('Y-m-d H:i:s'),
+        'user_id' => $user_id
+    ];
+    $commentModel->insert($data);
+
+    // Redirect back to the news page
+    return redirect()->to(base_url('/news_read/' . $news_id));
+}
+
+
+    // In your controller file (e.g., News.php)
+public function replyComment($parentCommentId)
+{
+     // Load necessary models and libraries
+     $commentModel = new CommentModel();
+     $session = session();
+ 
+     // Retrieve form data
+     $news_id = $this->request->getPost('news_id');
+     $message = $this->request->getPost('message');
+     $name = $this->request->getPost('name');
+     $user_id = $this->request->getPost('user_id');
+ 
+     // Validate form data
+     if (!$news_id || !$message || !$name || !$user_id) {
+         return redirect()->to(base_url('/error')); // Redirect to an error page or handle appropriately
+     }
+ 
+     // Insert data into the database
+     $data = [
+         'news_id' => $news_id,
+         'parent_comment_id' => null,
+         'comment' => $message,
+         'comment_author' => $name,
+         'comment_date' => date('Y-m-d H:i:s'),
+         'user_id' => $user_id
+     ];
+     $commentModel->insert($data);
+ 
+     // Redirect back to the news page
+     return redirect()->to(base_url('/news_read/' . $news_id));
+}
 
 public function managecomments($news_id = null)
     {
