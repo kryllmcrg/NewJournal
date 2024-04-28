@@ -348,28 +348,27 @@
     </script>
 
     <script>
-$(document).ready(function() {
+        $(document).ready(function() {
     $('.star').click(function() {
         var rating = parseInt($(this).data('rating')); // Get the selected rating
-        $('#rating').val(rating); // Update the hidden input field with the selected rating
+        var totalStars = $('.star').length; // Total number of stars
         
         // Update star colors
         $('.star').removeClass('fas star').addClass('far star'); // Reset all stars to empty
-        $(this).prevAll('.star').andSelf().removeClass('far star').addClass('fas star'); // Fill clicked star and previous stars
+        $(this).prevAll('.star').addBack().removeClass('far star').addClass('fas star'); // Fill clicked star and previous stars
 
         // Calculate average rating
-        var totalStars = $('.star').length;
         var totalRating = 0;
+        var selectedStars = $(this).prevAll('.star').length + 1; // Count the number of selected stars
         $('.star.fas').each(function() {
             totalRating += parseInt($(this).data('rating'));
         });
-        var averageRating = totalRating / totalStars;
-
+        var averageRating = (totalRating / selectedStars); // Calculate average rating
+        
         // Update average rating display
         $('#average-rating').text(averageRating.toFixed(1)); // Display average rating with one decimal place
     });
 });
-
     </script>
 </body>
 

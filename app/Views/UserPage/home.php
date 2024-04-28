@@ -167,8 +167,10 @@
                                 <div class="d-flex justify-content-between align-items-center mt-3">
                                     <a class="learn-more" href="<?= base_url('news_read/' . $article['news_id']) ?>" aria-label="news-details"><i class="fa fa-caret-right"></i> Read more</a>
                                     <div class="like-icons">
-                                        <a class="like-icon" href="#" data-news-id="<?= $article['news_id'] ?>" onclick="toggleLike(this)"><i class="far fa-thumbs-up"></i></a>
-                                        <a class="like-icon" href="#" data-news-id="<?= $article['news_id'] ?>" onclick="toggleLike(this)"><i class="far fa-thumbs-down"></i></a>
+                                        <a class="like-icon" href="#" data-news-id="<?= $article['news_id'] ?>" onclick="toggleLike(this, 'like')"><i class="far fa-thumbs-up"></i></a>
+                                        <span class="like-count" id="like-count-<?= $article['news_id'] ?>">0</span> <!-- Display the number of likes -->
+                                        <a class="like-icon" href="#" data-news-id="<?= $article['news_id'] ?>" onclick="toggleLike(this, 'dislike')"><i class="far fa-thumbs-down"></i></a>
+                                        <span class="dislike-count" id="dislike-count-<?= $article['news_id'] ?>">0</span> <!-- Display the number of dislikes -->
                                     </div>
                                 </div>
                             </div>
@@ -183,13 +185,44 @@
   <?php include('include\footer.php'); ?>
    <!-- Javascript Files
   ================================================== -->
+   <!-- Javascript Files
+  <!-- initialize jQuery Library -->
+  <script src="<?= base_url('assets/plugins/jQuery/jquery.min.js')?>"></script>
+  <!-- Bootstrap jQuery -->
+  <script src="<?= base_url('assets/plugins/bootstrap/bootstrap.min.js')?>"defer></script>
+  <!-- Slick Carousel -->
+  <script src="<?= base_url('assets/plugins/slick/slick.min.js')?>"></script>
+  <script src="<?= base_url('assets/plugins/slick/slick-animation.min.js')?>"></script>
+  <!-- Color box -->
+  <script src="<?= base_url('assets/plugins/colorbox/jquery.colorbox.js')?>"></script>
+  <!-- shuffle -->
+  <script src="<?= base_url('assets/plugins/shuffle/shuffle.min.js')?>"defer></script>
+  <!-- Google Map API Key-->
+  <script src="<?= base_url('https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU') ?>"defer></script>
+  <!-- Google Map Plugin-->
+  <script src="<?= base_url('assets/plugins/google-map/map.js')?>"defer></script>
+
+  <!-- Template custom -->
+  <script src="<?= base_url('assets/js/script.js')?>"></script>  
 
   <script>
-    document.getElementById('newsLink').addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent default link behavior
-        var title = this.querySelector('.news-box-title');
-        title.style.color = 'purple'; // Change text color to purple
+    // JavaScript function to handle like and dislike actions
+    function toggleLike(element, action) {
+    var newsId = element.getAttribute('data-news-id');
+    $.ajax({
+        type: 'POST',
+        url: '/like/' + newsId, // Replace with your server-side endpoint URL
+        data: { newsId: newsId, action: action },
+        success: function(response) {
+            // Update the UI with the new like and dislike counts
+            $('#like-count-' + newsId).text(response.likes);
+            $('#dislike-count-' + newsId).text(response.dislikes);
+        },
+        error: function(xhr, status, error) {
+            console.error(error);
+        }
     });
+}
   </script>
 
 <script>
@@ -270,26 +303,5 @@ function displayNews(newsData) {
     };
 </script>
 
-   <!-- Javascript Files
-  <!-- initialize jQuery Library -->
-  <script src="<?= base_url('assets/plugins/jQuery/jquery.min.js')?>"></script>
-  <!-- Bootstrap jQuery -->
-  <script src="<?= base_url('assets/plugins/bootstrap/bootstrap.min.js')?>"defer></script>
-  <!-- Slick Carousel -->
-  <script src="<?= base_url('assets/plugins/slick/slick.min.js')?>"></script>
-  <script src="<?= base_url('assets/plugins/slick/slick-animation.min.js')?>"></script>
-  <!-- Color box -->
-  <script src="<?= base_url('assets/plugins/colorbox/jquery.colorbox.js')?>"></script>
-  <!-- shuffle -->
-  <script src="<?= base_url('assets/plugins/shuffle/shuffle.min.js')?>"defer></script>
-
-
-  <!-- Google Map API Key-->
-  <script src="<?= base_url('https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU')?>" defer></script>
-  <!-- Google Map Plugin-->
-  <script src="<?= base_url('assets/plugins/google-map/map.js')?>"defer></script>
-
-  <!-- Template custom -->
-  <script src="<?= base_url('assets/js/script.js')?>"></script>  
 </body>
 </html>

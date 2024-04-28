@@ -105,33 +105,47 @@ class UserController extends BaseController
         return view('UserPage/home', ['categories' => $categories]);
     }
 
-    public function like($newsId)
-    {
-        // For demonstration, assuming the user ID is 1
-        $userId = 1;
+    public function like()
+{
+    // Check if the user is logged in
+    if (!session()->has('user_id')) {
+        // Redirect the user to the login page
+        return redirect()->to(base_url('login'));
+    }
+
+    // Get the news ID and action from the POST data
+    $newsId = $this->request->getPost('newsId');
+    $action = $this->request->getPost('action');
+
+    // Get the user ID from the session
+    $userId = session()->get('user_id');
     
-        // Create an instance of the LikeModel
-        $likeModel = new LikeModel();
+    // Create an instance of the LikeModel
+    $likeModel = new LikeModel();
     
-        // Check if the user has already liked the news
-        $existingLike = $likeModel->where('news_id', $newsId)
-                                ->where('user_id', $userId)
-                                ->first();
+    // Check if the user has already liked or disliked the news
+    $existingLike = $likeModel->where('news_id', $newsId)
+                              ->where('user_id', $userId)
+                              ->first();
     
-        if ($existingLike) {
-            return json_encode(['message' => 'You have already liked this news']);
-        }
+    if ($existingLike) {
+        return json_encode(['message' => 'You have already interacted with this news']);
+    }
     
-        // If the user hasn't liked the news yet, insert the like into the database
-        $likeModel->insert([
-            'news_id' => $newsId,
-            'user_id' => $userId,
-            'likes_status' => 'Like', // Assuming 'Like' represents a like
-            'likes_count' => 1        // Initial like count
-        ]);
-    
-        return json_encode(['message' => 'Like saved successfully']);
-    }    
+    // If the user hasn't interacted with the news yet, insert the like/dislike into the database
+    $likeModel->insert([
+        'news_id' => $newsId,
+        'user_id' => $userId,
+        'likes_status' => $action, // Set the action (like or dislike)
+        'likes_count' => ($action === 'like') ? 1 : 0 // Increment like count if action is like
+    ]);
+
+    // Return the updated like and dislike counts
+    $likesCount = $likeModel->where('news_id', $newsId)->where('likes_status', 'like')->countAllResults();
+    $dislikesCount = $likeModel->where('news_id', $newsId)->where('likes_status', 'dislike')->countAllResults();
+
+    return json_encode(['likes' => $likesCount, 'dislikes' => $dislikesCount]);
+}
         
     public function about()
     {
