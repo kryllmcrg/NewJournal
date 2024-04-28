@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\UserLikeLogsModel;
 use App\Models\UsersModel;
 use App\Models\CategoryModel;
 use App\Models\NewsModel;
@@ -14,7 +15,7 @@ class UserController extends BaseController
     {
         return view('welcome_message');
     }
-   // In your controller file (e.g., News.php)
+    // In your controller file (e.g., News.php)
     public function news_read($news_id)
     {
         $newsModel = new NewsModel();
@@ -32,13 +33,13 @@ class UserController extends BaseController
             'article' => $article,
             'category_name' => $category_name,
         ];
-        
+
         // Fetch comments with status 'approved'
         $commentModel = new CommentModel();
         $data['comments'] = $commentModel->where('news_id', $news_id)
-                                        ->where('comment_status', 'approved')
-                                        ->findAll();
-        
+            ->where('comment_status', 'approved')
+            ->findAll();
+
         return view('UserPage/news_read', $data);
     }
 
@@ -47,18 +48,41 @@ class UserController extends BaseController
         try {
             // Load the news model
             $newsModel = new NewsModel();
-            
+            $userLikeLogsModel = new UserLikeLogsModel;
+
             // Fetch only approved news articles
-            $approvedNews = $newsModel->where('news_status', 'Approved')->findAll();
-            
+            $approvedNews = $newsModel->select('
+                news.news_id,
+                news.title,
+                news.content,
+                news.images,
+                likes.like_id,
+                likes.likes_count,
+                likes.dislikes_count
+            ')
+                ->join('likes', 'likes.news_id = news.news_id')
+                ->where('news.news_status', 'Approved')->findAll();
+
+            $userId = session()->get('user_id');
+            if (isset($userId)) {
+                foreach ($approvedNews as &$news) {
+                    $likeStatus = $userLikeLogsModel->select('action')->where('news_id', $news['news_id'])->first();
+
+                    if ($likeStatus) {
+                        $news['like_status'] = $likeStatus['action'];
+                    } else {
+                        $news['like_status'] = '';
+                    }
+                }
+            }
             // Load the category model
             $categoryModel = new CategoryModel();
-            
+
             // Fetch all categories
             $categories = $categoryModel->findAll();
-            
+
             // Pass the approved news data and categories to the view
-            return view('UserPage/home', ['newsData' => $approvedNews, 'categories' => $categories]);
+            return view('UserPage/home', ['newsData' => $approvedNews, 'categories' => $categories, 'userId' => $userId]);
         } catch (\Throwable $th) {
             // Handle any errors
             return $this->response->setJSON(['error' => $th->getMessage()]);
@@ -69,23 +93,23 @@ class UserController extends BaseController
         try {
             // Load the news model
             $newsModel = new NewsModel();
-            
+
             // If no specific category is selected, fetch all news articles
             if ($categoryName === null || $categoryName === 'all') {
                 $newsData = $newsModel->findAll();
             } else {
                 // Fetch news articles filtered by the selected category name
                 $newsData = $newsModel->select('news.*, images')
-                                    ->join('category', 'category.category_id = news.category_id')
-                                    ->where('category.category_name', $categoryName)
-                                    ->findAll();
+                    ->join('category', 'category.category_id = news.category_id')
+                    ->where('category.category_name', $categoryName)
+                    ->findAll();
             }
-    
+
             // Decode the JSON string in the images column
             foreach ($newsData as &$article) {
                 $article['images'] = json_decode($article['images'], true);
             }
-            
+
             // Pass the news data to the view
             return $this->response->setJSON(['newsData' => $newsData]);
         } catch (\Throwable $th) {
@@ -93,7 +117,7 @@ class UserController extends BaseController
             return $this->response->setJSON(['error' => $th->getMessage()]);
         }
     }
-        public function getCategoryData()
+    public function getCategoryData()
     {
         // Create an instance of the CategoryModel
         $categoryModel = new CategoryModel();
@@ -104,82 +128,88 @@ class UserController extends BaseController
         // Pass the categories data to the view
         return view('UserPage/home', ['categories' => $categories]);
     }
-    public function like()
+    public function like($newsId)
     {
-        // Check if the user is logged in
-        if (!session()->has('user_id')) {
-            // Redirect the user to the login page
-            return redirect()->to(base_url('login'));
+        try {
+            // Check if the user is logged in
+            if (!session()->has('user_id')) {
+                // Redirect the user to the login page
+                return redirect()->to(base_url('login'));
+            }
+
+            // Get the news ID and action from the POST data
+            $likeId = $this->request->getPost('likeId');
+            $likeCount = $this->request->getPost('likeCount');
+            $dislikeCount = $this->request->getPost('dislikeCount');
+            $action = $this->request->getPost('action');
+
+            // Get the user ID from the session
+            $userId = session()->get('user_id');
+
+            // Create an instance of the LikeModel
+            $likeModel = new LikeModel();
+            $userLikeLogsModel = new UserLikeLogsModel();
+            // Check if the user has already liked the news
+
+            // Check if the user has already liked or disliked the news
+            $existingLike = $userLikeLogsModel->where('news_id', $newsId)
+                ->where('user_id', $userId)
+                ->first();
+
+            // If the user has already interacted with the news, update the like_status
+            if ($existingLike) {
+                $existingLike['action'] = $action;
+                $userLikeLogsModel->update($existingLike['id'], $existingLike);
+            } else {
+                // If the user hasn't interacted with the news yet, insert the like/dislike into the database
+                $userLikeLogsModel->insert([
+                    'news_id' => $newsId,
+                    'user_id' => $userId,
+                    'action' => $action, // Set the action (like or dislike)
+                ]);
+            }
+
+            $bindCount = [
+                'likes_count' => $likeCount,
+                'dislikes_count' => $dislikeCount,
+            ];
+
+            // Update the counts in the NewsModel based on the current state of likes and dislikes
+            $updateCount = $likeModel->update($likeId, $bindCount);
+
+            return json_encode(['result' => $updateCount]);
+        } catch (\Throwable $th) {
+            //throw $th;
+            return $th->getMessage();
         }
-        
-        // Get the news ID and action from the POST data
-        $newsId = $this->request->getPost('newsId');
-        $action = $this->request->getPost('action');
-        
-        // Get the user ID from the session
-        $userId = session()->get('user_id');
-        
-        // Create an instance of the LikeModel
-        $likeModel = new LikeModel();
-        
-        // Check if the user has already liked or disliked the news
-        $existingLike = $likeModel->where('news_id', $newsId)
-                                  ->where('user_id', $userId)
-                                  ->first();
-        
-        // If the user has already interacted with the news, update the like_status
-        if ($existingLike) {
-            $existingLike->like_status = $action;
-            $likeModel->update($existingLike['like_id'], $existingLike);
-        } else {
-            // If the user hasn't interacted with the news yet, insert the like/dislike into the database
-            $likeModel->insert([
-                'news_id' => $newsId,
-                'user_id' => $userId,
-                'like_status' => $action, // Set the action (like or dislike)
-            ]);
-        }
-        
-        // Update the counts in the NewsModel based on the current state of likes and dislikes
-        $likesCount = $likeModel->where('news_id', $newsId)->where('like_status', 'like')->countAllResults();
-        $dislikesCount = $likeModel->where('news_id', $newsId)->where('like_status', 'dislike')->countAllResults();
-        
-        // Update the NewsModel with the new counts
-        $newsModel = new NewsModel();
-        $newsModel->update($newsId, [
-            'likes_count' => $likesCount,
-            'dislikes_count' => $dislikesCount
-        ]);
-        
-        return json_encode(['likes' => $likesCount, 'dislikes' => $dislikesCount]);
-    }       
-       
+    }
+
     public function about()
     {
         $categoryModel = new CategoryModel();
         $categories = $categoryModel->findAll();
-    
+
         $data['categories'] = $categories;
         try {
             // Load the users model
             $usersModel = new UsersModel();
-            
+
             // Fetch all users
             $users = $usersModel->findAll();
 
             // Filter users with roles "Admin" and "Staff"
-            $filteredUsers = array_filter($users, function($user) {
+            $filteredUsers = array_filter($users, function ($user) {
                 return in_array($user['role'], ['Admin', 'Staff']);
             });
 
             // Load the category model
             $categoryModel = new CategoryModel();
             $categories = $categoryModel->findAll();
-            
+
             $data['users'] = $filteredUsers; // Use filtered users
             $data['categories'] = $categories;
 
-        return view('UserPage/about', $data);
+            return view('UserPage/about', $data);
         } catch (\Throwable $th) {
             // Handle any errors
             return $this->response->setJSON(['error' => $th->getMessage()]);
@@ -190,7 +220,7 @@ class UserController extends BaseController
     {
         $categoryModel = new CategoryModel();
         $categories = $categoryModel->findAll();
-    
+
         $data['categories'] = $categories;
 
         return view('UserPage/contact', $data);

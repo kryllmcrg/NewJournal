@@ -220,6 +220,7 @@ class NewsController extends BaseController
                     $currentDateTime = date('Y-m-d H:i:s');
                     $data['date_approved'] = $currentDateTime;
                     $data['publication_date'] = $currentDateTime;
+                    $this->insertNewsLikesRecord($newsID);
                     break;
                 case 'Decline':
                     $publicationStatus = 'Unpublished';
@@ -241,6 +242,19 @@ class NewsController extends BaseController
         } catch (\Throwable $th) {
             return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $th->getMessage()]);
         }
+    }
+
+    public function insertNewsLikesRecord($newsID){
+        $model = new LikeModel();
+
+        $newsLikeExist = $model->where('news_id', $newsID)->first();
+        if(!$newsLikeExist){
+            $data = [
+                'news_id' => $newsID
+            ];
+            return $model->insert($data);
+        }
+        return null;
     }
 
     public function changePubStatus()

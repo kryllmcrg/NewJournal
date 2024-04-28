@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class LikeModel extends Model
+class UserLikeLogsModel extends Model
 {
-    protected $table            = 'likes';
-    protected $primaryKey       = 'like_id';
+    protected $table            = 'user_like_logs';
+    protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['news_id','likes_count','dislikes_count'];
+    protected $allowedFields    = ['news_id', 'user_id', 'action', 'created_at', 'updated_at'];
 
     // Dates
     protected $useTimestamps = false;
