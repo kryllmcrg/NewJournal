@@ -49,47 +49,47 @@ class CommentsController extends BaseController
 }
 
 public function reply($commentId)
-    {
-        $commentModel = new CommentModel();
+{
+    $commentModel = new CommentModel();
 
-        // Check if the form is submitted
-        if ($this->request->getMethod() === 'post') {
-            // Validate input data
-            $validationRules = [
-                'message' => 'required|max_length[255]' // Adjust the validation rules as needed
+    // Check if the form is submitted
+    if ($this->request->getMethod() === 'post') {
+        // Validate input data
+        $validationRules = [
+            'message' => 'required|max_length[255]',
+            'comment_author' => 'required|max_length[255]'
+        ];
+
+        if ($this->validate($validationRules)) {
+            $parentId = $commentId;
+
+            // Prepare data for insertion
+            $data = [
+                'news_id' => $this->request->getPost('news_id'),
+                'parent_comment_id' => $parentId,
+                'comment' => $this->request->getPost('message'),
+                'comment_author' => $this->request->getPost('comment_author'),
+                'comment_date' => date('Y-m-d H:i:s'),
+                'user_id' => $this->request->getPost('user_id')
             ];
 
-            if ($this->validate($validationRules)) {
-                $parentId = $commentId; // Assuming the parent comment ID is passed through the URL
-
-                // Prepare data for insertion
-                $data = [
-                    'news_id' => $this->request->getVar('news_id'), // Assuming news_id is passed through the form
-                    'parent_comment_id' => $parentId,
-                    'comment' => $this->request->getVar('message'),
-                    'comment_author' => $this->request->getVar('comment_author'), // Assuming comment_author is passed through the form
-                    'comment_date' => date('Y-m-d H:i:s'), // Assuming comment_date is automatically set
-                    'comment_status' => 'active', // Assuming comment_status is automatically set to active
-                    'user_id' => $this->request->getVar('user_id') // Assuming user_id is passed through the form
-                ];
-
-                // Insert the reply comment
-                if ($commentModel->insert($data)) {
-                    // Reply added successfully
-                    return redirect()->back()->with('success', 'Reply added successfully.');
-                } else {
-                    // Error inserting reply
-                    return redirect()->back()->with('error', 'Failed to add reply. Please try again.');
-                }
+            // Insert the reply comment
+            if ($commentModel->insert($data)) {
+                // Reply added successfully
+                return redirect()->back()->with('success', 'Reply added successfully.');
             } else {
-                // Validation failed, show errors
-                return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+                // Error inserting reply
+                return redirect()->back()->with('error', 'Failed to add reply. Please try again.');
             }
+        } else {
+            // Validation failed, show errors
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
-
-        // If the form is not submitted, redirect back
-        return redirect()->back();
     }
+
+    // If the form is not submitted, redirect back
+    return redirect()->back();
+}
 
 public function managecomments($news_id = null)
     {
