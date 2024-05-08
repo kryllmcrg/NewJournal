@@ -187,13 +187,13 @@
                                         <div class="like-icons">
                                             <a class="like-icon" href="#" data-news-id="<?= $article['news_id'] ?>"
                                                 data-like-id="<?= $article['like_id'] ?>"
-                                                data-like-status="<?= $article['like_status'] ?>"
+                                                data-like-status="<?= $article['like_status']?? null ?>"
                                                 onclick="toggleLike(this, 'like')"><i class="far fa-thumbs-up"></i></a>
                                             <span class="like-count"
                                                 id="like-count-<?= $article['news_id'] ?>"><?= $article['likes_count'] ?></span>
                                             <a class="like-icon" href="#" data-news-id="<?= $article['news_id'] ?>"
                                                 data-like-id="<?= $article['like_id'] ?>"
-                                                data-like-status="<?= $article['like_status'] ?>"
+                                                data-like-status="<?= $article['like_status']?? null ?>"
                                                 onclick="toggleLike(this, 'dislike')"><i class="far fa-thumbs-down"></i></a>
                                             <span class="dislike-count"
                                                 id="dislike-count-<?= $article['news_id'] ?>"><?= $article['dislikes_count'] ?></span>
