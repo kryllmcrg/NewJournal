@@ -42,7 +42,10 @@
         border-radius: 50%; /* To make the image circular if desired */
     }
     .social-link {
-    margin-right: 10px; /* Adjust the spacing as needed */
+    margin-right: 20px; /* Adjust the spacing as needed */
+}
+.social-link {
+    margin-left: 10px; /* Adjust the spacing as needed */
 }
 </style>
 <body>
@@ -60,17 +63,14 @@
           <!--/ Top info end -->
 
           <div class="nav-profile-img">
-              <a title="Facebook" href="https://facebook.com/themefisher.com" class="social-link">
+              <a title="Facebook" href="https://www.facebook.com/MayorMalouFloresMorillo" class="social-link">
                   <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
               </a>
-              <a title="Twitter" href="https://twitter.com/themefisher.com" class="social-link">
+              <a title="Twitter" href="" class="social-link">
                   <span class="social-icon"><i class="fab fa-twitter"></i></span>
               </a>
-              <a title="Instagram" href="https://instagram.com/themefisher.com" class="social-link">
+              <a title="Instagram" href="" class="social-link">
                   <span class="social-icon"><i class="fab fa-instagram"></i></span>
-              </a>
-              <a title="LinkedIn" href="https://linkedin.com/themefisher.com" class="social-link">
-                  <span class="social-icon"><i class="fab fa-linkedin"></i></span>
               </a>
               <a title="Logout" href="/logout" class="social-link">
                   <span class="social-icon"><i class="fas fa-sign-out-alt"></i></span>
