@@ -113,7 +113,6 @@
     <script src="<?= base_url('assets2/js/misc.js')?>"></script>
     <script src="<?= base_url('assets2/js/dashboard.js')?>"></script>
     <script src="<?= base_url('assets2/js/todolist.js')?>"></script>
-    
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
     <script>
     $(document).ready(function() {
@@ -123,85 +122,85 @@
     </script>
 
 <script>
-    const form = document.querySelector('#newsForm');
-    var formData = new FormData();
-    var selectedCategory;
+      const form = document.querySelector('#newsForm');
+      var formData = new FormData();
+      var selectedCategory;
 
-    $(document).ready(function() {
+      $(document).ready(function () {
         $('#categories').change(function () {
-            // Get the selected value
-            selectedCategory = $(this).val();
-            // Log the selected category to the console
-            console.log("Selected Category: " + selectedCategory);
+          // Get the selected value
+          selectedCategory = $(this).val();
+          // Log the selected category to the console
+          console.log("Selected Category: " + selectedCategory);
         });
-        
+
         $('#mySummernote').summernote({
-            placeholder: 'Enter your content',
-            height: 300,
-            toolbar: [
-                ['style', ['style']],
-                ['font', ['bold', 'underline', 'clear']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['table', ['table']],
-                ['insert', ['link', 'picture', 'video']],
-                ['view', ['fullscreen', 'codeview', 'help']]
-            ],
-            callbacks: {  
-                onImageUpload: function(files, editor, welEditable) {
-                    for (var i = 0; i < files.length; i++) {
-                        formData.append('files[]', files[i]);
-                    }
+        placeholder: 'Enter your content',
+        height: 300,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ],
+          callbacks: {
+            onImageUpload: function (files, editor, welEditable) {
+              for (var i = 0; i < files.length; i++) {
+                formData.append('files[]', files[i]);
+              }
 
-                    var imagesArray = [];
-                    for (var i = 0; i < files.length; i++) {
-                        var reader = new FileReader();
-                        reader.onload = function(e) {
-                            var imgData = e.target.result;
-                            imagesArray.push(imgData);
-                            var imgNode = document.createElement('img');
-                            imgNode.src = imgData;
-                            $('#mySummernote').summernote('insertNode', imgNode);
-                        }
-                        reader.readAsDataURL(files[i]);
-                    }
-                    // You can now use the imagesArray to send the images to the database
+              var imagesArray = [];
+              for (var i = 0; i < files.length; i++) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                  var imgData = e.target.result;
+                  imagesArray.push(imgData);
+                  var imgNode = document.createElement('img');
+                  imgNode.src = imgData;
+                  $('#mySummernote').summernote('insertNode', imgNode);
                 }
+                reader.readAsDataURL(files[i]);
+              }
+              // You can now use the imagesArray to send the images to the database
             }
+          }
         });
-    });
+      });   
+      $(document).ready(function () {
+        // Your existing code
 
-    $(document).ready(function() {
-    // Your existing code
-
-    // Register click event for the submit button
-    $('#btn-update').on('click', function(e) {
-    e.preventDefault();
-    formData = new FormData();
-    formData.append('news_id', $('#news_id').val()); // Add this line to include the news_id in the form data
-    formData.append('title', $('#title').val());
-    formData.append('author', $('#author').val());
-    formData.append('category_id', $('#categories').val());
-    formData.append('content', $('#mySummernote').val()); // Use .val() instead of .summernote('code') to get the content
-    $.ajax({
-        url: '<?= base_url('updateNews')?>',
-        method: 'POST',
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function(response) {
-            console.log(response);
-            // Reload the page after successful update
-            location.reload();
-        }
-    });
-});
-
+        // Register click event for the submit button
+        $('#btn-submit').on('click', function (e) {
+          e.preventDefault();
+          formData.append('title', $('#title').val());
+          formData.append('author', $('#author').val());
+          formData.append('category_id', selectedCategory);
+          formData.append('content', $('#mySummernote').summernote('code'));
+          formData.append('comment', $('#comment').val());
+          formData.append('video', $('#video')[0].files[0]);
+          $.ajax({
+            url: '<?= base_url('updateNews') ?>',
+            method: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            enctype: 'multipart/form-data',
+            success: function (response) {
+              console.log(response);
+              // Handle response from the server
+             location.reload();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+              console.error('File upload failed:', textStatus, errorThrown);
+              console.log('Error details:', jqXHR.responseText);
+            }
+          });
         });
-    });
-});
+      });
 
-</script>
-
+    </script>
   </body>
 </html>

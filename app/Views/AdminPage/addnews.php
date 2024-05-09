@@ -142,9 +142,9 @@
         });
 
         $('#mySummernote').summernote({
-          placeholder: 'Enter your content',
-          height: 300,
-          toolbar: [
+        placeholder: 'Enter your content',
+        height: 300,
+        toolbar: [
             ['style', ['style']],
             ['font', ['bold', 'underline', 'clear']],
             ['color', ['color']],
@@ -152,7 +152,7 @@
             ['table', ['table']],
             ['insert', ['link', 'picture', 'video']],
             ['view', ['fullscreen', 'codeview', 'help']]
-          ],
+        ],
           callbacks: {
             onImageUpload: function (files, editor, welEditable) {
               for (var i = 0; i < files.length; i++) {
