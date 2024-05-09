@@ -1,36 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <!-- Basic Page Needs
-================================================== -->
+    <!-- Basic Page Needs -->
     <meta charset="utf-8">
-    <title>CIO Offcial Website</title>
-    <!-- Mobile Specific Metas
-================================================== -->
+    <title>CIO Official Website</title>
+    <!-- Mobile Specific Metas -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Construction Html5 Template">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <!-- Favicon
-================================================== -->
-    <link rel="icon" type="assets/image/png" href="<?= base_url('assets/images/cio.png') ?>">
-    <!-- CSS
-================================================== -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="http://localhost:8080/assets/images/cio.png">
+    <!-- CSS -->
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="<?= base_url('assets/plugins/bootstrap/bootstrap.min.css') ?>">
+    <link rel="stylesheet" href="http://localhost:8080/assets/plugins/bootstrap/bootstrap.min.css">
     <!-- FontAwesome -->
-    <link rel="stylesheet" href="<?= base_url('assets/plugins/fontawesome/css/all.min.css') ?>">
+    <link rel="stylesheet" href="http://localhost:8080/assets/plugins/fontawesome/css/all.min.css">
     <!-- Animation -->
-    <link rel="stylesheet" href="<?= base_url('assets/plugins/animate-css/animate.css') ?>">
+    <link rel="stylesheet" href="http://localhost:8080/assets/plugins/animate-css/animate.css">
     <!-- slick Carousel -->
-    <link rel="stylesheet" href="<?= base_url('assets/plugins/slick/slick.css') ?>">
-    <link rel="stylesheet" href="<?= base_url('assets/plugins/slick/slick-theme.css') ?>">
+    <link rel="stylesheet" href="http://localhost:8080/assets/plugins/slick/slick.css">
+    <link rel="stylesheet" href="http://localhost:8080/assets/plugins/slick/slick-theme.css">
     <!-- Colorbox -->
-    <link rel="stylesheet" href="<?= base_url('assets/plugins/colorbox/colorbox.css') ?>">
+    <link rel="stylesheet" href="http://localhost:8080/assets/plugins/colorbox/colorbox.css">
     <!-- Template styles-->
-    <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>">
-
+    <link rel="stylesheet" href="http://localhost:8080/assets/css/style.css">
+    <!-- Additional CSS -->
 </head>
 <style>
     .ts-service-box {
@@ -105,8 +99,7 @@
 </style>
 
 <body>
-
-    <?php include ('include\header.php'); ?>
+    <?php include ('include/header.php'); ?>
     <div class="banner-carousel banner-carousel-2 mb-0">
         <div class="banner-carousel-item" style="background-image:url(assets/images/slider-main/kalap.png)">
             <div class="container">
@@ -208,7 +201,7 @@
         </div><!-- Container end -->
     </section><!-- Feature area end -->
 
-    <?php include ('include\footer.php'); ?>
+    <?php include ('include/footer.php'); ?>
     <!-- Javascript Files
   ================================================== -->
     <!-- Javascript Files
@@ -228,7 +221,6 @@
         defer></script>
     <!-- Google Map Plugin-->
     <script src="<?= base_url('assets/plugins/google-map/map.js') ?>" defer></script>
-
     <!-- Template custom -->
     <script src="<?= base_url('assets/js/script.js') ?>"></script>
 
@@ -355,7 +347,5 @@
             }
         };
     </script>
-
 </body>
-
 </html>
