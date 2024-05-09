@@ -41,8 +41,9 @@
         height: 20px; /* Adjust the height as needed */
         border-radius: 50%; /* To make the image circular if desired */
     }
-
-
+    .social-link {
+    margin-right: 10px; /* Adjust the spacing as needed */
+}
 </style>
 <body>
 <div class="body-inner">
@@ -58,31 +59,30 @@
           </div>
           <!--/ Top info end -->
 
-          <div class="col-lg-4 col-md-4 top-social text-center text-md-right">
-            <ul class="list-unstyled">
-                <li>
-                    <a title="Facebook" href="https://facebook.com/themefisher.com">
-                        <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
-                    </a>
-                    <a title="Twitter" href="https://twitter.com/themefisher.com">
-                        <span class="social-icon"><i class="fab fa-twitter"></i></span>
-                    </a>
-                    <a title="Instagram" href="https://instagram.com/themefisher.com">
-                        <span class="social-icon"><i class="fab fa-instagram"></i></span>
-                    </a>
-                    <a title="LinkedIn" href="https://linkedin.com/themefisher.com">
-                        <span class="social-icon"><i class="fab fa-linkedin"></i></span>
-                    </a>
-                    <div class="nav-profile-img">
-                        <img class="profile-image" src="/uploads/<?= session()->get('image')?>" alt="image">
-                        <span class="availability-status online"></span>
-                    </div>
-                    <!-- <div class="nav-profile-text">
-                      <p class="mb-1 text-black"><?= session()->get('fullname') ?></p>
-                    </div> -->
-                </li>
-            </ul>
-        </div>
+          <div class="nav-profile-img">
+              <a title="Facebook" href="https://facebook.com/themefisher.com" class="social-link">
+                  <span class="social-icon"><i class="fab fa-facebook-f"></i></span>
+              </a>
+              <a title="Twitter" href="https://twitter.com/themefisher.com" class="social-link">
+                  <span class="social-icon"><i class="fab fa-twitter"></i></span>
+              </a>
+              <a title="Instagram" href="https://instagram.com/themefisher.com" class="social-link">
+                  <span class="social-icon"><i class="fab fa-instagram"></i></span>
+              </a>
+              <a title="LinkedIn" href="https://linkedin.com/themefisher.com" class="social-link">
+                  <span class="social-icon"><i class="fab fa-linkedin"></i></span>
+              </a>
+              <a title="Logout" href="/logout" class="social-link">
+                  <span class="social-icon"><i class="fas fa-sign-out-alt"></i></span>
+              </a>
+          </div>
+          <div class="nav-profile-img">
+              <img class="profile-image" src="/uploads/<?= session()->get('image') ?>" alt="image">
+              <span class="availability-status online"></span>
+          </div>
+          <div class="nav-profile-text">
+              <p class="mb-1 text-black"><?= session()->get('fullname') ?></p>
+          </div>
 
           <!--/ Top social end -->
       </div>
