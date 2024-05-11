@@ -6,7 +6,7 @@
                 <i class="mdi mdi-home menu-icon"></i>
             </a>
         </li>
-        <?php if(session()->get('role') == "ADMIN"):?>
+        <?php if(session()->get('role') == "Admin"):?>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#staff" aria-expanded="false" aria-controls="staff">
                 <span class="menu-title">Staff</span>
@@ -17,16 +17,17 @@
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="<?= base_url('manageprofile')?>">Manage Profile</a></li>
                 </ul>
-            </div>
-            <div class="collapse" id="staff">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="<?= base_url('manageusers')?>">Manage Users</a></li>
                 </ul>
             </div>
+            <div class="collapse" id="staff">
+                
+            </div>
         </li>
         <?php endif;?>
 
-        <?php if(session()->get('role') == "ADMIN"):?>
+        <?php if(session()->get('role') == "Admin"):?>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#news" aria-expanded="false" aria-controls="news">
                 <span class="menu-title">News</span>
@@ -57,7 +58,7 @@
         </li>
         <?php endif;?>
 
-        <?php if(session()->get('role') == "ADMIN"):?>
+        <?php if(session()->get('role') == "Admin"):?>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#announce" aria-expanded="false" aria-controls="announce">
                 <span class="menu-title">Announcements</span>
@@ -89,6 +90,7 @@
         </li>
         <?php endif;?>
 
+        <?php if(session()->get('role') == "Admin"):?>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#comments" aria-expanded="false" aria-controls="comments">
                 <span class="menu-title">Comments</span>
@@ -101,6 +103,22 @@
                 </ul>
             </div>
         </li>
+        <?php endif;?>
+        
+        <?php if(session()->get('role') == "Staff"):?>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#comments" aria-expanded="false" aria-controls="comments">
+                <span class="menu-title">Comments</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-comment menu-icon"></i>
+            </a>
+            <div class="collapse" id="comments">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('managecomments')?>">Manage Comments</a></li>
+                </ul>
+            </div>
+        </li>
+        <?php endif;?>
 
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#collaboration" aria-expanded="false" aria-controls="collaboration">
@@ -110,7 +128,7 @@
             </a>
             <div class="collapse" id="collaboration">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('chats')?>">Chats</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('chats')?>">Contacts</a></li>
                 </ul>
             </div>
         </li>
@@ -138,6 +156,7 @@
             <div class="collapse" id="settings">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="<?= base_url('archive')?>">Archive</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('newsAudit')?>">News History</a></li>
                 </ul>
             </div>
         </li>

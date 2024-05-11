@@ -25,7 +25,11 @@ class NewsStaffController extends BaseController
 
     public function createNewsSubmit()
     {
-    try {
+    try             
+    {
+        $userAudit = new UserAuditModel();
+        $users = new UsersModel();
+
         $title = $this->request->getPost('title');
         $content = $this->request->getPost('content');
         $category_id = $this->request->getPost('category_id');
@@ -63,6 +67,11 @@ class NewsStaffController extends BaseController
         }
         $newsModel = new NewsModel();
         $result = $newsModel->insert($data);
+
+            $user = $users->select('user_id')->where(['staff_id' => $staffId])->first();
+
+            $userAuditRes = $userAudit->addUserAuditLog($user['user_id'], $result, 'Add', "Add $title News", '');
+
         return $this->response->setJSON($result);
         } catch (\Throwable $th) {
             return $this->response->setJSON(['error' => $th->getMessage()]);
@@ -132,7 +141,7 @@ class NewsStaffController extends BaseController
         return view('StaffPage/dashboard');
     }
 
-    public function editNews($id)
+    public function updateNews($id)
     {
         $newsModel = new NewsModel();
         $categoryModel = new CategoryModel();
@@ -140,9 +149,9 @@ class NewsStaffController extends BaseController
 
         $news = $newsModel->find($id);
 
-        return view('StaffPage/editNews', ['categories' => $categories, 'news' => $news]);
+        return view('AdminPage/editnews', ['categories' => $categories, 'news' => $news]);
     }
-    public function updateNews()
+    public function newsUpdate()
     {
         // Retrieve the submitted form data
         $newsId = $this->request->getPost('news_id');
@@ -191,7 +200,7 @@ class NewsStaffController extends BaseController
         // Check if the update was successful
         if ($updated) {
             // Redirect back to the editnews page with the news ID
-            return redirect()->to("/newsUpdate/$newsId");
+            return redirect()->to("/editNews/$newsId");
         } else {
             return "Failed to update news"; // Handle error appropriately
         }

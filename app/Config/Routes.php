@@ -76,8 +76,8 @@ $routes->get('/createnews', 'NewsStaffController::createnews');
 $routes->post('/createNewsSubmit', 'NewsStaffController::createNewsSubmit');
 $routes->get('/managenewstaff', 'NewsStaffController::managenewstaff');
 $routes->get('/dashboard', 'NewsStaffController::dashboard');
-$routes->get('/updateNews/(:num)', 'NewsController::updateNews/$1');
-$routes->get('/newsUpdate/(:num)', 'NewsController::newsUpdate/$1');
+$routes->get('/updateNews/(:num)', 'NewsStaffController::updateNews/$1');
+$routes->get('/newsUpdate', 'NewsStaffController::newsUpdate/$1');
 
 
 $routes->post('search_results', 'UserController::searchNews');
