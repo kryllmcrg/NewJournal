@@ -274,22 +274,26 @@ public function getCategoryData()
     {
         // Get the search query from the request
         $searchQuery = $this->request->getPost('searchQuery');
-
+    
         try {
             // Load the news model
             $newsModel = new NewsModel();
-
-            // Perform the search based on the title or content columns
-            $searchResults = $newsModel->like('title', 'publication_date', $searchQuery)
-                ->orLike('content', $searchQuery)
+    
+            // Perform the search based on title, content, category, author, and publication date columns
+            $searchResults = $newsModel->select('news.*, categories.category_name') // Select desired columns
+                ->join('categories', 'categories.id = news.category_id') // Join with categories table
+                ->like('news.title', $searchQuery)
+                ->orLike('news.content', $searchQuery)
+                ->orLike('news.author', $searchQuery)
+                ->orLike('news.publication_date', $searchQuery)
                 ->findAll();
-
+    
             // Pass the search results to the view
             return view('UserPage/search_results', ['searchResults' => $searchResults]);
         } catch (\Throwable $th) {
             // Handle any errors
             return $this->response->setJSON(['error' => $th->getMessage()]);
         }
-    }
+    }    
 
 }
