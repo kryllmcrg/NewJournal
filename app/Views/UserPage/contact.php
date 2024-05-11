@@ -177,31 +177,39 @@
   <script src="<?= base_url('assets/js/script.js')?>"></script>  
 
   <script>
-    $(document).ready(function() {
-        // Check if the URL contains a success parameter
-        const urlParams = new URLSearchParams(window.location.search);
-        const success = urlParams.get('success');
+$(document).ready(function() {
+    // Check if the URL contains a success parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const success = urlParams.get('success');
 
-        // If success parameter is present and true, show the modal
-        if (success) {
-            $('#autoReplyModal').modal('show');
-        }
-    });
-
-    // Example AJAX submission with jQuery
-$.ajax({
-    url: '/submitContactForm',
-    type: 'POST',
-    data: formData,
-    success: function(response) {
-        // Redirect to the contact page with success parameter if the submission is successful
-        window.location.href = '/contact?success=true';
-    },
-    error: function() {
-        // Handle error
+    // If success parameter is present and true, show the modal
+    if (success) {
+        $('#autoReplyModal').modal('show');
     }
 });
 
+// Example AJAX submission with jQuery
+$('#contact-form').submit(function(event) {
+    // Prevent the default form submission
+    event.preventDefault();
+
+    // Serialize the form data
+    var formData = $(this).serialize();
+
+    // Send an AJAX request
+    $.ajax({
+        url: '/contact/submitContactForm',
+        type: 'POST',
+        data: formData,
+        success: function(response) {
+            // Redirect to the contact page with success parameter if the submission is successful
+            window.location.href = '/contact?success=true';
+        },
+        error: function() {
+            // Handle error
+        }
+    });
+});
 </script>
 
 </body>
