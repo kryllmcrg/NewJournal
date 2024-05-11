@@ -44,56 +44,64 @@ class UserController extends BaseController
     }
 
     public function home()
-{
-    try {
-        // Load the news model
-        $newsModel = new NewsModel();
-        $userLikeLogsModel = new UserLikeLogsModel();
-
-        // Fetch only approved news articles with a limit of 10
-        $approvedNews = $newsModel->select('
-            news.news_id,
-            news.title,
-            news.content,
-            news.images,
-            likes.like_id,
-            likes.likes_count,
-            likes.dislikes_count
-        ')
-            ->join('likes', 'likes.news_id = news.news_id')
-            ->where('news.news_status', 'Approved')
-            ->where(['news.archived' => 0])
-            ->limit(10)
-            ->findAll();
-
-        $userId = session()->get('user_id');
-        if (isset($userId)) {
-            foreach ($approvedNews as &$news) {
-                $likeStatus = $userLikeLogsModel->select('action')->where('news_id', $news['news_id'])->first();
-
-                if ($likeStatus) {
-                    $news['like_status'] = $likeStatus['action'];
-                } else {
-                    $news['like_status'] = '';
+    {
+        try {
+            // Load the news model
+            $newsModel = new NewsModel();
+            $userLikeLogsModel = new UserLikeLogsModel();
+    
+            // Fetch only approved news articles with a limit of 10
+            $approvedNews = $newsModel->select('
+                news.news_id,
+                news.title,
+                news.content,
+                news.images,
+                likes.like_id,
+                likes.likes_count,
+                likes.dislikes_count
+            ')
+                ->join('likes', 'likes.news_id = news.news_id')
+                ->where('news.news_status', 'Approved')
+                ->where(['news.archived' => 0])
+                ->orderBy('news.publication_date', 'DESC') // Order by publication date to get the latest news first
+                ->limit(10)
+                ->findAll();
+    
+            // Check if the count of approved news is already at the maximum limit
+            $newsCount = count($approvedNews);
+            if ($newsCount >= 10) {
+                // Archive the oldest news article
+                $oldestNews = $approvedNews[$newsCount - 1]; // Get the last news article
+                $newsModel->update($oldestNews['news_id'], ['archived' => 1]); // Archive the oldest news
+            }
+    
+            $userId = session()->get('user_id');
+            if (isset($userId)) {
+                foreach ($approvedNews as &$news) {
+                    $likeStatus = $userLikeLogsModel->select('action')->where('news_id', $news['news_id'])->first();
+    
+                    if ($likeStatus) {
+                        $news['like_status'] = $likeStatus['action'];
+                    } else {
+                        $news['like_status'] = '';
+                    }
                 }
             }
+    
+            // Load the category model
+            $categoryModel = new CategoryModel();
+    
+            // Fetch all categories
+            $categories = $categoryModel->findAll();
+    
+            // Pass the approved news data and categories to the view
+            return view('UserPage/home', ['newsData' => $approvedNews, 'categories' => $categories, 'userId' => $userId]);
+        } catch (\Throwable $th) {
+            // Handle any errors
+            return $this->response->setJSON(['error' => $th->getMessage()]);
         }
-
-        // Load the category model
-        $categoryModel = new CategoryModel();
-
-        // Fetch all categories
-        $categories = $categoryModel->findAll();
-
-        // Pass the approved news data and categories to the view
-        return view('UserPage/home', ['newsData' => $approvedNews, 'categories' => $categories, 'userId' => $userId]);
-    } catch (\Throwable $th) {
-        // Handle any errors
-        return $this->response->setJSON(['error' => $th->getMessage()]);
     }
-}
-
-
+    
     public function about()
     {
         $categoryModel = new CategoryModel();

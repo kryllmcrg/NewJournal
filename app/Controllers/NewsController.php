@@ -353,14 +353,14 @@ class NewsController extends BaseController
 
             if ($updated) {
                 // Return success message if update was successful
-                return redirect()->to('managearchive')->with('success', 'News item restored successfully.');
+                return redirect()->to('managenews')->with('success', 'News item restored successfully.');
             } else {
                 // Return error message if update failed
-                return redirect()->to('managearchive')->with('error', 'Failed to restore the news item.');
+                return redirect()->to('managenews')->with('error', 'Failed to restore the news item.');
             }
         } catch (\Throwable $th) {
             // Return error message if an exception occurred during the update
-            return redirect()->to('managearchive')->with('error', 'An error occurred during restoration.');
+            return redirect()->to('managenews')->with('error', 'An error occurred during restoration.');
         }
     }
 
