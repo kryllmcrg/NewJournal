@@ -138,7 +138,14 @@ class NewsStaffController extends BaseController
 
     public function dashboard()
     {
-        return view('StaffPage/dashboard');
+        // Load the UsersModel
+        $usersModel = new UsersModel();
+
+        // Fetch all users with the role 'user'
+        $users = $usersModel->getUsersByRole('user');
+
+        // Pass the users data to the view
+        return view('user_view', ['users' => $users]);
     }
 
     public function updateNews($id)

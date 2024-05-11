@@ -17,7 +17,17 @@ class NewsController extends BaseController
 
     public function dashboard()
     {
-        return view('AdminPage/dashboard');
+        // Load the UsersModel
+        $usersModel = new UsersModel();
+
+        // Fetch count of users with role 'User'
+        $userCount = count($usersModel->getUsersByRole('User'));
+
+        // Fetch count of users with role 'Staff'
+        $staffCount = count($usersModel->getUsersByRole('Staff'));
+
+        // Pass the counts to the view
+        return view('dashboard', ['userCount' => $userCount, 'staffCount' => $staffCount]);
     }
 
     public function viewnews($id)
@@ -330,7 +340,6 @@ class NewsController extends BaseController
             return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $th->getMessage()]);
         }
     }
-
     public function archive()
     {
         // Load the NewsModel
