@@ -69,3 +69,7 @@ $routes->get('/createnews', 'NewsStaffController::createnews');
 $routes->post('/createNewsSubmit', 'NewsStaffController::createNewsSubmit');
 $routes->get('/managenewstaff', 'NewsStaffController::managenewstaff');
 $routes->get('/dashboard', 'NewsStaffController::dashboard');
+
+
+$routes->post('search_results', 'UserController::searchNews');
+

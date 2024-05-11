@@ -143,63 +143,19 @@
 
     <section id="ts-features" class="ts-features pb-4">
         <div class="container">
-            <div class="row">
-                <div class="shuffle-btn-group mb-4">
-                    <label class="active" for="all">
-                        <input type="radio" name="shuffle-filter" id="all" value="all" checked="checked"
-                            onclick="filterNews('all')">Show All
-                    </label>
-                    <?php foreach ($categories as $category): ?>
-                        <label for="<?= $category['category_name'] ?>">
-                            <!-- Make sure to use single quotes inside the onclick attribute -->
-                            <input type="radio" name="shuffle-filter" id="<?= $category['category_name'] ?>"
-                                value="<?= $category['category_name'] ?>"
-                                onclick="filterNews('<?= $category['category_name'] ?>')">
-                            <?= $category['category_name'] ?>
-                        </label>
+
+            <?php if (!empty($searchResults)) : ?>
+                <ul>
+                    <?php foreach ($searchResults as $result) : ?>
+                        <li>
+                            <h3><?= $result['title'] ?></h3>
+                            <p><?= $result['content'] ?></p>
+                        </li>
                     <?php endforeach; ?>
-                </div>
-                <div id="news-container" class="row"><!-- News container start -->
-                    <?php foreach ($newsData as $article): ?>
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="ts-service-box">
-                                <div class="ts-service-image-wrapper">
-                                    <img loading="lazy" class="w-100" src="<?= json_decode($article['images'])[0] ?>"
-                                        alt="news-image">
-                                </div>
-                                <div class="ts-service-content">
-                                    <a href="<?= base_url('news_read/' . $article['news_id']) ?>" class="news-link"
-                                        id="newsLink">
-                                        <h3 class="news-box-title"><?= $article['title'] ?></h3>
-                                        <span><?= $article['like_status'] ?></span>
-                                    </a>
-                                    <div class="content-container">
-                                        <p class="advisoryContent"><?= $article['content'] ?></p>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center mt-3">
-                                        <a class="learn-more" href="<?= base_url('news_read/' . $article['news_id']) ?>"
-                                            aria-label="news-details"><i class="fa fa-caret-right"></i> Read more</a>
-                                        <div class="like-icons">
-                                            <a class="like-icon" href="#" data-news-id="<?= $article['news_id'] ?>"
-                                                data-like-id="<?= $article['like_id'] ?>"
-                                                data-like-status="<?= $article['like_status']?? null ?>"
-                                                onclick="toggleLike(this, 'like')"><i class="far fa-thumbs-up"></i></a>
-                                            <span class="like-count"
-                                                id="like-count-<?= $article['news_id'] ?>"><?= $article['likes_count'] ?></span>
-                                            <a class="like-icon" href="#" data-news-id="<?= $article['news_id'] ?>"
-                                                data-like-id="<?= $article['like_id'] ?>"
-                                                data-like-status="<?= $article['like_status']?? null ?>"
-                                                onclick="toggleLike(this, 'dislike')"><i class="far fa-thumbs-down"></i></a>
-                                            <span class="dislike-count"
-                                                id="dislike-count-<?= $article['news_id'] ?>"><?= $article['dislikes_count'] ?></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- Service box end -->
-                        </div><!-- Col end -->
-                    <?php endforeach; ?>
-                </div><!-- News container end -->
-            </div><!-- Row end -->
+                </ul>
+            <?php else : ?>
+                <p>No results found.</p>
+            <?php endif; ?>
         </div><!-- Container end -->
     </section><!-- Feature area end -->
 

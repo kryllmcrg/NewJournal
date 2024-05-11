@@ -235,4 +235,28 @@ class UserController extends BaseController
     {
         return view('UserPage/announce');
     }
+
+
+    public function searchNews()
+    {
+        // Get the search query from the request
+        $searchQuery = $this->request->getPost('searchQuery');
+
+        try {
+            // Load the news model
+            $newsModel = new NewsModel();
+
+            // Perform the search based on the title or content columns
+            $searchResults = $newsModel->like('title', $searchQuery)
+                ->orLike('content', $searchQuery)
+                ->findAll();
+
+            // Pass the search results to the view
+            return view('UserPage/search_results', ['searchResults' => $searchResults]);
+        } catch (\Throwable $th) {
+            // Handle any errors
+            return $this->response->setJSON(['error' => $th->getMessage()]);
+        }
+    }
+
 }
