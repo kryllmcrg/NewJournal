@@ -60,38 +60,6 @@
 
         <?php if(session()->get('role') == "Admin"):?>
         <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#announce" aria-expanded="false" aria-controls="announce">
-                <span class="menu-title">Announcements</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi-bullhorn menu-icon"></i>
-            </a>
-            <div class="collapse" id="announce">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('addannounce')?>">Add Announcements</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('manageannounce')?>">Manage Announcements</a></li>
-                </ul>
-            </div>
-        </li>
-        <?php endif;?>
-
-        <?php if(session()->get('role') == "Staff"):?>
-        <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="collapse" href="#announce" aria-expanded="false" aria-controls="announce">
-                <span class="menu-title">Announcements Staff</span>
-                <i class="menu-arrow"></i>
-                <i class="mdi mdi-bullhorn menu-icon"></i>
-            </a>
-            <div class="collapse" id="announce">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('createannounce')?>">Create Announcements</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('manageannouncestaff')?>">Manage Staff Announcements</a></li>
-                </ul>
-            </div>
-        </li>
-        <?php endif;?>
-
-        <?php if(session()->get('role') == "Admin"):?>
-        <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#comments" aria-expanded="false" aria-controls="comments">
                 <span class="menu-title">Comments</span>
                 <i class="menu-arrow"></i>

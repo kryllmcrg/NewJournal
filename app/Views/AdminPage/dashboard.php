@@ -109,22 +109,47 @@
                 </div>
             </div>
 
-            <!-- Pie Chart for Visit Statistics -->
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Visit Statistics</h4>
-                        <canvas id="visit-statistics-chart" style="height: 400px;"></canvas>
+                        <h4 class="card-title">News Status</h4>
+                        <canvas id="pieChartNewsStatus" width="400" height="400"></canvas>
                     </div>
                 </div>
             </div>
 
-            <!-- Bar Chart for Traffic Sources -->
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Traffic Sources</h4>
-                        <canvas id="traffic-sources-chart" style="height: 400px;"></canvas>
+                        <h4 class="card-title">Publication Status</h4>
+                        <canvas id="barChartPublicationStatus" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Time Series of Publication Date</h4>
+                        <canvas id="timeSeriesChartPublicationDate" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">World Cloud of Author</h4>
+                        <canvas id="wordCloudAuthors" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Chart of Categories</h4>
+                        <canvas id="stackedBarChartCategories" width="400" height="400"></canvas>
                     </div>
                 </div>
             </div>
@@ -149,6 +174,7 @@
     <script src="<?= base_url('assets2/js/dashboard.js')?>"></script>
     <script src="<?= base_url('assets2/js/todolist.js')?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-wordcloud"></script>
 
     <script>
         // Sample data for the charts
@@ -170,66 +196,184 @@
                 borderWidth: 1
             }]
         };
-
-        var visitStatisticsData = {
-            labels: ['January', 'February', 'March', 'April', 'May'],
-            datasets: [{
-                label: 'Visits',
-                data: [200, 300, 400, 500, 600],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)'
-                ],
-                borderWidth: 1
-            }]
-        };
-
-        var trafficSourcesData = {
-            labels: ['Direct', 'Organic', 'Referral', 'Social'],
-            datasets: [{
-                label: 'Traffic',
-                data: [300, 400, 200, 100],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)'
-                ],
-                borderWidth: 1
-            }]
-        };
-
         // Initialize the charts
         var sentimentAnalysisChart = new Chart(document.getElementById('sentiment-analysis-chart'), {
             type: 'doughnut',
             data: sentimentAnalysisData
         });
-
-        var visitStatisticsChart = new Chart(document.getElementById('visit-statistics-chart'), {
-            type: 'line',
-            data: visitStatisticsData
-        });
-
-        var trafficSourcesChart = new Chart(document.getElementById('traffic-sources-chart'), {
-            type: 'bar',
-            data: trafficSourcesData
-        });
     </script>
+
+
+<script>
+     const newsStatusData = {
+            labels: ['Approved', 'Pending', 'Rejected'],
+            datasets: [{
+                label: 'News Status',
+                data: [75, 15, 10], // Sample percentages of news articles in each status category
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.7)', // Approved
+                    'rgba(255, 206, 86, 0.7)', // Pending
+                    'rgba(255, 99, 132, 0.7)'  // Rejected
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        // Get the canvas element
+        const pieChartCanvas = document.getElementById('pieChartNewsStatus').getContext('2d');
+
+        // Create the Pie Chart
+        const pieChart = new Chart(pieChartCanvas, {
+            type: 'pie',
+            data: newsStatusData,
+            options: {
+                title: {
+                    display: true,
+                    text: 'News Status Distribution'
+                }
+            }
+        });
+
+
+        // Sample data for publication status
+    const publicationStatusData = {
+        labels: ['Published', 'Unpublished'],
+        datasets: [{
+            label: 'Publication Status',
+            data: [80, 20], // Sample percentages of published and unpublished news articles
+            backgroundColor: [
+                'rgba(75, 192, 192, 0.7)', // Published
+                'rgba(255, 99, 132, 0.7)'   // Unpublished
+            ],
+            borderWidth: 1
+        }]
+    };
+
+    // Get the canvas element
+    const barChartCanvas = document.getElementById('barChartPublicationStatus').getContext('2d');
+
+    // Create the Bar Chart
+    const barChart = new Chart(barChartCanvas, {
+        type: 'bar',
+        data: publicationStatusData,
+        options: {
+            title: {
+                display: true,
+                text: 'Publication Status'
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+    // Sample data for time series chart
+    const publicationDateData = {
+        labels: ['2022-01-01', '2022-01-02', '2022-01-03'], // Sample publication dates
+        datasets: [{
+            label: 'Number of News Articles Published',
+            data: [10, 15, 8], // Sample number of news articles published on each date
+            borderColor: 'rgba(75, 192, 192, 1)', // Line color
+            borderWidth: 1,
+            fill: false
+        }]
+    };
+
+    // Get the canvas element
+    const timeSeriesChartCanvas = document.getElementById('timeSeriesChartPublicationDate').getContext('2d');
+
+    // Create the Time Series Chart
+    const timeSeriesChart = new Chart(timeSeriesChartCanvas, {
+        type: 'line',
+        data: publicationDateData,
+        options: {
+            title: {
+                display: true,
+                text: 'Publication Date Trend'
+            },
+            scales: {
+                xAxes: [{
+                    type: 'time',
+                    time: {
+                        unit: 'day'
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+    // Sample data for word cloud
+const wordCloudData = {
+    labels: ['Author1', 'Author2', 'Author3', 'Author4'],
+    datasets: [{
+        data: [10, 8, 6, 4], // Sample frequency of each author
+        backgroundColor: 'rgba(75, 192, 192, 0.7)', // Color of the words
+    }]
+};
+
+// Get the canvas element
+const wordCloudCanvas = document.getElementById('wordCloudAuthors').getContext('2d');
+
+// Create the Word Cloud chart
+const wordCloud = new Chart(wordCloudCanvas, {
+    type: 'wordcloud',
+    data: wordCloudData,
+    options: {
+        plugins: {
+            legend: false,
+            title: {
+                display: true,
+                text: 'Word Cloud of Authors'
+            }
+        }
+    }
+});
+
+// Sample data for stacked bar chart
+const stackedBarChartData = {
+    labels: ['Category1', 'Category2', 'Category3'],
+    datasets: [{
+        label: 'News Articles',
+        data: [10, 20, 15], // Sample number of news articles in each category
+        backgroundColor: 'rgba(75, 192, 192, 0.7)' // Color of the bars
+    }, {
+        label: 'Archived Articles',
+        data: [5, 8, 10], // Sample number of archived articles in each category
+        backgroundColor: 'rgba(255, 99, 132, 0.7)' // Color of the bars
+    }]
+};
+
+// Get the canvas element
+const stackedBarChartCanvas = document.getElementById('stackedBarChartCategories').getContext('2d');
+
+// Create the Stacked Bar Chart
+const stackedBarChart = new Chart(stackedBarChartCanvas, {
+    type: 'bar',
+    data: stackedBarChartData,
+    options: {
+        title: {
+            display: true,
+            text: 'Stacked Bar Chart of Categories'
+        },
+        scales: {
+            xAxes: [{
+                stacked: true
+            }],
+            yAxes: [{
+                stacked: true
+            }]
+        }
+    }
+});
+</script>
   </body>
 </html>
