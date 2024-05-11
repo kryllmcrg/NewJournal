@@ -113,6 +113,16 @@
                 </div>
               </div>
             </div>
+            <div class="row">
+                <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Sentiment Analysis</h4>
+                            <canvas id="sentiment-analysis-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
           
           <!-- content-wrapper ends -->

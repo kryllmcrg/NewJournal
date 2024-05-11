@@ -68,7 +68,7 @@
     <section id="main-container" class="main-container">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="col-lg-8 mb-5 mb-lg-0 order-lg-1">
                     <div class="post-content post-single" id="news-article">
                         <div class="post-media post-image">
                             <?php if (isset($article['videos'])) {
@@ -108,36 +108,6 @@
                             
                         </div><!-- post-body end -->
                     </div><!-- post content end -->
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="progress rounded-0" style="height: 30px; width: 100%; background-color: #BC7FCD;">
-                                    <div class="progress-bar rounded-0" role="progressbar" style="width: 94%; background-color: #8E8FFA;" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100">4.7</div>
-                                </div>
-                                <ul class="list-group mt-3 rounded-0 d-flex flex-row">
-                                    <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
-                                        5 Star
-                                        <span class="badge badge-primary badge-pill" style="background-color: #8E8FFA;">1.4K</span>
-                                    </li>
-                                    <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
-                                        4 Star
-                                        <span class="badge badge-primary badge-pill" style="background-color: #8E8FFA;">178</span>
-                                    </li>
-                                    <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
-                                        3 Star
-                                        <span class="badge badge-primary badge-pill" style="background-color: #8E8FFA;">84</span>
-                                    </li>
-                                    <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
-                                        2 Star
-                                        <span class="badge badge-primary badge-pill" style="background-color: #8E8FFA;">30</span>
-                                    </li>
-                                    <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
-                                        1 Star
-                                        <span class="badge badge-primary badge-pill" style="background-color: #8E8FFA;">44</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
                     <!-- POST COMMENTS -->
                     <div id="comments" class="comments-area">
                         <!-- ADD COMMENTS -->
@@ -163,19 +133,6 @@
                                         </div>
                                     </div><!-- Col 12 end -->
                                 </div><!-- Form row end -->
-                                <!-- Star rating -->
-                                <div class="form-group">
-                                    <label for="rating">Rating:</label><br>
-                                    <div class="rating">
-                                        <input type="hidden" name="rating" id="rating" value="0"> <!-- Hidden input to store the selected rating -->
-                                        <i class="far fa-star star" data-rating="1"></i> <!-- Star icon for rating 1 -->
-                                        <i class="far fa-star star" data-rating="2"></i> <!-- Star icon for rating 2 -->
-                                        <i class="far fa-star star" data-rating="3"></i> <!-- Star icon for rating 3 -->
-                                        <i class="far fa-star star" data-rating="4"></i> <!-- Star icon for rating 4 -->
-                                        <i class="far fa-star star" data-rating="5"></i> <!-- Star icon for rating 5 -->
-                                    </div>
-                                    <p>Average Rating: <span id="average-rating">0.0</span></p>
-                                </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form><!-- Form end -->
                         </div><!-- Comments form end -->
@@ -220,9 +177,8 @@
                     </div><!-- Post comment end -->
                 </div><!-- Col 8 end -->
 
-
                 <!-- Sidebar Col -->
-                <div class="col-lg-4">
+                <div class="col-lg-4 order-lg-2">
                     <div class="sidebar sidebar-right">
                         <!-- Recent Posts -->
                         <div class="widget recent-posts">
@@ -312,6 +268,48 @@
                                 </li><!-- 3rd post end-->
                             </ul>
                         </div><!-- MOST LIKED end -->
+                        <!-- Star rating -->
+                        <div class="form-group">
+                                    <label for="rating">Rating:</label><br>
+                                    <div class="rating">
+                                        <input type="hidden" name="rating" id="rating" value="0"> <!-- Hidden input to store the selected rating -->
+                                        <i class="far fa-star star" data-rating="1"></i> <!-- Star icon for rating 1 -->
+                                        <i class="far fa-star star" data-rating="2"></i> <!-- Star icon for rating 2 -->
+                                        <i class="far fa-star star" data-rating="3"></i> <!-- Star icon for rating 3 -->
+                                        <i class="far fa-star star" data-rating="4"></i> <!-- Star icon for rating 4 -->
+                                        <i class="far fa-star star" data-rating="5"></i> <!-- Star icon for rating 5 -->
+                                    </div>
+                                    <p>Average Rating: <span id="average-rating">0.0</span></p>
+                                </div>
+                                <div class="row">
+                            <div class="col-md-10">
+                                <div class="progress rounded-0" style="height: 30px; width: 100%; background-color: #BC7FCD;">
+                                    <div class="progress-bar rounded-0" role="progressbar" style="width: 94%; background-color: #8E8FFA;" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100">4.7</div>
+                                </div>
+                                <ul class="list-group mt-3 rounded-0 d-flex flex-row">
+                                    <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
+                                        5 Star
+                                        <span class="badge badge-primary badge-pill" style="background-color: #8E8FFA;">1.4K</span>
+                                    </li>
+                                    <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
+                                        4 Star
+                                        <span class="badge badge-primary badge-pill" style="background-color: #8E8FFA;">178</span>
+                                    </li>
+                                    <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
+                                        3 Star
+                                        <span class="badge badge-primary badge-pill" style="background-color: #8E8FFA;">84</span>
+                                    </li>
+                                    <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
+                                        2 Star
+                                        <span class="badge badge-primary badge-pill" style="background-color: #8E8FFA;">30</span>
+                                    </li>
+                                    <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
+                                        1 Star
+                                        <span class="badge badge-primary badge-pill" style="background-color: #8E8FFA;">44</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div><!-- Sidebar end -->
                 </div><!-- Sidebar Col end -->
             </div><!-- Main row end -->

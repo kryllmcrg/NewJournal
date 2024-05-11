@@ -8,6 +8,7 @@ use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\NewsModel;
 use App\Models\CommentModel;
 use App\Models\CategoryModel;
+use App\Models\ContactModel;
 
 class NewsController extends BaseController
 {
@@ -163,25 +164,45 @@ class NewsController extends BaseController
     }
 
     public function deleteNews($id)
-    {
-        try {
-            $newsModel = new NewsModel();
+{
+    try {
+        $newsModel = new NewsModel();
+        $likeModel = new LikeModel();
 
-            // Delete the news item
-            $deleted = $newsModel->where('news_id', $id)->delete();
+        // Begin a transaction
+        $db = db_connect();
+        $db->transStart();
 
-            if ($deleted) {
-                // Return success message if deletion was successful
-                return redirect()->to('managenews');
-            } else {
-                // Return error message if deletion failed
-                return $this->response->setJSON(['error' => 'Failed to delete the record'])->setStatusCode(500);
-            }
-        } catch (\Throwable $th) {
-            // Return error message if an exception occurred during deletion
-            return $this->response->setJSON(['error' => 'An error occurred during deletion'])->setStatusCode(500);
+        // Check if there are related records in the 'likes' table
+        $relatedLikes = $likeModel->where('news_id', $id)->findAll();
+
+        // Delete related records from the 'likes' table
+        foreach ($relatedLikes as $like) {
+            $likeModel->delete($like['like_id']);
         }
+
+        // Update the 'archived' column of the news item to indicate it is archived
+        $updated = $newsModel->where('news_id', $id)->set(['archived' => 1])->update();
+
+        // Commit the transaction
+        $db->transCommit();
+
+        if ($updated) {
+            // Return success message if update was successful
+            return redirect()->to('managenews')->with('success', 'News item archived successfully.');
+        } else {
+            // Return error message if update failed
+            return redirect()->to('managenews')->with('error', 'Failed to archive the news item.');
+        }
+    } catch (\Throwable $th) {
+        // Rollback the transaction if an error occurred
+        $db->transRollback();
+
+        // Return error message if an exception occurred during the update
+        return redirect()->to('managenews')->with('error', 'An error occurred during deletion.');
     }
+}
+
     public function managenews()
     {
         // Load the NewsModel
@@ -295,10 +316,88 @@ class NewsController extends BaseController
         $newsModel = new NewsModel();
 
         // Fetch news data from the database including only the specified columns
-        $newsData = $newsModel->select('title, author,created_at, updated_at, news_id')->findAll();
+        $newsData = $newsModel->select('title, author,created_at, updated_at, publication_date, news_id')->findAll();
 
         // Pass the data to the view
         return view('AdminPage/archive', ['newsData' => $newsData]);
     }
 
+    public function restoreNews($id)
+    {
+        try {
+            $newsModel = new NewsModel();
+
+            // Update the 'archived' column of the news item to indicate it is no longer archived
+            $updated = $newsModel->where('news_id', $id)->set(['archived' => 0])->update();
+
+            if ($updated) {
+                // Return success message if update was successful
+                return redirect()->to('managearchive')->with('success', 'News item restored successfully.');
+            } else {
+                // Return error message if update failed
+                return redirect()->to('managearchive')->with('error', 'Failed to restore the news item.');
+            }
+        } catch (\Throwable $th) {
+            // Return error message if an exception occurred during the update
+            return redirect()->to('managearchive')->with('error', 'An error occurred during restoration.');
+        }
+    }
+
+    public function newsDelete($id)
+    {
+        try {
+            $newsModel = new NewsModel();
+
+            // Delete the news item from the database
+            $deleted = $newsModel->delete($id);
+
+            if ($deleted) {
+                // Return success message if deletion was successful
+                return redirect()->to('managearchive')->with('success', 'News item deleted successfully.');
+            } else {
+                // Return error message if deletion failed
+                return redirect()->to('managearchive')->with('error', 'Failed to delete the news item.');
+            }
+        } catch (\Throwable $th) {
+            // Return error message if an exception occurred during deletion
+            return redirect()->to('managearchive')->with('error', 'An error occurred during deletion.');
+        }
+    }
+    public function submitContactForm()
+    {
+        $contactModel = new ContactModel();
+
+        // Validate form input
+        $validationRules = [
+            'name' => 'required',
+            'email' => 'required|valid_email',
+            'subject' => 'required',
+            'message' => 'required',
+        ];
+
+        if (!$this->validate($validationRules)) {
+            // Validation failed
+            return redirect()->back()->withInput()->with('validationErrors', $this->validator->getErrors());
+        }
+
+        // Form data is valid, proceed with insertion
+        $formData = [
+            'name' => $this->request->getPost('name'),
+            'email' => $this->request->getPost('email'),
+            'subject' => $this->request->getPost('subject'),
+            'message' => $this->request->getPost('message'),
+        ];
+
+        // Insert data into the database
+        if ($contactModel->insert($formData)) {
+            // Contact form submission successful
+            // You can add additional logic here, such as sending an email notification to the admin
+            return redirect()->to('contact/thank-you');
+        } else {
+            // Contact form submission failed
+            // Handle the error accordingly
+            // For example, you can display an error message and redirect the user back to the contact form
+            return redirect()->back()->with('error', 'Failed to submit the contact form. Please try again.');
+        }
+    }
 }

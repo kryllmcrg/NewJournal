@@ -14,7 +14,7 @@ $routes->get('/announce', 'UserController::announce');
 $routes->get('/news', 'UserController::news');
 $routes->post('/like/(:any)', 'UserController::like/$1');
 $routes->get('/categories', 'UserController::getCategoryData');
-$routes->get('filter-news/(:segment)', 'UserController::filterNews/$1');
+$routes->get('filterNews/(:any)', 'NewsController::filterNews/$1');
 
 $routes->get('/login', 'LogRegController::login');
 $routes->post('check', 'LogRegController::check');
@@ -43,6 +43,12 @@ $routes->post('changeNewStatus', 'NewsController::changeNewStatus');
 $routes->post('changePubStatus', 'NewsController::changePubStatus');
 $routes->get('/viewnews/(:any)', 'NewsController::viewnews/$1');
 $routes->get('/archive', 'NewsController::archive');
+$routes->get('/restoreNews/(:any)', 'NewsController::restoreNews/$1');
+$routes->get('/newsDelete/(:any)', 'NewsController::newsDelete/$1');
+$routes->post('contact/submitContactForm', 'ContactController::submitContactForm');
+
+
+
 
 $routes->post('addComment', 'CommentsController::addComment');
 $routes->post('commentStatus', 'CommentsController::commentStatus');
