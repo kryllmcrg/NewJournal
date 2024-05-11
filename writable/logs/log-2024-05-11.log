@@ -271,3 +271,188 @@ INFO - 2024-05-11 04:52:47 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2024-05-11 04:53:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-05-11 04:57:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-05-11 04:57:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:03:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:04:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:04:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:04:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:04:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:04:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:04:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:04:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:07:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:08:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:10:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:10:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:11:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:11:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:11:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-11 05:15:16 --> ErrorException: Undefined variable $news_id
+in APPPATH\Controllers\UserController.php on line 236.
+ 1 APPPATH\Controllers\UserController.php(236): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $news_id', 'C:\\laragon\\www\\NewJournal\\app\\Controllers\\UserController.php', 236)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->news()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-05-11 05:16:46 --> ArgumentCountError: Too few arguments to function App\Controllers\UserController::news(), 0 passed in C:\laragon\www\NewJournal\system\CodeIgniter.php on line 941 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 231.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->news()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-05-11 05:17:20 --> ArgumentCountError: Too few arguments to function App\Controllers\UserController::news(), 0 passed in C:\laragon\www\NewJournal\system\CodeIgniter.php on line 941 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 231.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->news()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-05-11 05:17:23 --> ArgumentCountError: Too few arguments to function App\Controllers\UserController::news(), 0 passed in C:\laragon\www\NewJournal\system\CodeIgniter.php on line 941 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 231.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->news()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-05-11 05:18:32 --> ArgumentCountError: Too few arguments to function App\Controllers\UserController::news(), 0 passed in C:\laragon\www\NewJournal\system\CodeIgniter.php on line 941 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 231.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->news()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-05-11 05:19:14 --> ArgumentCountError: Too few arguments to function App\Controllers\UserController::news(), 0 passed in C:\laragon\www\NewJournal\system\CodeIgniter.php on line 941 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 231.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->news()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-05-11 05:19:15 --> ArgumentCountError: Too few arguments to function App\Controllers\UserController::news(), 0 passed in C:\laragon\www\NewJournal\system\CodeIgniter.php on line 941 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 231.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->news()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-05-11 05:19:40 --> ArgumentCountError: Too few arguments to function App\Controllers\UserController::news(), 0 passed in C:\laragon\www\NewJournal\system\CodeIgniter.php on line 941 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 231.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->news()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-05-11 05:21:23 --> ArgumentCountError: Too few arguments to function App\Controllers\UserController::news(), 0 passed in C:\laragon\www\NewJournal\system\CodeIgniter.php on line 941 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 231.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->news()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-05-11 05:21:24 --> ArgumentCountError: Too few arguments to function App\Controllers\UserController::news(), 0 passed in C:\laragon\www\NewJournal\system\CodeIgniter.php on line 941 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 231.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->news()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-05-11 05:21:53 --> ArgumentCountError: Too few arguments to function App\Controllers\UserController::news(), 0 passed in C:\laragon\www\NewJournal\system\CodeIgniter.php on line 941 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 231.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->news()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-05-11 05:21:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-11 05:22:20 --> ArgumentCountError: Too few arguments to function App\Controllers\UserController::news(), 0 passed in C:\laragon\www\NewJournal\system\CodeIgniter.php on line 941 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 231.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->news()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-05-11 05:25:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:26:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:26:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:26:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:26:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:26:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-11 05:26:35 --> ArgumentCountError: Too few arguments to function App\Controllers\UserController::news(), 0 passed in C:\laragon\www\NewJournal\system\CodeIgniter.php on line 941 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 231.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->news()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-05-11 05:31:51 --> ArgumentCountError: Too few arguments to function App\Controllers\UserController::news(), 0 passed in C:\laragon\www\NewJournal\system\CodeIgniter.php on line 941 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 231.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->news()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-05-11 05:33:24 --> ArgumentCountError: Too few arguments to function App\Controllers\UserController::news(), 0 passed in C:\laragon\www\NewJournal\system\CodeIgniter.php on line 941 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 231.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->news()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-05-11 05:33:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-11 05:33:46 --> ErrorException: Undefined variable $contacts
+in APPPATH\Views\AdminPage\chats.php on line 87.
+ 1 APPPATH\Views\AdminPage\chats.php(87): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $contacts', 'C:\\laragon\\www\\NewJournal\\app\\Views\\AdminPage\\chats.php', 87)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\NewJournal\\app\\Views\\AdminPage\\chats.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('AdminPage/chats', [], true)
+ 5 APPPATH\Controllers\ChatController.php(20): view('AdminPage/chats')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ChatController->chats()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChatController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-05-11 05:36:05 --> ArgumentCountError: Too few arguments to function App\Controllers\UserController::news(), 0 passed in C:\laragon\www\NewJournal\system\CodeIgniter.php on line 941 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 231.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->news()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-05-11 05:36:07 --> ArgumentCountError: Too few arguments to function App\Controllers\UserController::news(), 0 passed in C:\laragon\www\NewJournal\system\CodeIgniter.php on line 941 and exactly 1 expected
+in APPPATH\Controllers\UserController.php on line 231.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->news()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-05-11 05:38:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-11 05:38:18 --> ErrorException: Undefined array key "publication_date"
+in APPPATH\Views\AdminPage\chats.php on line 93.
+ 1 APPPATH\Views\AdminPage\chats.php(93): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "publication_date"', 'C:\\laragon\\www\\NewJournal\\app\\Views\\AdminPage\\chats.php', 93)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\NewJournal\\app\\Views\\AdminPage\\chats.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('AdminPage/chats', [], true)
+ 5 APPPATH\Controllers\ChatController.php(29): view('AdminPage/chats', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ChatController->chats()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChatController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-05-11 05:39:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:40:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:42:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-11 05:42:12 --> ErrorException: Undefined array key "id"
+in APPPATH\Views\AdminPage\chats.php on line 100.
+ 1 APPPATH\Views\AdminPage\chats.php(100): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\laragon\\www\\NewJournal\\app\\Views\\AdminPage\\chats.php', 100)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\laragon\\www\\NewJournal\\app\\Views\\AdminPage\\chats.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('AdminPage/chats', [], true)
+ 5 APPPATH\Controllers\ChatController.php(29): view('AdminPage/chats', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\ChatController->chats()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChatController))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-05-11 05:42:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 05:42:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

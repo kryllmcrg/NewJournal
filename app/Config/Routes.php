@@ -14,7 +14,8 @@ $routes->get('/announce', 'UserController::announce');
 $routes->get('/news', 'UserController::news');
 $routes->post('/like/(:any)', 'UserController::like/$1');
 $routes->get('/categories', 'UserController::getCategoryData');
-$routes->get('filterNews/(:any)', 'NewsController::filterNews/$1');
+$routes->get('filterNews/(:any)', 'UserController::filterNews/$1');
+$routes->get('news/(:num)', 'UserController::news/$1');
 
 $routes->get('/login', 'LogRegController::login');
 $routes->post('check', 'LogRegController::check');

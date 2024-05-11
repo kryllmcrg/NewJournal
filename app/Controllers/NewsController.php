@@ -400,16 +400,4 @@ class NewsController extends BaseController
             return redirect()->back()->with('error', 'Failed to submit the contact form. Please try again.');
         }
     }
-
-    public function contact()
-    {
-        // Load the ContactModel
-        $contactModel = new ContactModel();
-    
-        // Fetch contact data from the database
-        $contacts = $contactModel->findAll(); // Assuming findAll() fetches all contact items
-    
-        // Load the view file with the contact data
-        echo view('contact', ['contacts' => $contacts]);
-    }
 }

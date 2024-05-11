@@ -89,34 +89,34 @@ class UserController extends BaseController
         }
     }
     public function filterNews($categoryName = null)
-{
-    try {
-        // Load the news model
-        $newsModel = new NewsModel();
+    {
+        try {
+            // Load the news model
+            $newsModel = new NewsModel();
 
-        // If no specific category is selected, fetch all news articles
-        if ($categoryName === null || $categoryName === 'all') {
-            $newsData = $newsModel->findAll();
-        } else {
-            // Fetch news articles filtered by the selected category name
-            $newsData = $newsModel->select('news.*, images')
-                ->join('category', 'category.category_id = news.category_id')
-                ->where('category.category_name', $categoryName)
-                ->findAll();
+            // If no specific category is selected, fetch all news articles
+            if ($categoryName === null || $categoryName === 'all') {
+                $newsData = $newsModel->findAll();
+            } else {
+                // Fetch news articles filtered by the selected category name
+                $newsData = $newsModel->select('news.*, images')
+                    ->join('category', 'category.category_id = news.category_id')
+                    ->where('category.category_name', $categoryName)
+                    ->findAll();
+            }
+
+            // Decode the JSON string in the images column
+            foreach ($newsData as &$article) {
+                $article['images'] = json_decode($article['images'], true);
+            }
+
+            // Pass the news data to the view
+            return $this->response->setJSON(['newsData' => $newsData]);
+        } catch (\Throwable $th) {
+            // Handle any errors
+            return $this->response->setJSON(['error' => $th->getMessage()]);
         }
-
-        // Decode the JSON string in the images column
-        foreach ($newsData as &$article) {
-            $article['images'] = json_decode($article['images'], true);
-        }
-
-        // Pass the news data to the view
-        return $this->response->setJSON(['newsData' => $newsData]);
-    } catch (\Throwable $th) {
-        // Handle any errors
-        return $this->response->setJSON(['error' => $th->getMessage()]);
     }
-}
 
 public function getCategoryData()
 {
@@ -228,16 +228,40 @@ public function getCategoryData()
         return view('UserPage/contact', $data);
     }
 
-    public function news()
+    public function news($news_id)
     {
-        return view('UserPage/news');
-    }
+        // Assuming $news_id is passed as a parameter to the method
     
-    public function announce()
-    {
-        return view('UserPage/announce');
-    }
-
+        $newsModel = new NewsModel();
+    
+        // Fetch article details by news_id
+        $article = $newsModel->find($news_id);
+    
+        if (!$article) {
+            // Handle case where article with given ID is not found
+            // For example, redirect to an error page or show a 404 error
+            return redirect()->to('error_page'); // Example
+        }
+    
+        // Fetch category name using the category_id
+        $categoryModel = new CategoryModel();
+        $category = $categoryModel->find($article['category_id']);
+        $category_name = $category ? $category['category_name'] : '';
+    
+        // Pass data to view
+        $data = [
+            'article' => $article,
+            'category_name' => $category_name,
+        ];
+    
+        // Fetch comments with status 'approved'
+        $commentModel = new CommentModel();
+        $data['comments'] = $commentModel->where('news_id', $news_id)
+            ->where('comment_status', 'approved')
+            ->findAll();
+    
+        return view('UserPage/news', $data);
+    }    
 
     public function searchNews()
     {
@@ -249,7 +273,7 @@ public function getCategoryData()
             $newsModel = new NewsModel();
 
             // Perform the search based on the title or content columns
-            $searchResults = $newsModel->like('title', $searchQuery)
+            $searchResults = $newsModel->like('title', 'publication_date', $searchQuery)
                 ->orLike('content', $searchQuery)
                 ->findAll();
 

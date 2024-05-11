@@ -79,7 +79,8 @@
                                         <th>Email</th>
                                         <th>Subject</th>
                                         <th>Message</th>
-                                        <th>Publication Date</th>
+                                        <th>Admin Reply</th>
+                                        <th>Created At</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -90,14 +91,45 @@
                                             <td><?= $contact['email']; ?></td>
                                             <td><?= $contact['subject']; ?></td>
                                             <td><?= $contact['message']; ?></td>
-                                            <td><?= $contact['publication_date']; ?></td>
+                                            <td><?= $contact['admin_reply']; ?></td>
+                                            <td><?= $contact['created_at']; ?></td>
                                             <!-- Add actions here if needed -->
                                         </tr>
+                                        <td>
+                                        <button type="button" class="btn btn-primary reply-btn" data-toggle="modal" data-target="#replyModal<?= $contact['contact_id']; ?>">
+                                            Reply
+                                        </button>
+                                    </td>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Modal for reply -->
+        <div class="modal fade" id="replyModal<?= $contact['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="replyModalLabel<?= $contact['id']; ?>" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="replyModalLabel<?= $contact['id']; ?>">Reply to <?= $contact['name']; ?></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Form for composing reply -->
+                        <form action="<?= base_url('reply/' . $contact['id']); ?>" method="post">
+                            <div class="form-group">
+                                <label for="replyMessage">Reply Message</label>
+                                <textarea class="form-control" id="replyMessage" name="replyMessage" rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Reply</button>
+                        </form>
                     </div>
                 </div>
             </div>
