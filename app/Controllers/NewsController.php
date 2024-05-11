@@ -16,19 +16,26 @@ class NewsController extends BaseController
 {
 
     public function dashboard()
-    {
-        // Load the UsersModel
-        $usersModel = new UsersModel();
+{
+    // Load the UsersModel
+    $usersModel = new UsersModel();
 
-        // Fetch count of users with role 'User'
-        $userCount = count($usersModel->getUsersByRole('User'));
+    // Debugging
+    $usersWithRoleUser = $usersModel->getUsersByRole('User');
+    $usersWithRoleStaff = $usersModel->getUsersByRole('Staff');
+    var_dump($usersWithRoleUser);
+    var_dump($usersWithRoleStaff);
 
-        // Fetch count of users with role 'Staff'
-        $staffCount = count($usersModel->getUsersByRole('Staff'));
+    // Fetch count of users with role 'User'
+    $userCount = count($usersWithRoleUser);
 
-        // Pass the counts to the view
-        return view('dashboard', ['userCount' => $userCount, 'staffCount' => $staffCount]);
-    }
+    // Fetch count of users with role 'Staff'
+    $staffCount = count($usersWithRoleStaff);
+
+    // Pass the counts to the view
+    return view('dashboard', ['userCount' => $userCount, 'staffCount' => $staffCount]);
+}
+
 
     public function viewnews($id)
     {

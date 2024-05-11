@@ -66,7 +66,7 @@
             </div>
             <div class="row">
             <div class="col-md-3 stretch-card grid-margin">
-                <div class="card bg-gradient-danger card-img-holder text-white" style="height: 150px; width: 200px;">
+                <div class="card bg-gradient-danger card-img-holder text-white" style="height: 200px; width: 200px;">
                     <div class="card-body">
                         <h4 class="font-weight-normal mb-3">Users <i class="mdi mdi-account mdi-36px float-right"></i></h4>
                         <h2 class="mb-5"><?php echo isset($userCount) ? $userCount : '0'; ?></h2>
@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div class="col-md-3 stretch-card grid-margin">
-                <div class="card bg-gradient-info card-img-holder text-white" style="height: 150px; width: 200px;">
+                <div class="card bg-gradient-info card-img-holder text-white" style="height: 200px; width: 200px;">
                     <div class="card-body">
                         <h4 class="font-weight-normal mb-3">Staff <i class="mdi mdi-account-group mdi-36px float-right"></i></h4>
                         <h2 class="mb-5"><?php echo isset($staffCount) ? $staffCount : '0'; ?></h2>
@@ -82,7 +82,7 @@
                 </div>
             </div>
                 <div class="col-md-3 stretch-card grid-margin">
-                    <div class="card bg-gradient-info card-img-holder text-white" style="height: 150px; width: 200px;">
+                    <div class="card bg-gradient-info card-img-holder text-white" style="height: 200px; width: 200px;">
                         <div class="card-body">
                             <h4 class="font-weight-normal mb-3">News by Admin <i class="mdi mdi-newspaper mdi-36px float-right"></i></h4>
                             <h2 class="mb-5">45</h2>
@@ -90,7 +90,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 stretch-card grid-margin">
-                    <div class="card bg-gradient-info card-img-holder text-white" style="height: 150px; width: 200px;">
+                    <div class="card bg-gradient-info card-img-holder text-white" style="height: 200px; width: 200px;">
                         <div class="card-body">
                             <h4 class="font-weight-normal mb-3">News by Staff <i class="mdi mdi-newspaper mdi-36px float-right"></i></h4>
                             <h2 class="mb-5">45</h2>
@@ -127,6 +127,8 @@
                 </div>
             </div>
 
+            <div class="row mt-4"></div>
+           
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">

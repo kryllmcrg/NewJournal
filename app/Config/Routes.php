@@ -49,6 +49,7 @@ $routes->get('/newsDelete/(:any)', 'NewsController::newsDelete/$1');
 $routes->post('contact/submitContactForm', 'NewsController::submitContactForm');
 $routes->get('contact', 'NewsController:contact');
 $routes->get('/newsAudit', 'NewsController::newsAudit');
+$routes->get('/dashboard', 'NewsController::dashboard');
 
 $routes->get('/chats', 'ChatController::chats');
 
