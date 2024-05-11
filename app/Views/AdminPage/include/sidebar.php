@@ -128,7 +128,7 @@
             </a>
             <div class="collapse" id="collaboration">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('chats')?>">Chats</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('chats')?>">Contacts</a></li>
                 </ul>
             </div>
         </li>

@@ -89,45 +89,48 @@ class UserController extends BaseController
         }
     }
     public function filterNews($categoryName = null)
-    {
-        try {
-            // Load the news model
-            $newsModel = new NewsModel();
+{
+    try {
+        // Load the news model
+        $newsModel = new NewsModel();
 
-            // If no specific category is selected, fetch all news articles
-            if ($categoryName === null || $categoryName === 'all') {
-                $newsData = $newsModel->findAll();
-            } else {
-                // Fetch news articles filtered by the selected category name
-                $newsData = $newsModel->select('news.*, images')
-                    ->join('category', 'category.category_id = news.category_id')
-                    ->where('category.category_name', $categoryName)
-                    ->findAll();
-            }
-
-            // Decode the JSON string in the images column
-            foreach ($newsData as &$article) {
-                $article['images'] = json_decode($article['images'], true);
-            }
-
-            // Pass the news data to the view
-            return $this->response->setJSON(['newsData' => $newsData]);
-        } catch (\Throwable $th) {
-            // Handle any errors
-            return $this->response->setJSON(['error' => $th->getMessage()]);
+        // If no specific category is selected, fetch all news articles
+        if ($categoryName === null || $categoryName === 'all') {
+            $newsData = $newsModel->findAll();
+        } else {
+            // Fetch news articles filtered by the selected category name
+            $newsData = $newsModel->select('news.*, images')
+                ->join('category', 'category.category_id = news.category_id')
+                ->where('category.category_name', $categoryName)
+                ->findAll();
         }
-    }
-    public function getCategoryData()
-    {
-        // Create an instance of the CategoryModel
-        $categoryModel = new CategoryModel();
 
-        // Retrieve all categories from the database
-        $categories = $categoryModel->findAll();
+        // Decode the JSON string in the images column
+        foreach ($newsData as &$article) {
+            $article['images'] = json_decode($article['images'], true);
+        }
 
-        // Pass the categories data to the view
-        return view('UserPage/home', ['categories' => $categories]);
+        // Pass the news data to the view
+        return $this->response->setJSON(['newsData' => $newsData]);
+    } catch (\Throwable $th) {
+        // Handle any errors
+        return $this->response->setJSON(['error' => $th->getMessage()]);
     }
+}
+
+
+public function getCategoryData()
+{
+    // Create an instance of the CategoryModel
+    $categoryModel = new CategoryModel();
+
+    // Retrieve all categories from the database
+    $categories = $categoryModel->findAll();
+
+    // Pass the categories data to the view
+    return view('UserPage/home', ['categories' => $categories]);
+}
+
     public function like($newsId)
     {
         try {
