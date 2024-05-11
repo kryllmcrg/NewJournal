@@ -70,7 +70,7 @@
                 <div class="col-12 grid-margin">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Archive Table</h4>
+                            <h4 class="card-title">Contact Table</h4>
                             <div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -84,7 +84,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+                                    <?php foreach ($contacts as $contact): ?>
+                                        <tr>
+                                            <td><?= $contact['name']; ?></td>
+                                            <td><?= $contact['email']; ?></td>
+                                            <td><?= $contact['subject']; ?></td>
+                                            <td><?= $contact['message']; ?></td>
+                                            <td><?= $contact['publication_date']; ?></td>
+                                            <!-- Add actions here if needed -->
+                                        </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                             </div>

@@ -118,7 +118,6 @@ class UserController extends BaseController
     }
 }
 
-
 public function getCategoryData()
 {
     // Create an instance of the CategoryModel

@@ -45,9 +45,10 @@ $routes->get('/viewnews/(:any)', 'NewsController::viewnews/$1');
 $routes->get('/archive', 'NewsController::archive');
 $routes->get('/restoreNews/(:any)', 'NewsController::restoreNews/$1');
 $routes->get('/newsDelete/(:any)', 'NewsController::newsDelete/$1');
-$routes->post('contact/submitContactForm', 'ContactController::submitContactForm');
+$routes->post('contact/submitContactForm', 'NewsController::submitContactForm');
+$routes->get('contact', 'NewsController:contact');
 
-
+$routes->get('/chats', 'ChatController::chats');
 
 
 $routes->post('addComment', 'CommentsController::addComment');
@@ -55,8 +56,6 @@ $routes->post('commentStatus', 'CommentsController::commentStatus');
 $routes->post('reply', 'CommentsController::reply'); // Adjust 'YourController' with the actual controller name
 $routes->get('managecomments/(:num)', 'CommentsController::managecomments/$1');
 $routes->get('managecomments', 'CommentsController::showManageCommentsPage');
-
-$routes->get('/chats', 'ChatController::chats');
 
 $routes->get('/addcategory', 'CategoryController::addcategory');
 $routes->post('/addcategory', 'CategoryController::addcategory');

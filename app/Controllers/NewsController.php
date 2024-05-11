@@ -392,12 +392,24 @@ class NewsController extends BaseController
         if ($contactModel->insert($formData)) {
             // Contact form submission successful
             // You can add additional logic here, such as sending an email notification to the admin
-            return redirect()->to('contact/thank-you');
+            return redirect()->to('/contact');
         } else {
             // Contact form submission failed
             // Handle the error accordingly
             // For example, you can display an error message and redirect the user back to the contact form
             return redirect()->back()->with('error', 'Failed to submit the contact form. Please try again.');
         }
+    }
+
+    public function contact()
+    {
+        // Load the ContactModel
+        $contactModel = new ContactModel();
+    
+        // Fetch contact data from the database
+        $contacts = $contactModel->findAll(); // Assuming findAll() fetches all contact items
+    
+        // Load the view file with the contact data
+        echo view('contact', ['contacts' => $contacts]);
     }
 }
