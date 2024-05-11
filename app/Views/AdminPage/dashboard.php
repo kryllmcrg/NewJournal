@@ -11,6 +11,14 @@
     <link rel="stylesheet" href="<?= base_url('assets2/css/style.css')?>">
     <link rel="shortcut icon" href="<?= base_url('assets2/images/ciologo.png')?>" />
   </head>
+
+  <style>
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
   <body>
     <div class="container-scroller">
       <div class="row p-0 m-0 proBanner" id="proBanner">
@@ -57,74 +65,71 @@
               </nav>
             </div>
             <div class="row">
-              <div class="col-md-4 stretch-card grid-margin">
-                <div class="card bg-gradient-danger card-img-holder text-white">
-                  <div class="card-body">
-                    <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                    <h4 class="font-weight-normal mb-3">Weekly Readers <i class="mdi mdi-chart-line mdi-24px float-right"></i>
-                    </h4>
-                    <h2 class="mb-5">1500</h2>
-                    <h6 class="card-text">Increased by 60%</h6>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 stretch-card grid-margin">
-                <div class="card bg-gradient-info card-img-holder text-white">
-                  <div class="card-body">
-                    <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                    <h4 class="font-weight-normal mb-3">Readers Online <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
-                    </h4>
-                    <h2 class="mb-5">45</h2>
-                    <h6 class="card-text">Decreased by 10%</h6>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 stretch-card grid-margin">
-                <div class="card bg-gradient-success card-img-holder text-white">
-                  <div class="card-body">
-                    <img src="assets/images/dashboard/circle.svg" class="card-img-absolute" alt="circle-image" />
-                    <h4 class="font-weight-normal mb-3">Employees Online <i class="mdi mdi-diamond mdi-24px float-right"></i>
-                    </h4>
-                    <h2 class="mb-5">4</h2>
-                    <h6 class="card-text">Decreased by 5%</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-7 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="clearfix">
-                      <h4 class="card-title float-left">Visit Statistics</h4>
-                      <div id="visit-sale-chart-legend" class="rounded-legend legend-horizontal legend-top-right float-right"></div>
-                    </div>
-                    <canvas id="visit-sale-chart" class="mt-4"></canvas>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-5 grid-margin stretch-card">
-                <div class="card">
-                  <div class="card-body">
-                    <h4 class="card-title">Traffic Sources</h4>
-                    <canvas id="traffic-chart"></canvas>
-                    <div id="traffic-chart-legend" class="rounded-legend legend-vertical legend-bottom-left pt-4"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 grid-margin stretch-card">
-                    <div class="card">
+                <div class="col-md-3 stretch-card grid-margin">
+                    <div class="card bg-gradient-danger card-img-holder text-white" style="height: 150px; width: 200px;">
                         <div class="card-body">
-                            <h4 class="card-title">Sentiment Analysis</h4>
-                            <canvas id="sentiment-analysis-chart"></canvas>
+                            <h4 class="font-weight-normal mb-3">Users <i class="mdi mdi-account mdi-36px float-right"></i></h4>
+                            <h2 class="mb-5">1500</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 stretch-card grid-margin">
+                    <div class="card bg-gradient-info card-img-holder text-white" style="height: 150px; width: 200px;">
+                        <div class="card-body">
+                            <h4 class="font-weight-normal mb-3">Staff <i class="mdi mdi-account-group mdi-36px float-right"></i></h4>
+                            <h2 class="mb-5">45</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 stretch-card grid-margin">
+                    <div class="card bg-gradient-info card-img-holder text-white" style="height: 150px; width: 200px;">
+                        <div class="card-body">
+                            <h4 class="font-weight-normal mb-3">News by Admin <i class="mdi mdi-newspaper mdi-36px float-right"></i></h4>
+                            <h2 class="mb-5">45</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 stretch-card grid-margin">
+                    <div class="card bg-gradient-info card-img-holder text-white" style="height: 150px; width: 200px;">
+                        <div class="card-body">
+                            <h4 class="font-weight-normal mb-3">News by Staff <i class="mdi mdi-newspaper mdi-36px float-right"></i></h4>
+                            <h2 class="mb-5">45</h2>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row mt-4">
+            <!-- Line Chart for Sentiment Analysis -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Sentiment Analysis</h4>
+                        <canvas id="sentiment-analysis-chart" style="height: 400px;"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pie Chart for Visit Statistics -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Visit Statistics</h4>
+                        <canvas id="visit-statistics-chart" style="height: 400px;"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bar Chart for Traffic Sources -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Traffic Sources</h4>
+                        <canvas id="traffic-sources-chart" style="height: 400px;"></canvas>
+                    </div>
+                </div>
+            </div>
         </div>
-          
+    </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <?php include('include\footer.php'); ?>
@@ -143,5 +148,88 @@
     <script src="<?= base_url('assets2/js/misc.js')?>"></script>
     <script src="<?= base_url('assets2/js/dashboard.js')?>"></script>
     <script src="<?= base_url('assets2/js/todolist.js')?>"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // Sample data for the charts
+        var sentimentAnalysisData = {
+            labels: ['Positive', 'Negative', 'Neutral'],
+            datasets: [{
+                label: 'Sentiment',
+                data: [40, 20, 40],
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 206, 86, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        var visitStatisticsData = {
+            labels: ['January', 'February', 'March', 'April', 'May'],
+            datasets: [{
+                label: 'Visits',
+                data: [200, 300, 400, 500, 600],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        var trafficSourcesData = {
+            labels: ['Direct', 'Organic', 'Referral', 'Social'],
+            datasets: [{
+                label: 'Traffic',
+                data: [300, 400, 200, 100],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        // Initialize the charts
+        var sentimentAnalysisChart = new Chart(document.getElementById('sentiment-analysis-chart'), {
+            type: 'doughnut',
+            data: sentimentAnalysisData
+        });
+
+        var visitStatisticsChart = new Chart(document.getElementById('visit-statistics-chart'), {
+            type: 'line',
+            data: visitStatisticsData
+        });
+
+        var trafficSourcesChart = new Chart(document.getElementById('traffic-sources-chart'), {
+            type: 'bar',
+            data: trafficSourcesData
+        });
+    </script>
   </body>
 </html>

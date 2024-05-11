@@ -315,9 +315,23 @@
                             <div class="d-flex justify-content-between align-items-center mt-3">
                                 <a class="learn-more" href="${newsUrl}" aria-label="news-details"><i class="fa fa-caret-right"></i> Read more</a>
                                 <div class="like-icons">
-                                    <a class="like-icon" href="#" data-news-id="${article.news_id}" onclick="toggleLike(this)"><i class="far fa-thumbs-up" style="margin-right: 10px; color: #777; transition: color 0.3s ease-in-out;"></i></a>
-                                    <a class="like-icon" href="#" data-news-id="${article.news_id}" onclick="toggleLike(this)"><i class="far fa-thumbs-down" style="margin-right: 10px; color: #777; transition: color 0.3s ease-in-out;"></i></a>
-                                </div>
+                                        <a class="like-icon" href="#" data-news-id="<?= $article['news_id'] ?>"
+                                            data-like-id="<?= $article['like_id'] ?>"
+                                            data-like-status="<?= $article['like_status']?? null ?>"
+                                            onclick="toggleLike(this, 'like')"><i class="far fa-thumbs-up"></i></a>
+                                        <span class="like-count"
+                                            id="like-count-<?= $article['news_id'] ?>"><?= $article['likes_count'] ?></span>
+                                        <!-- Remove the "like" label -->
+                                        <!-- <span class="like-label">like</span> -->
+                                        <a class="like-icon" href="#" data-news-id="<?= $article['news_id'] ?>"
+                                            data-like-id="<?= $article['like_id'] ?>"
+                                            data-like-status="<?= $article['like_status']?? null ?>"
+                                            onclick="toggleLike(this, 'dislike')"><i class="far fa-thumbs-down"></i></a>
+                                        <span class="dislike-count"
+                                            id="dislike-count-<?= $article['news_id'] ?>"><?= $article['dislikes_count'] ?></span>
+                                        <!-- Remove the "dislike" label -->
+                                        <!-- <span class="dislike-label">dislike</span> -->
+                                    </div>
                             </div>
                         </div>
                     </div>
