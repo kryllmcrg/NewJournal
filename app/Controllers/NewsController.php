@@ -391,13 +391,18 @@ class NewsController extends BaseController
     // Insert data into the database
     if ($contactModel->insert($formData)) {
         // Contact form submission successful
-        // Send automatic reply to the user
+        // Retrieve the inserted contact's ID
+        $contactId = $contactModel->getInsertID();
+        
+        // Define the automatic reply message
         $autoReplyMessage = "Thank you for your comments and suggestions. God bless you!";
-        // Update the admin_reply field in the database
-        $contactModel->update($contactModel->insertID(), ['admin_reply' => $autoReplyMessage]);
+        
+        // Update the admin_reply field in the database for the inserted contact
+        $contactModel->update($contactId, ['admin_reply' => $autoReplyMessage]);
 
         // You can add additional logic here, such as sending an email notification to the admin
-        return redirect()->to('/contact')->with('success', 'Your message has been sent successfully.');
+        // Redirect with success message
+        return redirect()->to('/contact?success=true')->with('success', 'Your message has been sent successfully.');
     } else {
         // Contact form submission failed
         // Handle the error accordingly
@@ -405,4 +410,5 @@ class NewsController extends BaseController
         return redirect()->back()->with('error', 'Failed to submit the contact form. Please try again.');
     }
 }
+
 }

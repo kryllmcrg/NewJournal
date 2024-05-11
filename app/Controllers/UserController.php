@@ -219,14 +219,21 @@ public function getCategoryData()
     }
 
     public function contact()
-    {
-        $categoryModel = new CategoryModel();
-        $categories = $categoryModel->findAll();
+{
+    $categoryModel = new CategoryModel();
+    $categories = $categoryModel->findAll();
 
-        $data['categories'] = $categories;
+    // Retrieve the automatic reply message from the database or any other source
+    $autoReplyMessage = "Thank you for your comments and suggestions. God bless you!";
 
-        return view('UserPage/contact', $data);
-    }
+    $data = [
+        'categories' => $categories,
+        'autoReplyMessage' => $autoReplyMessage,
+    ];
+
+    return view('UserPage/contact', $data);
+}
+
 
     public function news($news_id)
     {

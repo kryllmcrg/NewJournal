@@ -41,57 +41,77 @@
   <?php include('include\header.php'); ?>
 
   <section id="main-container" class="main-container">
-  <div class="container">
+        <div class="container">
 
-    <div class="row text-center">
-      <div class="col-12">
-        <h2 class="section-title">Reaching our Office</h2>
-        <h3 class="section-sub-title">Find Our Location</h3>
-      </div>
-    </div>
-    <!--/ Title row end -->
-
-    <div class="row">
-      <div class="col-md-4">
-        <div class="ts-service-box-bg text-center h-100">
-          <span class="ts-service-icon icon-round">
-            <i class="fas fa-map-marker-alt mr-0"></i>
-          </span>
-          <div class="ts-service-box-content">
-            <h4>Visit Our Office</h4>
-            <p>Guinobatan, Calapan City</p>
+          <div class="row text-center">
+            <div class="col-12">
+              <h2 class="section-title">Reaching our Office</h2>
+              <h3 class="section-sub-title">Find Our Location</h3>
+            </div>
           </div>
-        </div>
-      </div><!-- Col 1 end -->
+          <!--/ Title row end -->
 
-      <div class="col-md-4">
-        <div class="ts-service-box-bg text-center h-100">
-          <span class="ts-service-icon icon-round">
-            <i class="fa fa-envelope mr-0"></i>
-          </span>
-          <div class="ts-service-box-content">
-            <h4>Email Us</h4>
-            <p>calapancio@gmail.com</p>
-          </div>
-        </div>
-      </div><!-- Col 2 end -->
+          <div class="row">
+            <div class="col-md-4">
+              <div class="ts-service-box-bg text-center h-100">
+                <span class="ts-service-icon icon-round">
+                  <i class="fas fa-map-marker-alt mr-0"></i>
+                </span>
+                <div class="ts-service-box-content">
+                  <h4>Visit Our Office</h4>
+                  <p>Guinobatan, Calapan City</p>
+                </div>
+              </div>
+            </div><!-- Col 1 end -->
 
-      <div class="col-md-4">
-        <div class="ts-service-box-bg text-center h-100">
-          <span class="ts-service-icon icon-round">
-            <i class="fa fa-phone-square mr-0"></i>
-          </span>
-          <div class="ts-service-box-content">
-            <h4>Call Us</h4>
-            <p>(+9) 847-291-4353</p>
-          </div>
-        </div>
-      </div><!-- Col 3 end -->
+            <div class="col-md-4">
+              <div class="ts-service-box-bg text-center h-100">
+                <span class="ts-service-icon icon-round">
+                  <i class="fa fa-envelope mr-0"></i>
+                </span>
+                <div class="ts-service-box-content">
+                  <h4>Email Us</h4>
+                  <p>calapancio@gmail.com</p>
+                </div>
+              </div>
+            </div><!-- Col 2 end -->
 
-    </div><!-- 1st row end -->
-<br>
-<br>
-<br>
+            <div class="col-md-4">
+              <div class="ts-service-box-bg text-center h-100">
+                <span class="ts-service-icon icon-round">
+                  <i class="fa fa-phone-square mr-0"></i>
+                </span>
+                <div class="ts-service-box-content">
+                  <h4>Call Us</h4>
+                  <p>(+9) 847-291-4353</p>
+                </div>
+              </div>
+            </div><!-- Col 3 end -->
+
+          </div><!-- 1st row end -->
+      <br>
+      <br>
+      <br>
+      <!-- Modal for automatic reply message -->
+        <div class="modal fade" id="autoReplyModal" tabindex="-1" role="dialog" aria-labelledby="autoReplyModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="autoReplyModalLabel">Automatic Reply</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p><?= $autoReplyMessage ?></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     <div class="row">
       <div class="col-md-12">
         <h3 class="column-title">We love to hear your suggestions and Comments</h3>
@@ -155,5 +175,34 @@
 
   <!-- Template custom -->
   <script src="<?= base_url('assets/js/script.js')?>"></script>  
+
+  <script>
+    $(document).ready(function() {
+        // Check if the URL contains a success parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const success = urlParams.get('success');
+
+        // If success parameter is present and true, show the modal
+        if (success) {
+            $('#autoReplyModal').modal('show');
+        }
+    });
+
+    // Example AJAX submission with jQuery
+$.ajax({
+    url: '/submitContactForm',
+    type: 'POST',
+    data: formData,
+    success: function(response) {
+        // Redirect to the contact page with success parameter if the submission is successful
+        window.location.href = '/contact?success=true';
+    },
+    error: function() {
+        // Handle error
+    }
+});
+
+</script>
+
 </body>
 </html>
