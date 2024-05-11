@@ -164,45 +164,44 @@ class NewsController extends BaseController
     }
 
     public function deleteNews($id)
-{
-    try {
-        $newsModel = new NewsModel();
-        $likeModel = new LikeModel();
+    {
+        try {
+            $newsModel = new NewsModel();
+            $likeModel = new LikeModel();
 
-        // Begin a transaction
-        $db = db_connect();
-        $db->transStart();
+            // Begin a transaction
+            $db = db_connect();
+            $db->transStart();
 
-        // Check if there are related records in the 'likes' table
-        $relatedLikes = $likeModel->where('news_id', $id)->findAll();
+            // Check if there are related records in the 'likes' table
+            $relatedLikes = $likeModel->where('news_id', $id)->findAll();
 
-        // Delete related records from the 'likes' table
-        foreach ($relatedLikes as $like) {
-            $likeModel->delete($like['like_id']);
+            // Delete related records from the 'likes' table
+            foreach ($relatedLikes as $like) {
+                $likeModel->delete($like['like_id']);
+            }
+
+            // Update the 'archived' column of the news item to indicate it is archived
+            $updated = $newsModel->where('news_id', $id)->set(['archived' => 1])->update();
+
+            // Commit the transaction
+            $db->transCommit();
+
+            if ($updated) {
+                // Return success message if update was successful
+                return redirect()->to('managenews')->with('success', 'News item archived successfully.');
+            } else {
+                // Return error message if update failed
+                return redirect()->to('managenews')->with('error', 'Failed to archive the news item.');
+            }
+        } catch (\Throwable $th) {
+            // Rollback the transaction if an error occurred
+            $db->transRollback();
+
+            // Return error message if an exception occurred during the update
+            return redirect()->to('managenews')->with('error', 'An error occurred during deletion.');
         }
-
-        // Update the 'archived' column of the news item to indicate it is archived
-        $updated = $newsModel->where('news_id', $id)->set(['archived' => 1])->update();
-
-        // Commit the transaction
-        $db->transCommit();
-
-        if ($updated) {
-            // Return success message if update was successful
-            return redirect()->to('managenews')->with('success', 'News item archived successfully.');
-        } else {
-            // Return error message if update failed
-            return redirect()->to('managenews')->with('error', 'Failed to archive the news item.');
-        }
-    } catch (\Throwable $th) {
-        // Rollback the transaction if an error occurred
-        $db->transRollback();
-
-        // Return error message if an exception occurred during the update
-        return redirect()->to('managenews')->with('error', 'An error occurred during deletion.');
     }
-}
-
     public function managenews()
     {
         // Load the NewsModel
