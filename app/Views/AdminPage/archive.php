@@ -93,7 +93,7 @@
                                             <td><?php echo $newsItem['publication_date']; ?></td>
                                             <td> <!-- Actions column -->
                                                 <a href="<?php echo base_url('/restoreNews/'.$newsItem['news_id']); ?>" class="btn btn-sm btn-success restore-news-btn">Restore</a>
-                                                <a href="<?php echo base_url('/deleteNews/'.$newsItem['news_id']); ?>" class="btn btn-sm btn-danger delete-news-btn">Delete</a>
+                                                <a href="<?php echo base_url('/newsDelete/'.$newsItem['news_id']); ?>" class="btn btn-sm btn-danger delete-news-btn">Delete</a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>

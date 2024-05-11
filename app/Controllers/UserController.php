@@ -44,50 +44,56 @@ class UserController extends BaseController
     }
 
     public function home()
-    {
-        try {
-            // Load the news model
-            $newsModel = new NewsModel();
-            $userLikeLogsModel = new UserLikeLogsModel;
+{
+    try {
+        // Load the news model
+        $newsModel = new NewsModel();
+        $userLikeLogsModel = new UserLikeLogsModel();
 
-            // Fetch only approved news articles
-            $approvedNews = $newsModel->select('
-                news.news_id,
-                news.title,
-                news.content,
-                news.images,
-                likes.like_id,
-                likes.likes_count,
-                likes.dislikes_count
-            ')
-                ->join('likes', 'likes.news_id = news.news_id')
-                ->where('news.news_status', 'Approved')->findAll();
+        // Fetch only approved news articles with a limit of 10
+        $approvedNews = $newsModel->select('
+            news.news_id,
+            news.title,
+            news.content,
+            news.images,
+            likes.like_id,
+            likes.likes_count,
+            likes.dislikes_count
+        ')
+            ->join('likes', 'likes.news_id = news.news_id')
+            ->where('news.news_status', 'Approved')
+            ->where(['news.archived' => 0])
+            ->orderBy('news.created_at', 'DESC') // Assuming you have a created_at field
+            ->limit(10) // Limit the results to 10 news articles
+            ->findAll();
 
-            $userId = session()->get('user_id');
-            if (isset($userId)) {
-                foreach ($approvedNews as &$news) {
-                    $likeStatus = $userLikeLogsModel->select('action')->where('news_id', $news['news_id'])->first();
+        $userId = session()->get('user_id');
+        if (isset($userId)) {
+            foreach ($approvedNews as &$news) {
+                $likeStatus = $userLikeLogsModel->select('action')->where('news_id', $news['news_id'])->first();
 
-                    if ($likeStatus) {
-                        $news['like_status'] = $likeStatus['action'];
-                    } else {
-                        $news['like_status'] = '';
-                    }
+                if ($likeStatus) {
+                    $news['like_status'] = $likeStatus['action'];
+                } else {
+                    $news['like_status'] = '';
                 }
             }
-            // Load the category model
-            $categoryModel = new CategoryModel();
-
-            // Fetch all categories
-            $categories = $categoryModel->findAll();
-
-            // Pass the approved news data and categories to the view
-            return view('UserPage/home', ['newsData' => $approvedNews, 'categories' => $categories, 'userId' => $userId]);
-        } catch (\Throwable $th) {
-            // Handle any errors
-            return $this->response->setJSON(['error' => $th->getMessage()]);
         }
+
+        // Load the category model
+        $categoryModel = new CategoryModel();
+
+        // Fetch all categories
+        $categories = $categoryModel->findAll();
+
+        // Pass the approved news data and categories to the view
+        return view('UserPage/home', ['newsData' => $approvedNews, 'categories' => $categories, 'userId' => $userId]);
+    } catch (\Throwable $th) {
+        // Handle any errors
+        return $this->response->setJSON(['error' => $th->getMessage()]);
     }
+}
+
     public function filterNews($categoryName = null)
     {
         try {
@@ -96,12 +102,13 @@ class UserController extends BaseController
 
             // If no specific category is selected, fetch all news articles
             if ($categoryName === null || $categoryName === 'all') {
-                $newsData = $newsModel->findAll();
+                $newsData = $newsModel->where(['archived' => 0])->findAll();
             } else {
                 // Fetch news articles filtered by the selected category name
                 $newsData = $newsModel->select('news.*, images')
                     ->join('category', 'category.category_id = news.category_id')
                     ->where('category.category_name', $categoryName)
+                    ->where(['archived' => 0])
                     ->findAll();
             }
 
@@ -118,17 +125,17 @@ class UserController extends BaseController
         }
     }
 
-public function getCategoryData()
-{
-    // Create an instance of the CategoryModel
-    $categoryModel = new CategoryModel();
+    public function getCategoryData()
+    {
+        // Create an instance of the CategoryModel
+        $categoryModel = new CategoryModel();
 
-    // Retrieve all categories from the database
-    $categories = $categoryModel->findAll();
+        // Retrieve all categories from the database
+        $categories = $categoryModel->findAll();
 
-    // Pass the categories data to the view
-    return view('UserPage/home', ['categories' => $categories]);
-}
+        // Pass the categories data to the view
+        return view('UserPage/home', ['categories' => $categories]);
+    }
 
     public function like($newsId)
     {
@@ -219,20 +226,20 @@ public function getCategoryData()
     }
 
     public function contact()
-{
-    $categoryModel = new CategoryModel();
-    $categories = $categoryModel->findAll();
+    {
+        $categoryModel = new CategoryModel();
+        $categories = $categoryModel->findAll();
 
-    // Retrieve the automatic reply message from the database or any other source
-    $autoReplyMessage = "Thank you for your comments and suggestions. God bless you!";
+        // Retrieve the automatic reply message from the database or any other source
+        $autoReplyMessage = "Thank you for your comments and suggestions. God bless you!";
 
-    $data = [
-        'categories' => $categories,
-        'autoReplyMessage' => $autoReplyMessage,
-    ];
+        $data = [
+            'categories' => $categories,
+            'autoReplyMessage' => $autoReplyMessage,
+        ];
 
-    return view('UserPage/contact', $data);
-}
+        return view('UserPage/contact', $data);
+    }
 
 
     public function news($news_id)
@@ -274,26 +281,22 @@ public function getCategoryData()
     {
         // Get the search query from the request
         $searchQuery = $this->request->getPost('searchQuery');
-    
+
         try {
             // Load the news model
             $newsModel = new NewsModel();
-    
-            // Perform the search based on title, content, category, author, and publication date columns
-            $searchResults = $newsModel->select('news.*, categories.category_name') // Select desired columns
-                ->join('categories', 'categories.id = news.category_id') // Join with categories table
-                ->like('news.title', $searchQuery)
-                ->orLike('news.content', $searchQuery)
-                ->orLike('news.author', $searchQuery)
-                ->orLike('news.publication_date', $searchQuery)
+
+            // Perform the search based on the title or content columns
+            $searchResults = $newsModel->like('title', 'publication_date', $searchQuery)
+                ->orLike('content', $searchQuery)
                 ->findAll();
-    
+
             // Pass the search results to the view
             return view('UserPage/search_results', ['searchResults' => $searchResults]);
         } catch (\Throwable $th) {
             // Handle any errors
             return $this->response->setJSON(['error' => $th->getMessage()]);
         }
-    }    
+    } 
 
 }

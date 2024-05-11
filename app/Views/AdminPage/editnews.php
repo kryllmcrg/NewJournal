@@ -87,6 +87,16 @@
                         </div>
                     </div>
 
+                     <!-- Remarks -->
+                     <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="remarks">Remarks</label>
+                                                <textarea class="form-control" id="remarks" name="remarks" placeholder="Enter remarks"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
                     <div class="row">
                         <div class="col-md-12">
                             <div class="mt-3">
@@ -181,6 +191,7 @@
           formData.append('content', $('#mySummernote').summernote('code'));
           formData.append('comment', $('#comment').val());
           formData.append('video', $('#video')[0].files[0]);
+          formData.append('remarks', $('#remarks').val());
           $.ajax({
             url: '<?= base_url('updateNews') ?>',
             method: 'POST',
@@ -191,7 +202,7 @@
             success: function (response) {
               console.log(response);
               // Handle response from the server
-             location.reload();
+            //  location.reload();
             },
             error: function (jqXHR, textStatus, errorThrown) {
               console.error('File upload failed:', textStatus, errorThrown);

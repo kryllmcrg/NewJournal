@@ -48,6 +48,7 @@ $routes->get('/restoreNews/(:any)', 'NewsController::restoreNews/$1');
 $routes->get('/newsDelete/(:any)', 'NewsController::newsDelete/$1');
 $routes->post('contact/submitContactForm', 'NewsController::submitContactForm');
 $routes->get('contact', 'NewsController:contact');
+$routes->get('/newsAudit', 'NewsController::newsAudit');
 
 $routes->get('/chats', 'ChatController::chats');
 
@@ -75,6 +76,8 @@ $routes->get('/createnews', 'NewsStaffController::createnews');
 $routes->post('/createNewsSubmit', 'NewsStaffController::createNewsSubmit');
 $routes->get('/managenewstaff', 'NewsStaffController::managenewstaff');
 $routes->get('/dashboard', 'NewsStaffController::dashboard');
+$routes->get('/updateNews/(:num)', 'NewsController::updateNews/$1');
+$routes->get('/newsUpdate/(:num)', 'NewsController::newsUpdate/$1');
 
 
 $routes->post('search_results', 'UserController::searchNews');

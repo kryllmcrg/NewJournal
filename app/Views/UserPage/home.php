@@ -342,6 +342,7 @@
             console.error('News container element not found.');
         }
     }
+    
 </script>
 
     <script>

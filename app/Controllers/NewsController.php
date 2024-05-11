@@ -4,11 +4,13 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\LikeModel;
+use App\Models\UsersModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\NewsModel;
 use App\Models\CommentModel;
 use App\Models\CategoryModel;
 use App\Models\ContactModel;
+use App\Models\UserAuditModel;
 
 class NewsController extends BaseController
 {
@@ -45,6 +47,7 @@ class NewsController extends BaseController
         $author = $this->request->getPost('author');
         $categoryId = $this->request->getPost('category_id');
         $content = $this->request->getPost('content');
+        $remarks = $this->request->getPost('remarks');
 
         // Load the NewsModel
         $newsModel = new NewsModel();
@@ -68,10 +71,19 @@ class NewsController extends BaseController
             'author' => $author,
             'category_id' => $categoryId,
             'content' => $content,
+            'remarks' => $remarks,
         ];
+
+        $userAudit = new UserAuditModel();
+        $users = new UsersModel();
+        $staffId = session()->get('staff_id');
+
+        $user = $users->select('user_id')->where(['staff_id' => $staffId])->first();
+
 
         // Perform the update operation
         $updated = $newsModel->update($newsId, $data);
+        $userAuditRes = $userAudit->addUserAuditLog($user['user_id'], $newsId, 'Edit', "Edit $title News", $remarks);
 
         // Check if the update was successful
         if ($updated) {
@@ -95,6 +107,9 @@ class NewsController extends BaseController
     public function addNewsSubmit()
     {
         try {
+            $userAudit = new UserAuditModel();
+            $users = new UsersModel();
+
             $title = $this->request->getPost('title');
             $content = $this->request->getPost('content');
             $category_id = $this->request->getPost('category_id');
@@ -152,6 +167,10 @@ class NewsController extends BaseController
             $newsModel = new NewsModel();
             $result = $newsModel->insert($data);
 
+            $user = $users->select('user_id')->where(['staff_id' => $staffId])->first();
+
+            $userAuditRes = $userAudit->addUserAuditLog($user['user_id'], $result, 'Add', "Add $title News", '');
+
             return $this->response->setJSON($result);
         } catch (\Throwable $th) {
             return $this->response->setJSON(['error' => $th->getMessage()]);
@@ -169,7 +188,7 @@ class NewsController extends BaseController
             $newsModel = new NewsModel();
             $likeModel = new LikeModel();
 
-            // Begin a transaction
+            // // Begin a transaction
             $db = db_connect();
             $db->transStart();
 
@@ -199,20 +218,22 @@ class NewsController extends BaseController
             $db->transRollback();
 
             // Return error message if an exception occurred during the update
-            return redirect()->to('managenews')->with('error', 'An error occurred during deletion.');
+            return redirect()->to('managenews')->with('error', 'An error occurred during deletion: ' . $th->getMessage());
         }
     }
+
     public function managenews()
     {
         // Load the NewsModel
         $newsModel = new NewsModel();
 
         // Fetch news data from the database
-        $data['newsData'] = $newsModel->findAll(); // Assuming findAll() fetches all news items
+        $data['newsData'] = $newsModel->where(['archived' => 0])->findAll(); // Assuming findAll() fetches all news items
 
         // Load the view file and pass the news data to it
         return view('AdminPage/managenews', $data); // Pass the $data array to the view
     }
+
     public function changeNewStatus()
     {
         try {
@@ -265,11 +286,12 @@ class NewsController extends BaseController
         }
     }
 
-    public function insertNewsLikesRecord($newsID){
+    public function insertNewsLikesRecord($newsID)
+    {
         $model = new LikeModel();
 
         $newsLikeExist = $model->where('news_id', $newsID)->first();
-        if(!$newsLikeExist){
+        if (!$newsLikeExist) {
             $data = [
                 'news_id' => $newsID
             ];
@@ -315,7 +337,7 @@ class NewsController extends BaseController
         $newsModel = new NewsModel();
 
         // Fetch news data from the database including only the specified columns
-        $newsData = $newsModel->select('title, author,created_at, updated_at, publication_date, news_id')->findAll();
+        $newsData = $newsModel->select('title, author,created_at, updated_at, publication_date, news_id')->where(['archived' => 1])->findAll();
 
         // Pass the data to the view
         return view('AdminPage/archive', ['newsData' => $newsData]);
@@ -352,10 +374,10 @@ class NewsController extends BaseController
 
             if ($deleted) {
                 // Return success message if deletion was successful
-                return redirect()->to('managearchive')->with('success', 'News item deleted successfully.');
+                return redirect()->to('archive')->with('success', 'News item deleted successfully.');
             } else {
                 // Return error message if deletion failed
-                return redirect()->to('managearchive')->with('error', 'Failed to delete the news item.');
+                return redirect()->to('archive')->with('error', 'Failed to delete the news item.');
             }
         } catch (\Throwable $th) {
             // Return error message if an exception occurred during deletion
@@ -363,51 +385,65 @@ class NewsController extends BaseController
         }
     }
     public function submitContactForm()
-{
-    $contactModel = new ContactModel();
+    {
+        $contactModel = new ContactModel();
 
-    // Validate form input
-    $validationRules = [
-        'name' => 'required',
-        'email' => 'required|valid_email',
-        'subject' => 'required',
-        'message' => 'required',
-    ];
+        // Validate form input
+        $validationRules = [
+            'name' => 'required',
+            'email' => 'required|valid_email',
+            'subject' => 'required',
+            'message' => 'required',
+        ];
 
-    if (!$this->validate($validationRules)) {
-        // Validation failed
-        return redirect()->back()->withInput()->with('validationErrors', $this->validator->getErrors());
+        if (!$this->validate($validationRules)) {
+            // Validation failed
+            return redirect()->back()->withInput()->with('validationErrors', $this->validator->getErrors());
+        }
+
+        // Form data is valid, proceed with insertion
+        $formData = [
+            'name' => $this->request->getPost('name'),
+            'email' => $this->request->getPost('email'),
+            'subject' => $this->request->getPost('subject'),
+            'message' => $this->request->getPost('message'),
+        ];
+
+        // Insert data into the database
+        if ($contactModel->insert($formData)) {
+            // Contact form submission successful
+            // Retrieve the inserted contact's ID
+            $contactId = $contactModel->getInsertID();
+
+            // Define the automatic reply message
+            $autoReplyMessage = "Thank you for your comments and suggestions. God bless you!";
+
+            // Update the admin_reply field in the database for the inserted contact
+            $contactModel->update($contactId, ['admin_reply' => $autoReplyMessage]);
+
+            // You can add additional logic here, such as sending an email notification to the admin
+            // Redirect with success message
+            return redirect()->to('/contact?success=true')->with('success', 'Your message has been sent successfully.');
+        } else {
+            // Contact form submission failed
+            // Handle the error accordingly
+            // For example, you can display an error message and redirect the user back to the contact form
+            return redirect()->back()->with('error', 'Failed to submit the contact form. Please try again.');
+        }
     }
 
-    // Form data is valid, proceed with insertion
-    $formData = [
-        'name' => $this->request->getPost('name'),
-        'email' => $this->request->getPost('email'),
-        'subject' => $this->request->getPost('subject'),
-        'message' => $this->request->getPost('message'),
-    ];
+    public function newsAudit()
+    {
+        // Load the UserAuditModel
+        $userAuditModel = new UserAuditModel();
 
-    // Insert data into the database
-    if ($contactModel->insert($formData)) {
-        // Contact form submission successful
-        // Retrieve the inserted contact's ID
-        $contactId = $contactModel->getInsertID();
-        
-        // Define the automatic reply message
-        $autoReplyMessage = "Thank you for your comments and suggestions. God bless you!";
-        
-        // Update the admin_reply field in the database for the inserted contact
-        $contactModel->update($contactId, ['admin_reply' => $autoReplyMessage]);
+        // Fetch audit trail data from the database
+        $data['auditTrailData'] = $userAuditModel->findAll(); // Assuming findAll() fetches all audit trail records
 
-        // You can add additional logic here, such as sending an email notification to the admin
-        // Redirect with success message
-        return redirect()->to('/contact?success=true')->with('success', 'Your message has been sent successfully.');
-    } else {
-        // Contact form submission failed
-        // Handle the error accordingly
-        // For example, you can display an error message and redirect the user back to the contact form
-        return redirect()->back()->with('error', 'Failed to submit the contact form. Please try again.');
+        // Load the view file and pass the audit trail data to it
+        return view('AdminPage/NewsAudit', $data); // Pass the $data array to the view
     }
-}
+
+
 
 }

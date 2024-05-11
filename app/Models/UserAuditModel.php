@@ -12,7 +12,7 @@ class UserAuditModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['users_id','action','action_desciption','timestamp'];
+    protected $allowedFields    = ['user_id','news_id','action','action_description','remarks'];
 
     // Dates
     protected $useTimestamps = false;
@@ -37,4 +37,22 @@ class UserAuditModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function addUserAuditLog($user_id, $news_id,$action, $action_description, $remarks){
+        try {
+            $bind = [
+                'user_id' => $user_id,
+                'news_id' => $news_id,
+                'action' => $action,
+                'action_description' => $action_description,
+                'remarks' => $remarks
+            ];
+
+            $result = $this->insert($bind);
+            return $result;
+        } catch (\Throwable $th) {
+            //throw $th;
+            return $th->getMessage();
+        }
+    }
 }
