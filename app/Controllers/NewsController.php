@@ -364,40 +364,45 @@ class NewsController extends BaseController
         }
     }
     public function submitContactForm()
-    {
-        $contactModel = new ContactModel();
+{
+    $contactModel = new ContactModel();
 
-        // Validate form input
-        $validationRules = [
-            'name' => 'required',
-            'email' => 'required|valid_email',
-            'subject' => 'required',
-            'message' => 'required',
-        ];
+    // Validate form input
+    $validationRules = [
+        'name' => 'required',
+        'email' => 'required|valid_email',
+        'subject' => 'required',
+        'message' => 'required',
+    ];
 
-        if (!$this->validate($validationRules)) {
-            // Validation failed
-            return redirect()->back()->withInput()->with('validationErrors', $this->validator->getErrors());
-        }
-
-        // Form data is valid, proceed with insertion
-        $formData = [
-            'name' => $this->request->getPost('name'),
-            'email' => $this->request->getPost('email'),
-            'subject' => $this->request->getPost('subject'),
-            'message' => $this->request->getPost('message'),
-        ];
-
-        // Insert data into the database
-        if ($contactModel->insert($formData)) {
-            // Contact form submission successful
-            // You can add additional logic here, such as sending an email notification to the admin
-            return redirect()->to('/contact');
-        } else {
-            // Contact form submission failed
-            // Handle the error accordingly
-            // For example, you can display an error message and redirect the user back to the contact form
-            return redirect()->back()->with('error', 'Failed to submit the contact form. Please try again.');
-        }
+    if (!$this->validate($validationRules)) {
+        // Validation failed
+        return redirect()->back()->withInput()->with('validationErrors', $this->validator->getErrors());
     }
+
+    // Form data is valid, proceed with insertion
+    $formData = [
+        'name' => $this->request->getPost('name'),
+        'email' => $this->request->getPost('email'),
+        'subject' => $this->request->getPost('subject'),
+        'message' => $this->request->getPost('message'),
+    ];
+
+    // Insert data into the database
+    if ($contactModel->insert($formData)) {
+        // Contact form submission successful
+        // Send automatic reply to the user
+        $autoReplyMessage = "Thank you for your comments and suggestions. God bless you!";
+        // Update the admin_reply field in the database
+        $contactModel->update($contactModel->insertID(), ['admin_reply' => $autoReplyMessage]);
+
+        // You can add additional logic here, such as sending an email notification to the admin
+        return redirect()->to('/contact')->with('success', 'Your message has been sent successfully.');
+    } else {
+        // Contact form submission failed
+        // Handle the error accordingly
+        // For example, you can display an error message and redirect the user back to the contact form
+        return redirect()->back()->with('error', 'Failed to submit the contact form. Please try again.');
+    }
+}
 }
