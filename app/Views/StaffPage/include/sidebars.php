@@ -162,7 +162,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="logout">
+            <a class="nav-link" href="login">
                 <span class="menu-title">Logout</span>
                 <i class="mdi mdi-logout menu-icon"></i>
             </a>
