@@ -20,42 +20,7 @@ class LogRegController extends BaseController
     {
         return view('UserPage/login');
     }
-
-    // public function loginAuth()
-    // {
-    //     $session = session();
-    //     try {
-            // $email = $this->request->getVar('email');
-            // $password = $this->request->getVar('password');
-
-            // $usersModel = new UserAccountsModel();
-            // $user = $usersModel->where('email', $email)->first();
-
-    //         // Check if user exists
-    //         if (is_null($user)) {
-    //             return redirect()->to(previous_url())->withInput()->with('error', 'Invalid email or password.');
-    //         }
-
-    //         // Verify password
-    //         if (!password_verify($password, $user['password'])) {
-    //             return redirect()->to(previous_url())->withInput()->with('error', 'Invalid email or password.');
-    //         }
-            // $ses_user= [
-                // 'id' => $user['id'],
-                // 'email' => $user['email'],
-                // 'role' => $user['role'],
-                // 'image' => $user['image'],
-                // 'fullname' => $user['firstname'].' '. $user['lastname']
-            // ];
-            // $session->set($ses_user);
-            // return redirect()->to('/dashboard');
-
-    //     } catch (\Throwable $th) {
-    //         // Handle any unexpected errors
-    //         return redirect()->to(site_url('login'))->with('error', 'An error occurred during authentication.');
-    //     }
-    // }
-    
+   
     public function register()
     {
         return view('UserPage/register');
@@ -155,11 +120,7 @@ class LogRegController extends BaseController
                     // Redirect based on user's role
                     if ($data['role'] == 'Admin' || $data['role'] == 'Staff') {
                         return redirect()->to('/dashboard');
-<<<<<<< HEAD
                      } else{
-=======
-                    } else {
->>>>>>> 3d8ac270c44ec7eed6c86a3b6a44abd34fcc1228
                         // Redirect to another page for users with different roles
                         return redirect()->to('/');
                     }
@@ -254,7 +215,6 @@ class LogRegController extends BaseController
         // Redirect to login page
         return redirect()->to('/login');
     }
-
 
     public function filtercheck()
     {
