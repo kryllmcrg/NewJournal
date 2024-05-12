@@ -14,10 +14,9 @@ class UsersModel extends Model
     protected $protectFields    = true;
     protected $allowedFields    = ['staff_id','firstname','lastname','address','email','password', 'contact_number','image','role','gender','log_status'];
 
-    public function getUsersByRole($role)
+    public function getNewsCountByRole($role)
     {
-        // Fetch users where the role is specified
-        return $this->where('role', $role)->findAll();
+        return $this->db->table('news')->where('role', $role)->countAllResults();
     }
 
     // Dates

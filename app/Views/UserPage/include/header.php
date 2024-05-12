@@ -109,7 +109,7 @@
                     <div class="info-box">
                       <div class="info-box-content">
                           <p class="info-box-title">Call Us</p>
-                          <p class="info-box-subtitle">+63 9</p> <!--di ko pa knows-->
+                          <p class="info-box-subtitle">+63 9998345241</p> <!--di ko pa knows-->
                       </div>
                     </div>
                   </li>

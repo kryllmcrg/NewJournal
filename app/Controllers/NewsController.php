@@ -16,27 +16,33 @@ class NewsController extends BaseController
 {
 
     public function dashboard()
-{
-    // Load the UsersModel
-    $usersModel = new UsersModel();
-
-    // Debugging
-    $usersWithRoleUser = $usersModel->getUsersByRole('User');
-    $usersWithRoleStaff = $usersModel->getUsersByRole('Staff');
-    var_dump($usersWithRoleUser);
-    var_dump($usersWithRoleStaff);
-
-    // Fetch count of users with role 'User'
-    $userCount = count($usersWithRoleUser);
-
-    // Fetch count of users with role 'Staff'
-    $staffCount = count($usersWithRoleStaff);
-
-    // Pass the counts to the view
-    return view('dashboard', ['userCount' => $userCount, 'staffCount' => $staffCount]);
-}
-
-
+    {
+        // Load the UsersModel and NewsModel
+        $usersModel = new UsersModel();
+        $newsModel = new NewsModel();
+    
+        // Fetch count of users with role 'User'
+        $usersWithRoleUser = $usersModel->getUsersByRole('User');
+        $userCount = count($usersWithRoleUser);
+    
+        // Fetch count of users with role 'Staff'
+        $usersWithRoleStaff = $usersModel->getUsersByRole('Staff');
+        $staffCount = count($usersWithRoleStaff);
+    
+        // Fetch count of news by Admin
+        $newsByAdmin = $newsModel->getNewsCountByRole('Admin');
+    
+        // Fetch count of news by Staff
+        $newsByStaff = $newsModel->getNewsCountByRole('Staff');
+    
+        // Pass the counts to the view
+        return view('dashboard', [
+            'userCount' => $userCount,
+            'staffCount' => $staffCount,
+            'newsByAdmin' => $newsByAdmin,
+            'newsByStaff' => $newsByStaff
+        ]);
+    }
     public function viewnews($id)
     {
         $newsModel = new NewsModel();
@@ -202,6 +208,10 @@ class NewsController extends BaseController
     public function deleteNews($id)
     {
         try {
+
+            $userAudit = new UserAuditModel();
+            $users = new UsersModel();
+            
             $newsModel = new NewsModel();
             $likeModel = new LikeModel();
 
@@ -230,6 +240,7 @@ class NewsController extends BaseController
                 // Return error message if update failed
                 return redirect()->to('managenews')->with('error', 'Failed to archive the news item.');
             }
+            
         } catch (\Throwable $th) {
             // Rollback the transaction if an error occurred
             $db->transRollback();
@@ -354,6 +365,8 @@ class NewsController extends BaseController
 
         // Fetch news data from the database including only the specified columns
         $newsData = $newsModel->select('title, author,created_at, updated_at, publication_date, news_id')->where(['archived' => 1])->findAll();
+
+        
 
         // Pass the data to the view
         return view('AdminPage/archive', ['newsData' => $newsData]);

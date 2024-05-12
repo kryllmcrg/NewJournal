@@ -81,22 +81,22 @@
                     </div>
                 </div>
             </div>
-                <div class="col-md-3 stretch-card grid-margin">
-                    <div class="card bg-gradient-info card-img-holder text-white" style="height: 200px; width: 200px;">
-                        <div class="card-body">
-                            <h4 class="font-weight-normal mb-3">News by Admin <i class="mdi mdi-newspaper mdi-36px float-right"></i></h4>
-                            <h2 class="mb-5">45</h2>
-                        </div>
+            <div class="col-md-3 stretch-card grid-margin">
+                <div class="card bg-gradient-info card-img-holder text-white" style="height: 200px; width: 200px;">
+                    <div class="card-body">
+                        <h4 class="font-weight-normal mb-3">News by Admin <i class="mdi mdi-newspaper mdi-36px float-right"></i></h4>
+                        <h2 class="mb-5">{{ $newsByAdmin }}</h2>
                     </div>
                 </div>
-                <div class="col-md-3 stretch-card grid-margin">
-                    <div class="card bg-gradient-info card-img-holder text-white" style="height: 200px; width: 200px;">
-                        <div class="card-body">
-                            <h4 class="font-weight-normal mb-3">News by Staff <i class="mdi mdi-newspaper mdi-36px float-right"></i></h4>
-                            <h2 class="mb-5">45</h2>
-                        </div>
+            </div>
+            <div class="col-md-3 stretch-card grid-margin">
+                <div class="card bg-gradient-info card-img-holder text-white" style="height: 200px; width: 200px;">
+                    <div class="card-body">
+                        <h4 class="font-weight-normal mb-3">News by Staff <i class="mdi mdi-newspaper mdi-36px float-right"></i></h4>
+                        <h2 class="mb-5">{{ $newsByStaff }}</h2>
                     </div>
                 </div>
+            </div>
             </div>
             <div class="row mt-4">
             <!-- Line Chart for Sentiment Analysis -->
