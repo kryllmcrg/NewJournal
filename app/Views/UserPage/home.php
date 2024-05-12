@@ -167,7 +167,6 @@
                                 <a href="<?= base_url('news_read/' . $article['news_id']) ?>" class="news-link"
                                     id="newsLink">
                                     <h3 class="news-box-title"><?= $article['title'] ?></h3>
-                                    <!-- <span><?= $article['like_status'] ?></span> -->
                                 </a>
                                 <div class="content-container">
                                     <p class="advisoryContent"><?= $article['content'] ?></p>

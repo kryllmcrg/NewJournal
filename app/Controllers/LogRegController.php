@@ -153,11 +153,9 @@ class LogRegController extends BaseController
                     $model->update($data['user_id'], $loginData);
 
                     // Redirect based on user's role
-                    if ($data['role'] == '1') {
+                    if ($data['role'] == 'Admin' || $data['role'] == 'Staff') {
                         return redirect()->to('/dashboard');
-                    } else if($data['role'] == '2'){
-                        return redirect()->to('/createnews');
-                    } else{
+                     } else{
                         // Redirect to another page for users with different roles
                         return redirect()->to('/');
                     }
@@ -210,10 +208,8 @@ class LogRegController extends BaseController
                     ];
                     $model->update($data['user_id'], $loginData);
 
-                    if ($data['role'] == '1') {
+                    if ($data['role'] == 'Admin' || $data['role'] == 'Staff') {
                         return redirect()->to('/dashboard');
-                    } else if($data['role'] == '2'){
-                        return redirect()->to('/createnews');
                     } else {
                         return redirect()->to('/');
                     }
@@ -261,7 +257,7 @@ class LogRegController extends BaseController
         $session = session();
         $role = $session->get('role');
         // Only allow admin and staff to access the dashboard
-        if ($role !== '1' && $role !== '2') {
+        if ($role !== 'Admin' && $role !== 'Staff') {
             return redirect()->to('/login');
         }
 
