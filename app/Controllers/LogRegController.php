@@ -110,7 +110,7 @@ class LogRegController extends BaseController
                 'gender' => $gender,
                 'contact_number' => $contact_number,
                 'image' => $image->getName(),
-                'roleID' => 'User' 
+                'role' => 'User' 
             ];
             // Insert data into database
             $usersModel = new UsersModel();
@@ -140,7 +140,7 @@ class LogRegController extends BaseController
                     $session->set([
                         'user_id' => $data['user_id'],
                         'email' => $data['email'],
-                        'roleID' => $data['roleID'],
+                        'role' => $data['role'],
                         'image' => $data['image'],
                         'fullname' => $data['firstname'].' '. $data['lastname'],
                         'logged_in' => true
@@ -153,11 +153,9 @@ class LogRegController extends BaseController
                     $model->update($data['user_id'], $loginData);
 
                     // Redirect based on user's role
-                    if ($data['roleID'] == '1') {
+                    if ($data['role'] == 'Admin' || $data['role'] == 'Staff') {
                         return redirect()->to('/dashboard');
-                    } else if($data['roleID'] == '2'){
-                        return redirect()->to('/createnews');
-                    } else{
+                    } else {
                         // Redirect to another page for users with different roles
                         return redirect()->to('/');
                     }
@@ -198,7 +196,7 @@ class LogRegController extends BaseController
                         'staff_id' => $data['staff_id'],
                         'user_id' => $data['user_id'],
                         'email' => $data['email'],
-                        'roleID' => $data['roleID'],
+                        'role' => $data['role'],
                         'image' => $data['image'],
                         'fullname' => $data['firstname'].' '. $data['lastname'],
                         'logged_in' => true
@@ -210,10 +208,8 @@ class LogRegController extends BaseController
                     ];
                     $model->update($data['user_id'], $loginData);
 
-                    if ($data['roleID'] == '1') {
+                    if ($data['role'] == 'Admin' || $data['role'] == 'Staff') {
                         return redirect()->to('/dashboard');
-                    } else if($data['roleID'] == '2'){
-                        return redirect()->to('/createnews');
                     } else {
                         return redirect()->to('/');
                     }
@@ -259,9 +255,9 @@ class LogRegController extends BaseController
     public function filtercheck()
     {
         $session = session();
-        $role = $session->get('roleID');
+        $role = $session->get('role');
         // Only allow admin and staff to access the dashboard
-        if ($role !== '1' && $role !== '2') {
+        if ($role !== 'Admin' && $role !== 'Staff') {
             return redirect()->to('/login');
         }
 
