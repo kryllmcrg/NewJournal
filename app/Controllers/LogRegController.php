@@ -155,7 +155,11 @@ class LogRegController extends BaseController
                     // Redirect based on user's role
                     if ($data['role'] == 'Admin' || $data['role'] == 'Staff') {
                         return redirect()->to('/dashboard');
+<<<<<<< HEAD
                      } else{
+=======
+                    } else {
+>>>>>>> 3d8ac270c44ec7eed6c86a3b6a44abd34fcc1228
                         // Redirect to another page for users with different roles
                         return redirect()->to('/');
                     }
