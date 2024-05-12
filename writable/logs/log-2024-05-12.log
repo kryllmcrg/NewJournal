@@ -110,3 +110,29 @@ Stack trace:
 #12 {main}
 INFO - 2024-05-12 01:46:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 >>>>>>> 10b92b74e4002f369cf2a4bfb3723b1bb90e94d7
+INFO - 2024-05-12 02:54:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 02:55:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 02:55:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 02:56:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-12 02:56:12 --> ErrorException: Undefined array key "roleID"
+in APPPATH\Controllers\LogRegController.php on line 201.
+ 1 APPPATH\Controllers\LogRegController.php(201): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "roleID"', 'C:\\laragon\\www\\NewJournal\\app\\Controllers\\LogRegController.php', 201)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LogRegController->check()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogRegController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-05-12 03:03:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 03:03:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-12 03:03:45 --> ErrorException: Undefined array key "roleID"
+in APPPATH\Controllers\LogRegController.php on line 201.
+ 1 APPPATH\Controllers\LogRegController.php(201): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "roleID"', 'C:\\laragon\\www\\NewJournal\\app\\Controllers\\LogRegController.php', 201)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\LogRegController->check()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogRegController))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-05-12 03:08:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 03:09:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 03:09:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 03:31:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
