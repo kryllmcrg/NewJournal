@@ -63,13 +63,13 @@ class UserController extends BaseController
                 ->join('likes', 'likes.news_id = news.news_id')
                 ->where('news.news_status', 'Approved')
                 ->where(['news.archived' => 0])
-                ->orderBy('news.publication_date', 'DESC') // Order by publication date to get the latest news first
-                ->limit(10)
+                ->orderBy('news.publication_date', 'ASC') // Order by publication date to get the latest news first
+                ->limit(11)
                 ->findAll();
     
             // Check if the count of approved news is already at the maximum limit
             $newsCount = count($approvedNews);
-            if ($newsCount >= 10) {
+            if ($newsCount > 10) {
                 // Archive the oldest news article
                 $oldestNews = $approvedNews[$newsCount - 1]; // Get the last news article
                 $newsModel->update($oldestNews['news_id'], ['archived' => 1]); // Archive the oldest news
@@ -101,7 +101,7 @@ class UserController extends BaseController
             return $this->response->setJSON(['error' => $th->getMessage()]);
         }
     }
-    
+
     public function about()
     {
         $categoryModel = new CategoryModel();

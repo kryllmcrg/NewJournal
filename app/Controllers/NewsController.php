@@ -252,15 +252,21 @@ class NewsController extends BaseController
 
     public function managenews()
     {
-        // Load the NewsModel
-        $newsModel = new NewsModel();
+        try {
+            // Load the NewsModel
+            $newsModel = new NewsModel();
 
-        // Fetch news data from the database
-        $data['newsData'] = $newsModel->where(['archived' => 0])->findAll(); // Assuming findAll() fetches all news items
+            // Fetch news data from the database, limiting to 10 items and excluding archived ones
+            $data['newsData'] = $newsModel->where(['archived' => 0])->orderBy('publication_date', 'DESC')->limit(10)->findAll();
 
-        // Load the view file and pass the news data to it
-        return view('AdminPage/managenews', $data); // Pass the $data array to the view
+            // Load the view file and pass the news data to it
+            return view('AdminPage/managenews', $data); // Pass the $data array to the view
+        } catch (\Throwable $th) {
+            // Handle any errors
+            return $this->response->setJSON(['error' => $th->getMessage()]);
+        }
     }
+
 
     public function changeNewStatus()
     {
@@ -366,8 +372,6 @@ class NewsController extends BaseController
         // Fetch news data from the database including only the specified columns
         $newsData = $newsModel->select('title, author,created_at, updated_at, publication_date, news_id')->where(['archived' => 1])->findAll();
 
-        
-
         // Pass the data to the view
         return view('AdminPage/archive', ['newsData' => $newsData]);
     }
@@ -378,8 +382,8 @@ class NewsController extends BaseController
             $newsModel = new NewsModel();
 
             // Update the 'archived' column of the news item to indicate it is no longer archived
-            $updated = $newsModel->where('news_id', $id)->set(['archived' => 0])->update();
-
+            $updated = $newsModel->where('news_id', $id)->set('archived', 0)->update();
+            
             if ($updated) {
                 // Return success message if update was successful
                 return redirect()->to('managenews')->with('success', 'News item restored successfully.');

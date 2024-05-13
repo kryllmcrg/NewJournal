@@ -60,6 +60,10 @@
         margin-bottom: 10px;
     }
 
+    #news-container .ts-service-box {
+    height: 100%; /* Set a fixed height for the container */
+}
+
     .content-container {
         max-height: 80px;
         overflow: hidden;
