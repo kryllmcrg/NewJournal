@@ -73,7 +73,7 @@ class UserController extends BaseController
                 ->join('likes', 'likes.news_id = news.news_id')
                 ->where('news.news_status', 'Approved')
                 ->where(['news.archived' => 0])
-                ->orderBy('news.publication_date', 'ASC') // Order by publication date to get the latest news first
+                ->orderBy('news.publication_date', 'DESC') // Order by publication date to get the latest news first
                 ->limit(11)
                 ->findAll();
     
