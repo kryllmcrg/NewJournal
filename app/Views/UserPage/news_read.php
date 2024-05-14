@@ -95,8 +95,6 @@
                                     </span>
                                     <span class="post-pdf">
                                         <i class="far fa-file-pdf"></i>
-                                        <!-- <a href="path_to_your_pdf_file.pdf"
-                                            download></a> -->
                                         <button id="download-pdf" class="btn btn-secondary">Download PDF</button>
                                     </span>
                                 </div>
@@ -337,7 +335,6 @@
 </script>
 
     <script>
-
         window.onload = function () {
             document.getElementById('download-pdf').addEventListener('click', () => {
                 var element = document.getElementById('news-article');
