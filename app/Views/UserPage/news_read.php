@@ -181,54 +181,37 @@
                 <div class="col-lg-4 order-lg-2">
                     <div class="sidebar sidebar-right">
                         <!-- Recent Posts -->
-                        <div class="widget recent-posts">
-                            <h3 class="widget-title">Recent Posts</h3>
-                            <ul class="list-unstyled">
-                                <li class="d-flex align-items-center">
-                                    <div class="posts-thumb">
-                                        <a href="#"><img loading="lazy" alt="img" src="images/news/news1.jpg"></a>
-                                    </div>
-                                    <div class="post-info">
-                                        <h4 class="entry-title">
-                                            <a href="#">We Just Completes $17.6 Million Medical Clinic In
-                                                Mid-missouri</a>
-                                        </h4>
-                                    </div>
-                                </li><!-- 1st post end-->
-                                <li class="d-flex align-items-center">
-                                    <div class="posts-thumb">
-                                        <a href="#"><img loading="lazy" alt="img" src="images/news/news2.jpg"></a>
-                                    </div>
-                                    <div class="post-info">
-                                        <h4 class="entry-title">
-                                            <a href="#">Thandler Airport Water Reclamation Facility Expansion Project
-                                                Named</a>
-                                        </h4>
-                                    </div>
-                                </li><!-- 2nd post end-->
-                                <li class="d-flex align-items-center">
-                                    <div class="posts-thumb">
-                                        <a href="#"><img loading="lazy" alt="img" src="images/news/news3.jpg"></a>
-                                    </div>
-                                    <div class="post-info">
-                                        <h4 class="entry-title">
-                                            <a href="#">Silicon Bench and Corners Provide New Seating for A...</a>
-                                        </h4>
-                                    </div>
-                                </li><!-- 3rd post end-->
-                            </ul>
-                        </div><!-- Recent post end -->
-                        <!-- CATEGORIES -->
-                        <div class="widget">
-                            <h3 class="widget-title">Categories</h3>
-                            <ul class="arrow nav nav-tabs">
-                                <li><a href="#">Construction</a></li>
-                                <li><a href="#">Commercial</a></li>
-                                <li><a href="#">Building</a></li>
-                                <li><a href="#">Safety</a></li>
-                                <li><a href="#">Structure</a></li>
-                            </ul>
-                        </div><!-- Categories end -->
+                            <div class="widget recent-posts">
+                                <h3 class="widget-title">Recent Posts</h3>
+                                <ul class="list-unstyled">
+                                    <?php foreach ($latestNews as $news): ?>
+                                    <li class="d-flex align-items-center">
+                                        <div class="posts-thumb">
+                                            <a href="">
+                                                <?php foreach(json_decode($news['images'], true) as $image):?>
+                                                <img loading="lazy" alt="img" src="<?= $image ?>">
+                                                <?php endforeach; ?>
+                                            </a>
+                                        </div>
+                                        <div class="post-info">
+                                            <h4 class="entry-title">
+                                                <a href="<?= site_url('news_read/'.$news['news_id']) ?>"><?= $news['title'] ?></a>
+                                            </h4>
+                                        </div>
+                                    </li>
+                                    <?php endforeach; ?> 
+                                </ul>
+                            </div>
+                            <!-- Recent post end -->
+
+                            <div class="widget">
+                                <h3 class="widget-title">Categories</h3>
+                                <ul class="arrow nav nav-tabs">
+                                    <?php foreach ($categories as $category): ?>
+                                        <li><a href="#"><?php echo $category['category_name']; ?></a></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div><!-- Categories end -->
 
                         <!-- MOST LIKED -->
                         <div class="widget recent-posts">

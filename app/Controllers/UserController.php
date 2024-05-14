@@ -19,30 +19,40 @@ class UserController extends BaseController
     public function news_read($news_id)
     {
         $newsModel = new NewsModel();
-
+        $likesModel = new LikeModel();
+        
         // Fetch article details by news_id
         $article = $newsModel->find($news_id);
-
+        
         // Fetch category name using the category_id
         $categoryModel = new CategoryModel();
         $category = $categoryModel->find($article['category_id']);
         $category_name = $category ? $category['category_name'] : '';
+        
+        // Fetch latest three news articles
+        $latestNews = $newsModel->orderBy('publication_date', 'DESC')->findAll(3);
 
+       
+        $commentModel = new CommentModel();
+        $comments = $commentModel->where('news_id', $news_id)
+            ->where('comment_status', 'approved')
+            ->findAll();
+
+        // Fetch all categories
+        $categories = $categoryModel->findAll(); // Assuming you have a method to fetch all categories
+        
         // Pass data to view
         $data = [
             'article' => $article,
             'category_name' => $category_name,
+            'latestNews' => $latestNews,
+            'comments' => $comments,
+            'categories' => $categories,
         ];
-
-        // Fetch comments with status 'approved'
-        $commentModel = new CommentModel();
-        $data['comments'] = $commentModel->where('news_id', $news_id)
-            ->where('comment_status', 'approved')
-            ->findAll();
-
+        
         return view('UserPage/news_read', $data);
     }
-
+    
     public function home()
     {
         try {
@@ -237,6 +247,6 @@ class UserController extends BaseController
             // Handle any errors
             return $this->response->setJSON(['error' => $th->getMessage()]);
         }
-    } 
+    }
 
 }
