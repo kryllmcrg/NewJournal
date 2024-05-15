@@ -226,38 +226,20 @@
                         <div class="widget recent-posts">
                             <h3 class="widget-title">Most Liked Posts</h3>
                             <ul class="list-unstyled">
-                                <li class="d-flex align-items-center">
-                                    <div class="posts-thumb">
-                                        <a href="#"><img loading="lazy" alt="img" src="images/news/news1.jpg"></a>
-                                    </div>
-                                    <div class="post-info">
-                                        <h4 class="entry-title">
-                                            <a href="#">We Just Completes $17.6 Million Medical Clinic In
-                                                Mid-missouri</a>
-                                        </h4>
-                                    </div>
-                                </li><!-- 1st post end-->
-                                <li class="d-flex align-items-center">
-                                    <div class="posts-thumb">
-                                        <a href="#"><img loading="lazy" alt="img" src="images/news/news2.jpg"></a>
-                                    </div>
-                                    <div class="post-info">
-                                        <h4 class="entry-title">
-                                            <a href="#">Thandler Airport Water Reclamation Facility Expansion Project
-                                                Named</a>
-                                        </h4>
-                                    </div>
-                                </li><!-- 2nd post end-->
-                                <li class="d-flex align-items-center">
-                                    <div class="posts-thumb">
-                                        <a href="#"><img loading="lazy" alt="img" src="images/news/news3.jpg"></a>
-                                    </div>
-                                    <div class="post-info">
-                                        <h4 class="entry-title">
-                                            <a href="#">Silicon Bench and Corners Provide New Seating for A...</a>
-                                        </h4>
-                                    </div>
-                                </li><!-- 3rd post end-->
+                                <?php foreach ($mostLikedPosts as $post): ?>
+                                    <li class="d-flex align-items-center">
+                                        <div class="posts-thumb">
+                                            <a href="#"><?php foreach(json_decode($news['images'], true) as $image):?>
+                                                <img loading="lazy" alt="img" src="<?= $image ?>">
+                                                <?php endforeach; ?></a>
+                                        </div>
+                                        <div class="post-info">
+                                            <h4 class="entry-title">
+                                                <a href="<?= site_url('news_read/'.$news['news_id']) ?>"><?= esc($post['title']) ?></a>
+                                            </h4>
+                                        </div>
+                                    </li><!-- post end -->
+                                <?php endforeach; ?>
                             </ul>
                         </div><!-- MOST LIKED end -->
                         <!-- Star rating -->

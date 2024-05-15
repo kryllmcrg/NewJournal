@@ -40,3 +40,120 @@ INFO - 2024-05-15 22:35:54 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2024-05-15 22:47:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-05-15 22:48:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2024-05-15 22:48:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-15 22:49:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-15 22:49:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-15 22:56:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-15 22:56:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-15 22:56:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-15 22:57:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-15 22:58:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-15 22:58:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-15 22:58:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-15 22:59:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-05-15 23:03:19 --> mysqli_sql_exception: Unknown column 'likes.action' in 'where clause' in C:\laragon\www\NewJournal\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\NewJournal\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `title`,...', 0)
+#1 C:\laragon\www\NewJournal\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `title`,...')
+#2 C:\laragon\www\NewJournal\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `title`,...')
+#3 C:\laragon\www\NewJournal\system\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `title`,...', Array, false)
+#4 C:\laragon\www\NewJournal\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\NewJournal\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(3, 0)
+#6 C:\laragon\www\NewJournal\app\Controllers\UserController.php(40): CodeIgniter\BaseModel->findAll(3)
+#7 C:\laragon\www\NewJournal\system\CodeIgniter.php(941): App\Controllers\UserController->news_read('89')
+#8 C:\laragon\www\NewJournal\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\laragon\www\NewJournal\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\NewJournal\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\NewJournal\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-05-15 23:03:19 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'likes.action' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `title`, `images`
+FROM `news`
+JOIN `likes` ON `likes`.`news_id` = `news`.`news_id`
+WHERE `likes`.`action` = :likes.action:
+AND `news`.`deleted_at` IS NULL
+ORDER BY `likes`.`likes_count` DESC
+ LIMIT 3', [...], false)
+ 2 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(3, 0)
+ 4 APPPATH\Controllers\UserController.php(40): CodeIgniter\BaseModel->findAll(3)
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->news_read('89')
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-05-15 23:03:19 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'likes.action' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `title`, `images`
+FROM `news`
+JOIN `likes` ON `likes`.`news_id` = `news`.`news_id`
+WHERE `likes`.`action` = \'like\'
+AND `news`.`deleted_at` IS NULL
+ORDER BY `likes`.`likes_count` DESC
+ LIMIT 3')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `title`, `images`
+FROM `news`
+JOIN `likes` ON `likes`.`news_id` = `news`.`news_id`
+WHERE `likes`.`action` = \'like\'
+AND `news`.`deleted_at` IS NULL
+ORDER BY `likes`.`likes_count` DESC
+ LIMIT 3')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `title`, `images`
+FROM `news`
+JOIN `likes` ON `likes`.`news_id` = `news`.`news_id`
+WHERE `likes`.`action` = :likes.action:
+AND `news`.`deleted_at` IS NULL
+ORDER BY `likes`.`likes_count` DESC
+ LIMIT 3', [...], false)
+ 4 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(3, 0)
+ 6 APPPATH\Controllers\UserController.php(40): CodeIgniter\BaseModel->findAll(3)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->news_read('89')
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-05-15 23:03:19 --> [Caused by] mysqli_sql_exception: Unknown column 'likes.action' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `title`, `images`
+FROM `news`
+JOIN `likes` ON `likes`.`news_id` = `news`.`news_id`
+WHERE `likes`.`action` = \'like\'
+AND `news`.`deleted_at` IS NULL
+ORDER BY `likes`.`likes_count` DESC
+ LIMIT 3', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `title`, `images`
+FROM `news`
+JOIN `likes` ON `likes`.`news_id` = `news`.`news_id`
+WHERE `likes`.`action` = \'like\'
+AND `news`.`deleted_at` IS NULL
+ORDER BY `likes`.`likes_count` DESC
+ LIMIT 3')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `title`, `images`
+FROM `news`
+JOIN `likes` ON `likes`.`news_id` = `news`.`news_id`
+WHERE `likes`.`action` = \'like\'
+AND `news`.`deleted_at` IS NULL
+ORDER BY `likes`.`likes_count` DESC
+ LIMIT 3')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1613): CodeIgniter\Database\BaseConnection->query('SELECT `title`, `images`
+FROM `news`
+JOIN `likes` ON `likes`.`news_id` = `news`.`news_id`
+WHERE `likes`.`action` = :likes.action:
+AND `news`.`deleted_at` IS NULL
+ORDER BY `likes`.`likes_count` DESC
+ LIMIT 3', [...], false)
+ 5 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(3, 0)
+ 7 APPPATH\Controllers\UserController.php(40): CodeIgniter\BaseModel->findAll(3)
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\UserController->news_read('89')
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-05-15 23:03:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-15 23:04:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-15 23:04:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-15 23:04:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-15 23:04:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-15 23:04:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

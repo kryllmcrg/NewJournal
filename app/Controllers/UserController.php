@@ -17,41 +17,48 @@ class UserController extends BaseController
     }
     // In your controller file (e.g., News.php)
     public function news_read($news_id)
-    {
-        $newsModel = new NewsModel();
-        $likesModel = new LikeModel();
-        
-        // Fetch article details by news_id
-        $article = $newsModel->find($news_id);
-        
-        // Fetch category name using the category_id
-        $categoryModel = new CategoryModel();
-        $category = $categoryModel->find($article['category_id']);
-        $category_name = $category ? $category['category_name'] : '';
-        
-        // Fetch latest three news articles
-        $latestNews = $newsModel->orderBy('publication_date', 'DESC')->findAll(3);
+{
+    $newsModel = new NewsModel();
+    $likesModel = new LikeModel();
+    
+    // Fetch article details by news_id
+    $article = $newsModel->find($news_id);
+    
+    // Fetch category name using the category_id
+    $categoryModel = new CategoryModel();
+    $category = $categoryModel->find($article['category_id']);
+    $category_name = $category ? $category['category_name'] : '';
+    
+    // Fetch latest three news articles
+    $latestNews = $newsModel->orderBy('publication_date', 'DESC')->findAll(3);
 
-       
-        $commentModel = new CommentModel();
-        $comments = $commentModel->where('news_id', $news_id)
-            ->where('comment_status', 'approved')
-            ->findAll();
+    // Fetch most liked posts
+    $mostLikedPosts = $newsModel->select('title, images')
+                                ->join('likes', 'likes.news_id = news.news_id')
+                                ->where('likes.likes_count > likes.dislikes_count') // Filter out dislikes
+                                ->orderBy('likes.likes_count', 'DESC')
+                                ->findAll(3);
 
-        // Fetch all categories
-        $categories = $categoryModel->findAll(); // Assuming you have a method to fetch all categories
-        
-        // Pass data to view
-        $data = [
-            'article' => $article,
-            'category_name' => $category_name,
-            'latestNews' => $latestNews,
-            'comments' => $comments,
-            'categories' => $categories,
-        ];
-        
-        return view('UserPage/news_read', $data);
-    }
+    $commentModel = new CommentModel();
+    $comments = $commentModel->where('news_id', $news_id)
+        ->where('comment_status', 'approved')
+        ->findAll();
+
+    // Fetch all categories
+    $categories = $categoryModel->findAll(); // Assuming you have a method to fetch all categories
+    
+    // Pass data to view
+    $data = [
+        'article' => $article,
+        'category_name' => $category_name,
+        'latestNews' => $latestNews,
+        'mostLikedPosts' => $mostLikedPosts,
+        'comments' => $comments,
+        'categories' => $categories,
+    ];
+    
+    return view('UserPage/news_read', $data);
+}
     
     public function home()
     {
