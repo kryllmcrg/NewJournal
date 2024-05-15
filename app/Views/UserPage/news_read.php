@@ -60,6 +60,17 @@
     .star:hover {
         color: purple; /* Change color to purple on hover */
     }
+
+    .rating .star {
+    font-size: 2em; /* Adjust this value to increase/decrease the size of the stars */
+    cursor: pointer; /* Optional: Change the cursor to a pointer when hovering over stars */
+    }
+
+    .rating .star:hover, 
+    .rating .star:hover ~ .star {
+        color: #FFD700; /* Optional: Change color of stars on hover */
+    }
+
 </style>
 
 <body>
@@ -251,7 +262,6 @@
                         </div><!-- MOST LIKED end -->
                         <!-- Star rating -->
                         <div class="form-group">
-                                    <label for="rating">Rating:</label><br>
                                     <div class="rating">
                                         <input type="hidden" name="rating" id="rating" value="0"> <!-- Hidden input to store the selected rating -->
                                         <i class="far fa-star star" data-rating="1"></i> <!-- Star icon for rating 1 -->
