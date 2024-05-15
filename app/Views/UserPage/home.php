@@ -230,50 +230,62 @@
     <script src="<?= base_url('assets/js/script.js') ?>"></script>
 
     <script>
-        // JavaScript function to handle like and dislike actions
-        function toggleLike(element, action) {
-            let newsId = element.getAttribute('data-news-id');
-            let likeId = element.getAttribute('data-like-id');
-            let likeStatus = element.getAttribute('data-like-status');
+    function toggleLike(element, action) {
+        let newsId = element.getAttribute('data-news-id');
+        let likeId = element.getAttribute('data-like-id');
+        let likeStatus = element.getAttribute('data-like-status');
 
-            let likeCount = parseInt($('#like-count-' + newsId).text());
-            let dislikeCount = parseInt($('#dislike-count-' + newsId).text());
+        let likeCount = parseInt($('#like-count-' + newsId).text());
+        let dislikeCount = parseInt($('#dislike-count-' + newsId).text());
 
-            let newLikeStatus = "";
-            if (action === "like") {
+        if (action === "like") {
+            if (likeStatus === "like") {
+                likeCount--;
+                likeStatus = "";
+            } else {
                 likeCount++;
-                if(likeStatus === "dislike"){
+                if (likeStatus === "dislike") {
                     dislikeCount--;
                 }
-                $('#like-count-' + newsId).text(likeCount);
-            } else if (action === "dislike") {
+                likeStatus = "like";
+            }
+        } else if (action === "dislike") {
+            if (likeStatus === "dislike") {
+                dislikeCount--;
+                likeStatus = "";
+            } else {
                 dislikeCount++;
-                if(likeStatus === "like"){
+                if (likeStatus === "like") {
                     likeCount--;
                 }
-                $('#dislike-count-' + newsId).text(dislikeCount);
+                likeStatus = "dislike";
             }
-
-            $.ajax({
-                type: 'POST',
-                url: '/like/' + newsId, // Replace with your server-side endpoint URL
-                data: {
-                    newsId: newsId,
-                    likeCount: likeCount,
-                    dislikeCount: dislikeCount,
-                    likeId: likeId,
-                    action: action,
-                },
-                success: function (response) {
-                    // Update the UI with the new like and dislike counts
-                    console.log(response);
-                },
-                error: function (xhr, status, error) {
-                    console.error(error);
-                }
-            });
         }
+
+        $('#like-count-' + newsId).text(likeCount);
+        $('#dislike-count-' + newsId).text(dislikeCount);
+        element.setAttribute('data-like-status', likeStatus);
+
+        $.ajax({
+            type: 'POST',
+            url: '/like/' + newsId,
+            data: {
+                newsId: newsId,
+                likeId: likeId,
+                likeCount: likeCount,
+                dislikeCount: dislikeCount,
+                action: action
+            },
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
+    }
     </script>
+
 
 <script>
   function filterNews(category) {

@@ -144,6 +144,54 @@ class UserController extends BaseController
         }
     }
 
+    public function like($newsId)
+{
+    try {
+        // Check if the user is logged in
+        if (!session()->has('user_id')) {
+            return redirect()->to(base_url('login'));
+        }
+
+        // Get POST data
+        $likeId = $this->request->getPost('likeId');
+        $likeCount = $this->request->getPost('likeCount');
+        $dislikeCount = $this->request->getPost('dislikeCount');
+        $action = $this->request->getPost('action');
+
+        // Get the user ID from the session
+        $userId = session()->get('user_id');
+
+        // Load models
+        $likeModel = new LikeModel();
+        $userLikeLogsModel = new UserLikeLogsModel();
+
+        // Check if the user has already liked/disliked the news
+        $existingLike = $userLikeLogsModel->where('news_id', $newsId)->where('user_id', $userId)->first();
+
+        // Update or insert user like/dislike log
+        if ($existingLike) {
+            $existingLike['action'] = $action;
+            $userLikeLogsModel->update($existingLike['id'], $existingLike);
+        } else {
+            $userLikeLogsModel->insert([
+                'news_id' => $newsId,
+                'user_id' => $userId,
+                'action' => $action
+            ]);
+        }
+
+        // Update the like/dislike counts in the news
+        $likeModel->update($likeId, [
+            'likes_count' => $likeCount,
+            'dislikes_count' => $dislikeCount
+        ]);
+
+        return json_encode(['result' => true]);
+    } catch (\Throwable $th) {
+        return $th->getMessage();
+    }
+}
+
     public function filterNews($categoryName = null)
     {
         try {
