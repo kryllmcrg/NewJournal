@@ -71,6 +71,11 @@
         color: #FFD700; /* Optional: Change color of stars on hover */
     }
 
+    .btn {
+        padding: 0.2rem 0.4rem; /* Adjust padding to decrease button size */
+        font-size: 0.8rem;
+    }
+
 </style>
 
 <body>
@@ -108,6 +113,11 @@
                                         <i class="far fa-file-pdf"></i>
                                         <button id="download-pdf" class="btn btn-secondary">Download PDF</button>
                                     </span>
+                                    <span class="post-preview">
+                                        <i class="far fa-eye"></i>
+                                        <button id="preview-news" class="btn btn-primary" onclick="previewNews()">Preview</button>
+                                    </span>
+
                                 </div>
                                 <h2 class="entry-title"><?= $article['title'] ?></h2>
                             </div><!-- header end -->
@@ -313,6 +323,64 @@
     <!-- Template custom -->
     <script src="<?= base_url('assets/js/script.js') ?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+
+
+    <script>
+    function previewNews() {
+        // Create a new window for the print preview
+        var previewWindow = window.open('', '_blank');
+        
+        // Construct the HTML content for the preview window
+        var htmlContent = `
+            <html>
+            <head>
+                <title>News Preview</title>
+                <style>
+                    /* Add your custom CSS styles here */
+                    body {
+                        font-family: Arial, sans-serif;
+                        margin: 20px;
+                    }
+                    .preview-title {
+                        font-size: 24px;
+                        margin-bottom: 20px;
+                    }
+                    .preview-content {
+                        font-size: 16px;
+                        line-height: 1.6;
+                        margin-bottom: 20px;
+                    }
+                    .preview-image {
+                        max-width: 100%; /* Ensure the image doesn't exceed its original size */
+                        height: auto; /* Maintain the aspect ratio */
+                        margin-bottom: 20px;
+                        /* Add custom size properties here */
+                        width: 300px; /* Example: Set the width to 300 pixels */
+                        height: 200px; /* Example: Set the height to 200 pixels */
+                    }
+                </style>
+            </head>
+            <body>
+                <h1 class="preview-title"><?= $article['title'] ?></h1>
+                <div class="preview-content">
+                    <?= $article['content'] ?>
+                </div>
+                <!-- Add your image here -->
+                <img class="preview-image" src="<?= $article['images'] ?>" alt="">
+            </body>
+            </html>
+        `;
+        
+        // Write the HTML content to the preview window
+        previewWindow.document.write(htmlContent);
+        
+        // Close the document
+        previewWindow.document.close();
+
+        // Trigger the print preview for the preview window
+        previewWindow.print();
+    }
+</script>
 
     <script>
     $(document).ready(function() {
