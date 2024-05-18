@@ -21,7 +21,7 @@ $routes->post('submit-rating', 'UserController::submitRating');
 $routes->get('generate-pdf/(:num)', 'UserController::generatePdf/$1');
 $routes->get('news_design', 'UserController::news_design');
 $routes->get('news_preview', 'UserController::news_preview');
-$routes->post('fetch_news', 'UserController::fetch_news');
+$routes->post('preview_news', 'UserController::preview_news');
 
 $routes->get('/login', 'LogRegController::login');
 $routes->post('check', 'LogRegController::check');
