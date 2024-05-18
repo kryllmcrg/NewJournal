@@ -146,7 +146,7 @@
                                         </button>
                                     </span>
                                     <span class="post-preview">
-                                        <button id="preview-news" class="btn btn-primary" onclick="window.print()">
+                                        <button id="preview-news" class="btn btn-primary" onclick="previewNews()">
                                             <i class="fas fa-print"></i>
                                         </button>
                                     </span>
@@ -363,51 +363,74 @@
     function previewNews() {
         // Create a new window for the print preview
         var previewWindow = window.open('', '_blank');
-        
+
         // Construct the HTML content for the preview window
         var htmlContent = `
-            <html>
-            <head>
-                <title>News Preview</title>
-                <style>
-                    /* Add your custom CSS styles here */
-                    body {
-                        font-family: Arial, sans-serif;
-                        margin: 20px;
-                    }
-                    .preview-title {
-                        font-size: 24px;
-                        margin-bottom: 20px;
-                    }
-                    .preview-content {
-                        font-size: 16px;
-                        line-height: 1.6;
-                        margin-bottom: 20px;
-                    }
-                    .preview-image {
-                        max-width: 100%; /* Ensure the image doesn't exceed its original size */
-                        height: auto; /* Maintain the aspect ratio */
-                        margin-bottom: 20px;
-                        /* Add custom size properties here */
-                        width: 300px; /* Example: Set the width to 300 pixels */
-                        height: 200px; /* Example: Set the height to 200 pixels */
-                    }
-                </style>
-            </head>
-            <body>
+        <html>
+        <head>
+            <title>News Preview</title>
+            <style>
+                /* Add your custom CSS styles here */
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 20px;
+                    background-color: #f2f2f2; /* Light gray background */
+                    padding: 20px;
+                }
+                .preview-container {
+                    border: 2px solid #800080; /* Purple border */
+                    padding: 20px;
+                    background-color: #fff; /* White background */
+                }
+                .preview-title {
+                    font-size: 24px;
+                    margin-bottom: 20px;
+                    color: #800080; /* Purple color for title */
+                }
+                .preview-author {
+                    font-style: italic;
+                    font-size: 14px;
+                    color: #666;
+                    margin-bottom: 10px;
+                }
+                .preview-date {
+                    font-size: 14px;
+                    color: #666;
+                    margin-bottom: 20px;
+                }
+                .preview-content {
+                    font-size: 16px;
+                    line-height: 1.6;
+                    margin-bottom: 20px;
+                    text-align: justify;
+                }
+                .preview-image {
+                    display: block;
+                    margin: 0 auto;
+                    max-width: 100%;
+                    height: auto;
+                    margin-bottom: 20px;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="preview-container">
                 <h1 class="preview-title"><?= $article['title'] ?></h1>
+                <p class="preview-author">By <?= $article['author'] ?></p>
+                <p class="preview-date">Publication Date: <?= date('M d, Y', strtotime($article['publication_date'])) ?></p>
                 <div class="preview-content">
                     <?= $article['content'] ?>
                 </div>
                 <!-- Add your image here -->
                 <img class="preview-image" src="<?= $article['images'] ?>" alt="">
-            </body>
-            </html>
-        `;
-        
+            </div>
+        </body>
+        </html>
+    `;
+
         // Write the HTML content to the preview window
         previewWindow.document.write(htmlContent);
-        
+
         // Close the document
         previewWindow.document.close();
 
