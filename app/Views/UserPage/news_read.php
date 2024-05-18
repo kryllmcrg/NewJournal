@@ -146,7 +146,7 @@
                                         </button>
                                     </span>
                                     <span class="post-preview">
-                                        <button id="preview-news" class="btn btn-primary" onclick="previewNews()">
+                                        <button id="preview-news" class="btn btn-primary" onclick="previewNews(1)">
                                             <i class="fas fa-print"></i>
                                         </button>
                                     </span>
@@ -359,85 +359,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
 
 
-    <script>
-    function previewNews() {
-        // Create a new window for the print preview
-        var previewWindow = window.open('', '_blank');
+        <script>
+        function previewNews(newsId) {
+            // Make an AJAX request to fetch the news data
+            $.ajax({
+            url: '/fetch_news',
+            type: 'POST',
+            data: { news_id: newsId },
+            success: function(response) {
+                if (response && !response.error) {
+                    displayNews(response.html);
+                } else {
+                    console.error('Error fetching news:', response.error);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('AJAX error:', status, error);
+            }
+        });
+        }
 
-        // Construct the HTML content for the preview window
-        var htmlContent = `
-        <html>
-        <head>
-            <title>News Preview</title>
-            <style>
-                /* Add your custom CSS styles here */
-                body {
-                    font-family: Arial, sans-serif;
-                    margin: 20px;
-                    background-color: #f2f2f2; /* Light gray background */
-                    padding: 20px;
-                }
-                .preview-container {
-                    border: 2px solid #800080; /* Purple border */
-                    padding: 20px;
-                    background-color: #fff; /* White background */
-                }
-                .preview-title {
-                    font-size: 24px;
-                    margin-bottom: 20px;
-                    color: #800080; /* Purple color for title */
-                }
-                .preview-author {
-                    font-style: italic;
-                    font-size: 14px;
-                    color: #666;
-                    margin-bottom: 10px;
-                }
-                .preview-date {
-                    font-size: 14px;
-                    color: #666;
-                    margin-bottom: 20px;
-                }
-                .preview-content {
-                    font-size: 16px;
-                    line-height: 1.6;
-                    margin-bottom: 20px;
-                    text-align: justify;
-                }
-                .preview-image {
-                    display: block;
-                    margin: 0 auto;
-                    max-width: 100%;
-                    height: auto;
-                    margin-bottom: 20px;
-                }
-            </style>
-        </head>
-        <body>
-            <div class="preview-container">
-                <h1 class="preview-title"><?= $article['title'] ?></h1>
-                <p class="preview-author">By <?= $article['author'] ?></p>
-                <p class="preview-date">Publication Date: <?= date('M d, Y', strtotime($article['publication_date'])) ?></p>
-                <div class="preview-content">
-                    <?= $article['content'] ?>
-                </div>
-                <!-- Add your image here -->
-                <img class="preview-image" src="<?= $article['images'] ?>" alt="">
-            </div>
-        </body>
-        </html>
-    `;
+        function displayNews(htmlContent) {
+            // Create a new window for the print preview
+            var previewWindow = window.open('', '_blank');
 
-        // Write the HTML content to the preview window
-        previewWindow.document.write(htmlContent);
+            // Write the HTML content to the preview window
+            previewWindow.document.write(htmlContent);
 
-        // Close the document
-        previewWindow.document.close();
+            // Close the document
+            previewWindow.document.close();
 
-        // Trigger the print preview for the preview window
-        previewWindow.print();
-    }
-</script>
+            // Trigger the print preview for the preview window
+            previewWindow.print();
+        }
+    </script>
 
     <script>
         $(document).ready(function() {

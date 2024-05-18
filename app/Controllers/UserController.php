@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controllers;
-
+use CodeIgniter\HTTP\Exceptions\HTTPException;
 use App\Models\UserLikeLogsModel;
 use App\Models\UsersModel;
 use App\Models\CategoryModel;
@@ -10,14 +10,16 @@ use App\Models\LikeModel;
 use App\Models\CommentModel;
 use App\Models\RatingModel;
 use Dompdf\Dompdf;
-use Dompdf\Options;
-
 
 class UserController extends BaseController
 {
     public function index()
     {
         return view('welcome_message');
+    }
+    public function new_design()
+    {
+        return view('news_design');
     }
     // In your controller file (e.g., News.php)
     public function news_read($news_id)
@@ -398,5 +400,44 @@ class UserController extends BaseController
         // Return the PDF content
         return $output;
     }
+
+    public function fetch_news()
+    {
+        try {
+            $newsId = $this->request->getPost('news_id');
+
+            // Load the news model
+            $newsModel = new NewsModel();
+            
+            // Fetch the news article based on the news_id
+            $article = $newsModel->find($newsId);
+
+            // Check if article is null
+            if ($article === null) {
+                throw new HTTPException('Article not found', 404);
+            }
+
+            // Extract article data
+            $title = $article['title'];
+            $author = $article['author'];
+            $publication_date = $article['publication_date'];
+            $content = $article['content'];
+            $images = json_decode($article['images'], true); // Assuming images are stored as JSON array
+
+            // Load the template and replace placeholders
+            ob_start();
+            include APPPATH . 'Views/UserPage/news_preview.php';
+            $htmlContent = ob_get_clean();
+
+            // Return the HTML content as a JSON response
+            return $this->response->setJSON(['html' => $htmlContent]);
+        } catch (HTTPException $e) {
+            // Log the error
+            log_message('error', 'Error fetching news article: ' . $e->getMessage());
+
+            // Return a JSON response indicating the error
+            return $this->response->setJSON(['error' => $e->getMessage()])->setStatusCode($e->getCode());
+        }
+    } 
 
 }
