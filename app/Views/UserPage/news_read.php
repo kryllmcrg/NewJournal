@@ -253,46 +253,48 @@
                             </ul>
                         </div><!-- MOST LIKED end -->
                         <!-- Star rating -->
-                        <div class="form-group">
-                                    <div class="rating">
-                                        <input type="hidden" name="rating" id="rating" value="0"> <!-- Hidden input to store the selected rating -->
-                                        <i class="far fa-star star" data-rating="1"></i> <!-- Star icon for rating 1 -->
-                                        <i class="far fa-star star" data-rating="2"></i> <!-- Star icon for rating 2 -->
-                                        <i class="far fa-star star" data-rating="3"></i> <!-- Star icon for rating 3 -->
-                                        <i class="far fa-star star" data-rating="4"></i> <!-- Star icon for rating 4 -->
-                                        <i class="far fa-star star" data-rating="5"></i> <!-- Star icon for rating 5 -->
-                                    </div>
-                                    <p>Average Rating: <span id="average-rating">0.0</span></p>
+                        <form id="rating-form">
+                            <input type="hidden" name="news_id" value="<?= $news_id; ?>"> <!-- Pass the news ID -->
+                            <input type="hidden" name="user_id" value="<?= $user_id; ?>"> <!-- Pass the user ID -->
+
+                            <div class="form-group">
+                                <div class="rating">
+                                    <input type="hidden" name="rating" id="rating" value="0"> <!-- Hidden input to store the selected rating -->
+                                    <i class="far fa-star star" data-rating="1"></i> <!-- Star icon for rating 1 -->
+                                    <i class="far fa-star star" data-rating="2"></i> <!-- Star icon for rating 2 -->
+                                    <i class="far fa-star star" data-rating="3"></i> <!-- Star icon for rating 3 -->
+                                    <i class="far fa-star star" data-rating="4"></i> <!-- Star icon for rating 4 -->
+                                    <i class="far fa-star star" data-rating="5"></i> <!-- Star icon for rating 5 -->
                                 </div>
-                                <div class="row">
-                            <div class="col-md-10">
-                                <div class="progress rounded-0" style="height: 30px; width: 100%; background-color: #BC7FCD;">
-                                    <div class="progress-bar rounded-0" role="progressbar" style="width: 94%; background-color: #8E8FFA;" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100">4.7</div>
-                                </div>
-                                <ul class="list-group mt-3 rounded-0 d-flex flex-row">
-                                    <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
-                                        5 Star
-                                        <span class="badge badge-primary badge-pill" style="background-color: #8E8FFA;">1.4K</span>
-                                    </li>
-                                    <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
-                                        4 Star
-                                        <span class="badge badge-primary badge-pill" style="background-color: #8E8FFA;">178</span>
-                                    </li>
-                                    <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
-                                        3 Star
-                                        <span class="badge badge-primary badge-pill" style="background-color: #8E8FFA;">84</span>
-                                    </li>
-                                    <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
-                                        2 Star
-                                        <span class="badge badge-primary badge-pill" style="background-color: #8E8FFA;">30</span>
-                                    </li>
-                                    <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
-                                        1 Star
-                                        <span class="badge badge-primary badge-pill" style="background-color: #8E8FFA;">44</span>
-                                    </li>
-                                </ul>
+                                <p>Average Rating: <span id="average-rating"><?= number_format($average_rating, 1); ?></span></p>
                             </div>
-                        </div>
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <ul class="list-group mt-3 rounded-0 d-flex flex-row">
+                                        <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
+                                            5 Star
+                                            <span class="badge badge-primary badge-pill" style="background-color: #8E8FFA;"><?php echo $rating_counts[5]; ?></span>
+                                        </li>
+                                        <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
+                                            4 Star
+                                            <span class="badge badge-primary badge-pill" style="background-color: #8E8FFA;"><?php echo $rating_counts[4]; ?></span>
+                                        </li>
+                                        <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
+                                            3 Star
+                                            <span class="badge badge-primary badge-pill" style="background-color: #8E8FFA;"><?php echo $rating_counts[3]; ?></span>
+                                        </li>
+                                        <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
+                                            2 Star
+                                            <span class="badge badge-primary badge-pill" style="background-color: #8E8FFA;"><?php echo $rating_counts[2]; ?></span>
+                                        </li>
+                                        <li class="list-group-item justify-content-between align-items-center rounded-0 bg-purple flex-grow-1" style="margin-right: 5px;">
+                                            1 Star
+                                            <span class="badge badge-primary badge-pill" style="background-color: #8E8FFA;"><?php echo $rating_counts[1]; ?></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </form>
                     </div><!-- Sidebar end -->
                 </div><!-- Sidebar Col end -->
             </div><!-- Main row end -->
@@ -413,29 +415,38 @@
         }
     </script>
 
-    <script>
-        $(document).ready(function() {
+<script>
+    $(document).ready(function() {
     $('.star').click(function() {
-        var rating = parseInt($(this).data('rating')); // Get the selected rating
-        var totalStars = $('.star').length; // Total number of stars
-        
-        // Update star colors
-        $('.star').removeClass('fas star').addClass('far star'); // Reset all stars to empty
-        $(this).prevAll('.star').addBack().removeClass('far star').addClass('fas star'); // Fill clicked star and previous stars
+        var rating = parseInt($(this).data('rating'));
+        $('#rating').val(rating); // Set the hidden input value to the selected rating
 
-        // Calculate average rating
-        var totalRating = 0;
-        var selectedStars = $(this).prevAll('.star').length + 1; // Count the number of selected stars
-        $('.star.fas').each(function() {
-            totalRating += parseInt($(this).data('rating'));
+        // Update star colors
+        $('.star').removeClass('fas').addClass('far'); // Reset all stars to empty
+        $(this).prevAll('.star').addBack().removeClass('far').addClass('fas'); // Fill clicked star and previous stars
+
+        // Optionally, submit the form immediately after clicking a star
+        $('#rating-form').submit();
+    });
+
+    // Handle form submission via AJAX
+    $('#rating-form').submit(function(event) {
+        event.preventDefault(); // Prevent the form from submitting the traditional way
+        var formData = $(this).serialize(); // Serialize form data
+
+        $.post('<?= site_url('submit-rating'); ?>', formData, function(response) {
+            if (response.average_rating) {
+                $('#average-rating').text(response.average_rating.toFixed(1));
+            } else if (response.error) {
+                alert(response.error);
+            }
+        }, 'json').fail(function(xhr, status, error) {
+            alert('An error occurred: ' + error);
         });
-        var averageRating = (totalRating / selectedStars); // Calculate average rating
-        
-        // Update average rating display
-        $('#average-rating').text(averageRating.toFixed(1)); // Display average rating with one decimal place
     });
 });
-    </script>
+</script>
+
 </body>
 
 </html>

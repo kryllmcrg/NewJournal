@@ -16,6 +16,8 @@ $routes->post('/like/(:any)', 'UserController::like/$1');
 $routes->get('/categories', 'UserController::getCategoryData');
 $routes->get('filterNews/(:any)', 'UserController::filterNews/$1');
 $routes->get('news/(:num)', 'UserController::news/$1');
+$routes->post('search_results', 'UserController::searchNews');
+$routes->post('submit-rating', 'UserController::submitRating');
 
 $routes->get('/login', 'LogRegController::login');
 $routes->post('check', 'LogRegController::check');
@@ -27,7 +29,6 @@ $routes->get('/logout', 'LogRegController::logout');
 
 $routes->get('/dashboard', 'AdminController::dashboard');
 
-$routes->get('/addemployee', 'ProfileController::addemployee');
 $routes->get('/manageprofile', 'ProfileController::manageprofile');
 $routes->get('/manageusers', 'ProfileController::manageusers');
 $routes->post('update', 'ProfileController::update');
@@ -51,12 +52,9 @@ $routes->get('contact', 'NewsController:contact');
 $routes->get('/newsAudit', 'NewsController::newsAudit');
 $routes->get('/dashboard', 'NewsController::dashboard');
 
-$routes->get('/chats', 'ChatController::chats');
-
-
 $routes->post('addComment', 'CommentsController::addComment');
 $routes->post('commentStatus', 'CommentsController::commentStatus');
-$routes->post('reply', 'CommentsController::reply'); // Adjust 'YourController' with the actual controller name
+$routes->post('reply', 'CommentsController::reply'); 
 $routes->get('managecomments/(:num)', 'CommentsController::managecomments/$1');
 $routes->get('managecomments', 'CommentsController::showManageCommentsPage');
 
@@ -66,11 +64,11 @@ $routes->get('/getcategory', 'CategoryController::getcategory');
 $routes->get('/managecategory', 'CategoryController::managecategory');
 $routes->post('/saveCategoryChanges', 'CategoryController::saveCategoryChanges');
 
-
-$routes->get('/announcements', 'AnnounceController::announcements');
-$routes->get('/addannounce', 'AnnounceController::addannounce');
-$routes->get('/manageannounce', 'AnnounceController::manageannounce');
-$routes->post('addAnnounceSubmit', 'AnnounceController::addAnnounceSubmit');
+// $routes->get('/chats', 'ChatController::chats');
+// $routes->get('/announcements', 'AnnounceController::announcements');
+// $routes->get('/addannounce', 'AnnounceController::addannounce');
+// $routes->get('/manageannounce', 'AnnounceController::manageannounce');
+// $routes->post('addAnnounceSubmit', 'AnnounceController::addAnnounceSubmit');
 
 //staff//
 $routes->get('/createnews', 'NewsStaffController::createnews');
@@ -80,6 +78,4 @@ $routes->get('/dashboard', 'NewsStaffController::dashboard');
 $routes->get('/updateNews/(:num)', 'NewsStaffController::updateNews/$1');
 $routes->get('/newsUpdate', 'NewsStaffController::newsUpdate/$1');
 
-
-$routes->post('search_results', 'UserController::searchNews');
 

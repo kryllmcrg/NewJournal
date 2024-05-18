@@ -11,6 +11,7 @@ use App\Models\CommentModel;
 use App\Models\CategoryModel;
 use App\Models\ContactModel;
 use App\Models\UserAuditModel;
+use App\Models\RatingModel;
 
 class NewsController extends BaseController
 {
@@ -474,7 +475,5 @@ class NewsController extends BaseController
         // Load the view file and pass the audit trail data to it
         return view('AdminPage/NewsAudit', $data); // Pass the $data array to the view
     }
-
-
 
 }
