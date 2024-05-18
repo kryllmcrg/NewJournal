@@ -18,6 +18,8 @@ $routes->get('filterNews/(:any)', 'UserController::filterNews/$1');
 $routes->get('news/(:num)', 'UserController::news/$1');
 $routes->post('search_results', 'UserController::searchNews');
 $routes->post('submit-rating', 'UserController::submitRating');
+$routes->get('generate-pdf/(:num)', 'UserController::generatePdf/$1');
+$routes->get('news_design', 'UserController::news_design');
 
 $routes->get('/login', 'LogRegController::login');
 $routes->post('check', 'LogRegController::check');

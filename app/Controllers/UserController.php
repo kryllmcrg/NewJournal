@@ -9,6 +9,9 @@ use App\Models\NewsModel;
 use App\Models\LikeModel;
 use App\Models\CommentModel;
 use App\Models\RatingModel;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
 
 class UserController extends BaseController
 {
@@ -360,5 +363,40 @@ class UserController extends BaseController
     }
 }
 
+    public function generatePdf($id)
+    {
+        // Load the news article data from the NewsModel
+        $newsModel = new NewsModel();
+        $article = $newsModel->find($id);
+
+        if (!$article) {
+            return redirect()->back()->with('error', 'News article not found.');
+        }
+
+        // Pass the article data to the view
+        $data['article'] = $article;
+
+        // Load the HTML content from the news_design.php file and pass data to it
+        $html = view('UserPage/news_design', $data);
+
+        // Remove unwanted content (empty paragraphs and images) from the HTML
+        $html = preg_replace('/<p><br><\/p>|<p><img[^>]+><br><\/p>/', '', $html);
+
+        // Generate the PDF
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($html);
+
+        // Set paper size and orientation
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF (stream or save to file)
+        $output = $dompdf->output();
+
+        // Return the PDF content
+        return $output;
+    }
 
 }

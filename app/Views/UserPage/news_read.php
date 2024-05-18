@@ -75,7 +75,38 @@
         padding: 0.2rem 0.4rem; /* Adjust padding to decrease button size */
         font-size: 0.8rem;
     }
-
+    #news-article {
+        width: 100%;
+        margin: auto;
+        font-family: 'Times New Roman', Times, serif;
+        padding: 20px;
+    }
+    .header, .footer {
+        text-align: center;
+        margin: 20px 0;
+    }
+    .header h1 {
+        font-size: 24px;
+        margin: 0;
+    }
+    .header p {
+        font-size: 14px;
+        margin: 5px 0 0 0;
+    }
+    .footer p {
+        font-size: 12px;
+        margin: 5px 0;
+    }
+    .content p {
+        font-size: 14px;
+        text-align: justify;
+        margin: 15px 0;
+    }
+    .content img {
+        max-width: 100%;
+        height: auto;
+        margin: 15px 0;
+    }
 </style>
 
 <body>
@@ -110,23 +141,24 @@
                                             class="comments-link"><?= (count($comments) == 1) ? 'Comment' : 'Comments' ?></a>
                                     </span>
                                     <span class="post-pdf">
-                                        <i class="far fa-file-pdf"></i>
-                                        <button id="download-pdf" class="btn btn-secondary">Download PDF</button>
+                                        <button id="download-pdf" class="btn btn-secondary">
+                                            <i class="far fa-file-pdf"></i>
+                                        </button>
                                     </span>
                                     <span class="post-preview">
-                                        <i class="far fa-eye"></i>
-                                        <button id="preview-news" class="btn btn-primary" onclick="previewNews()">Preview</button>
+                                        <button id="preview-news" class="btn btn-primary" onclick="window.print()">
+                                            <i class="fas fa-print"></i>
+                                        </button>
                                     </span>
-
                                 </div>
                                 <h2 class="entry-title"><?= $article['title'] ?></h2>
                             </div><!-- header end -->
                             <div class="entry-content">
                                 <?= $article['content'] ?>
                             </div>
-                            
                         </div><!-- post-body end -->
                     </div><!-- post content end -->
+
                     <!-- POST COMMENTS -->
                     <div id="comments" class="comments-area">
                         <!-- ADD COMMENTS -->
@@ -385,36 +417,48 @@
 </script>
 
     <script>
-    $(document).ready(function() {
-        $(".comment-reply").click(function(e) {
-            e.preventDefault();
-            var commentId = $(this).data("comment-id");
-            console.log("Comment ID:", commentId); // Log comment ID to check if it's correct
-            // Find the closest parent comment and then find the reply form within it
-            $(this).closest('.text-left').find(".reply-form").toggle(); // Toggle the visibility of the reply form for the clicked comment
-        });
-    });
-</script>
-
-    <script>
-        window.onload = function () {
-            document.getElementById('download-pdf').addEventListener('click', () => {
-                var element = document.getElementById('news-article');
-                console.log(element);
-                var opt = {
-                    margin: 1,
-                    filename: 'myfile.pdf',
-                    image: { type: 'jpeg', quality: 0.98 },
-                    html2canvas: { scale: 2 },
-                    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-                };
-
-                // New Promise-based usage:
-                html2pdf().from(element).set(opt).save();
+        $(document).ready(function() {
+            $(".comment-reply").click(function(e) {
+                e.preventDefault();
+                var commentId = $(this).data("comment-id");
+                console.log("Comment ID:", commentId); // Log comment ID to check if it's correct
+                // Find the closest parent comment and then find the reply form within it
+                $(this).closest('.text-left').find(".reply-form").toggle(); // Toggle the visibility of the reply form for the clicked comment
             });
-        }
+        });
     </script>
 
+    <script>
+    document.getElementById('download-pdf').addEventListener('click', function() {
+        // Get the article ID
+        var articleId = <?= json_encode($article['news_id']) ?>;
+
+        // Fetch the PDF for the specific article
+        fetch('/generate-pdf/' + articleId, {
+            method: 'GET' // Use GET method as we are passing the article ID as a route parameter
+        })
+        .then(response => response.blob())
+        .then(blob => {
+            // Create a URL for the PDF blob
+            const url = window.URL.createObjectURL(blob);
+
+            // Create a temporary anchor element to trigger the download
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'document.pdf';
+            document.body.appendChild(a);
+
+            // Click the anchor element to start the download
+            a.click();
+
+            // Revoke the URL to free up memory
+            window.URL.revokeObjectURL(url);
+        })
+        .catch(error => console.error('Error generating PDF:', error));
+    });
+    </script>
+    
     <script>
         $(document).ready(function() {
         $('.star').click(function() {
@@ -445,7 +489,7 @@
             });
         });
     });
-    </script>
+    </>
 
 </body>
 
