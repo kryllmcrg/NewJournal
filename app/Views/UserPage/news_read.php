@@ -358,7 +358,6 @@
     <script src="<?= base_url('assets/js/script.js') ?>"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
 
-
         <script>
         function previewNews(newsId) {
             // Make an AJAX request to fetch the news data
@@ -437,8 +436,8 @@
     });
     </script>
     
-    <script>
-        $(document).ready(function() {
+  <script>
+     $(document).ready(function() {
         $('.star').click(function() {
             var rating = parseInt($(this).data('rating'));
             $('#rating').val(rating); // Set the hidden input value to the selected rating
@@ -467,7 +466,7 @@
             });
         });
     });
-    </>
+  </script>
 
 </body>
 
