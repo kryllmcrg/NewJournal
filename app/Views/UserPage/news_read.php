@@ -146,7 +146,7 @@
                                         </button>
                                     </span>
                                     <span class="post-preview">
-                                        <button id="preview-news" class="btn btn-primary" onclick="previewNews(1)">
+                                        <button id="preview-news" class="btn btn-primary" onclick="previewNews(<?= $article['news_id']?? null?>)">
                                             <i class="fas fa-print"></i>
                                         </button>
                                     </span>
@@ -286,8 +286,8 @@
                         </div><!-- MOST LIKED end -->
                         <!-- Star rating -->
                         <form id="rating-form">
-                            <input type="hidden" name="news_id" value="<?= $news_id; ?>"> <!-- Pass the news ID -->
-                            <input type="hidden" name="user_id" value="<?= $user_id; ?>"> <!-- Pass the user ID -->
+                            <input type="hidden" name="news_id" value="<?= "$news_id" ?>"> <!-- Pass the news ID -->
+                            <input type="hidden" name="user_id" value="<?= session()->get('user_id') ??null ?>"> <!-- Pass the user ID -->
 
                             <div class="form-group">
                                 <div class="rating">
@@ -436,37 +436,56 @@
     });
     </script>
     
-  <script>
-     $(document).ready(function() {
-        $('.star').click(function() {
-            var rating = parseInt($(this).data('rating'));
-            $('#rating').val(rating); // Set the hidden input value to the selected rating
+    <script>
+        $(document).ready(function () {
+            $('.star').click(function () {
+                var rating = parseInt($(this).data('rating'));
+                $('#rating').val(rating); // Set the hidden input value to the selected rating
 
-            // Update star colors
-            $('.star').removeClass('fas').addClass('far'); // Reset all stars to empty
-            $(this).prevAll('.star').addBack().removeClass('far').addClass('fas'); // Fill clicked star and previous stars
+                // Update star colors
+                $('.star').removeClass('fas').addClass('far'); // Reset all stars to empty
+                $(this).prevAll('.star').addBack().removeClass('far').addClass('fas'); // Fill clicked star and previous stars
 
-            // Optionally, submit the form immediately after clicking a star
-            $('#rating-form').submit();
-        });
+                // Optionally, submit the form immediately after clicking a star
+                $('#rating-form').submit();
+            });
 
-        // Handle form submission via AJAX
-        $('#rating-form').submit(function(event) {
-            event.preventDefault(); // Prevent the form from submitting the traditional way
-            var formData = $(this).serialize(); // Serialize form data
+            // Handle form submission via AJAX
+            $('#rating-form').submit(function (event) {
+                event.preventDefault(); // Prevent the form from submitting the traditional way
+                var formData = $(this).serialize(); // Serialize form data
 
-            $.post('<?= base_url('submit-rating'); ?>', formData, function(response) {
-                if (response.average_rating) {
-                    $('#average-rating').text(response.average_rating.toFixed(1));
-                } else if (response.error) {
-                    alert(response.error);
+                var formDataArray = $(this).serializeArray(); // Serialize form data as an array of objects
+
+                // Find the user_id in the serialized form data
+                var user_id = formDataArray.find(function (field) {
+                    return field.name === 'user_id';
+                });
+
+                if (user_id.value === '') {
+                    // Redirect to login page
+                    window.location.href = "<?= base_url('login') ?>";
+                    return; // Exit the function to prevent further processing
                 }
-            }, 'json').fail(function(xhr, status, error) {
-                alert('An error occurred: ' + error);
+
+                $.ajax({
+                    url: '/submit-rating',
+                    type: 'POST',
+                    data: formData,
+                    success: function (response) {
+                        if (response.average_rating) {
+                            $('#average-rating').text(response.average_rating);
+                        } else if (response.error) {
+                            alert(response.error);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.log('AJAX error:', status, error, xhr.responseText);
+                    }
+                });
             });
         });
-    });
-  </script>
+    </script>
 
 </body>
 
