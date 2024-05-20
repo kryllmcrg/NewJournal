@@ -231,6 +231,13 @@
 
     <script>
     function toggleLike(element, action) {
+        const userId = "<?= session()->get('user_id') ?? null ?>";
+
+        if(!userId){
+            window.location.href = "<?= base_url('login') ?>";
+            return; // Exit the function to prevent further processing
+        }
+
         let newsId = element.getAttribute('data-news-id');
         let likeId = element.getAttribute('data-like-id');
         let likeStatus = element.getAttribute('data-like-status');

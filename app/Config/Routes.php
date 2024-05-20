@@ -52,9 +52,10 @@ $routes->get('/archive', 'NewsController::archive');
 $routes->get('/restoreNews/(:any)', 'NewsController::restoreNews/$1');
 $routes->get('/newsDelete/(:any)', 'NewsController::newsDelete/$1');
 $routes->post('contact/submitContactForm', 'NewsController::submitContactForm');
-$routes->get('contact', 'NewsController:contact');
+$routes->get('/contact', 'NewsController:contact');
 $routes->get('/newsAudit', 'NewsController::newsAudit');
 $routes->get('/dashboard', 'NewsController::dashboard');
+$routes->get('/genreport', 'NewsController::genreport');
 
 $routes->post('addComment', 'CommentsController::addComment');
 $routes->post('commentStatus', 'CommentsController::commentStatus');
@@ -68,7 +69,8 @@ $routes->get('/getcategory', 'CategoryController::getcategory');
 $routes->get('/managecategory', 'CategoryController::managecategory');
 $routes->post('/saveCategoryChanges', 'CategoryController::saveCategoryChanges');
 
-// $routes->get('/chats', 'ChatController::chats');
+$routes->get('/chats', 'ChatController::chats');
+
 // $routes->get('/announcements', 'AnnounceController::announcements');
 // $routes->get('/addannounce', 'AnnounceController::addannounce');
 // $routes->get('/manageannounce', 'AnnounceController::manageannounce');

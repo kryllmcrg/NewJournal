@@ -18,6 +18,51 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="<?= base_url('assets2/images/ciologo.png')?>" />
 </head>
+<style>
+    #reportForm {
+        display: flex;
+        align-items: center;
+    }
+    
+    .form-select {
+        max-width: 200px;
+        border: 1px solid #ced4da;
+        border-radius: 0.25rem;
+        padding: 0.375rem 1.75rem 0.375rem 0.75rem;
+        font-size: 1rem;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+    
+    .form-select:focus {
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+    
+    .btn-primary {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        border-radius: 0.25rem;
+        display: flex;
+        align-items: center;
+        transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+    }
+    
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+    
+    .btn-primary i {
+        margin-right: 0.5rem;
+    }
+</style>
 
 <body>
     <div class="container-scroller">
@@ -63,7 +108,29 @@
                             </ul>
                         </nav>
                     </div>
-                    
+
+                    <div class="d-flex justify-content-end mb-3">
+                        <form action="<?= base_url('genreport') ?>" method="get" class="d-flex align-items-center" id="reportForm">
+                            <select name="month" class="form-select me-2" required>
+                                <option value="" disabled selected>Select Month</option>
+                                <?php
+                                // Generate options for each month
+                                for ($m = 1; $m <= 12; $m++) {
+                                    $monthName = date('F', mktime(0, 0, 0, $m, 1));
+                                    echo "<option value='$m'>$monthName</option>";
+                                }
+                                ?>
+                            </select>
+                            <select name="orientation" class="form-select me-2" required>
+                                <option value="portrait" selected>Portrait</option>
+                                <option value="landscape">Landscape</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-file-alt me-2"></i>Generate Report
+                            </button>
+                        </form>
+                    </div>
+
                     <!-- Table -->
                     <div class="row">
                         <div class="col-12">
