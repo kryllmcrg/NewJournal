@@ -173,9 +173,11 @@ class LogRegController extends BaseController
                     ];
                     $model->update($data['user_id'], $loginData);
 
-                    if ($data['role'] == 'Admin' || $data['role'] == 'Staff') {
+                    if ($data['role'] == 'Admin') {
                         return redirect()->to('/dashboard');
-                    } else {
+                    } elseif ( $data['role'] == 'Staff'){
+                        return redirect()->to('/dashboard');
+                    }{
                         return redirect()->to('/');
                     }
                 } else {

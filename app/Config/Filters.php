@@ -25,6 +25,9 @@ class Filters extends BaseConfig
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         'rolecheck'     => \App\Filters\RoleCheck::class,
+        'admin'     => \App\Filters\Admin::class,
+        'staff'     => \App\Filters\Staff::class,
+        'noauth'     => \App\Filters\NoAuth::class,
     ];
 
     /**
