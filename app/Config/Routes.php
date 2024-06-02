@@ -68,6 +68,8 @@ $routes->post('/addcategory', 'CategoryController::addcategory', ['filter' => 'a
 $routes->get('/getcategory', 'CategoryController::getcategory', ['filter' => 'admin']);
 $routes->get('/managecategory', 'CategoryController::managecategory', ['filter' => 'admin']);
 $routes->post('/saveCategoryChanges', 'CategoryController::saveCategoryChanges', ['filter' => 'admin']);
+$routes->post('/deleteCategory', 'CategoryController::deleteCategory', ['filter' => 'admin']);
+
 
 //$routes->get('/chats', 'ChatController::chats');
 

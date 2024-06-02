@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -8,218 +8,179 @@
     
     <link rel="stylesheet" href="<?= base_url('assets2/vendors/mdi/css/materialdesignicons.min.css')?>">
     <link rel="stylesheet" href="<?= base_url('assets2/vendors/css/vendor.bundle.base.css')?>">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
     
     <link rel="stylesheet" href="<?= base_url('assets2/css/style.css')?>">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="<?= base_url('assets2/images/ciologo.png')?>" />
-  </head>
-<style>
-  .edit-category-form .form-group {
-    margin-bottom: 20px;
-}
-
-.edit-category-form .form-label {
-    font-weight: bold;
-}
-
-.edit-category-form .form-control {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.edit-category-form .form-control:focus {
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-</style>
-  <body>
-  <div class="container-scroller">
+</head>
+<body>
+<div class="container-scroller">
     <div class="row p-0 m-0 proBanner" id="proBanner">
-      <div class="col-md-12 p-0 m-0">
+        <div class="col-md-12 p-0 m-0">
         </div>
-      </div>
     </div>
-    <!-- partial:partials/_navbar.html -->
-    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+</div>
+<!-- partial:partials/_navbar.html -->
+<nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
         <!-- Larger Logo -->
         <a class="navbar-brand brand-logo" href="dashboard">
-        <img src="<?= base_url('assets2/images/ciologo.png')?>" alt="logo" style="width: 70px; height: auto;">
+            <img src="<?= base_url('assets2/images/ciologo.png')?>" alt="logo" style="width: 70px; height: auto;">
         </a>
 
         <!-- Smaller Logo for Mini View -->
         <a class="navbar-brand brand-logo-mini" href="dashboard">
-        <img src="<?= base_url('assets2/images/ciologo.png')?>" alt="logo" style="width: 70px; height: auto;">
+            <img src="<?= base_url('assets2/images/ciologo.png')?>" alt="logo" style="width: 70px; height: auto;">
         </a>
     </div>
-    <?php include('include\header.php'); ?>
-    </nav>
-    <!-- partial -->
+    <?php include('include/header.php'); ?>
+</nav>
+<!-- partial -->
+<div class="container-fluid page-body-wrapper">
+    <!-- partial:partials/_sidebar.html -->
     <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_sidebar.html -->
-      <div class="container-fluid page-body-wrapper">
-        <?php include('include\sidebar.php'); ?>
+        <?php include('include/sidebar.php'); ?>
 
-      <!-- Edit News Modal -->
-      <div class="modal fade" id="editNewsModal" tabindex="-1" role="dialog" aria-labelledby="editNewsModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <h5 class="modal-title" id="editNewsModalLabel">Edit Category</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
-                  <div class="modal-body">
-                      <!-- Add your form elements for editing here -->
-                      <form action="/saveCategoryChanges" method="post" class="edit-category-form">
-                          <div class="row">
-                              <!-- First Column -->
-                              <div class="col-md-12">
-                                  <div class="form-group">
-                                      <label for="editCategory" class="form-label">Category Name</label>
-                                      <input type="text" name="editCategory" id="editCategory" class="form-control" placeholder="Enter category">
-                                  </div>
-                              </div>
-                          </div>
-                          <!-- Add more form fields as needed for editing -->
-                      </form>
-                  </div>
-                  <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary save-changes-btn">Save changes</button>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <!-- partial -->
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="page-header">
-            <h3 class="page-title">
-            <span class="page-title-icon bg-gradient-primary text-white me-2">
-                <i class="fas fa-list"></i>
-            </span> Manage Category
-
-            </h3>
-            <nav aria-label="breadcrumb">
-              <ul class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">
-                  <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <div class="card">
-          <div class="card-body">
-            <h4 class="card-title">Manage Category</h4>
-            <div class="table-responsive">
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th>Category Name</th>
-                    <th></th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php foreach ($categoryData as $categoryItem): ?>
-                      <tr>
-                          <td><?php echo $categoryItem['category_name']; ?></td>
-                          <td>
-                          <td>
-                              <button type="button" class="btn btn-sm btn-primary edit-category-btn" data-category-id="<?php echo $categoryItem['category_id']; ?>">Edit</button>
-                              <button type="button" class="btn btn-sm btn-danger delete-category-btn" data-category-id="<?php echo $categoryItem['category_id']; ?>">Delete</button>
-                          </td>
-                          </td>
-                      </tr>
-                  <?php endforeach; ?>
-              </tbody>
-              </table>
+      <!-- Edit Category Modal -->
+        <div class="modal fade" id="editCategoryModal" tabindex="-1" role="dialog" aria-labelledby="editCategoryModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editCategoryModalLabel">Edit Category</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editCategoryForm">
+                            <div class="form-group">
+                                <label for="editCategoryName">Category Name</label>
+                                <input type="text" class="form-control" id="editCategoryName" name="editCategory" required>
+                                <input type="hidden" id="editCategoryId" name="category_id"> <!-- Add hidden input for category ID -->
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="updateCategory()">Save changes</button>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-        </div>
-        
-        <!-- content-wrapper ends -->
-        <!-- partial:partials/_footer.html -->
-        <?php include('include\footer.php'); ?>
         <!-- partial -->
-      </div>
-      <!-- main-panel ends -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="page-header">
+                    <h3 class="page-title">
+                        <span class="page-title-icon bg-gradient-primary text-white me-2">
+                            <i class="fas fa-list"></i>
+                        </span> Manage Category
+                    </h3>
+                    <nav aria-label="breadcrumb">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item active" aria-current="page">
+                                <span></span>Overview <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Manage Category</h4>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Category Name</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($categoryData as $categoryItem): ?>
+                                        <tr>
+                                            <td><?php echo $categoryItem['category_name']; ?></td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-primary edit-category-btn" data-category-id="<?php echo $categoryItem['category_id']; ?>" onclick="editCategory(<?php echo $categoryItem['category_id']; ?>, '<?php echo $categoryItem['category_name']; ?>')">Edit</button>
+                                                <button type="button" class="btn btn-sm btn-danger delete-category-btn" data-category-id="<?php echo $categoryItem['category_id']; ?>" onclick="deleteCategory(<?php echo $categoryItem['category_id']; ?>)">Delete</button>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <?php include('include/footer.php'); ?>
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
     </div>
     <!-- page-body-wrapper ends -->
-  </div>
-  <!-- container-scroller -->
+</div>
+<!-- container-scroller -->
 
-  <!-- JavaScript code -->
-  <!-- Add this script after the modal HTML -->
 <script>
-  document.querySelectorAll('.edit-category-btn').forEach(item => {
-      item.addEventListener('click', event => {
-          const categoryId = event.currentTarget.dataset.categoryId;
-          console.log('Edit button clicked for category ID:', categoryId);
-
-          // Fetch category data using its ID
-          fetch(`/get-category-data/${categoryId}`)
-              .then(response => {
-                  if (!response.ok) {
-                      throw new Error('Network response was not ok');
-                  }
-                  return response.json();
-              })
-              .then(data => {
-                  console.log('Response from server:', data); // Log the response
-                  // Populate the modal fields with category data
-                  document.getElementById('editCategoryId').value = data.category_id; // Assuming there's an input field with id editCategoryId
-                  document.getElementById('editCategory').value = data.category_name;
-              })
-              .catch(error => {
-                  console.error('Error fetching category data:', error);
-              });
-
-          // Show the modal
-          $('#editNewsModal').modal('show');
-      });
-  });
-
-  // Event handler for the "Save changes" button
-  document.querySelector('.save-changes-btn').addEventListener('click', function() {
-      // Here you can add the logic to save changes
-      console.log('Save changes button clicked');
-  });
-
-  // Event handler for Close button
-  document.querySelector('#editNewsModal .btn-secondary').addEventListener('click', function() {
-      $('#editNewsModal').modal('hide');
-  });
-
-  document.querySelectorAll('.delete-category-btn').forEach(item => {
-      item.addEventListener('click', event => {
-          // Fetch category ID
-          const categoryId = event.currentTarget.dataset.categoryId;
-          console.log('Delete button clicked for category ID:', categoryId);
-          // Show confirmation dialog
-          if (confirm('Are you sure you want to delete this category?')) {
-              // Proceed with deletion logic
-              console.log('Category deleted.');
-              // You may want to perform AJAX call to delete the category from server
-              // and then remove the corresponding row from the table
-          }
-      });
-  });
+function deleteCategory(categoryId) {
+    $.ajax({
+        url: '/deleteCategory',
+        method: 'POST',
+        dataType: 'json',
+        data: { category_id: categoryId },
+        success: function(response) {
+            if(response.success) {
+                // If deletion is successful, reload the page
+                alert(response.message);
+                location.reload(); // Reload the page
+            } else {
+                alert('Failed to delete category');
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error(xhr.responseText);
+        }
+    });
+}
 </script>
+
+<script>
+function editCategory(categoryId, categoryName) {
+    $('#editCategoryId').val(categoryId); // Set category ID in hidden input
+    $('#editCategoryName').val(categoryName); // Set category name in input field
+    $('#editCategoryModal').modal('show'); // Open the modal
+}
+
+function updateCategory() {
+    var categoryId = $('#editCategoryId').val(); // Get category ID
+    var newCategoryName = $('#editCategoryName').val(); // Get updated category name
+    
+    $.ajax({
+        url: '/saveCategoryChanges',
+        method: 'POST',
+        dataType: 'json',
+        data: { category_id: categoryId, editCategory: newCategoryName }, // Send category ID and updated name
+        success: function(response) {
+            if(response.success) {
+                // If update is successful, show success message, close modal, and reload the page
+                alert(response.message);
+                $('#editCategoryModal').modal('hide'); // Close the modal
+                location.reload(); // Reload the page to reflect changes
+            } else {
+                alert('Failed to update category');
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error(xhr.responseText);
+        }
+    });
+}
+</script>
+
 
   <!-- plugins:js -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -232,5 +193,6 @@
   <script src="<?= base_url('assets2/js/misc.js')?>"></script>
   <script src="<?= base_url('assets2/js/dashboard.js')?>"></script>
   <script src="<?= base_url('assets2/js/todolist.js')?>"></script>
+
 </body>
 </html>

@@ -49,6 +49,23 @@ class CategoryController extends BaseController
         return view('AdminPage/managecategory', $data);
     }
 
+    public function deleteCategory()
+{
+    // Load the request library if not loaded already
+    helper(['form', 'url']);
+
+    // Get the category ID from the request
+    $categoryId = $this->request->getPost('category_id');
+
+    // Delete the category from the database
+    $categoryModel = new CategoryModel();
+    $categoryModel->delete($categoryId);
+
+    // If successful, return success response
+    return $this->response->setJSON(['success' => true, 'message' => 'Category deleted successfully']);
+}
+
+
     public function saveCategoryChanges()
     {
         try {
