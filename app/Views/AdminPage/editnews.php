@@ -44,6 +44,7 @@
               <div class="card-body">
                 <h4 class="card-title">Edit News</h4>
                 <form method="post" action="<?= base_url('/updateNews'); ?>" enctype="multipart/form-data" class="forms-sample" id="newsForm"><input type="hidden" name="news_id" value="<?= $news['news_id'] ?>">
+                <div id="alertMessage"></div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -180,19 +181,20 @@
         });
       });   
       $(document).ready(function () {
-        // Your existing code
-
-        // Register click event for the submit button
-        $('#btn-submit').on('click', function (e) {
-          e.preventDefault();
-          formData.append('title', $('#title').val());
-          formData.append('author', $('#author').val());
-          formData.append('category_id', selectedCategory);
-          formData.append('content', $('#mySummernote').summernote('code'));
-          formData.append('comment', $('#comment').val());
-          formData.append('video', $('#video')[0].files[0]);
-          formData.append('remarks', $('#remarks').val());
-          $.ajax({
+    // Register click event for the submit button
+    $('#btn-update').on('click', function (e) {
+        e.preventDefault();
+        
+        var formData = new FormData();
+        formData.append('news_id', $('#news_id').val());
+        formData.append('title', $('#title').val());
+        formData.append('author', $('#author').val());
+        formData.append('category_id', selectedCategory);
+        formData.append('content', $('#mySummernote').summernote('code'));
+        formData.append('remarks', $('#remarks').val());
+        
+        // Send AJAX request to update news
+        $.ajax({
             url: '<?= base_url('updateNews') ?>',
             method: 'POST',
             data: formData,
@@ -200,18 +202,27 @@
             processData: false,
             enctype: 'multipart/form-data',
             success: function (response) {
-              console.log(response);
-              // Handle response from the server
-            //  location.reload();
+                console.log(response);
+                // Handle response from the server
+                if (response.error) {
+                    // Show error message
+                    $('#alertMessage').html('<div class="alert alert-danger" role="alert">' + response.error + '</div>');
+                } else {
+                    // Show success message
+                    $('#alertMessage').html('<div class="alert alert-success" role="alert">News successfully updated!</div>');
+                    // Optionally reload the page after a delay
+                    setTimeout(function() {
+                        location.reload();
+                    }, 2000); // Reload after 2 seconds
+                }
             },
             error: function (jqXHR, textStatus, errorThrown) {
-              console.error('File upload failed:', textStatus, errorThrown);
-              console.log('Error details:', jqXHR.responseText);
+                console.error('Update news failed:', textStatus, errorThrown);
+                console.log('Error details:', jqXHR.responseText);
             }
-          });
         });
-      });
-
+    });
+});
     </script>
   </body>
 </html>

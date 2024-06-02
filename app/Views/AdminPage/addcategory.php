@@ -41,6 +41,15 @@
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Add Category</h4>
+                    <?php if (session()->has('success')): ?>
+                        <div class="alert alert-success" role="alert">
+                            <?= session()->get('success') ?>
+                        </div>
+                    <?php elseif (session()->has('error')): ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?= session()->get('error') ?>
+                        </div>
+                    <?php endif; ?>
                     <form method="post" action="/addcategory" class="forms-sample">
                         <div class="row">
                             <div class="col-md-6">

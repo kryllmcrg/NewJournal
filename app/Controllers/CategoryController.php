@@ -13,21 +13,31 @@ class CategoryController extends BaseController
         return view('AdminPage/dashboard');
     }
 
-    public function addcategory()
-    {
-        if ($this->request->getMethod() === 'post') {
-            $categoryModel = new CategoryModel();
-            $categoryName = $this->request->getPost('category_name');
+    // Controller
+public function addcategory()
+{
+    if ($this->request->getMethod() === 'post') {
+        $categoryModel = new CategoryModel();
+        $categoryName = $this->request->getPost('category_name');
 
+        try {
             // Insert the new category into the database
             $categoryModel->insert(['category_name' => $categoryName]);
-
-            // Redirect after adding the category
-            return redirect()->to('/addcategory')->with('success', 'Category added successfully.');
-        } else {
-            return view('AdminPage/addcategory');
+            
+            // Set success message
+            session()->setFlashdata('success', 'Category added successfully.');
+        } catch (\Exception $e) {
+            // Set error message
+            session()->setFlashdata('error', 'Failed to add category.');
         }
+
+        // Redirect to prevent form resubmission
+        return redirect()->to('/addcategory');
+    } else {
+        return view('AdminPage/addcategory');
     }
+}
+
 
     public function getcategory()
     {

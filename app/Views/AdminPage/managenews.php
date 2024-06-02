@@ -215,7 +215,7 @@
                                                                 <i class="fas fa-eye"></i> View
                                                             </button>
                                                             <a href="<?= base_url('/editNews/'.$newsItem['news_id']); ?>" class="btn btn-sm btn-info">Edit</a>
-                                                            <a href="<?php echo base_url('/deleteNews/'.$newsItem['news_id']); ?>" class="btn btn-sm btn-danger delete-news-btn">Delete</a>
+                                                            <a href="<?php echo base_url('/deleteNews/'.$newsItem['news_id']); ?>" class="btn btn-sm btn-danger delete-news-btn" onclick="return confirm('Are you sure you want to delete this news item permanently?')">Delete</a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>

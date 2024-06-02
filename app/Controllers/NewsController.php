@@ -43,7 +43,6 @@ class NewsController extends BaseController
         'newsByStaff' => $newsByStaff
     ]);
 }
-
     public function viewnews($id)
     {
         $newsModel = new NewsModel();
@@ -53,7 +52,6 @@ class NewsController extends BaseController
         return view('AdminPage/viewnews');
     }
     
-
     public function editnews($id)
     {
         $newsModel = new NewsModel();
@@ -64,8 +62,10 @@ class NewsController extends BaseController
 
         return view('AdminPage/editnews', ['categories' => $categories, 'news' => $news]);
     }
+
     public function updateNews()
-    {
+{
+    try {
         // Retrieve the submitted form data
         $newsId = $this->request->getPost('news_id');
         $title = $this->request->getPost('title');
@@ -80,14 +80,14 @@ class NewsController extends BaseController
         // Check if the news with the given ID exists
         $news = $newsModel->find($newsId);
         if (!$news) {
-            return "News not found"; // Handle error appropriately
+            return $this->response->setStatusCode(404)->setJSON(['error' => 'News not found']);
         }
 
         // Check if the provided category ID exists
         $categoryModel = new CategoryModel();
         $category = $categoryModel->find($categoryId);
         if (!$category) {
-            return "Category not found"; // Handle error appropriately
+            return $this->response->setStatusCode(404)->setJSON(['error' => 'Category not found']);
         }
 
         // Update the news data
@@ -99,25 +99,22 @@ class NewsController extends BaseController
             'remarks' => $remarks,
         ];
 
-        $userAudit = new UserAuditModel();
-        $users = new UsersModel();
-        $staffId = session()->get('staff_id');
-
-        $user = $users->select('user_id')->where(['staff_id' => $staffId])->first();
-
-
         // Perform the update operation
         $updated = $newsModel->update($newsId, $data);
-        $userAuditRes = $userAudit->addUserAuditLog($user['user_id'], $newsId, 'Edit', "Edit $title News", $remarks);
 
         // Check if the update was successful
         if ($updated) {
-            // Redirect back to the editnews page with the news ID
-            return redirect()->to("/editNews/$newsId");
+            // Return success message
+            return $this->response->setStatusCode(200)->setJSON(['message' => 'News successfully updated']);
         } else {
-            return "Failed to update news"; // Handle error appropriately
+            // Return error message
+            return $this->response->setStatusCode(500)->setJSON(['error' => 'Failed to update news']);
         }
+    } catch (\Throwable $th) {
+        // Handle errors
+        return $this->response->setStatusCode(500)->setJSON(['error' => $th->getMessage()]);
     }
+}
     public function addnews()
     {
         $categories = new CategoryModel();
@@ -133,8 +130,9 @@ class NewsController extends BaseController
     {
         try {
             $userAudit = new UserAuditModel();
-            $users = new UsersModel();
-
+            $newsModel = new NewsModel();
+            $users = new UsersModel(); // Instantiate the UsersModel
+    
             $title = $this->request->getPost('title');
             $content = $this->request->getPost('content');
             $category_id = $this->request->getPost('category_id');
@@ -156,13 +154,14 @@ class NewsController extends BaseController
                     }
                 }
             }
+            // Save data to the database
             $data = [
                 'title' => $title,
                 'content' => $content,
                 'category_id' => $category_id,
                 'author' => $author,
                 'images' => json_encode($uploadedImages),
-                'staff_id' => $staffId, // Use the retrieved staff_id
+                'staff_id' => $staffId,
                 'news_status' => 'Pending',
                 'publication_status' => 'Draft'
             ];
@@ -189,18 +188,20 @@ class NewsController extends BaseController
                 return $this->response->setStatusCode(400)->setJSON(["error" => "Error: Required data is missing.", "data" => $data]);
             }
 
-            $newsModel = new NewsModel();
             $result = $newsModel->insert($data);
-
+    
+            // Log the action
             $user = $users->select('user_id')->where(['staff_id' => $staffId])->first();
-
             $userAuditRes = $userAudit->addUserAuditLog($user['user_id'], $result, 'Add', "Add $title News", '');
-
-            return $this->response->setJSON($result);
+    
+            // Send response indicating success
+            return $this->response->setJSON(["success" => true, "message" => "News successfully added"]);
         } catch (\Throwable $th) {
-            return $this->response->setJSON(['error' => $th->getMessage()]);
+            // Handle errors
+            return $this->response->setStatusCode(500)->setJSON(['error' => $th->getMessage()]);
         }
     }
+    
 
     public function __construct()
     {
@@ -208,50 +209,48 @@ class NewsController extends BaseController
     }
 
     public function deleteNews($id)
-    {
-        try {
+{
+    try {
+        $userAudit = new UserAuditModel();
+        $users = new UsersModel();
+        
+        $newsModel = new NewsModel();
+        $likeModel = new LikeModel();
 
-            $userAudit = new UserAuditModel();
-            $users = new UsersModel();
-            
-            $newsModel = new NewsModel();
-            $likeModel = new LikeModel();
+        // Begin a transaction
+        $db = db_connect();
+        $db->transStart();
 
-            // // Begin a transaction
-            $db = db_connect();
-            $db->transStart();
+        // Check if there are related records in the 'likes' table
+        $relatedLikes = $likeModel->where('news_id', $id)->findAll();
 
-            // Check if there are related records in the 'likes' table
-            $relatedLikes = $likeModel->where('news_id', $id)->findAll();
-
-            // Delete related records from the 'likes' table
-            foreach ($relatedLikes as $like) {
-                $likeModel->delete($like['like_id']);
-            }
-
-            // Update the 'archived' column of the news item to indicate it is archived
-            $updated = $newsModel->where('news_id', $id)->set(['archived' => 1])->update();
-
-            // Commit the transaction
-            $db->transCommit();
-
-            if ($updated) {
-                // Return success message if update was successful
-                return redirect()->to('managenews')->with('success', 'News item archived successfully.');
-            } else {
-                // Return error message if update failed
-                return redirect()->to('managenews')->with('error', 'Failed to archive the news item.');
-            }
-            
-        } catch (\Throwable $th) {
-            // Rollback the transaction if an error occurred
-            $db->transRollback();
-
-            // Return error message if an exception occurred during the update
-            return redirect()->to('managenews')->with('error', 'An error occurred during deletion: ' . $th->getMessage());
+        // Delete related records from the 'likes' table
+        foreach ($relatedLikes as $like) {
+            $likeModel->delete($like['like_id']);
         }
-    }
 
+        // Update the 'archived' column of the news item to indicate it is archived
+        $updated = $newsModel->where('news_id', $id)->set(['archived' => 1])->update();
+
+        // Commit the transaction
+        $db->transCommit();
+
+        if ($updated) {
+            // Return success message if update was successful
+            return redirect()->to('managenews')->with('success', 'News item archived successfully.');
+        } else {
+            // Return error message if update failed
+            return redirect()->to('managenews')->with('error', 'Failed to archive the news item.');
+        }
+        
+    } catch (\Throwable $th) {
+        // Rollback the transaction if an error occurred
+        $db->transRollback();
+
+        // Return error message if an exception occurred during the update
+        return redirect()->to('managenews')->with('error', 'An error occurred during deletion: ' . $th->getMessage());
+    }
+}
     public function managenews()
     {
         try {
