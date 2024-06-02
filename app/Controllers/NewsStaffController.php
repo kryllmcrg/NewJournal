@@ -148,7 +148,7 @@ class NewsStaffController extends BaseController
         return view('user_view', ['users' => $users]);
     }
 
-    public function updateNews($id)
+    public function changeNews($id)
     {
         $newsModel = new NewsModel();
         $categoryModel = new CategoryModel();
@@ -156,61 +156,59 @@ class NewsStaffController extends BaseController
 
         $news = $newsModel->find($id);
 
-        return view('AdminPage/editnews', ['categories' => $categories, 'news' => $news]);
+        return view('StaffPage/changeNews', ['categories' => $categories, 'news' => $news]);
     }
     public function newsUpdate()
-    {
-        // Retrieve the submitted form data
-        $newsId = $this->request->getPost('news_id');
-        $title = $this->request->getPost('title');
-        $author = $this->request->getPost('author');
-        $categoryId = $this->request->getPost('category_id');
-        $content = $this->request->getPost('content');
-        $remarks = $this->request->getPost('remarks');
+{
+    // Retrieve the submitted form data
+    $newsId = $this->request->getPost('news_id');
+    $title = $this->request->getPost('title');
+    $author = $this->request->getPost('author');
+    $categoryId = $this->request->getPost('category_id');
+    $content = $this->request->getPost('content');
+    $remarks = $this->request->getPost('remarks');
 
-        // Load the NewsModel
-        $newsModel = new NewsModel();
+    // Load the NewsModel
+    $newsModel = new NewsModel();
 
-        // Check if the news with the given ID exists
-        $news = $newsModel->find($newsId);
-        if (!$news) {
-            return "News not found"; // Handle error appropriately
-        }
-
-        // Check if the provided category ID exists
-        $categoryModel = new CategoryModel();
-        $category = $categoryModel->find($categoryId);
-        if (!$category) {
-            return "Category not found"; // Handle error appropriately
-        }
-
-        // Update the news data
-        $data = [
-            'title' => $title,
-            'author' => $author,
-            'category_id' => $categoryId,
-            'content' => $content,
-            'remarks' => $remarks,
-        ];
-
-        $userAudit = new UserAuditModel();
-        $users = new UsersModel();
-        $staffId = session()->get('staff_id');
-
-        $user = $users->select('user_id')->where(['staff_id' => $staffId])->first();
-
-
-        // Perform the update operation
-        $updated = $newsModel->update($newsId, $data);
-        $userAuditRes = $userAudit->addUserAuditLog($user['user_id'], $newsId, 'Edit', "Edit $title News", $remarks);
-
-        // Check if the update was successful
-        if ($updated) {
-            // Redirect back to the editnews page with the news ID
-            return redirect()->to("/editNews/$newsId");
-        } else {
-            return "Failed to update news"; // Handle error appropriately
-        }
+    // Check if the news with the given ID exists
+    $news = $newsModel->find($newsId);
+    if (!$news) {
+        return $this->response->setJSON(['success' => false, 'message' => 'News not found']);
     }
+
+    // Check if the provided category ID exists
+    $categoryModel = new CategoryModel();
+    $category = $categoryModel->find($categoryId);
+    if (!$category) {
+        return $this->response->setJSON(['success' => false, 'message' => 'Category not found']);
+    }
+
+    // Update the news data
+    $data = [
+        'title' => $title,
+        'author' => $author,
+        'category_id' => $categoryId,
+        'content' => $content,
+        'remarks' => $remarks,
+    ];
+
+    $userAudit = new UserAuditModel();
+    $users = new UsersModel();
+    $staffId = session()->get('staff_id');
+
+    $user = $users->select('user_id')->where(['staff_id' => $staffId])->first();
+
+    // Perform the update operation
+    $updated = $newsModel->update($newsId, $data);
+    $userAuditRes = $userAudit->addUserAuditLog($user['user_id'], $newsId, 'Edit', "Edit $title News", $remarks);
+
+    // Check if the update was successful
+    if ($updated) {
+        return $this->response->setJSON(['success' => true, 'message' => 'News successfully updated!']);
+    } else {
+        return $this->response->setJSON(['success' => false, 'message' => 'Failed to update news']);
+    }
+}
 
 }

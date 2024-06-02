@@ -57,11 +57,11 @@ $routes->get('/newsAudit', 'NewsController::newsAudit', ['filter' => 'admin']);
 $routes->get('/dashboard', 'NewsController::dashboard', ['filter' => 'admin']);
 $routes->get('/genreport', 'NewsController::genreport', ['filter' => 'admin']);
 
-$routes->post('addComment', 'CommentsController::addComment', ['filter' => 'admin']);
-$routes->post('commentStatus', 'CommentsController::commentStatus', ['filter' => 'admin']);
-$routes->post('reply', 'CommentsController::reply', ['filter' => 'admin']); 
-$routes->get('managecomments/(:num)', 'CommentsController::managecomments/$1', ['filter' => 'admin']);
-$routes->get('managecomments', 'CommentsController::showManageCommentsPage', ['filter' => 'admin']);
+$routes->post('addComment', 'CommentsController::addComment', ['filter' => 'admin|staff']);
+$routes->post('commentStatus', 'CommentsController::commentStatus', ['filter' => 'admin|staff']);
+$routes->post('reply', 'CommentsController::reply', ['filter' => 'admin|staff']); 
+$routes->get('managecomments/(:num)', 'CommentsController::managecomments/$1', ['filter' => 'admin|staff']);
+$routes->get('managecomments', 'CommentsController::showManageCommentsPage', ['filter' => 'admin|staff']);
 
 $routes->get('/addcategory', 'CategoryController::addcategory', ['filter' => 'admin']);
 $routes->post('/addcategory', 'CategoryController::addcategory', ['filter' => 'admin']);
@@ -70,8 +70,7 @@ $routes->get('/managecategory', 'CategoryController::managecategory', ['filter' 
 $routes->post('/saveCategoryChanges', 'CategoryController::saveCategoryChanges', ['filter' => 'admin']);
 $routes->post('/deleteCategory', 'CategoryController::deleteCategory', ['filter' => 'admin']);
 
-
-//$routes->get('/chats', 'ChatController::chats');
+$routes->get('/chats', 'ChatController::chats', ['filter' => 'admin']);
 
 // $routes->get('/announcements', 'AnnounceController::announcements');
 // $routes->get('/addannounce', 'AnnounceController::addannounce');
@@ -83,7 +82,6 @@ $routes->get('/createnews', 'NewsStaffController::createnews', ['filter' => 'sta
 $routes->post('/createNewsSubmit', 'NewsStaffController::createNewsSubmit', ['filter' => 'staff']);
 $routes->get('/managenewstaff', 'NewsStaffController::managenewstaff', ['filter' => 'staff']);
 $routes->get('/dashboard', 'NewsStaffController::dashboard', ['filter' => 'staff']);
-$routes->get('/updateNews/(:num)', 'NewsStaffController::updateNews/$1', ['filter' => 'staff']);
-$routes->get('/newsUpdate', 'NewsStaffController::newsUpdate/$1', ['filter' => 'staff']);
-
+$routes->get('/changeNews/(:num)', 'NewsStaffController::changeNews/$1', ['filter' => 'staff']);
+$routes->post('/newsUpdate', 'NewsStaffController::newsUpdate/$1', ['filter' => 'staff']);
 

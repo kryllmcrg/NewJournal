@@ -119,7 +119,7 @@
                                                         <button type="button" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" data-placement="top" title="View News" onclick="viewNews(<?php echo $newsItem['news_id']; ?>)">
                                                             <i class="fas fa-eye"></i> View
                                                         </button>
-                                                        <a href="<?php echo base_url('/updateNews/'.$newsItem['news_id']); ?>" class="btn btn-sm btn-info">Edit</a>
+                                                        <a href="<?= base_url('/changeNews/'.$newsItem['news_id']); ?>" class="btn btn-sm btn-info">Edit</a>
                                                         <a href="<?php echo base_url('/deleteNews/'.$newsItem['news_id']); ?>" class="btn btn-sm btn-danger delete-news-btn">Delete</a>
                                                     </td>
                                                 </tr>
@@ -134,7 +134,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- content-wrapper ends -->
                 <!-- partial:partials/_footer.html -->
                 

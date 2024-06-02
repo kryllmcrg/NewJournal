@@ -226,7 +226,6 @@ class LogRegController extends BaseController
         if ($role !== 'Admin' && $role !== 'Staff') {
             return redirect()->to('/login');
         }
-
         // Proceed with displaying the dashboard
         return view('dashboard');
     }

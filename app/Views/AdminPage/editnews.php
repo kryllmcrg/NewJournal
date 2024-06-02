@@ -98,8 +98,8 @@
                                         </div>
                                     </div>
 
-                    <div class="row">
-                        <div class="col-md-12">
+                          <div class="row">
+                              <div class="col-md-12">
                             <div class="mt-3">
                                 <button id="btn-update" type="submit" class="btn btn-gradient-primary mr-2">Update</button>
                                 <button class="btn btn-light">Cancel</button>

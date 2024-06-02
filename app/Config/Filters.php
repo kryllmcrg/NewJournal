@@ -28,6 +28,7 @@ class Filters extends BaseConfig
         'admin'     => \App\Filters\Admin::class,
         'staff'     => \App\Filters\Staff::class,
         'noauth'     => \App\Filters\NoAuth::class,
+        
     ];
 
     /**
