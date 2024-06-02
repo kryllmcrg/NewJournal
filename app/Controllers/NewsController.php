@@ -18,33 +18,32 @@ class NewsController extends BaseController
 {
 
     public function dashboard()
-    {
-        // Load the UsersModel and NewsModel
-        $usersModel = new UsersModel();
-        $newsModel = new NewsModel();
-    
-        // Fetch count of users with role 'User'
-        $usersWithRoleUser = $usersModel->getUsersByRole('User');
-        $userCount = count($usersWithRoleUser);
-    
-        // Fetch count of users with role 'Staff'
-        $usersWithRoleStaff = $usersModel->getUsersByRole('Staff');
-        $staffCount = count($usersWithRoleStaff);
-    
-        // Fetch count of news by Admin
-        $newsByAdmin = $newsModel->getNewsCountByRole('Admin');
-    
-        // Fetch count of news by Staff
-        $newsByStaff = $newsModel->getNewsCountByRole('Staff');
-    
-        // Pass the counts to the view
-        return view('dashboard', [
-            'userCount' => $userCount,
-            'staffCount' => $staffCount,
-            'newsByAdmin' => $newsByAdmin,
-            'newsByStaff' => $newsByStaff
-        ]);
-    }
+{
+    // Load the UsersModel and NewsModel
+    $usersModel = new UsersModel();
+    $newsModel = new NewsModel();
+
+    // Fetch count of users with role 'User'
+    $userCount = $usersModel->where('role', 'User')->countAllResults();
+
+    // Fetch count of users with role 'Staff'
+    $staffCount = $usersModel->where('role', 'Staff')->countAllResults();
+
+    // Fetch count of news by Admin
+    $newsByAdmin = $newsModel->where('created_by_role', 'Admin')->countAllResults();
+
+    // Fetch count of news by Staff
+    $newsByStaff = $newsModel->where('created_by_role', 'Staff')->countAllResults();
+
+    // Pass the counts to the view
+    return view('dashboard', [
+        'userCount' => $userCount,
+        'staffCount' => $staffCount,
+        'newsByAdmin' => $newsByAdmin,
+        'newsByStaff' => $newsByStaff
+    ]);
+}
+
     public function viewnews($id)
     {
         $newsModel = new NewsModel();
