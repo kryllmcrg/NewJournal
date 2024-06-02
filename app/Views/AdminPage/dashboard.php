@@ -137,24 +137,6 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">World Cloud of Author</h4>
-                        <canvas id="wordCloudAuthors" width="400" height="400"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Chart of Categories</h4>
-                        <canvas id="stackedBarChartCategories" width="400" height="400"></canvas>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
           <!-- content-wrapper ends -->
