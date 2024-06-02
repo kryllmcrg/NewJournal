@@ -76,6 +76,14 @@ $routes->get('/managecategory', 'CategoryController::managecategory', ['filter' 
 $routes->post('/saveCategoryChanges', 'CategoryController::saveCategoryChanges', ['filter' => 'admin']);
 $routes->post('/deleteCategory', 'CategoryController::deleteCategory', ['filter' => 'admin']);
 
+//STAFF CATEGORY//
+$routes->get('/addcategoryStaff', 'CategoryController::addcategoryStaff', ['filter' => 'staff']);
+$routes->post('/addcategoryStaff', 'CategoryController::addcategoryStaff', ['filter' => 'staff']);
+$routes->get('/getcategoryStaff', 'CategoryController::getcategoryStaff', ['filter' => 'staff']);
+$routes->get('/managecategoryStaff', 'CategoryController::managecategoryStaff', ['filter' => 'staff']);
+$routes->post('/changecategoryStaff', 'CategoryController::changecategoryStaff', ['filter' => 'staff']);
+$routes->post('/deleteCategoryStaff', 'CategoryController::deleteCategoryStaff', ['filter' => 'staff']);
+
 $routes->get('/chats', 'ChatController::chats', ['filter' => 'admin']);
 
 //STAFF CONTACTS/

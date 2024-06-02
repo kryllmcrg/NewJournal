@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>News</title>
+    <title>Manage Category</title>
     
     <link rel="stylesheet" href="<?= base_url('assets2/vendors/mdi/css/materialdesignicons.min.css')?>">
     <link rel="stylesheet" href="<?= base_url('assets2/vendors/css/vendor.bundle.base.css')?>">
@@ -42,7 +42,7 @@
 <div class="container-fluid page-body-wrapper">
     <!-- partial:partials/_sidebar.html -->
     <div class="container-fluid page-body-wrapper">
-        <?php include('include/sidebar.php'); ?>
+        <?php include('include/sidebars.php'); ?>
 
       <!-- Edit Category Modal -->
         <div class="modal fade" id="editCategoryModal" tabindex="-1" role="dialog" aria-labelledby="editCategoryModalLabel" aria-hidden="true">
@@ -77,7 +77,7 @@
                     <h3 class="page-title">
                         <span class="page-title-icon bg-gradient-primary text-white me-2">
                             <i class="fas fa-list"></i>
-                        </span> Manage Category
+                        </span> Manage Category Staff
                     </h3>
                     <nav aria-label="breadcrumb">
                         <ul class="breadcrumb">
@@ -89,7 +89,7 @@
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Manage Category</h4>
+                        <h4 class="card-title">Manage Category Staff</h4>
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
@@ -103,8 +103,8 @@
                                         <tr>
                                             <td><?php echo $categoryItem['category_name']; ?></td>
                                             <td>
-                                                <button type="button" class="btn btn-sm btn-primary edit-category-btn" data-category-id="<?php echo $categoryItem['category_id']; ?>" onclick="editCategory(<?php echo $categoryItem['category_id']; ?>, '<?php echo $categoryItem['category_name']; ?>')">Edit</button>
-                                                <button type="button" class="btn btn-sm btn-danger delete-category-btn" data-category-id="<?= $categoryItem['category_id'] ?>" onclick="deleteCategory(<?= $categoryItem['category_id'] ?>)">Delete</button>
+                                                <button type="button" class="btn btn-sm btn-primary edit-category-btn" data-category-id="<?php echo $categoryItem['category_id']; ?>" onclick="editCategoryStaff(<?php echo $categoryItem['category_id']; ?>, '<?php echo $categoryItem['category_name']; ?>')">Edit</button>
+                                                <button type="button" class="btn btn-sm btn-danger delete-category-btn" data-category-id="<?php echo $categoryItem['category_id']; ?>" onclick="deleteCategoryStaff(<?php echo $categoryItem['category_id']; ?>)">Delete</button>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -125,61 +125,62 @@
 </div>
 <!-- container-scroller -->
 
-<script>
-function deleteCategory(categoryId) {
-    $.ajax({
-        url: '<?php echo base_url('deleteCategory'); ?>',
-        method: 'POST',
-        dataType: 'json',
-        data: { category_id: categoryId },
-        success: function(response) {
-            if(response.success) {
-                // If deletion is successful, reload the page
-                alert(response.message);
-                location.reload(); // Reload the page
-            } else {
-                alert('Failed to delete category');
+    <script>
+    function deleteCategoryStaff(categoryId) {
+        $.ajax({
+            url: '/deleteCategoryStaff',
+            method: 'POST',
+            dataType: 'json',
+            data: { category_id: categoryId },
+            success: function(response) {
+                if(response.success) {
+                    // If deletion is successful, reload the page
+                    alert(response.message);
+                    location.reload(); // Reload the page
+                } else {
+                    alert('Failed to delete category');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
             }
-        },
-        error: function(xhr, status, error) {
-            console.error(xhr.responseText);
-        }
-    });
-}
-</script>
+        });
+    }
+    </script>
 
 <script>
-function editCategory(categoryId, categoryName) {
-    $('#editCategoryId').val(categoryId); // Set category ID in hidden input
-    $('#editCategoryName').val(categoryName); // Set category name in input field
-    $('#editCategoryModal').modal('show'); // Open the modal
-}
+    function editCategory(categoryId, categoryName) {
+        $('#editCategoryId').val(categoryId); // Set category ID in hidden input
+        $('#editCategoryName').val(categoryName); // Set category name in input field
+        $('#editCategoryModal').modal('show'); // Open the modal
+    }
 
-function updateCategory() {
-    var categoryId = $('#editCategoryId').val(); // Get category ID
-    var newCategoryName = $('#editCategoryName').val(); // Get updated category name
-    
-    $.ajax({
-        url: '/saveCategoryChanges',
-        method: 'POST',
-        dataType: 'json',
-        data: { category_id: categoryId, editCategory: newCategoryName }, // Send category ID and updated name
-        success: function(response) {
-            if(response.success) {
-                // If update is successful, show success message, close modal, and reload the page
-                alert(response.message);
-                $('#editCategoryModal').modal('hide'); // Close the modal
-                location.reload(); // Reload the page to reflect changes
-            } else {
-                alert('Failed to update category');
+    function updateCategory() {
+        var categoryId = $('#editCategoryId').val(); // Get category ID
+        var newCategoryName = $('#editCategoryName').val(); // Get updated category name
+        
+        $.ajax({
+            url: '/changecategoryStaff', 
+            method: 'POST',
+            dataType: 'json',
+            data: { category_id: categoryId, editCategory: newCategoryName }, // Send category ID and updated name
+            success: function(response) {
+                if(response.success) {
+                    // If update is successful, show success message, close modal, and reload the page
+                    alert(response.message);
+                    $('#editCategoryModal').modal('hide'); // Close the modal
+                    location.reload(); // Reload the page to reflect changes
+                } else {
+                    alert('Failed to update category');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
             }
-        },
-        error: function(xhr, status, error) {
-            console.error(xhr.responseText);
-        }
-    });
-}
+        });
+    }
 </script>
+
 
 
   <!-- plugins:js -->

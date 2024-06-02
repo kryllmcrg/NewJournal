@@ -82,7 +82,7 @@
             </a>
             <div class="collapse" id="comments">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('managecommentStaff')?>">Manage Comments Staff</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('managecommentStaff')?>">Manage Comments</a></li>
                 </ul>
             </div>
         </li>
@@ -118,6 +118,7 @@
         </li>
         <?php endif;?>
 
+        <?php if(session()->get('role') == "Admin"):?>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#category" aria-expanded="false" aria-controls="category">
                 <span class="menu-title">Category</span>
@@ -131,6 +132,23 @@
                 </ul>
             </div>
         </li>
+        <?php endif;?>
+
+        <?php if(session()->get('role') == "Staff"):?>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#category" aria-expanded="false" aria-controls="category">
+                <span class="menu-title">Category</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-folder menu-icon"></i>
+            </a>
+            <div class="collapse" id="category">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('addcategoryStaff')?>">Add Category</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('managecategoryStaff')?>">Manage Category</a></li>
+                </ul>
+            </div>
+        </li>
+        <?php endif;?>
 
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#settings" aria-expanded="false" aria-controls="settings">
