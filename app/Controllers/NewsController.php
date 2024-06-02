@@ -52,6 +52,7 @@ class NewsController extends BaseController
 
         return view('AdminPage/viewnews');
     }
+    
 
     public function editnews($id)
     {
