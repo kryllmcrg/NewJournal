@@ -181,20 +181,19 @@
         });
       });   
       $(document).ready(function () {
-    // Register click event for the submit button
-    $('#btn-update').on('click', function (e) {
-        e.preventDefault();
-        
-        var formData = new FormData();
-        formData.append('news_id', $('#news_id').val());
-        formData.append('title', $('#title').val());
-        formData.append('author', $('#author').val());
-        formData.append('category_id', selectedCategory);
-        formData.append('content', $('#mySummernote').summernote('code'));
-        formData.append('remarks', $('#remarks').val());
-        
-        // Send AJAX request to update news
-        $.ajax({
+        // Your existing code
+
+        // Register click event for the submit button
+        $('#btn-submit').on('click', function (e) {
+          e.preventDefault();
+          formData.append('title', $('#title').val());
+          formData.append('author', $('#author').val());
+          formData.append('category_id', selectedCategory);
+          formData.append('content', $('#mySummernote').summernote('code'));
+          formData.append('comment', $('#comment').val());
+          formData.append('video', $('#video')[0].files[0]);
+          formData.append('remarks', $('#remarks').val());
+          $.ajax({
             url: '<?= base_url('updateNews') ?>',
             method: 'POST',
             data: formData,
@@ -202,27 +201,27 @@
             processData: false,
             enctype: 'multipart/form-data',
             success: function (response) {
-                console.log(response);
-                // Handle response from the server
-                if (response.error) {
-                    // Show error message
-                    $('#alertMessage').html('<div class="alert alert-danger" role="alert">' + response.error + '</div>');
-                } else {
+              console.log(response);
+               // Handle response from the server
+               if (response.success) {
                     // Show success message
                     $('#alertMessage').html('<div class="alert alert-success" role="alert">News successfully updated!</div>');
-                    // Optionally reload the page after a delay
-                    setTimeout(function() {
-                        location.reload();
-                    }, 2000); // Reload after 2 seconds
+                } else {
+                    // Show error message
+                    $('#alertMessage').html('<div class="alert alert-danger" role="alert">Failed to update news. Please try again.</div>');
                 }
+                // Optionally reload the page after a delay
+                setTimeout(function() {
+                    location.reload();
+                }, 2000); // Reload after 2 seconds
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                console.error('Update news failed:', textStatus, errorThrown);
-                console.log('Error details:', jqXHR.responseText);
+              console.error('File upload failed:', textStatus, errorThrown);
+              console.log('Error details:', jqXHR.responseText);
             }
+          });
         });
-    });
-});
+      });
     </script>
   </body>
 </html>

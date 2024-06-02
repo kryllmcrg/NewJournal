@@ -64,8 +64,7 @@ class NewsController extends BaseController
     }
 
     public function updateNews()
-{
-    try {
+    {
         // Retrieve the submitted form data
         $newsId = $this->request->getPost('news_id');
         $title = $this->request->getPost('title');
@@ -80,14 +79,14 @@ class NewsController extends BaseController
         // Check if the news with the given ID exists
         $news = $newsModel->find($newsId);
         if (!$news) {
-            return $this->response->setStatusCode(404)->setJSON(['error' => 'News not found']);
+            return "News not found"; // Handle error appropriately
         }
 
         // Check if the provided category ID exists
         $categoryModel = new CategoryModel();
         $category = $categoryModel->find($categoryId);
         if (!$category) {
-            return $this->response->setStatusCode(404)->setJSON(['error' => 'Category not found']);
+            return "Category not found"; // Handle error appropriately
         }
 
         // Update the news data
@@ -99,22 +98,24 @@ class NewsController extends BaseController
             'remarks' => $remarks,
         ];
 
+        $userAudit = new UserAuditModel();
+        $users = new UsersModel();
+        $staffId = session()->get('staff_id');
+
+        $user = $users->select('user_id')->where(['staff_id' => $staffId])->first();
+
         // Perform the update operation
         $updated = $newsModel->update($newsId, $data);
+        $userAuditRes = $userAudit->addUserAuditLog($user['user_id'], $newsId, 'Edit', "Edit $title News", $remarks);
 
         // Check if the update was successful
         if ($updated) {
-            // Return success message
-            return $this->response->setStatusCode(200)->setJSON(['message' => 'News successfully updated']);
+            // Redirect back to the editnews page with the news ID
+            return redirect()->to("/editNews/$newsId");
         } else {
-            // Return error message
-            return $this->response->setStatusCode(500)->setJSON(['error' => 'Failed to update news']);
+            return "Failed to update news"; // Handle error appropriately
         }
-    } catch (\Throwable $th) {
-        // Handle errors
-        return $this->response->setStatusCode(500)->setJSON(['error' => $th->getMessage()]);
     }
-}
     public function addnews()
     {
         $categories = new CategoryModel();
