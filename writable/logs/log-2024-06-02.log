@@ -2769,3 +2769,227 @@ WHERE `category`.`deleted_at` IS NULL', [], false)
 10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
 11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-06-02 23:54:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-02 23:54:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-06-02 23:54:35 --> mysqli_sql_exception: Unknown column 'updated_at' in 'field list' in C:\laragon\www\NewJournal\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\NewJournal\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `categor...', 0)
+#1 C:\laragon\www\NewJournal\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `categor...')
+#2 C:\laragon\www\NewJournal\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `categor...')
+#3 C:\laragon\www\NewJournal\system\Database\BaseBuilder.php(2469): CodeIgniter\Database\BaseConnection->query('UPDATE `categor...', Array, false)
+#4 C:\laragon\www\NewJournal\system\Model.php(450): CodeIgniter\Database\BaseBuilder->update(Array)
+#5 C:\laragon\www\NewJournal\system\BaseModel.php(1117): CodeIgniter\Model->doDelete(Array, false)
+#6 C:\laragon\www\NewJournal\app\Controllers\CategoryController.php(74): CodeIgniter\BaseModel->delete(Array)
+#7 C:\laragon\www\NewJournal\system\CodeIgniter.php(941): App\Controllers\CategoryController->deleteCategory()
+#8 C:\laragon\www\NewJournal\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CategoryController))
+#9 C:\laragon\www\NewJournal\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\NewJournal\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\NewJournal\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-06-02 23:54:35 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'updated_at' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2469): CodeIgniter\Database\BaseConnection->query('UPDATE `category` SET `deleted_at` = :deleted_at:, `updated_at` = :updated_at:
+WHERE `category_id` IN :category_id:
+AND `deleted_at` IS NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(450): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 SYSTEMPATH\BaseModel.php(1117): CodeIgniter\Model->doDelete([...], false)
+ 4 APPPATH\Controllers\CategoryController.php(74): CodeIgniter\BaseModel->delete([...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CategoryController->deleteCategory()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CategoryController))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-06-02 23:54:35 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'updated_at' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `category` SET `deleted_at` = \'2024-06-02 23:54:34\', `updated_at` = \'2024-06-02 23:54:34\'
+WHERE `category_id` IN (\'2\')
+AND `deleted_at` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `category` SET `deleted_at` = \'2024-06-02 23:54:34\', `updated_at` = \'2024-06-02 23:54:34\'
+WHERE `category_id` IN (\'2\')
+AND `deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2469): CodeIgniter\Database\BaseConnection->query('UPDATE `category` SET `deleted_at` = :deleted_at:, `updated_at` = :updated_at:
+WHERE `category_id` IN :category_id:
+AND `deleted_at` IS NULL', [...], false)
+ 4 SYSTEMPATH\Model.php(450): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 SYSTEMPATH\BaseModel.php(1117): CodeIgniter\Model->doDelete([...], false)
+ 6 APPPATH\Controllers\CategoryController.php(74): CodeIgniter\BaseModel->delete([...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CategoryController->deleteCategory()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CategoryController))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-06-02 23:54:35 --> [Caused by] mysqli_sql_exception: Unknown column 'updated_at' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `category` SET `deleted_at` = \'2024-06-02 23:54:34\', `updated_at` = \'2024-06-02 23:54:34\'
+WHERE `category_id` IN (\'2\')
+AND `deleted_at` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `category` SET `deleted_at` = \'2024-06-02 23:54:34\', `updated_at` = \'2024-06-02 23:54:34\'
+WHERE `category_id` IN (\'2\')
+AND `deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `category` SET `deleted_at` = \'2024-06-02 23:54:34\', `updated_at` = \'2024-06-02 23:54:34\'
+WHERE `category_id` IN (\'2\')
+AND `deleted_at` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2469): CodeIgniter\Database\BaseConnection->query('UPDATE `category` SET `deleted_at` = :deleted_at:, `updated_at` = :updated_at:
+WHERE `category_id` IN :category_id:
+AND `deleted_at` IS NULL', [...], false)
+ 5 SYSTEMPATH\Model.php(450): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\BaseModel.php(1117): CodeIgniter\Model->doDelete([...], false)
+ 7 APPPATH\Controllers\CategoryController.php(74): CodeIgniter\BaseModel->delete([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CategoryController->deleteCategory()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CategoryController))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-06-02 23:54:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-06-02 23:54:36 --> mysqli_sql_exception: Unknown column 'updated_at' in 'field list' in C:\laragon\www\NewJournal\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\NewJournal\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `categor...', 0)
+#1 C:\laragon\www\NewJournal\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `categor...')
+#2 C:\laragon\www\NewJournal\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `categor...')
+#3 C:\laragon\www\NewJournal\system\Database\BaseBuilder.php(2469): CodeIgniter\Database\BaseConnection->query('UPDATE `categor...', Array, false)
+#4 C:\laragon\www\NewJournal\system\Model.php(450): CodeIgniter\Database\BaseBuilder->update(Array)
+#5 C:\laragon\www\NewJournal\system\BaseModel.php(1117): CodeIgniter\Model->doDelete(Array, false)
+#6 C:\laragon\www\NewJournal\app\Controllers\CategoryController.php(74): CodeIgniter\BaseModel->delete(Array)
+#7 C:\laragon\www\NewJournal\system\CodeIgniter.php(941): App\Controllers\CategoryController->deleteCategory()
+#8 C:\laragon\www\NewJournal\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CategoryController))
+#9 C:\laragon\www\NewJournal\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\NewJournal\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\NewJournal\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-06-02 23:54:36 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'updated_at' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2469): CodeIgniter\Database\BaseConnection->query('UPDATE `category` SET `deleted_at` = :deleted_at:, `updated_at` = :updated_at:
+WHERE `category_id` IN :category_id:
+AND `deleted_at` IS NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(450): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 SYSTEMPATH\BaseModel.php(1117): CodeIgniter\Model->doDelete([...], false)
+ 4 APPPATH\Controllers\CategoryController.php(74): CodeIgniter\BaseModel->delete([...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CategoryController->deleteCategory()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CategoryController))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-06-02 23:54:36 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'updated_at' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `category` SET `deleted_at` = \'2024-06-02 23:54:36\', `updated_at` = \'2024-06-02 23:54:36\'
+WHERE `category_id` IN (\'2\')
+AND `deleted_at` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `category` SET `deleted_at` = \'2024-06-02 23:54:36\', `updated_at` = \'2024-06-02 23:54:36\'
+WHERE `category_id` IN (\'2\')
+AND `deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2469): CodeIgniter\Database\BaseConnection->query('UPDATE `category` SET `deleted_at` = :deleted_at:, `updated_at` = :updated_at:
+WHERE `category_id` IN :category_id:
+AND `deleted_at` IS NULL', [...], false)
+ 4 SYSTEMPATH\Model.php(450): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 SYSTEMPATH\BaseModel.php(1117): CodeIgniter\Model->doDelete([...], false)
+ 6 APPPATH\Controllers\CategoryController.php(74): CodeIgniter\BaseModel->delete([...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CategoryController->deleteCategory()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CategoryController))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-06-02 23:54:36 --> [Caused by] mysqli_sql_exception: Unknown column 'updated_at' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `category` SET `deleted_at` = \'2024-06-02 23:54:36\', `updated_at` = \'2024-06-02 23:54:36\'
+WHERE `category_id` IN (\'2\')
+AND `deleted_at` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `category` SET `deleted_at` = \'2024-06-02 23:54:36\', `updated_at` = \'2024-06-02 23:54:36\'
+WHERE `category_id` IN (\'2\')
+AND `deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `category` SET `deleted_at` = \'2024-06-02 23:54:36\', `updated_at` = \'2024-06-02 23:54:36\'
+WHERE `category_id` IN (\'2\')
+AND `deleted_at` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2469): CodeIgniter\Database\BaseConnection->query('UPDATE `category` SET `deleted_at` = :deleted_at:, `updated_at` = :updated_at:
+WHERE `category_id` IN :category_id:
+AND `deleted_at` IS NULL', [...], false)
+ 5 SYSTEMPATH\Model.php(450): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\BaseModel.php(1117): CodeIgniter\Model->doDelete([...], false)
+ 7 APPPATH\Controllers\CategoryController.php(74): CodeIgniter\BaseModel->delete([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CategoryController->deleteCategory()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CategoryController))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-06-02 23:54:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-02 23:54:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-06-02 23:54:50 --> mysqli_sql_exception: Unknown column 'updated_at' in 'field list' in C:\laragon\www\NewJournal\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\NewJournal\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `categor...', 0)
+#1 C:\laragon\www\NewJournal\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `categor...')
+#2 C:\laragon\www\NewJournal\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `categor...')
+#3 C:\laragon\www\NewJournal\system\Database\BaseBuilder.php(2469): CodeIgniter\Database\BaseConnection->query('UPDATE `categor...', Array, false)
+#4 C:\laragon\www\NewJournal\system\Model.php(450): CodeIgniter\Database\BaseBuilder->update(Array)
+#5 C:\laragon\www\NewJournal\system\BaseModel.php(1117): CodeIgniter\Model->doDelete(Array, false)
+#6 C:\laragon\www\NewJournal\app\Controllers\CategoryController.php(74): CodeIgniter\BaseModel->delete(Array)
+#7 C:\laragon\www\NewJournal\system\CodeIgniter.php(941): App\Controllers\CategoryController->deleteCategory()
+#8 C:\laragon\www\NewJournal\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CategoryController))
+#9 C:\laragon\www\NewJournal\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\NewJournal\public\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 C:\laragon\www\NewJournal\system\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\...')
+#12 {main}
+CRITICAL - 2024-06-02 23:54:50 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'updated_at' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2469): CodeIgniter\Database\BaseConnection->query('UPDATE `category` SET `deleted_at` = :deleted_at:, `updated_at` = :updated_at:
+WHERE `category_id` IN :category_id:
+AND `deleted_at` IS NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(450): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 SYSTEMPATH\BaseModel.php(1117): CodeIgniter\Model->doDelete([...], false)
+ 4 APPPATH\Controllers\CategoryController.php(74): CodeIgniter\BaseModel->delete([...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CategoryController->deleteCategory()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CategoryController))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-06-02 23:54:50 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'updated_at' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `category` SET `deleted_at` = \'2024-06-02 23:54:50\', `updated_at` = \'2024-06-02 23:54:50\'
+WHERE `category_id` IN (\'2\')
+AND `deleted_at` IS NULL')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `category` SET `deleted_at` = \'2024-06-02 23:54:50\', `updated_at` = \'2024-06-02 23:54:50\'
+WHERE `category_id` IN (\'2\')
+AND `deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2469): CodeIgniter\Database\BaseConnection->query('UPDATE `category` SET `deleted_at` = :deleted_at:, `updated_at` = :updated_at:
+WHERE `category_id` IN :category_id:
+AND `deleted_at` IS NULL', [...], false)
+ 4 SYSTEMPATH\Model.php(450): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 SYSTEMPATH\BaseModel.php(1117): CodeIgniter\Model->doDelete([...], false)
+ 6 APPPATH\Controllers\CategoryController.php(74): CodeIgniter\BaseModel->delete([...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CategoryController->deleteCategory()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CategoryController))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+CRITICAL - 2024-06-02 23:54:50 --> [Caused by] mysqli_sql_exception: Unknown column 'updated_at' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `category` SET `deleted_at` = \'2024-06-02 23:54:50\', `updated_at` = \'2024-06-02 23:54:50\'
+WHERE `category_id` IN (\'2\')
+AND `deleted_at` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `category` SET `deleted_at` = \'2024-06-02 23:54:50\', `updated_at` = \'2024-06-02 23:54:50\'
+WHERE `category_id` IN (\'2\')
+AND `deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `category` SET `deleted_at` = \'2024-06-02 23:54:50\', `updated_at` = \'2024-06-02 23:54:50\'
+WHERE `category_id` IN (\'2\')
+AND `deleted_at` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2469): CodeIgniter\Database\BaseConnection->query('UPDATE `category` SET `deleted_at` = :deleted_at:, `updated_at` = :updated_at:
+WHERE `category_id` IN :category_id:
+AND `deleted_at` IS NULL', [...], false)
+ 5 SYSTEMPATH\Model.php(450): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\BaseModel.php(1117): CodeIgniter\Model->doDelete([...], false)
+ 7 APPPATH\Controllers\CategoryController.php(74): CodeIgniter\BaseModel->delete([...])
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\CategoryController->deleteCategory()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CategoryController))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('C:\\laragon\\www\\NewJournal\\public\\index.php')
+INFO - 2024-06-02 23:57:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-02 23:57:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-02 23:57:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-02 23:57:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-02 23:57:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-02 23:58:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-02 23:58:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-02 23:58:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-02 23:58:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-02 23:58:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-02 23:58:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-02 23:58:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
