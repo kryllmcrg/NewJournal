@@ -467,17 +467,22 @@ class NewsController extends BaseController
     }
 
     public function newsAudit()
-    {
-        // Load the UserAuditModel
-        $userAuditModel = new UserAuditModel();
+{
+    // Load the UserAuditModel
+    $userAuditModel = new UserAuditModel();
 
-        // Fetch audit trail data from the database
-        $data['auditTrailData'] = $userAuditModel->findAll(); // Assuming findAll() fetches all audit trail records
+    // Fetch audit trail data from the database
+    $auditTrailData = $userAuditModel->paginate(10); // Adjust the number of items per page as needed
 
-        // Load the view file and pass the audit trail data to it
-      
-        return view('AdminPage/NewsAudit', $data); // Pass the $data array to the view
-    }
+    // Pass the audit trail data and pager to the view
+    $data['auditTrailData'] = $auditTrailData;
+    $data['pager'] = $userAuditModel->pager;
+
+    // Load the view file and pass the data to it
+    return view('AdminPage/NewsAudit', $data);
+}
+
+
 
     public function genreport()
 {
