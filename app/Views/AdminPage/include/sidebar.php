@@ -82,12 +82,28 @@
             </a>
             <div class="collapse" id="comments">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('managecomments')?>">Manage Comments</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('managecommentStaff')?>">Manage Comments Staff</a></li>
                 </ul>
             </div>
         </li>
         <?php endif;?>
 
+        <?php if(session()->get('role') == "Staff"):?>
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#collaboration" aria-expanded="false" aria-controls="collaboration">
+                <span class="menu-title">Collaboration</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-account-group menu-icon"></i>
+            </a>
+            <div class="collapse" id="collaboration">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="<?= base_url('chatStaff')?>">Contacts</a></li>
+                </ul>
+            </div>
+        </li>
+        <?php endif;?>
+
+        <?php if(session()->get('role') == "Admin"):?>
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#collaboration" aria-expanded="false" aria-controls="collaboration">
                 <span class="menu-title">Collaboration</span>
@@ -100,6 +116,7 @@
                 </ul>
             </div>
         </li>
+        <?php endif;?>
 
         <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#category" aria-expanded="false" aria-controls="category">

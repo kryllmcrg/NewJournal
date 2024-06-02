@@ -57,11 +57,17 @@ $routes->get('/newsAudit', 'NewsController::newsAudit', ['filter' => 'admin']);
 $routes->get('/dashboard', 'NewsController::dashboard', ['filter' => 'admin']);
 $routes->get('/genreport', 'NewsController::genreport', ['filter' => 'admin']);
 
-$routes->post('addComment', 'CommentsController::addComment', ['filter' => 'admin|staff']);
-$routes->post('commentStatus', 'CommentsController::commentStatus', ['filter' => 'admin|staff']);
-$routes->post('reply', 'CommentsController::reply', ['filter' => 'admin|staff']); 
-$routes->get('managecomments/(:num)', 'CommentsController::managecomments/$1', ['filter' => 'admin|staff']);
-$routes->get('managecomments', 'CommentsController::showManageCommentsPage', ['filter' => 'admin|staff']);
+$routes->post('addComment', 'CommentsController::addComment', ['filter' => 'admin']);
+$routes->post('commentStatus', 'CommentsController::commentStatus', ['filter' => 'admin']);
+$routes->post('reply', 'CommentsController::reply', ['filter' => 'admin']); 
+$routes->get('managecomments/(:num)', 'CommentsController::managecomments/$1', ['filter' => 'admin']);
+$routes->get('managecomments', 'CommentsController::showManageCommentsPage', ['filter' => 'admin']);
+
+//STAFF//
+$routes->get('managecommentStaff/(:num)', 'CommentsController::managecommentStaff/$1', ['filter' => 'staff']);
+$routes->get('managecommentStaff', 'CommentsController::managecommentStaffPage', ['filter' => 'staff']);
+$routes->post('commentStatuStaff', 'CommentsController::commentStatuStaff', ['filter' => 'staff']);
+
 
 $routes->get('/addcategory', 'CategoryController::addcategory', ['filter' => 'admin']);
 $routes->post('/addcategory', 'CategoryController::addcategory', ['filter' => 'admin']);
@@ -71,6 +77,9 @@ $routes->post('/saveCategoryChanges', 'CategoryController::saveCategoryChanges',
 $routes->post('/deleteCategory', 'CategoryController::deleteCategory', ['filter' => 'admin']);
 
 $routes->get('/chats', 'ChatController::chats', ['filter' => 'admin']);
+
+//STAFF CONTACTS/
+$routes->get('/chatStaff', 'ChatController::chatStaff', ['filter' => 'staff']);
 
 // $routes->get('/announcements', 'AnnounceController::announcements');
 // $routes->get('/addannounce', 'AnnounceController::addannounce');

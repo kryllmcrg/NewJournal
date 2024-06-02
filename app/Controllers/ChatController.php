@@ -28,4 +28,16 @@ class ChatController extends BaseController
         // Load the view file with the contact data
         return view('AdminPage/chats', ['contacts' => $contacts]);
     }
+
+    public function chatStaff()
+    {
+        // Load the ContactModel
+        $contactModel = new ContactModel();
+        
+        // Fetch contact data from the database
+        $contacts = $contactModel->findAll(); // Assuming findAll() fetches all contact items
+        
+        // Load the view file with the contact data
+        return view('AdminPage/chats', ['contacts' => $contacts]);
+    }
 }

@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Manage Comments</title>
+    <title>Manage Comments Staff</title>
     
     <link rel="stylesheet" href="<?= base_url('assets2/vendors/mdi/css/materialdesignicons.min.css')?>">
     <link rel="stylesheet" href="<?= base_url('assets2/vendors/css/vendor.bundle.base.css')?>">
@@ -40,7 +40,7 @@
         </nav>
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
-            <?php include('include\sidebar.php'); ?>
+            <?php include('include\sidebars.php'); ?>
             <!-- partial -->
             <div class="main-panel">
                 <div class="content-wrapper">
@@ -48,7 +48,7 @@
                         <h3 class="page-title">
                             <span class="page-title-icon bg-gradient-primary text-white me-2">
                                 <i class="mdi mdi-comment"></i>
-                            </span> Manage Comments
+                            </span> Manage Comments Staff
                         </h3>
                         <nav aria-label="breadcrumb">
                             <ul class="breadcrumb">
@@ -63,7 +63,7 @@
                         <div class="col-12">
                           <div class="card">
                             <div class="card-body">
-                              <h4 class="card-title">Manage Comments</h4>
+                              <h4 class="card-title">Manage Comments Staff</h4>
                               <div class="table-responsive">
                               <table class="table table-hover">
                                 <thead>
@@ -131,7 +131,7 @@
     <script>
     function updateCommentStatus(commentId, status) {
         $.ajax({
-            url: '<?php echo base_url("commentStatus"); ?>',
+            url: '<?php echo base_url("commentStatuStaff"); ?>',
             type: 'POST',
             data: {
                 comment_id: commentId,
