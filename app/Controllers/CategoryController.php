@@ -60,31 +60,28 @@ public function addcategory()
     }
 
     public function deleteCategory()
-{
-    // Load the necessary helpers and libraries
-    helper(['form', 'url']);
+    {
+        // Load the necessary helpers and libraries
+        helper(['form', 'url']);
 
-    // Get the category ID from the POST request
-    $categoryId = $this->request->getPost('category_id');
+        // Get the category ID from the POST request
+        $categoryId = $this->request->getPost('category_id');
 
-    // Load the CategoryModel
-    $categoryModel = new CategoryModel();
+        // Load the CategoryModel
+        $categoryModel = new CategoryModel();
 
-    // Delete the category from the database
-    $deleted = $categoryModel->delete($categoryId);
+        // Delete the category from the database
+        $deleted = $categoryModel->delete($categoryId);
 
-    // Check if the deletion was successful
-    if ($deleted) {
-        // If successful, return success response
-        return $this->response->setJSON(['success' => true, 'message' => 'Category deleted successfully']);
-    } else {
-        // If deletion failed, return error response
-        return $this->response->setJSON(['success' => false, 'message' => 'Failed to delete category']);
+        // Check if the deletion was successful
+        if ($deleted) {
+            // If successful, return success response
+            return $this->response->setJSON(['success' => true, 'message' => 'Category deleted successfully']);
+        } else {
+            // If deletion failed, return error response
+            return $this->response->setJSON(['success' => false, 'message' => 'Failed to delete category']);
+        }
     }
-}
-
-
-
     public function saveCategoryChanges()
     {
         try {
@@ -106,31 +103,30 @@ public function addcategory()
         }
     }
 
-
-
+    
     public function addcategoryStaff()
-{
-    if ($this->request->getMethod() === 'post') {
-        $categoryModel = new CategoryModel();
-        $categoryName = $this->request->getPost('category_name');
+    {
+        if ($this->request->getMethod() === 'post') {
+            $categoryModel = new CategoryModel();
+            $categoryName = $this->request->getPost('category_name');
 
-        try {
-            // Insert the new category into the database
-            $categoryModel->insert(['category_name' => $categoryName]);
-            
-            // Set success message
-            session()->setFlashdata('success', 'Category added successfully.');
-        } catch (\Exception $e) {
-            // Set error message
-            session()->setFlashdata('error', 'Failed to add category.');
+            try {
+                // Insert the new category into the database
+                $categoryModel->insert(['category_name' => $categoryName]);
+                
+                // Set success message
+                session()->setFlashdata('success', 'Category added successfully.');
+            } catch (\Exception $e) {
+                // Set error message
+                session()->setFlashdata('error', 'Failed to add category.');
+            }
+
+            // Redirect to prevent form resubmission
+            return redirect()->to('/addcategoryStaff');
+        } else {
+            return view('StaffPage/addcategoryStaff');
         }
-
-        // Redirect to prevent form resubmission
-        return redirect()->to('/addcategoryStaff');
-    } else {
-        return view('StaffPage/addcategoryStaff');
     }
-}
     public function getcategoryStaff()
     {
         // Load the CategoryModel
@@ -152,20 +148,20 @@ public function addcategory()
     }
 
     public function deleteCategoryStaff()
-{
-    // Load the request library if not loaded already
-    helper(['form', 'url']);
+    {
+        // Load the request library if not loaded already
+        helper(['form', 'url']);
 
-    // Get the category ID from the request
-    $categoryId = $this->request->getPost('category_id');
+        // Get the category ID from the request
+        $categoryId = $this->request->getPost('category_id');
 
-    // Delete the category from the database
-    $categoryModel = new CategoryModel();
-    $categoryModel->delete($categoryId);
+        // Delete the category from the database
+        $categoryModel = new CategoryModel();
+        $categoryModel->delete($categoryId);
 
-    // If successful, return success response
-    return $this->response->setJSON(['success' => true, 'message' => 'Category deleted successfully']);
-}
+        // If successful, return success response
+        return $this->response->setJSON(['success' => true, 'message' => 'Category deleted successfully']);
+    }
 
 public function changecategoryStaff()
 {
