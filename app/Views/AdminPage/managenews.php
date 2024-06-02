@@ -369,13 +369,13 @@
         // If the user confirms, perform the deletion logic
         if (isConfirmed) {
             // Make an AJAX request to delete the news item
-            fetch('/delete-news', {
+            fetch('/deleteNewsStaff', { // Update the URL to match the correct endpoint
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    news_id: newsId
+                    id_news: newsId // Adjust the property name to match the expected key in the controller method
                 }),
             })
             .then(response => {
@@ -393,7 +393,6 @@
         }
     });
 });
-
   </script>
 
 

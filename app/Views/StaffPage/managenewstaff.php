@@ -120,7 +120,7 @@
                                                             <i class="fas fa-eye"></i> View
                                                         </button>
                                                         <a href="<?= base_url('/changeNews/'.$newsItem['news_id']); ?>" class="btn btn-sm btn-info">Edit</a>
-                                                        <a href="<?php echo base_url('/deleteNews/'.$newsItem['news_id']); ?>" class="btn btn-sm btn-danger delete-news-btn">Delete</a>
+                                                        <a href="<?= base_url('/deleteNewsStaff/'.$newsItem['news_id']); ?>" class="btn btn-sm btn-danger delete-news-btn">Delete</a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -232,17 +232,17 @@
         // Prevent the default action of the anchor tag
         event.preventDefault();
         
-        // Fetch news item data based on news ID
-        const newsId = item.getAttribute('data-news-id');
-        console.log('Delete button clicked for news ID:', newsId);
-
         // Show a confirmation dialog
         var isConfirmed = confirm("Are you sure you want to delete this news?");
 
         // If the user confirms, perform the deletion logic
         if (isConfirmed) {
+            // Fetch news item data based on news ID
+            const newsId = item.getAttribute('data-news-id');
+            console.log('Delete button clicked for news ID:', newsId);
+
             // Make an AJAX request to delete the news item
-            fetch('/delete-news', {
+            fetch('/deleteNewsStaff', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -266,7 +266,6 @@
         }
     });
 });
-
   </script>
 
 

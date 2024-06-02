@@ -89,16 +89,17 @@ $routes->get('/chats', 'ChatController::chats', ['filter' => 'admin']);
 //STAFF CONTACTS/
 $routes->get('/chatStaff', 'ChatController::chatStaff', ['filter' => 'staff']);
 
-// $routes->get('/announcements', 'AnnounceController::announcements');
-// $routes->get('/addannounce', 'AnnounceController::addannounce');
-// $routes->get('/manageannounce', 'AnnounceController::manageannounce');
-// $routes->post('addAnnounceSubmit', 'AnnounceController::addAnnounceSubmit');
 
 //staff//
 $routes->get('/createnews', 'NewsStaffController::createnews', ['filter' => 'staff']);
 $routes->post('/createNewsSubmit', 'NewsStaffController::createNewsSubmit', ['filter' => 'staff']);
 $routes->get('/managenewstaff', 'NewsStaffController::managenewstaff', ['filter' => 'staff']);
+$routes->get('/deleteNewsStaff/(:any)', 'NewsStaffController::deleteNewsStaff/$1', ['filter' => 'staff']);
 $routes->get('/dashboard', 'NewsStaffController::dashboard', ['filter' => 'staff']);
 $routes->get('/changeNews/(:num)', 'NewsStaffController::changeNews/$1', ['filter' => 'staff']);
 $routes->post('/newsUpdate', 'NewsStaffController::newsUpdate/$1', ['filter' => 'staff']);
+$routes->get('/archiveStaff', 'NewsStaffController::archiveStaff', ['filter' => 'staff']);
+$routes->get('/newsAuditStaff', 'NewsStaffController::newsAuditStaff', ['filter' => 'staff']);
+$routes->get('/restoreNewStaff/(:any)', 'NewsStaffController::restoreNewStaff/$1', ['filter' => 'staff']);
+$routes->get('/newsDeleteStaff/(:any)', 'NewsStaffController::newsDeleteStaff/$1', ['filter' => 'staff']);
 

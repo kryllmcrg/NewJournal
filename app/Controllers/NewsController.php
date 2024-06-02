@@ -417,6 +417,7 @@ class NewsController extends BaseController
             return redirect()->to('managearchive')->with('error', 'An error occurred during deletion.');
         }
     }
+
     public function submitContactForm()
     {
         $contactModel = new ContactModel();
