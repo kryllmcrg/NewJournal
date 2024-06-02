@@ -17,6 +17,7 @@
     <?php include('include\logo.php'); ?>
     <?php include('include\header.php'); ?>
     </nav>
+    
     <div class="container-fluid page-body-wrapper">
         <?php include('include\sidebar.php'); ?>
       
