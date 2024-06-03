@@ -12,7 +12,7 @@ class CategoryModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['category_name', 'delete_at', 'updated_at'];
+    protected $allowedFields    = ['category_name', 'delete_at', 'updated_at','created_at'];
 
     // Dates
     protected $useTimestamps = true;

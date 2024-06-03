@@ -147,41 +147,36 @@ public function addcategory()
         return view('AdminPage/managecategory', $data);
     }
 
-    public function deleteCategoryStaff()
-    {
-        // Load the request library if not loaded already
-        helper(['form', 'url']);
-
-        // Get the category ID from the request
+    public function deleteCategoryStaff() {
         $categoryId = $this->request->getPost('category_id');
-
-        // Delete the category from the database
+    
         $categoryModel = new CategoryModel();
-        $categoryModel->delete($categoryId);
-
-        // If successful, return success response
-        return $this->response->setJSON(['success' => true, 'message' => 'Category deleted successfully']);
+        if($categoryModel->delete($categoryId)) {
+            return $this->response->setJSON(['success' => true, 'message' => 'Category deleted successfully']);
+        } else {
+            return $this->response->setJSON(['success' => false, 'message' => 'Failed to delete category']);
+        }
     }
+    
+    public function changecategoryStaff()
+    {
+        try {
+            // Retrieve the category ID and new category name from the request
+            $categoryId = $this->request->getPost('category_id'); // Adjusted to match the attribute name
+            $newCategoryName = $this->request->getPost('editCategory');
 
-public function changecategoryStaff()
-{
-    try {
-        // Retrieve the category ID and new category name from the request
-        $categoryId = $this->request->getPost('category_id'); // Adjusted to match the attribute name
-        $newCategoryName = $this->request->getPost('editCategory');
+            // Validate inputs if necessary
 
-        // Validate inputs if necessary
+            // Update the category in the database
+            $categoryModel = new CategoryModel();
+            $categoryModel->update($categoryId, ['category_name' => $newCategoryName]);
 
-        // Update the category in the database
-        $categoryModel = new CategoryModel();
-        $categoryModel->update($categoryId, ['category_name' => $newCategoryName]);
-
-        // If successful, return success response
-        return $this->response->setJSON(['success' => true, 'message' => 'Category updated successfully']);
-    } catch (\Exception $e) {
-        // If an error occurs, return error response
-        return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+            // If successful, return success response
+            return $this->response->setJSON(['success' => true, 'message' => 'Category updated successfully']);
+        } catch (\Exception $e) {
+            // If an error occurs, return error response
+            return $this->response->setJSON(['success' => false, 'message' => 'Error: ' . $e->getMessage()]);
+        }
     }
-}
 
 }
