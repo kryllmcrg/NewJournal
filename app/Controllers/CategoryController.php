@@ -147,17 +147,21 @@ public function addcategory()
         return view('AdminPage/managecategory', $data);
     }
 
-    public function deleteCategoryStaff() {
+    public function deleteCategoryStaff()
+    {
+        // Load the request library if not loaded already
+        helper(['form', 'url']);
+
+        // Get the category ID from the request
         $categoryId = $this->request->getPost('category_id');
-    
+
+        // Delete the category from the database
         $categoryModel = new CategoryModel();
-        if($categoryModel->delete($categoryId)) {
-            return $this->response->setJSON(['success' => true, 'message' => 'Category deleted successfully']);
-        } else {
-            return $this->response->setJSON(['success' => false, 'message' => 'Failed to delete category']);
-        }
+        $categoryModel->delete($categoryId);
+
+        // If successful, return success response
+        return $this->response->setJSON(['success' => true, 'message' => 'Category deleted successfully']);
     }
-    
     public function changecategoryStaff()
     {
         try {

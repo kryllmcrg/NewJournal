@@ -125,7 +125,19 @@
 </div>
 <!-- container-scroller -->
 
-<script>
+  <!-- plugins:js -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="<?= base_url('assets2/vendors/js/vendor.bundle.base.js')?>"></script>
+  <script src="<?= base_url('assets2/vendors/chart.js/Chart.min.js')?>"></script>
+  <script src="<?= base_url('assets2/js/jquery.cookie.js" type="text/javascript')?>"></script>
+  <script src="<?= base_url('assets2/js/off-canvas.js')?>"></script>
+  <script src="<?= base_url('assets2/js/hoverable-collapse.js')?>"></script>
+  <script src="<?= base_url('assets2/js/misc.js')?>"></script>
+  <script src="<?= base_url('assets2/js/dashboard.js')?>"></script>
+  <script src="<?= base_url('assets2/js/todolist.js')?>"></script>
+
+  <script>
 function deleteCategory(categoryId) {
     $.ajax({
         url: '<?= base_url('deleteCategoryStaff') ?>',
@@ -182,19 +194,6 @@ function updateCategory() {
     });
 }
 </script>
-
-
-  <!-- plugins:js -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="<?= base_url('assets2/vendors/js/vendor.bundle.base.js')?>"></script>
-  <script src="<?= base_url('assets2/vendors/chart.js/Chart.min.js')?>"></script>
-  <script src="<?= base_url('assets2/js/jquery.cookie.js" type="text/javascript')?>"></script>
-  <script src="<?= base_url('assets2/js/off-canvas.js')?>"></script>
-  <script src="<?= base_url('assets2/js/hoverable-collapse.js')?>"></script>
-  <script src="<?= base_url('assets2/js/misc.js')?>"></script>
-  <script src="<?= base_url('assets2/js/dashboard.js')?>"></script>
-  <script src="<?= base_url('assets2/js/todolist.js')?>"></script>
 
 </body>
 </html>
