@@ -80,27 +80,30 @@ class NewsStaffController extends BaseController
     public function deleteNewsStaff($id)
     {
         try {
+            $userAudit = new UserAuditModel();
+            $users = new UsersModel();
+            
             $newsModel = new NewsModel();
             $likeModel = new LikeModel();
-
+    
             // Begin a transaction
             $db = db_connect();
             $db->transStart();
-
+    
             // Check if there are related records in the 'likes' table
             $relatedLikes = $likeModel->where('news_id', $id)->findAll();
-
+    
             // Delete related records from the 'likes' table
             foreach ($relatedLikes as $like) {
                 $likeModel->delete($like['like_id']);
             }
-
+    
             // Update the 'archived' column of the news item to indicate it is archived
             $updated = $newsModel->where('news_id', $id)->set(['archived' => 1])->update();
-
+    
             // Commit the transaction
             $db->transCommit();
-
+    
             if ($updated) {
                 // Return success message if update was successful
                 return redirect()->to('managenewstaff')->with('success', 'News item archived successfully.');
@@ -108,14 +111,16 @@ class NewsStaffController extends BaseController
                 // Return error message if update failed
                 return redirect()->to('managenewstaff')->with('error', 'Failed to archive the news item.');
             }
+            
         } catch (\Throwable $th) {
             // Rollback the transaction if an error occurred
             $db->transRollback();
-
+    
             // Return error message if an exception occurred during the update
-            return redirect()->to('managenewstaff')->with('error', 'An error occurred during deletion.');
+            return redirect()->to('managenews')->with('error', 'An error occurred during deletion: ' . $th->getMessage());
         }
     }
+
     public function managenewstaff()
     {
         // Load the required models

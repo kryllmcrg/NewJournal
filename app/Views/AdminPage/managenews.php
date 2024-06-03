@@ -369,7 +369,7 @@
         // If the user confirms, perform the deletion logic
         if (isConfirmed) {
             // Make an AJAX request to delete the news item
-            fetch('/deleteNewsStaff', { // Update the URL to match the correct endpoint
+            fetch('/deleteNews', { // Update the URL to match the correct endpoint
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
